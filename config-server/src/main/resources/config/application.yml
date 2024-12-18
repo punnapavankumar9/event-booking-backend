@@ -1,0 +1,4 @@
+application:
+  config:
+    # gateway server port
+    port: 8080
