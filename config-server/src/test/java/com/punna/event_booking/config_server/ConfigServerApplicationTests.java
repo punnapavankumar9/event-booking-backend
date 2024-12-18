@@ -38,14 +38,13 @@ class ConfigServerApplicationTests {
     }
 
     @Test
-    void includeRootApplicationYml() {
-
-        ResponseEntity<DefaultConfig> exchange = testRestTemplate.exchange(baseUrl + "/default/default",
+    void sendApplicationYmlForDefault() {
+        ResponseEntity<ConfigObject> exchange = testRestTemplate.exchange(baseUrl + "/default/default",
                 HttpMethod.GET,
                 null,
-                DefaultConfig.class);
+                ConfigObject.class);
 
-        DefaultConfig responseBody = exchange.getBody();
+        ConfigObject responseBody = exchange.getBody();
         assert responseBody != null;
         assertThat(responseBody.getName()).isEqualTo("default");
         assertThat(responseBody
@@ -53,12 +52,31 @@ class ConfigServerApplicationTests {
                 .size()).isEqualTo(1);
     }
 
+    @Test
+    void sendApplicationYmlWithRequestConfig(){
+        ResponseEntity<ConfigObject> exchange = testRestTemplate.exchange(baseUrl + "/discovery-service/default",
+                HttpMethod.GET,
+                null,
+                ConfigObject.class);
+
+        ConfigObject responseBody = exchange.getBody();
+        assert responseBody != null;
+        assertThat(responseBody.getName()).isEqualTo("discovery-service");
+        assertThat(responseBody
+                .getProfiles()
+                .size()).isEqualTo(1);
+        assertThat(responseBody.getPropertySources().size()).isEqualTo(2);
+
+    }
+
+
     @Data
     @NoArgsConstructor
     @AllArgsConstructor
-    private static class DefaultConfig {
+    private static class ConfigObject {
         private String name;
         private List<String> profiles;
+        private List<Object> propertySources;
     }
 
 

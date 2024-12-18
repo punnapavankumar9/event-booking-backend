@@ -1,4 +1,14 @@
 application:
-  config:
+  server:
     # gateway server port
     port: 8080
+  config:
+    eureka:
+      port: 8082
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${application.config.eureka.port}/eureka
+  instance:
+    hostname: localhost

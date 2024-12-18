@@ -1,4 +1,4 @@
-package com.punna.event_booking.discovery;
+package com.punna.discovery;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
