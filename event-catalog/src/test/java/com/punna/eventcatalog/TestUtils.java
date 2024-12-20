@@ -1,2 +1,6 @@
-package com.punna.eventcatalog;public class TestUtils {
+package com.punna.eventcatalog;
+
+public class TestUtils {
+
+
 }

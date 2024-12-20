@@ -8,8 +8,8 @@ import org.springframework.data.mongodb.config.EnableReactiveMongoAuditing;
 @EnableReactiveMongoAuditing
 public class EventCatalogApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(EventCatalogApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(EventCatalogApplication.class, args);
+    }
 
 }

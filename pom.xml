@@ -7,27 +7,19 @@
         <version>3.4.0</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.punna.event-booking</groupId>
-    <artifactId>event-booking</artifactId>
+
+    <groupId>com.punna.eventbooking</groupId>
+    <artifactId>bom</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>event-booking</name>
     <description>Distributed Event Booking Platform</description>
-    <url/>
-    <licenses>
-        <license/>
-    </licenses>
+
     <developers>
         <developer>
             <name>Pavan Kumar Punna</name>
             <email>pavankumar.punna@outlook.com</email>
         </developer>
     </developers>
-    <scm>
-        <connection/>
-        <developerConnection/>
-        <tag/>
-        <url/>
-    </scm>
     <packaging>pom</packaging>
     <properties>
         <java.version>21</java.version>
@@ -39,6 +31,7 @@
         <module>discovery</module>
         <module>gateway</module>
         <module>event-catalog</module>
+        <module>commons</module>
     </modules>
 
     <dependencyManagement>

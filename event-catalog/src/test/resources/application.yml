@@ -1,0 +1,13 @@
+spring:
+  profiles:
+    active: test
+  cloud:
+    config:
+      enabled: false
+  messages:
+    basename: messages
+    encoding: UTF-8
+eureka:
+  client:
+    enabled: false
+

@@ -1,12 +1,13 @@
 package com.punna.eventcatalog.dto;
 
 import com.punna.eventcatalog.utils.EventDurationType;
+import jakarta.validation.constraints.Future;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.punna.common.validation.groups.CreateGroup;
+import org.punna.commons.validation.groups.CreateGroup;
 
 import java.time.LocalDateTime;
 
@@ -14,11 +15,13 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Data
 @Builder
-public class EventDurationDetailsRequestDto {
+public class EventDurationDetailsDto {
     @NotNull(message = "Event start time must not be null", groups = {CreateGroup.class})
+    @Future(message = "Event start time must be in future")
     private LocalDateTime startTime;
 
     @NotNull(message = "Event end time must not be null", groups = {CreateGroup.class})
+    @Future(message = "Event end time must be in future")
     private LocalDateTime endTime;
 
     @NotNull(message = "EventDurationType time must not be null", groups = {CreateGroup.class})

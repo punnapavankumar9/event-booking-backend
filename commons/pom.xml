@@ -7,24 +7,21 @@
         <artifactId>bom</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    <artifactId>config-server</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>config-server</name>
-    <description>Config Server</description>
+
+    <groupId>org.punna.eventbooking</groupId>
+    <artifactId>commons</artifactId>
+    <version>1.0-SNAPSHOT</version>
     <dependencies>
         <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-config-server</artifactId>
+            <groupId>org.hibernate.validator</groupId>
+            <artifactId>hibernate-validator</artifactId>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
+
+
 </project>
