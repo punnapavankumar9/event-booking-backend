@@ -7,21 +7,17 @@
         <artifactId>bom</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-
-    <groupId>org.punna.eventbooking</groupId>
     <artifactId>commons</artifactId>
-    <version>1.0-SNAPSHOT</version>
+
     <dependencies>
-        <dependency>
-            <groupId>org.hibernate.validator</groupId>
-            <artifactId>hibernate-validator</artifactId>
-        </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>org.hibernate.validator</groupId>
+            <artifactId>hibernate-validator</artifactId>
+        </dependency>
     </dependencies>
-
-
 </project>

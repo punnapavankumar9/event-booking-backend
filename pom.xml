@@ -1,10 +1,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.4.0</version>
+        <version>3.4.1</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
@@ -13,6 +14,15 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>event-booking</name>
     <description>Distributed Event Booking Platform</description>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>commons</module>
+        <module>config-server</module>
+        <module>discovery</module>
+        <module>gateway</module>
+        <module>event-catalog</module>
+    </modules>
 
     <developers>
         <developer>
@@ -20,20 +30,6 @@
             <email>pavankumar.punna@outlook.com</email>
         </developer>
     </developers>
-    <packaging>pom</packaging>
-    <properties>
-        <java.version>21</java.version>
-        <spring-cloud.version>2024.0.0</spring-cloud.version>
-    </properties>
-
-    <modules>
-        <module>config-server</module>
-        <module>discovery</module>
-        <module>gateway</module>
-        <module>event-catalog</module>
-        <module>commons</module>
-    </modules>
-
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -45,36 +41,8 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <annotationProcessorPaths>
-                        <path>
-                            <groupId>org.projectlombok</groupId>
-                            <artifactId>lombok</artifactId>
-                            <version>1.18.36</version>
-                        </path>
-                    </annotationProcessorPaths>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <excludes>
-                        <exclude>
-                            <groupId>org.projectlombok</groupId>
-                            <artifactId>lombok</artifactId>
-                        </exclude>
-                    </excludes>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
-
+    <properties>
+        <java.version>21</java.version>
+        <spring-cloud.version>2024.0.0</spring-cloud.version>
+    </properties>
 </project>
-

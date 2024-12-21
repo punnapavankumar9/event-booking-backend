@@ -20,4 +20,4 @@ jobs:
           java-version: 21
           cache: maven
       - name: Maven Install
-        run: mvn clean install -X
+        run: mvn clean install

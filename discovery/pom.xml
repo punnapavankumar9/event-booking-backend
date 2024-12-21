@@ -6,11 +6,12 @@
         <groupId>com.punna.eventbooking</groupId>
         <artifactId>bom</artifactId>
         <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
+
     <artifactId>discovery</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>discovery</name>
     <description>Eureka Discovery Service</description>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
