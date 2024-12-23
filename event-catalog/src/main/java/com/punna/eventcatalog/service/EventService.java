@@ -13,4 +13,8 @@ public interface EventService {
     Flux<EventResponseDto> findAllEvents(Integer page);
 
     Mono<EventResponseDto> updateEvent(EventRequestDto event);
+
+    Mono<Void> deleteEvent(String id);
+
+    Mono<EventResponseDto> findById(String id);
 }

@@ -1,17 +1,19 @@
 package com.punna.eventcatalog.service;
 
 
+import com.punna.eventcatalog.dto.VenueDto;
 import com.punna.eventcatalog.model.Venue;
-import org.bson.types.ObjectId;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 public interface VenueService {
-    Mono<ObjectId> createVenue(Venue venue);
+    Mono<VenueDto> createVenue(VenueDto venue);
 
-    Mono<Void> deleteVenue(ObjectId id);
+    Mono<Void> deleteVenue(String id);
 
-    Mono<Void> updateVenue(ObjectId id, Venue venue);
+    Mono<VenueDto> updateVenue(VenueDto venue);
 
-    Flux<Venue> getAllVenues();
+    Flux<VenueDto> getAllVenues(int page);
+
+    Mono<VenueDto> findById(String id);
 }

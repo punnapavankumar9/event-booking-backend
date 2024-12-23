@@ -5,13 +5,40 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="270ad57c-65bc-4f7e-86cf-537bc93322f9" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/controller/VenueController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/dto/VenueDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/mapper/VenueMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/service/impl/VenueServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/event-catalog/src/test/java/com/punna/eventcatalog/integration/EventEndpointTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/event-catalog/src/test/java/com/punna/eventcatalog/integration/VenueEndpointTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.github/workflows/ci.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/ci.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/controller/EventController.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/controller/EventController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/dto/EventRequestDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/dto/EventRequestDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/mapper/EventMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/mapper/EventMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/model/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/model/Event.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/model/EventDurationDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/model/EventDurationDetails.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/repository/EventRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/repository/EventRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/repository/VenueRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/repository/VenueRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/service/EventService.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/service/EventService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/service/VenueService.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/service/VenueService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/service/impl/EventServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/service/impl/EventServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-catalog/src/test/java/com/punna/eventcatalog/fixtures/EventFixtures.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-catalog/src/test/java/com/punna/eventcatalog/fixtures/TestFixtures.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-catalog/src/test/java/com/punna/eventcatalog/integration/EventCatalogApplicationTest.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -47,14 +74,23 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "JUnit.EventCatalogApplicationTest.executor": "Run",
+    "JUnit.EventCatalogApplicationTest.givenInvalidEventWithId_whenUpdateEvent_thenUpdateEventAndReturn.executor": "Run",
+    "JUnit.EventCatalogApplicationTest.givenInvalidEvent_whenCreateEvent_thenReturnBadResultWithErrors.executor": "Debug",
+    "JUnit.EventCatalogApplicationTest.givenNonExistingEvent_whenUpdatingEvent_thenReturnBadRequestWithErrors.executor": "Run",
+    "JUnit.EventEndpointTests.executor": "Run",
+    "JUnit.VenueEndpointTests.executor": "Run",
+    "JUnit.VenueEndpointTests.givenInvalidVenue_whenCreatingVenue_thenShouldReturnBadRequest.executor": "Debug",
     "Maven.bom [clean].executor": "Run",
     "Maven.bom [install].executor": "Run",
     "Maven.bom [package].executor": "Run",
     "Maven.event-catalog [install].executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "deletionFromPopupRequiresConfirmation": "false",
     "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/software/codes/java/spring/event-booking-bok",
+    "last_opened_file_path": "D:/software/codes/java/spring/event-booking/pom.xml",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -68,7 +104,13 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="ReactorSettings">
+    <option name="notificationShown" value="true" />
+  </component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.punna.eventcatalog.dto" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\software\codes\java\spring\event-booking\commons" />
       <recent name="D:\software\codes\java\spring\event-booking" />
@@ -83,16 +125,65 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.ConfigServerApplication">
-    <configuration default="true" type="JetRunConfigurationType">
-      <module name="event-booking" />
+  <component name="RunManager" selected="JUnit.EventEndpointTests">
+    <configuration name="EventEndpointTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="event-catalog" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.punna.eventcatalog.integration.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.punna.eventcatalog.integration" />
+      <option name="MAIN_CLASS_NAME" value="com.punna.eventcatalog.integration.EventEndpointTests" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <module name="event-booking" />
-      <option name="filePath" />
+    <configuration name="EventEndpointTests.givenInvalidEvent_whenCreateEvent_thenReturnBadResultWithErrors" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="event-catalog" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.punna.eventcatalog.integration.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.punna.eventcatalog.integration" />
+      <option name="MAIN_CLASS_NAME" value="com.punna.eventcatalog.integration.EventEndpointTests" />
+      <option name="METHOD_NAME" value="givenInvalidEvent_whenCreateEvent_thenReturnBadResultWithErrors" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="EventEndpointTests.givenNonExistingEvent_whenUpdatingEvent_thenReturnBadRequestWithErrors" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="event-catalog" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.punna.eventcatalog.integration.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.punna.eventcatalog.integration" />
+      <option name="MAIN_CLASS_NAME" value="com.punna.eventcatalog.integration.EventEndpointTests" />
+      <option name="METHOD_NAME" value="givenNonExistingEvent_whenUpdatingEvent_thenReturnBadRequestWithErrors" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="VenueEndpointTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="event-catalog" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.punna.eventcatalog.integration.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.punna.eventcatalog.integration" />
+      <option name="MAIN_CLASS_NAME" value="com.punna.eventcatalog.integration.VenueEndpointTests" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -125,6 +216,14 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.EventEndpointTests" />
+        <item itemvalue="JUnit.VenueEndpointTests" />
+        <item itemvalue="JUnit.EventEndpointTests.givenNonExistingEvent_whenUpdatingEvent_thenReturnBadRequestWithErrors" />
+        <item itemvalue="JUnit.EventEndpointTests.givenInvalidEvent_whenCreateEvent_thenReturnBadResultWithErrors" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -139,7 +238,9 @@
       <workItem from="1734728500217" duration="1676000" />
       <workItem from="1734766220029" duration="1275000" />
       <workItem from="1734767514045" duration="2589000" />
-      <workItem from="1734778651697" duration="612000" />
+      <workItem from="1734778651697" duration="1767000" />
+      <workItem from="1734785883052" duration="7121000" />
+      <workItem from="1734958826693" duration="12134000" />
     </task>
     <servers />
   </component>

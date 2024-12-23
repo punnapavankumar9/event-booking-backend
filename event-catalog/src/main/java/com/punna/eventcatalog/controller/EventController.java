@@ -39,4 +39,17 @@ public class EventController {
     public Mono<EventResponseDto> updateEvent(@Validated(UpdateGroup.class) @RequestBody EventRequestDto event) {
         return eventService.updateEvent(event);
     }
+
+    @DeleteMapping("/{id}")
+    public Mono<Void> deleteEvent(@PathVariable String id) {
+        return eventService.deleteEvent(id);
+    }
+
+    @GetMapping("/{id}")
+    public Mono<EventResponseDto> getVenue(@PathVariable String id) {
+        return eventService.findById(id);
+    }
+
+
+
 }

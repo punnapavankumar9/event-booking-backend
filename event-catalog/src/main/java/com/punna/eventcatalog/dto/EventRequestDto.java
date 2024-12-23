@@ -1,7 +1,10 @@
 package com.punna.eventcatalog.dto;
 
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Null;
+import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -27,7 +30,7 @@ public class EventRequestDto {
     private String name;
 
     @NotNull(message = "description must not be null", groups = CreateGroup.class)
-    @Size(min = 5, max = 4000, message = "Event description must be between 5 and 50 characters long")
+    @Size(min = 5, max = 4000, message = "Event description must be between 5 and 4000 characters long")
     private String description;
 
     @NotNull(message = "organizerId must not be null", groups = CreateGroup.class)
@@ -42,6 +45,9 @@ public class EventRequestDto {
 
     @NotNull(message = "venueId must not be null", groups = CreateGroup.class)
     private String venueId;
+
+    @NotNull(message = "isOpenForBooking must not be null", groups = CreateGroup.class)
+    private boolean isOpenForBooking;
 
     @Valid
     @NotNull(message = "event duration details must not be null", groups = CreateGroup.class)

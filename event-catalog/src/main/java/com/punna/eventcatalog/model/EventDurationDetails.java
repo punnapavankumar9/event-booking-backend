@@ -16,16 +16,4 @@ public class EventDurationDetails {
     private LocalDateTime endTime;
 
     private EventDurationType eventDurationType;
-
-    public void merge(EventDurationDetailsDto eventDurationDetails) {
-        if (eventDurationDetails.getEventDurationType() != null) {
-            this.setEventDurationType(eventDurationDetails.getEventDurationType());
-        }
-        if (eventDurationDetails.getStartTime() != null) {
-            this.setStartTime(eventDurationDetails.getStartTime());
-        }
-        if (eventDurationDetails.getEndTime() != null) {
-            this.setEndTime(eventDurationDetails.getEndTime());
-        }
-    }
 }

@@ -6,6 +6,8 @@ import com.punna.eventcatalog.dto.EventResponseDto;
 import com.punna.eventcatalog.model.Event;
 import com.punna.eventcatalog.model.EventDurationDetails;
 
+import java.util.HashMap;
+
 public class EventMapper {
 
     // EventRequest -> Event (controller to repository)
@@ -63,6 +65,42 @@ public class EventMapper {
                 .build();
     }
 
+    public static Event merge(Event event
+            , EventRequestDto eventRequestDto) {
+
+        if (eventRequestDto.getName() != null) {
+            event.setName(eventRequestDto.getName());
+        }
+        if (eventRequestDto.getDescription() != null) {
+            event.setDescription(eventRequestDto.getDescription());
+        }
+        if (eventRequestDto.getMaximumCapacity() != null) {
+            event.setMaximumCapacity(eventRequestDto.getMaximumCapacity());
+        }
+        if (eventRequestDto.getPrice() != null) {
+            event.setPrice(eventRequestDto.getPrice());
+        }
+        if (eventRequestDto.getVenueId() != null) {
+            event.setVenueId(eventRequestDto.getVenueId());
+        }
+        if (eventRequestDto.getOrganizerId() != null) {
+            event.setOrganizerId(eventRequestDto.getOrganizerId());
+        }
+        if (eventRequestDto.getEventDurationDetails() != null) {
+            event.setEventDurationDetails(merge(event.getEventDurationDetails(),
+                    eventRequestDto.getEventDurationDetails()));
+        }
+        if (eventRequestDto.getAdditionalDetails() != null) {
+            if (event.getAdditionalDetails() == null) {
+                event.setAdditionalDetails(new HashMap<>());
+            }
+            event
+                    .getAdditionalDetails()
+                    .putAll(eventRequestDto.getAdditionalDetails());
+        }
+        return event;
+    }
+
     public static EventDurationDetailsDto toEventDurationDetailsDto(EventDurationDetails eventDurationDetails) {
         if (eventDurationDetails == null) {
             return null;
@@ -73,6 +111,20 @@ public class EventMapper {
                 .endTime(eventDurationDetails.getEndTime())
                 .eventDurationType(eventDurationDetails.getEventDurationType())
                 .build();
+    }
+
+    public static EventDurationDetails merge(EventDurationDetails eventDurationDetails,
+                                             EventDurationDetailsDto eventDurationDetailsDto) {
+        if (eventDurationDetailsDto.getEventDurationType() != null) {
+            eventDurationDetails.setEventDurationType(eventDurationDetailsDto.getEventDurationType());
+        }
+        if (eventDurationDetailsDto.getStartTime() != null) {
+            eventDurationDetails.setStartTime(eventDurationDetailsDto.getStartTime());
+        }
+        if (eventDurationDetailsDto.getEndTime() != null) {
+            eventDurationDetails.setEndTime(eventDurationDetailsDto.getEndTime());
+        }
+        return eventDurationDetails;
     }
 
 
