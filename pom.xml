@@ -8,20 +8,13 @@
         <version>3.4.1</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-
-    <groupId>com.punna.eventbooking</groupId>
-    <artifactId>bom</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>event-booking</name>
-    <description>Distributed Event Booking Platform</description>
-    <packaging>pom</packaging>
-
     <modules>
         <module>commons</module>
         <module>config-server</module>
         <module>discovery</module>
         <module>gateway</module>
         <module>event-catalog</module>
+        <module>identity</module>
     </modules>
 
     <developers>
