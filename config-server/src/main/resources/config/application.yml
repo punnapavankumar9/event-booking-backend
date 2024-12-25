@@ -6,6 +6,10 @@ application:
     eureka:
       port: 8082
 
+# jwt secret key for token generation
+#  security:
+#    jwt-secret-key: adfasd
+
 eureka:
   client:
     serviceUrl:

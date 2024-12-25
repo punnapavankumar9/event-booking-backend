@@ -1,4 +1,4 @@
-# Distributed Event Booking Platform
+# Distributed Event Booking Platform(WIP)
 
 This repository contains the implementation of a **distributed microservice event booking platform**. The platform is designed to demonstrate modern architectural practices for building scalable, resilient, and event-driven systems using **Spring Boot** and associated technologies.
 
@@ -24,5 +24,5 @@ This repository contains the implementation of a **distributed microservice even
 - **Resilience**: Make the system fault-tolerant and recover gracefully from failures.
 - **Consistency**: Maintain data integrity in distributed transactions.
 
-## Architectural Diagrams
+## Architectural Diagrams(WIP)
 - High level component design https://whimsical.com/event-booking-5LEHt3SuH1Gr9Q6srVBS8F

@@ -1,6 +1,5 @@
 package com.punna.eventcatalog.model;
 
-import com.punna.eventcatalog.dto.EventRequestDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -12,7 +11,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.HashMap;
 import java.util.Map;
 
 @Document(collection = "events")

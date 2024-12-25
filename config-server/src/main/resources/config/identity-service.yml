@@ -1,0 +1,17 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/event-identity
+    username: identity
+    password: identity
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+        show_sql: true
+application:
+  security:
+    jwt-secret-key:  hello-mr-secret-key-will-not-be-used-in-production
+server:
+  port: 8084
