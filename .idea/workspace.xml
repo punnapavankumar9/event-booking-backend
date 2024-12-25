@@ -5,30 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="270ad57c-65bc-4f7e-86cf-537bc93322f9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config-server/src/main/resources/config/identity-service.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/identity/src/main/java/com/punna/identity/controller/UserController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/identity/src/main/java/com/punna/identity/dto/UserRequestDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/identity/src/main/java/com/punna/identity/dto/UserResponseDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/identity/src/main/java/com/punna/identity/dto/UsernamePasswordDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/identity/src/main/java/com/punna/identity/exception/ApplicationExceptionHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/identity/src/main/java/com/punna/identity/exception/InvalidUsernamePasswordCombination.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/identity/src/main/java/com/punna/identity/mapper/UserMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/identity/src/main/java/com/punna/identity/model/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/identity/src/main/java/com/punna/identity/repository/UserRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/identity/src/main/java/com/punna/identity/security/JwtRequestFilter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/identity/src/main/java/com/punna/identity/security/JwtService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/identity/src/main/java/com/punna/identity/security/SecurityConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/identity/src/main/java/com/punna/identity/security/SwaggerSecurityConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/identity/src/main/java/com/punna/identity/service/UserService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/identity/src/main/java/com/punna/identity/service/impl/UserServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/config/SwaggerSecurityConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/config/WebConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gateway/src/main/java/com/punna/gateway/config/SwaggerConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config-server/src/main/resources/config/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/config-server/src/main/resources/config/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/model/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/model/Event.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/identity/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/identity/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/identity/src/main/java/com/punna/identity/IdentityServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/identity/src/main/java/com/punna/identity/IdentityServiceApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/identity/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/identity/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config-server/src/main/resources/config/identity-service.yml" beforeDir="false" afterPath="$PROJECT_DIR$/config-server/src/main/resources/config/identity-service.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-catalog/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/event-catalog/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/identity/src/main/java/com/punna/identity/security/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/identity/src/main/java/com/punna/identity/security/SecurityConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -101,6 +86,8 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "Spring Boot.ConfigServerApplication.executor": "Run",
     "Spring Boot.DiscoveryApplication.executor": "Run",
+    "Spring Boot.EventCatalogApplication.executor": "Run",
+    "Spring Boot.GatewayApplication.executor": "Run",
     "Spring Boot.IdentityServiceApplication.executor": "Run",
     "deletionFromPopupRequiresConfirmation": "false",
     "git-widget-placeholder": "master",
@@ -282,7 +269,8 @@
       <workItem from="1735016097498" duration="4552000" />
       <workItem from="1735044755319" duration="16334000" />
       <workItem from="1735105369331" duration="5038000" />
-      <workItem from="1735126543924" duration="758000" />
+      <workItem from="1735126543924" duration="1269000" />
+      <workItem from="1735142273921" duration="5507000" />
     </task>
     <servers />
   </component>

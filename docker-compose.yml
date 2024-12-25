@@ -14,9 +14,24 @@ services:
     volumes:
       - event_mongo:/data
     restart: unless-stopped
+
+  postgres:
+    container_name: event_postgres
+    image: postgres
+    networks:
+      - event-booking-network
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: identity
+      POSTGRES_USER: identity
+      POSTGRES_DB: identity
+    volumes:
+      - event_pg:/var/lib/postgresql/
 networks:
   event-booking-network:
     driver: bridge
 
 volumes:
   event_mongo:
+  event_pg:

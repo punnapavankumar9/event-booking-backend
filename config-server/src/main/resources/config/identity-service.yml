@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/event-identity
+    url: jdbc:postgresql://localhost:5432/identity
     username: identity
     password: identity
   jpa:
