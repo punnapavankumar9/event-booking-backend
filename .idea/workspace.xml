@@ -5,9 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="270ad57c-65bc-4f7e-86cf-537bc93322f9" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/identity/src/test/java/com/punna/identity/TestConfigSettings.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/identity/src/test/java/com/punna/identity/integration/ContainerBase.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/identity/src/test/resources/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/config/WebConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/config/WebConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/identity/src/main/java/com/punna/identity/security/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/identity/src/main/java/com/punna/identity/security/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/identity/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/identity/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/identity/src/test/java/com/punna/identity/IdentityServiceApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/identity/src/test/java/com/punna/identity/integration/IdentityServiceApplicationTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,6 +68,7 @@
     "JUnit.EventCatalogApplicationTest.givenInvalidEvent_whenCreateEvent_thenReturnBadResultWithErrors.executor": "Debug",
     "JUnit.EventCatalogApplicationTest.givenNonExistingEvent_whenUpdatingEvent_thenReturnBadRequestWithErrors.executor": "Run",
     "JUnit.EventEndpointTests.executor": "Run",
+    "JUnit.IdentityServiceApplicationTests.executor": "Run",
     "JUnit.VenueEndpointTests.executor": "Run",
     "JUnit.VenueEndpointTests.givenInvalidVenue_whenCreatingVenue_thenShouldReturnBadRequest.executor": "Debug",
     "Maven.bom [clean].executor": "Run",
@@ -126,7 +130,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.IdentityServiceApplication">
+  <component name="RunManager" selected="JUnit.IdentityServiceApplicationTests">
     <configuration name="EventEndpointTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="event-catalog" />
       <extension name="coverage">
@@ -138,22 +142,6 @@
       <option name="PACKAGE_NAME" value="com.punna.eventcatalog.integration" />
       <option name="MAIN_CLASS_NAME" value="com.punna.eventcatalog.integration.EventEndpointTests" />
       <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="EventEndpointTests.givenInvalidEvent_whenCreateEvent_thenReturnBadResultWithErrors" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="event-catalog" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.punna.eventcatalog.integration.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.punna.eventcatalog.integration" />
-      <option name="MAIN_CLASS_NAME" value="com.punna.eventcatalog.integration.EventEndpointTests" />
-      <option name="METHOD_NAME" value="givenInvalidEvent_whenCreateEvent_thenReturnBadResultWithErrors" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -170,6 +158,21 @@
       <option name="MAIN_CLASS_NAME" value="com.punna.eventcatalog.integration.EventEndpointTests" />
       <option name="METHOD_NAME" value="givenNonExistingEvent_whenUpdatingEvent_thenReturnBadRequestWithErrors" />
       <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="IdentityServiceApplicationTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="identity-service" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.punna.identity.integration.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.punna.identity.integration" />
+      <option name="MAIN_CLASS_NAME" value="com.punna.identity.integration.IdentityServiceApplicationTests" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -232,11 +235,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.IdentityServiceApplicationTests" />
         <item itemvalue="Spring Boot.IdentityServiceApplication" />
         <item itemvalue="JUnit.EventEndpointTests" />
         <item itemvalue="JUnit.VenueEndpointTests" />
         <item itemvalue="JUnit.EventEndpointTests.givenNonExistingEvent_whenUpdatingEvent_thenReturnBadRequestWithErrors" />
-        <item itemvalue="JUnit.EventEndpointTests.givenInvalidEvent_whenCreateEvent_thenReturnBadResultWithErrors" />
       </list>
     </recent_temporary>
   </component>
@@ -264,7 +267,9 @@
       <workItem from="1735105369331" duration="5038000" />
       <workItem from="1735126543924" duration="1269000" />
       <workItem from="1735142273921" duration="5710000" />
-      <workItem from="1735198784975" duration="4547000" />
+      <workItem from="1735198784975" duration="5060000" />
+      <workItem from="1735223438600" duration="386000" />
+      <workItem from="1735223859860" duration="1374000" />
     </task>
     <servers />
   </component>
