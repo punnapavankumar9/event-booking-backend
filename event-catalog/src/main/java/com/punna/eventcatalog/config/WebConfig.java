@@ -13,17 +13,10 @@ public class WebConfig implements WebFluxConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry
-                .addMapping("/v3/api-docs/**")
-                .allowedOrigins("*")
-                .allowedMethods("GET", "POST", "HEAD", "OPTIONS")
+                .addMapping("/**")
+                .allowedOrigins("http://localhost:8080")
+                .allowedMethods("*")
                 .allowedHeaders("*");
-
-        registry
-                .addMapping("/swagger-ui/**")
-                .allowedOrigins("*")
-                .allowedMethods("GET", "POST", "HEAD", "OPTIONS")
-                .allowedHeaders("*");
-
     }
 }
 

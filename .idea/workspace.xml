@@ -5,16 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="270ad57c-65bc-4f7e-86cf-537bc93322f9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/config/SwaggerSecurityConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/config/WebConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gateway/src/main/java/com/punna/gateway/config/SwaggerConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config-server/src/main/resources/config/identity-service.yml" beforeDir="false" afterPath="$PROJECT_DIR$/config-server/src/main/resources/config/identity-service.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-catalog/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/event-catalog/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/config/WebConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/config/WebConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/identity/src/main/java/com/punna/identity/security/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/identity/src/main/java/com/punna/identity/security/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,7 +81,7 @@
     "Spring Boot.DiscoveryApplication.executor": "Run",
     "Spring Boot.EventCatalogApplication.executor": "Run",
     "Spring Boot.GatewayApplication.executor": "Run",
-    "Spring Boot.IdentityServiceApplication.executor": "Run",
+    "Spring Boot.IdentityServiceApplication.executor": "Debug",
     "deletionFromPopupRequiresConfirmation": "false",
     "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
@@ -270,7 +263,8 @@
       <workItem from="1735044755319" duration="16334000" />
       <workItem from="1735105369331" duration="5038000" />
       <workItem from="1735126543924" duration="1269000" />
-      <workItem from="1735142273921" duration="5507000" />
+      <workItem from="1735142273921" duration="5710000" />
+      <workItem from="1735198784975" duration="4547000" />
     </task>
     <servers />
   </component>
