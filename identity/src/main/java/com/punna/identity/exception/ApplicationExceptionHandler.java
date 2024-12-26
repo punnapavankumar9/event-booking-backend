@@ -25,6 +25,16 @@ public class ApplicationExceptionHandler {
                 .build();
     }
 
+    @ExceptionHandler(InvalidUsernamePasswordCombination.class)
+    @ResponseStatus(HttpStatus.UNAUTHORIZED)
+    public ProblemDetail handleInvalidUsernamePasswordCombination(InvalidUsernamePasswordCombination ex) {
+        return ProblemDetail
+                .builder()
+                .message(ex.getMessage())
+                .status(HttpStatus.UNAUTHORIZED.value())
+                .build();
+    }
+
     @ExceptionHandler(MethodArgumentNotValidException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ProblemDetail handleMethodArgumentNotValidException(MethodArgumentNotValidException exception) {

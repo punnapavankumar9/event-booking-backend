@@ -18,4 +18,4 @@ jobs:
           distribution: "temurin"
           java-version: 21
       - name: Maven Install
-        run: mvn clean install
+        run: mvn clean install --no-transfer-progress

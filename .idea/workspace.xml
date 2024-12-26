@@ -5,12 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="270ad57c-65bc-4f7e-86cf-537bc93322f9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/identity/src/test/java/com/punna/identity/TestConfigSettings.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/identity/src/test/java/com/punna/identity/integration/ContainerBase.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/identity/src/test/resources/application.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/identity/src/test/java/com/punna/identity/fixtures/TestFixtures.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/identity/src/test/java/com/punna/identity/utils/TestUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/workflows/ci.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/ci.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/identity/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/identity/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/identity/src/test/java/com/punna/identity/IdentityServiceApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/identity/src/test/java/com/punna/identity/integration/IdentityServiceApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-catalog/src/test/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/event-catalog/src/test/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/identity/src/main/java/com/punna/identity/dto/UserRequestDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/identity/src/main/java/com/punna/identity/dto/UserRequestDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/identity/src/main/java/com/punna/identity/exception/ApplicationExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/identity/src/main/java/com/punna/identity/exception/ApplicationExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/identity/src/test/java/com/punna/identity/integration/ContainerBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/identity/src/test/java/com/punna/identity/integration/ContainerBase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/identity/src/test/java/com/punna/identity/integration/IdentityServiceApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/identity/src/test/java/com/punna/identity/integration/IdentityServiceApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/identity/src/test/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/identity/src/test/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,6 +73,9 @@
     "JUnit.EventCatalogApplicationTest.givenNonExistingEvent_whenUpdatingEvent_thenReturnBadRequestWithErrors.executor": "Run",
     "JUnit.EventEndpointTests.executor": "Run",
     "JUnit.IdentityServiceApplicationTests.executor": "Run",
+    "JUnit.IdentityServiceApplicationTests.givenInvalidPassword_whenLoggingUser_thenReturnNotFound.executor": "Run",
+    "JUnit.IdentityServiceApplicationTests.givenInvalidUser_whenCreatingUser_thenReturnBadRequest.executor": "Run",
+    "JUnit.IdentityServiceApplicationTests.givenValidUser_whenCreatingUser_thenCreateAndReturnUser.executor": "Debug",
     "JUnit.VenueEndpointTests.executor": "Run",
     "JUnit.VenueEndpointTests.givenInvalidVenue_whenCreatingVenue_thenShouldReturnBadRequest.executor": "Debug",
     "Maven.bom [clean].executor": "Run",
@@ -131,37 +138,6 @@
     </option>
   </component>
   <component name="RunManager" selected="JUnit.IdentityServiceApplicationTests">
-    <configuration name="EventEndpointTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="event-catalog" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.punna.eventcatalog.integration.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.punna.eventcatalog.integration" />
-      <option name="MAIN_CLASS_NAME" value="com.punna.eventcatalog.integration.EventEndpointTests" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="EventEndpointTests.givenNonExistingEvent_whenUpdatingEvent_thenReturnBadRequestWithErrors" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="event-catalog" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.punna.eventcatalog.integration.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.punna.eventcatalog.integration" />
-      <option name="MAIN_CLASS_NAME" value="com.punna.eventcatalog.integration.EventEndpointTests" />
-      <option name="METHOD_NAME" value="givenNonExistingEvent_whenUpdatingEvent_thenReturnBadRequestWithErrors" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="IdentityServiceApplicationTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="identity-service" />
       <extension name="coverage">
@@ -177,17 +153,50 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="VenueEndpointTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="event-catalog" />
+    <configuration name="IdentityServiceApplicationTests.givenInvalidPassword_whenLoggingUser_thenReturnNotFound" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="identity-service" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.punna.eventcatalog.integration.*" />
+          <option name="PATTERN" value="com.punna.identity.integration.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.punna.eventcatalog.integration" />
-      <option name="MAIN_CLASS_NAME" value="com.punna.eventcatalog.integration.VenueEndpointTests" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="PACKAGE_NAME" value="com.punna.identity.integration" />
+      <option name="MAIN_CLASS_NAME" value="com.punna.identity.integration.IdentityServiceApplicationTests" />
+      <option name="METHOD_NAME" value="givenInvalidPassword_whenLoggingUser_thenReturnNotFound" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="IdentityServiceApplicationTests.givenInvalidUser_whenCreatingUser_thenReturnBadRequest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="identity-service" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.punna.identity.integration.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.punna.identity.integration" />
+      <option name="MAIN_CLASS_NAME" value="com.punna.identity.integration.IdentityServiceApplicationTests" />
+      <option name="METHOD_NAME" value="givenInvalidUser_whenCreatingUser_thenReturnBadRequest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="IdentityServiceApplicationTests.givenValidUser_whenCreatingUser_thenCreateAndReturnUser" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="identity-service" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.punna.identity.integration.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.punna.identity.integration" />
+      <option name="MAIN_CLASS_NAME" value="com.punna.identity.integration.IdentityServiceApplicationTests" />
+      <option name="METHOD_NAME" value="givenValidUser_whenCreatingUser_thenCreateAndReturnUser" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -236,10 +245,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.IdentityServiceApplicationTests" />
+        <item itemvalue="JUnit.IdentityServiceApplicationTests.givenValidUser_whenCreatingUser_thenCreateAndReturnUser" />
+        <item itemvalue="JUnit.IdentityServiceApplicationTests.givenInvalidPassword_whenLoggingUser_thenReturnNotFound" />
+        <item itemvalue="JUnit.IdentityServiceApplicationTests.givenInvalidUser_whenCreatingUser_thenReturnBadRequest" />
         <item itemvalue="Spring Boot.IdentityServiceApplication" />
-        <item itemvalue="JUnit.EventEndpointTests" />
-        <item itemvalue="JUnit.VenueEndpointTests" />
-        <item itemvalue="JUnit.EventEndpointTests.givenNonExistingEvent_whenUpdatingEvent_thenReturnBadRequestWithErrors" />
       </list>
     </recent_temporary>
   </component>
@@ -269,7 +278,7 @@
       <workItem from="1735142273921" duration="5710000" />
       <workItem from="1735198784975" duration="5060000" />
       <workItem from="1735223438600" duration="386000" />
-      <workItem from="1735223859860" duration="1374000" />
+      <workItem from="1735223859860" duration="9344000" />
     </task>
     <servers />
   </component>
@@ -278,5 +287,22 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/identity/src/main/java/com/punna/identity/exception/ApplicationExceptionHandler.java</url>
+          <line>30</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="org.springframework.http.ResponseEntity" memberName="body" />
+        <PinnedItemInfo parentTag="org.springframework.http.ResponseEntity" memberName="headers" />
+      </pinned-members>
+    </pin-to-top-manager>
   </component>
 </project>

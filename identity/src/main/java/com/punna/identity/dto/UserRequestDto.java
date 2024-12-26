@@ -23,7 +23,6 @@ public class UserRequestDto {
 
     @NotNull(message = "user password must not be null", groups = CreateGroup.class)
     @Size(min = 8, max = 50, message = "Password length must be in between 8 and 50 characters")
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
 
     @NotNull(message = "email must not be null", groups = CreateGroup.class)
