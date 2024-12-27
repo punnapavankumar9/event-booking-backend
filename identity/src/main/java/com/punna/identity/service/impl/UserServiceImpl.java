@@ -86,6 +86,20 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+    public UserResponseDto getUserByToken(String token) {
+        String username = jwtService.parseUsername(token);
+        if (username != null) {
+            UserResponseDto userByUsernameOrEmail = findUserByUsernameOrEmail(username);
+            if (userByUsernameOrEmail != null && userByUsernameOrEmail.isEnabled()) {
+                return userByUsernameOrEmail;
+            } else {
+                throw new InvalidUsernamePasswordCombination(token);
+            }
+        } else {
+            throw new InvalidUsernamePasswordCombination(token);
+        }
+    }
+
     @Override
     public void updateLastLoginTime(String username) {
         userRepository

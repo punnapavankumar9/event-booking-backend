@@ -49,7 +49,4 @@ public class EventController {
     public Mono<EventResponseDto> getVenue(@PathVariable String id) {
         return eventService.findById(id);
     }
-
-
-
 }

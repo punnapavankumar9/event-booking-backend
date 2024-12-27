@@ -14,7 +14,6 @@ import java.util.Map;
 @Component
 public class JwtService {
 
-
     public static final long TOKEN_VALIDITY = 1000 * 60 * 60;
     public final SecretKey SECRET_KEY;
 

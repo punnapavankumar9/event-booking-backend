@@ -7,5 +7,7 @@ spring:
       host: localhost
       port: 27017
       authentication-database: admin
+  webflux:
+    base-path: /event-catalog
 server:
   port: 8083

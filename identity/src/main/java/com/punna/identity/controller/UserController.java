@@ -3,11 +3,14 @@ package com.punna.identity.controller;
 import com.punna.identity.dto.UserRequestDto;
 import com.punna.identity.dto.UserResponseDto;
 import com.punna.identity.dto.UsernamePasswordDto;
+import com.punna.identity.mapper.UserMapper;
+import com.punna.identity.model.User;
 import com.punna.identity.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.punna.commons.validation.groups.CreateGroup;
 import org.punna.commons.validation.groups.UpdateGroup;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,6 +25,14 @@ public class UserController {
     @ResponseStatus(HttpStatus.CREATED)
     public UserResponseDto signup(@Validated(CreateGroup.class) @RequestBody UserRequestDto userRequestDto) {
         return userService.createUser(userRequestDto);
+    }
+
+    @GetMapping("/getUsersDetailsByToken")
+    public UserResponseDto getUserDetailsByToken(@RequestHeader("Authorization") String token) {
+        return UserMapper.toUserResponseDto((User) SecurityContextHolder
+                .getContext()
+                .getAuthentication()
+                .getPrincipal());
     }
 
     @GetMapping("/{usernameOrEmail}")
@@ -40,7 +51,7 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public String login(@Validated @RequestBody UsernamePasswordDto usernamePasswordDto){
+    public String login(@Validated @RequestBody UsernamePasswordDto usernamePasswordDto) {
         return userService.loginUser(usernamePasswordDto);
     }
 }

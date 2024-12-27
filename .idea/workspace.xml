@@ -5,16 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="270ad57c-65bc-4f7e-86cf-537bc93322f9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/identity/src/test/java/com/punna/identity/fixtures/TestFixtures.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/identity/src/test/java/com/punna/identity/utils/TestUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.github/workflows/ci.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/ci.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gateway/src/main/java/com/punna/gateway/dto/LoggedInUserDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gateway/src/main/java/com/punna/gateway/filter/AuthFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gateway/src/main/java/com/punna/gateway/service/AuthService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-catalog/src/test/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/event-catalog/src/test/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/identity/src/main/java/com/punna/identity/dto/UserRequestDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/identity/src/main/java/com/punna/identity/dto/UserRequestDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/identity/src/main/java/com/punna/identity/exception/ApplicationExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/identity/src/main/java/com/punna/identity/exception/ApplicationExceptionHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/identity/src/test/java/com/punna/identity/integration/ContainerBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/identity/src/test/java/com/punna/identity/integration/ContainerBase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/identity/src/test/java/com/punna/identity/integration/IdentityServiceApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/identity/src/test/java/com/punna/identity/integration/IdentityServiceApplicationTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/identity/src/test/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/identity/src/test/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config-server/src/main/resources/config/event-catalog-service.yml" beforeDir="false" afterPath="$PROJECT_DIR$/config-server/src/main/resources/config/event-catalog-service.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/controller/EventController.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/controller/EventController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/com/punna/gateway/GatewayApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/com/punna/gateway/GatewayApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/identity/src/main/java/com/punna/identity/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/identity/src/main/java/com/punna/identity/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/identity/src/main/java/com/punna/identity/dto/UserResponseDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/identity/src/main/java/com/punna/identity/dto/UserResponseDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/identity/src/main/java/com/punna/identity/security/JwtService.java" beforeDir="false" afterPath="$PROJECT_DIR$/identity/src/main/java/com/punna/identity/security/JwtService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/identity/src/main/java/com/punna/identity/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/identity/src/main/java/com/punna/identity/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/identity/src/main/java/com/punna/identity/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/identity/src/main/java/com/punna/identity/service/impl/UserServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,10 +90,10 @@
     "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Spring Boot.ConfigServerApplication.executor": "Run",
+    "Spring Boot.ConfigServerApplication.executor": "Debug",
     "Spring Boot.DiscoveryApplication.executor": "Run",
-    "Spring Boot.EventCatalogApplication.executor": "Run",
-    "Spring Boot.GatewayApplication.executor": "Run",
+    "Spring Boot.EventCatalogApplication.executor": "Debug",
+    "Spring Boot.GatewayApplication.executor": "Debug",
     "Spring Boot.IdentityServiceApplication.executor": "Debug",
     "deletionFromPopupRequiresConfirmation": "false",
     "git-widget-placeholder": "master",
@@ -244,11 +246,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Spring Boot.IdentityServiceApplication" />
         <item itemvalue="JUnit.IdentityServiceApplicationTests" />
         <item itemvalue="JUnit.IdentityServiceApplicationTests.givenValidUser_whenCreatingUser_thenCreateAndReturnUser" />
         <item itemvalue="JUnit.IdentityServiceApplicationTests.givenInvalidPassword_whenLoggingUser_thenReturnNotFound" />
         <item itemvalue="JUnit.IdentityServiceApplicationTests.givenInvalidUser_whenCreatingUser_thenReturnBadRequest" />
-        <item itemvalue="Spring Boot.IdentityServiceApplication" />
       </list>
     </recent_temporary>
   </component>
@@ -278,7 +280,9 @@
       <workItem from="1735142273921" duration="5710000" />
       <workItem from="1735198784975" duration="5060000" />
       <workItem from="1735223438600" duration="386000" />
-      <workItem from="1735223859860" duration="9344000" />
+      <workItem from="1735223859860" duration="9405000" />
+      <workItem from="1735307337101" duration="4354000" />
+      <workItem from="1735314418722" duration="3548000" />
     </task>
     <servers />
   </component>
@@ -295,6 +299,36 @@
           <url>file://$PROJECT_DIR$/identity/src/main/java/com/punna/identity/exception/ApplicationExceptionHandler.java</url>
           <line>30</line>
           <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/gateway/src/main/java/com/punna/gateway/filter/AuthFilter.java</url>
+          <line>42</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/gateway/src/main/java/com/punna/gateway/service/AuthService.java</url>
+          <line>27</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/identity/src/main/java/com/punna/identity/controller/UserController.java</url>
+          <line>31</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/gateway/src/main/java/com/punna/gateway/filter/AuthFilter.java</url>
+          <line>32</line>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/controller/EventController.java</url>
+          <line>34</line>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$MAVEN_REPOSITORY$/org/springframework/spring-webflux/6.2.1/spring-webflux-6.2.1-sources.jar!/org/springframework/web/reactive/DispatcherHandler.java</url>
+          <line>158</line>
+          <option name="timeStamp" value="13" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

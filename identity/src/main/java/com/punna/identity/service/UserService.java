@@ -12,6 +12,8 @@ public interface UserService extends UserDetailsService {
 
     UserResponseDto findUserByUsernameOrEmail(String username);
 
+    UserResponseDto getUserByToken(String token);
+
     void deleteUserByUsername(String username);
 
     String loginUser(UsernamePasswordDto usernamePasswordDto);
