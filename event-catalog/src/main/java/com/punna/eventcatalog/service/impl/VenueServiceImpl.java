@@ -61,14 +61,14 @@ public class VenueServiceImpl implements VenueService {
     }
 
     @Override
-    public Flux<VenueDto> getAllVenues(int page) {
-        Pageable pageable = PageRequest
+    public Flux<VenueDto> findAllVenues(int page) {
+        Pageable pageRequest = PageRequest
                 .of(page, 10)
                 .withSort(Sort
-                        .by("name")
-                        .ascending());
+                        .by("createdAt")
+                        .descending());
         return venueRepository
-                .findAllBy(pageable)
+                .findAllBy(pageRequest)
                 .map(VenueMapper::toVenueDto);
     }
 

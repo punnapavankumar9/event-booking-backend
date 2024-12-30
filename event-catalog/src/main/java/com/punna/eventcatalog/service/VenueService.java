@@ -13,7 +13,7 @@ public interface VenueService {
 
     Mono<VenueDto> updateVenue(VenueDto venue);
 
-    Flux<VenueDto> getAllVenues(int page);
+    Flux<VenueDto> findAllVenues(int page);
 
     Mono<VenueDto> findById(String id);
 }

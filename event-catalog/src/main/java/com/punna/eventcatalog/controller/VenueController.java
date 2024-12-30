@@ -1,5 +1,6 @@
 package com.punna.eventcatalog.controller;
 
+import com.punna.eventcatalog.dto.EventResponseDto;
 import com.punna.eventcatalog.dto.VenueDto;
 import com.punna.eventcatalog.service.VenueService;
 import lombok.RequiredArgsConstructor;
@@ -26,9 +27,11 @@ public class VenueController {
     }
 
     @GetMapping
-    public Flux<VenueDto> getAllVenues(@RequestParam(name = "page", required = false, defaultValue = "0") int page) {
-        return venueService.getAllVenues(page);
+    public Flux<VenueDto> allEvents(
+            @RequestParam(name = "page", required = false, defaultValue = "0") Integer page) {
+        return venueService.findAllVenues(page);
     }
+
 
     @PatchMapping
     public Mono<VenueDto> updateVenue(@Validated(UpdateGroup.class) @RequestBody VenueDto venue) {

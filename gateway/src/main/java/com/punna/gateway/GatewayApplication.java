@@ -24,7 +24,7 @@ public class GatewayApplication {
                                 .uri("lb://IDENTITY-SERVICE"))
                 .route("event-catalog",
                         p -> p
-                                .path("/event-catalog/**")
+                                .path("/api/v*/venues/**", "/api/v*/events/**")
                                 .filters(f -> f.filter(authFilter))
                                 .uri("lb://EVENT-CATALOG-SERVICE"))
                 .build();
