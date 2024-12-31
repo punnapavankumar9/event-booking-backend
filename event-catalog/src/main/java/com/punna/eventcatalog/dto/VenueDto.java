@@ -30,7 +30,6 @@ public class VenueDto {
     @Positive(message = "capacity must be greater than 0")
     private Integer capacity;
 
-    @NotNull(message = "ownerId must not be null", groups = CreateGroup.class)
     private String ownerId;
 
     @NotNull(message = "location must not be null", groups = CreateGroup.class)

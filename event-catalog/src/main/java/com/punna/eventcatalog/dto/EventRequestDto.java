@@ -33,7 +33,6 @@ public class EventRequestDto {
     @Size(min = 5, max = 4000, message = "Event description must be between 5 and 4000 characters long")
     private String description;
 
-    @NotNull(message = "organizerId must not be null", groups = CreateGroup.class)
     private String organizerId;
 
     @Positive(message = "maximum capacity must be greater than 0")

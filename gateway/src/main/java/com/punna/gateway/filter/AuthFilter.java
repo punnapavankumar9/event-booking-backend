@@ -44,7 +44,7 @@ public class AuthFilter implements GatewayFilter {
                                             .getRequest()
                                             .mutate();
                                     try {
-                                        requestBuilder.header("X-USER_DETAILS", objectMapper.writeValueAsString(e));
+                                        requestBuilder.header("X-USER-DETAILS", objectMapper.writeValueAsString(e));
                                     } catch (JsonProcessingException ex) {
                                         return Mono.error(new RuntimeException(ex));
                                     }

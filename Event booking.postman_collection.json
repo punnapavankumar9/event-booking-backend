@@ -1,0 +1,311 @@
+{
+	"info": {
+		"_postman_id": "ceba12c1-daac-4065-9850-37569c1f7f6b",
+		"name": "Event booking",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32221023"
+	},
+	"item": [
+		{
+			"name": "identity",
+			"item": [
+				{
+					"name": "create user",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"punna\",\r\n    \"password\":\"password\",\r\n    \"email\": \"punna@gmail.com\",\r\n    \"authorities\": [\"ADMIN\", \"OWNER\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}{{identity}}",
+							"host": [
+								"{{url}}{{identity}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "jwt login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const body = pm.response.text();\r",
+									"console.log(body)\r",
+									"pm.collectionVariables.set(\"token\", body);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\" : \"punna\",\r\n    \"password\": \"password\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}{{identity}}/login",
+							"host": [
+								"{{url}}{{identity}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user by token",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}{{identity}}/getUsersDetailsByToken",
+							"host": [
+								"{{url}}{{identity}}"
+							],
+							"path": [
+								"getUsersDetailsByToken"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get user by username/email",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}{{identity}}/punna",
+							"host": [
+								"{{url}}{{identity}}"
+							],
+							"path": [
+								"punna"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "event-catalog",
+			"item": [
+				{
+					"name": "create venue",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const body = pm.response.json();\r",
+									"console.log(body)\r",
+									"console.log(pm.collectionVariables.set(\"venueId\", body.id));"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"PVR Next Punjagutta\",\r\n  \"description\": \"PVR Mall in pujagutta\",\r\n  \"capacity\": 450,\r\n  \"location\": \"punjagutta\",\r\n  \"city\": \"Hyderabad\",\r\n  \"country\": \"India\",\r\n  \"pincode\": 500012,\r\n  \"state\": \"Telangana\"\r\n}\r\n\r\n\r\n// {\r\n//   \"id\": \"string\",\r\n//   \"name\": \"string\",\r\n//   \"description\": \"string\",\r\n//   \"capacity\": 0,\r\n//   \"ownerId\": \"string\",\r\n//   \"location\": \"string\",\r\n//   \"city\": \"string\",\r\n//   \"country\": \"string\",\r\n//   \"pincode\": 999999,\r\n//   \"state\": \"string\",\r\n//   \"googleMapsUrl\": \"string\"\r\n// }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}{{venues}}",
+							"host": [
+								"{{url}}{{venues}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get venues",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}{{venues}}",
+							"host": [
+								"{{url}}{{venues}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete venue byId",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}{{venues}}/6773eef24ebd3b252afa12e7",
+							"host": [
+								"{{url}}{{venues}}"
+							],
+							"path": [
+								"6773eef24ebd3b252afa12e7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create event",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Pushpa 2\",\r\n  \"description\": \"Screening Pushpa 2 Movie\",\r\n  \"maximumCapacity\": 450,\r\n  \"price\": 450,\r\n  \"venueId\": \"{{venueId}}\",\r\n  \"eventDurationDetails\": {\r\n    \"startTime\": \"2025-11-01T13:18:36.181Z\",\r\n    \"endTime\": \"2025-11-30T13:18:36.181Z\",\r\n    \"eventDurationType\": \"MULTI_DAY\"\r\n  },\r\n  \"openForBooking\": false\r\n}\r\n\r\n\r\n// {\r\n//   \"id\": \"string\",\r\n//   \"name\": \"string\",\r\n//   \"description\": \"string\",\r\n//   \"organizerId\": \"string\",\r\n//   \"maximumCapacity\": 0,\r\n//   \"price\": 0,\r\n//   \"venueId\": \"string\",\r\n//   \"eventDurationDetails\": {\r\n//     \"startTime\": \"2024-12-31T13:18:36.181Z\",\r\n//     \"endTime\": \"2024-12-31T13:18:36.181Z\",\r\n//     \"eventDurationType\": \"SHORT_TERM\"\r\n//   },\r\n//   \"additionalDetails\": {\r\n//     \"additionalProp1\": {},\r\n//     \"additionalProp2\": {},\r\n//     \"additionalProp3\": {}\r\n//   },\r\n//   \"openForBooking\": true\r\n// }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}{{events}}",
+							"host": [
+								"{{url}}{{events}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get events",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}{{events}}",
+							"host": [
+								"{{url}}{{events}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete event",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}{{events}}/6773f8764024f8017607255e",
+							"host": [
+								"{{url}}{{events}}"
+							],
+							"path": [
+								"6773f8764024f8017607255e"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "http://localhost:8080/api",
+			"type": "string"
+		},
+		{
+			"key": "events",
+			"value": "/v1/events",
+			"type": "string"
+		},
+		{
+			"key": "venues",
+			"value": "/v1/venues",
+			"type": "string"
+		},
+		{
+			"key": "identity",
+			"value": "/v1/users",
+			"type": "string"
+		},
+		{
+			"key": "token",
+			"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwdW5uYSIsImV4cCI6MTczNTY1NjU5NCwiaWF0IjoxNzM1NjUyOTk0fQ.wNZzk2cmP3hdC7vBJLseo7ITfymTzlgJG4Am0MzhyDw",
+			"type": "string"
+		},
+		{
+			"key": "venueId",
+			"value": ""
+		}
+	]
+}

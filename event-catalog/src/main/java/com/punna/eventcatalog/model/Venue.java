@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -23,6 +24,7 @@ public class Venue {
 
     private Integer capacity;
 
+    @CreatedBy
     private String ownerId;
 
     private String location;
@@ -36,5 +38,4 @@ public class Venue {
     private String state;
 
     private String googleMapsUrl;
-
 }

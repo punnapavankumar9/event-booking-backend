@@ -37,7 +37,6 @@ public class EventMapper {
         }
         return EventResponseDto
                 .builder()
-                .createdAt(event.getCreatedAt())
                 .id(event.getId())
                 .name(event.getName())
                 .description(event.getDescription())
@@ -65,8 +64,7 @@ public class EventMapper {
                 .build();
     }
 
-    public static Event merge(Event event
-            , EventRequestDto eventRequestDto) {
+    public static Event merge(Event event, EventRequestDto eventRequestDto) {
 
         if (eventRequestDto.getName() != null) {
             event.setName(eventRequestDto.getName());

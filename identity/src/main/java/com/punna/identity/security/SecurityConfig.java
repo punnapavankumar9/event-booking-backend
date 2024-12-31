@@ -45,12 +45,12 @@ public class SecurityConfig {
                         .requestMatchers(antMatcher(HttpMethod.POST, "/api/v1/users"),
                                 antMatcher(HttpMethod.POST, "/api/v1/users/login"),
                                 antMatcher(HttpMethod.OPTIONS, "/**"),
+                                antMatcher(HttpMethod.GET, "/api/v1/users/**"),
                                 antMatcher("/v3/api-docs/**"),
                                 antMatcher("/swagger-ui/**"))
                         .permitAll()
                         .anyRequest()
-                        .authenticated()
-                )
+                        .authenticated())
                 .addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();
     }

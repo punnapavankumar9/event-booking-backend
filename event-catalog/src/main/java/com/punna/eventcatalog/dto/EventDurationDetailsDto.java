@@ -1,5 +1,6 @@
 package com.punna.eventcatalog.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.punna.eventcatalog.utils.EventDurationType;
 import jakarta.validation.constraints.Future;
 import jakarta.validation.constraints.NotNull;
@@ -18,10 +19,12 @@ import java.time.LocalDateTime;
 public class EventDurationDetailsDto {
     @NotNull(message = "Event start time must not be null", groups = {CreateGroup.class})
     @Future(message = "Event start time must be in future")
+    @JsonFormat(shape = JsonFormat.Shape.STRING)
     private LocalDateTime startTime;
 
     @NotNull(message = "Event end time must not be null", groups = {CreateGroup.class})
     @Future(message = "Event end time must be in future")
+    @JsonFormat(shape = JsonFormat.Shape.STRING)
     private LocalDateTime endTime;
 
     @NotNull(message = "EventDurationType time must not be null", groups = {CreateGroup.class})

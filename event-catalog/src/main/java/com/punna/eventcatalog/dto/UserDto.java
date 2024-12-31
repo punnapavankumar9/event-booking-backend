@@ -1,23 +1,31 @@
 package com.punna.eventcatalog.dto;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
-@EqualsAndHashCode(callSuper = true)
 @Data
 @SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
-public class EventResponseDto extends EventRequestDto {
-    @JsonFormat(shape = JsonFormat.Shape.STRING)
+public class UserDto {
+
+    private String username;
+
+    private String email;
+
+    private boolean enabled = true;
+
+    private List<String> authorities = new ArrayList<>();
+
     private LocalDateTime createdAt;
 
-    @JsonFormat(shape = JsonFormat.Shape.STRING)
     private LocalDateTime lastModifiedAt;
+
+    private LocalDateTime lastLoginAt;
 }

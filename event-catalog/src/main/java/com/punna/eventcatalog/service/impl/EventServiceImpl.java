@@ -80,5 +80,4 @@ public class EventServiceImpl implements EventService {
                 .switchIfEmpty(Mono.error(() -> new EntityNotFoundException(Event.class.getSimpleName(), id)))
                 .map(EventMapper::toEventResponseDto);
     }
-
 }
