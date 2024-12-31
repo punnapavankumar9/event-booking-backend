@@ -13,7 +13,6 @@ import org.punna.commons.exception.ProblemDetail;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
-import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
@@ -36,8 +35,6 @@ class IdentityServiceApplicationTests extends ContainerBase {
     private final String usersV1BaseUrl = "/api/v1/users";
     private final String updatedEmail = "newEmail@gmail.com";
     private String jwtToken;
-    @LocalServerPort
-    private int port;
     @Autowired
     private UserRepository userRepository;
     @Autowired
