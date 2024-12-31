@@ -7,6 +7,7 @@ import org.junit.jupiter.api.*;
 import org.punna.commons.exception.ProblemDetail;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.reactive.server.WebTestClient;
 
@@ -34,6 +35,12 @@ public class VenueEndpointTests extends ContainerBase {
                 .block();
     }
 
+    public void setAuthHeader(HttpHeaders httpHeaders) {
+        httpHeaders.set("X-USER-DETAILS",
+                "{\"username\":\"punna\",\"email\":\"punna@gmail.com\",\"enabled\":true,\"authorities\":[\"ADMIN\",\"OWNER\"],\"createdAt\":\"2024-12-31T18:17:57.290179\",\"lastModifiedAt\":\"2024-12-31T18:17:57.341823\",\"lastLoginAt\":\"2025-01-01T03:37:20.413084\"}");
+    }
+
+
     @Test
     @Order(1)
     void givenInvalidVenue_whenCreatingVenue_thenShouldReturnBadRequest() {
@@ -42,6 +49,7 @@ public class VenueEndpointTests extends ContainerBase {
                 .post()
                 .uri(venuesV1Url)
                 .contentType(MediaType.APPLICATION_JSON)
+                .headers(this::setAuthHeader)
                 .bodyValue(venueDto)
                 .exchange()
                 .expectStatus()
@@ -53,17 +61,19 @@ public class VenueEndpointTests extends ContainerBase {
         assertThat(responseBody.getStatus()).isEqualTo(400);
         assertThat(responseBody
                 .getErrors()
-                .size()).isEqualTo(9);
+                .size()).isEqualTo(8);
     }
 
     @Test
     @Order(2)
     void givenVenueWithId_whenCreatingVenue_thenReturnBadRequest() {
         VenueDto venueDto = TestFixtures.SAMPLE_VENUE_DTO;
+        venueDto.setId("DummyId");
         ProblemDetail responseBody = webTestClient
                 .post()
                 .uri(venuesV1Url)
                 .contentType(MediaType.APPLICATION_JSON)
+                .headers(this::setAuthHeader)
                 .bodyValue(venueDto)
                 .exchange()
                 .expectStatus()
@@ -80,13 +90,14 @@ public class VenueEndpointTests extends ContainerBase {
 
     @Test
     @Order(3)
-    void givenValidVenue_whenCreatingVenue_thenReturnCreated() {
+    void givenValidVenue_whenCreatingVenue_thenCreateAndReturn() {
         VenueDto venueDto = TestFixtures.SAMPLE_VENUE_DTO;
         venueDto.setId(null);
         VenueDto responseBody = webTestClient
                 .post()
                 .uri(venuesV1Url)
                 .contentType(MediaType.APPLICATION_JSON)
+                .headers(this::setAuthHeader)
                 .bodyValue(venueDto)
                 .exchange()
                 .expectStatus()
@@ -96,6 +107,7 @@ public class VenueEndpointTests extends ContainerBase {
                 .getResponseBody();
         assert responseBody != null;
         assertThat(responseBody.getId()).isNotNull();
+        assertThat(responseBody.getOwnerId()).isEqualTo("punna");
         venueId = responseBody.getId();
     }
 
@@ -107,6 +119,7 @@ public class VenueEndpointTests extends ContainerBase {
         webTestClient
                 .patch()
                 .uri(venuesV1Url)
+                .headers(this::setAuthHeader)
                 .bodyValue(venueDto)
                 .exchange()
                 .expectStatus()
@@ -121,6 +134,7 @@ public class VenueEndpointTests extends ContainerBase {
                 .patch()
                 .uri(venuesV1Url)
                 .bodyValue(venueDto)
+                .headers(this::setAuthHeader)
                 .exchange()
                 .expectStatus()
                 .isBadRequest()
@@ -148,6 +162,7 @@ public class VenueEndpointTests extends ContainerBase {
                 .patch()
                 .uri(venuesV1Url)
                 .contentType(MediaType.APPLICATION_JSON)
+                .headers(this::setAuthHeader)
                 .bodyValue(venueDto)
                 .exchange()
                 .expectStatus()
@@ -167,6 +182,7 @@ public class VenueEndpointTests extends ContainerBase {
         webTestClient
                 .delete()
                 .uri(venuesV1Url + "/dummyId")
+                .headers(this::setAuthHeader)
                 .exchange()
                 .expectStatus()
                 .isNotFound();
@@ -178,6 +194,7 @@ public class VenueEndpointTests extends ContainerBase {
         List<VenueDto> responseBody = webTestClient
                 .get()
                 .uri(venuesV1Url)
+                .headers(this::setAuthHeader)
                 .accept(MediaType.APPLICATION_JSON)
                 .exchange()
                 .expectStatus()
@@ -196,6 +213,7 @@ public class VenueEndpointTests extends ContainerBase {
         webTestClient
                 .get()
                 .uri(venuesV1Url + "/DummyId")
+                .headers(this::setAuthHeader)
                 .exchange()
                 .expectStatus()
                 .isNotFound();
@@ -207,6 +225,7 @@ public class VenueEndpointTests extends ContainerBase {
         List<VenueDto> responseBody = webTestClient
                 .get()
                 .uri(venuesV1Url + "/" + venueId)
+                .headers(this::setAuthHeader)
                 .exchange()
                 .expectStatus()
                 .isOk()
@@ -223,6 +242,7 @@ public class VenueEndpointTests extends ContainerBase {
         webTestClient
                 .delete()
                 .uri(venuesV1Url + "/" + venueId)
+                .headers(this::setAuthHeader)
                 .exchange()
                 .expectStatus()
                 .isOk();

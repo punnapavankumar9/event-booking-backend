@@ -4,8 +4,10 @@ import com.punna.eventcatalog.dto.EventRequestDto;
 import com.punna.eventcatalog.dto.EventResponseDto;
 import com.punna.eventcatalog.mapper.EventMapper;
 import com.punna.eventcatalog.model.Event;
+import com.punna.eventcatalog.model.Venue;
 import com.punna.eventcatalog.repository.EventRepository;
 import com.punna.eventcatalog.service.EventService;
+import com.punna.eventcatalog.service.VenueService;
 import lombok.RequiredArgsConstructor;
 import org.punna.commons.exception.EntityNotFoundException;
 import org.punna.commons.exception.EventApplicationException;
@@ -24,14 +26,19 @@ import reactor.core.publisher.Mono;
 public class EventServiceImpl implements EventService {
 
     private final EventRepository eventRepository;
-
     private final ReactiveMongoTemplate mongoTemplate;
+    private final VenueService venueService;
 
     @Override
     public Mono<EventResponseDto> createEvent(EventRequestDto eventRequestDto) {
-        return eventRepository
-                .save(EventMapper.toEvent(eventRequestDto))
-                .map(EventMapper::toEventResponseDto);
+        return venueService
+                .exists(eventRequestDto.getVenueId())
+                .filter(a -> a)
+                .flatMap(exists -> eventRepository
+                        .save(EventMapper.toEvent(eventRequestDto))
+                        .map(EventMapper::toEventResponseDto))
+                .switchIfEmpty(Mono.error(new EntityNotFoundException(Venue.class.getSimpleName(),
+                        eventRequestDto.getVenueId())));
     }
 
     @Override
@@ -57,6 +64,14 @@ public class EventServiceImpl implements EventService {
                 .switchIfEmpty(Mono.error(new EntityNotFoundException("Event", id)))
                 .flatMap(event -> {
                     EventMapper.merge(event, eventRequestDto);
+                    if (eventRequestDto.getVenueId() != null) {
+                        return venueService
+                                .exists(eventRequestDto.getVenueId())
+                                .filter(a -> a)
+                                .flatMap(exists -> eventRepository.save(event))
+                                .switchIfEmpty(Mono.error(new EntityNotFoundException(Venue.class.getSimpleName(),
+                                        eventRequestDto.getVenueId())));
+                    }
                     return eventRepository.save(event);
                 })
                 .map(EventMapper::toEventResponseDto);

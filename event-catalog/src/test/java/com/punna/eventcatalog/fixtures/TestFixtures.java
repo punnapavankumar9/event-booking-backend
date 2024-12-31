@@ -14,11 +14,9 @@ public abstract class TestFixtures {
 
     public static EventRequestDto SAMPLE_EVENT_REQ_DTO = EventRequestDto
             .builder()
-            .venueId("HTD_STP_1")
             .price(BigDecimal.valueOf(150))
             .name("Coldplay concert")
             .description("A concert by Coldplay band")
-            .organizerId("pavan")
             .maximumCapacity(12_000)
             .isOpenForBooking(true)
             .eventDurationDetails(EventDurationDetailsDto
@@ -37,11 +35,9 @@ public abstract class TestFixtures {
             .build();
     public static VenueDto SAMPLE_VENUE_DTO = VenueDto
             .builder()
-            .id("HTD_STP_2")
             .name("PVR Next punjagutta")
             .description("PVR Next Mall near punjagutta metro station")
             .capacity(123123)
-            .ownerId("DummyOwner")
             .location("punjagutta metro station")
             .city("Hyderabad")
             .country("India")

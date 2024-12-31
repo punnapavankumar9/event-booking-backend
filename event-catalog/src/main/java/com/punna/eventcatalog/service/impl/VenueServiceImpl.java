@@ -79,4 +79,9 @@ public class VenueServiceImpl implements VenueService {
                 .switchIfEmpty(Mono.error(() -> new EntityNotFoundException(Venue.class.getSimpleName(), id)))
                 .map(VenueMapper::toVenueDto);
     }
+
+    @Override
+    public Mono<Boolean> exists(String id) {
+        return venueRepository.existsById(id);
+    }
 }

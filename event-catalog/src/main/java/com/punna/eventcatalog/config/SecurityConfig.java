@@ -27,6 +27,9 @@ public class SecurityConfig {
                         .permitAll()
                         .pathMatchers("/swagger-ui/**", "/v3/api-docs/**")
                         .permitAll()
+                        // centralized swagger
+                        .pathMatchers(HttpMethod.OPTIONS, "/**")
+                        .permitAll()
                         .anyExchange()
                         .authenticated())
                 .addFilterAt(populateAuthentication, SecurityWebFiltersOrder.HTTP_BASIC)
