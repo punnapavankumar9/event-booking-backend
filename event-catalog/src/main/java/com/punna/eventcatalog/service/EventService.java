@@ -17,4 +17,8 @@ public interface EventService {
     Mono<Void> deleteEvent(String id);
 
     Mono<EventResponseDto> findById(String id);
+
+    Mono<Boolean> isAdminOrOwner(String id);
+
+    Mono<Boolean> isAdminOrOwner(Event event);
 }

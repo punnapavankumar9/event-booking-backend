@@ -7,6 +7,7 @@ import org.punna.commons.exception.ProblemDetail;
 import org.springframework.context.MessageSource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -49,10 +50,18 @@ public class ApplicationExceptionHandler {
                             .put(fieldName, message);
                 });
         problemDetail.setStatus(HttpStatus.BAD_REQUEST.value());
-        problemDetail.setMessage(messageSource.getMessage("validation.invalid-body",
-                null,
-                Locale.getDefault()));
+        problemDetail.setMessage(messageSource.getMessage("validation.invalid-body", null, Locale.getDefault()));
         return Mono.just(problemDetail);
+    }
+
+    @ExceptionHandler(AccessDeniedException.class)
+    @ResponseStatus(HttpStatus.FORBIDDEN)
+    public Mono<ProblemDetail> handleAccessDeniedException(AccessDeniedException e) {
+        return Mono.just(ProblemDetail
+                .builder()
+                .status(HttpStatus.FORBIDDEN.value())
+                .message(e.getMessage())
+                .build());
     }
 
 
@@ -64,6 +73,4 @@ public class ApplicationExceptionHandler {
                 .status(HttpStatus.INTERNAL_SERVER_ERROR)
                 .body("An unexpected error occurred: "));
     }
-
-
 }

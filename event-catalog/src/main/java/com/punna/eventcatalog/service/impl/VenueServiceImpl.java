@@ -4,6 +4,7 @@ import com.punna.eventcatalog.dto.VenueDto;
 import com.punna.eventcatalog.mapper.VenueMapper;
 import com.punna.eventcatalog.model.Venue;
 import com.punna.eventcatalog.repository.VenueRepository;
+import com.punna.eventcatalog.service.AuthService;
 import com.punna.eventcatalog.service.VenueService;
 import lombok.RequiredArgsConstructor;
 import org.punna.commons.exception.EntityNotFoundException;
@@ -14,6 +15,8 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.ReactiveMongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.security.access.AccessDeniedException;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -26,6 +29,8 @@ public class VenueServiceImpl implements VenueService {
 
     private final ReactiveMongoTemplate mongoTemplate;
 
+    private final AuthService authService;
+
     @Override
     public Mono<VenueDto> createVenue(VenueDto venue) {
         return venueRepository
@@ -34,6 +39,7 @@ public class VenueServiceImpl implements VenueService {
     }
 
     @Override
+    @PreAuthorize("@venueServiceImpl.isAdminOrOwner(#id)")
     public Mono<Void> deleteVenue(String id) {
         Query query = new Query(Criteria
                 .where("_id")
@@ -55,7 +61,11 @@ public class VenueServiceImpl implements VenueService {
                 .switchIfEmpty(Mono.error(() -> new EntityNotFoundException(Venue.class.getSimpleName(), id)))
                 .flatMap(existingVenue -> {
                     Venue mergedVenue = VenueMapper.merge(venue, existingVenue);
-                    return venueRepository.save(mergedVenue);
+                    return isAdminOrOwner(existingVenue)
+                            .filter(m -> m)
+                            .flatMap(permission -> venueRepository.save(mergedVenue))
+                            .switchIfEmpty(Mono.error(new AccessDeniedException(
+                                    "You don't have permission to edit this Venue")));
                 })
                 .map(VenueMapper::toVenueDto);
     }
@@ -83,5 +93,27 @@ public class VenueServiceImpl implements VenueService {
     @Override
     public Mono<Boolean> exists(String id) {
         return venueRepository.existsById(id);
+    }
+
+    @Override
+    public Mono<Boolean> isAdminOrOwner(String id) {
+        return authService
+                .hasRole("ADMIN")
+                .filter(m -> m)
+                .switchIfEmpty(this
+                        .findById(id)
+                        .flatMap(v -> authService
+                                .getUserName()
+                                .map(s -> s.equals(v.getOwnerId()))));
+    }
+
+    @Override
+    public Mono<Boolean> isAdminOrOwner(Venue venue) {
+        return authService
+                .hasRole("ADMIN")
+                .filter(m -> m)
+                .switchIfEmpty(authService
+                        .getUserName()
+                        .map(username -> username.equals(venue.getOwnerId())));
     }
 }

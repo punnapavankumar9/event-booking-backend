@@ -15,7 +15,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.MessageSource;
 import org.springframework.data.mongodb.core.ReactiveMongoTemplate;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.reactive.server.WebTestClient;
 import reactor.test.StepVerifier;
@@ -25,6 +24,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Locale;
 
+import static com.punna.eventcatalog.TestUtils.setAuthHeader;
 import static com.punna.eventcatalog.fixtures.TestFixtures.SAMPLE_EVENT_REQ_DTO;
 import static com.punna.eventcatalog.fixtures.TestFixtures.SAMPLE_VENUE_DTO;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -61,10 +61,6 @@ public class EventEndpointTests extends ContainerBase {
         return objectMapper.readValue(s, clazz);
     }
 
-    public void setAuthHeader(HttpHeaders httpHeaders) {
-        httpHeaders.set("X-USER-DETAILS",
-                "{\"username\":\"punna\",\"email\":\"punna@gmail.com\",\"enabled\":true,\"authorities\":[\"ADMIN\",\"OWNER\"],\"createdAt\":\"2024-12-31T18:17:57.290179\",\"lastModifiedAt\":\"2024-12-31T18:17:57.341823\",\"lastLoginAt\":\"2025-01-01T03:37:20.413084\"}");
-    }
 
     @BeforeAll
     void setUp() {
@@ -96,7 +92,7 @@ public class EventEndpointTests extends ContainerBase {
                 .post()
                 .uri(eventsV1Url)
                 .contentType(MediaType.APPLICATION_JSON)
-                .headers(this::setAuthHeader)
+                .headers(headers -> setAuthHeader(headers, "punna"))
                 .bodyValue(eventReqDto)
                 .exchange()
                 .expectStatus()
@@ -122,7 +118,7 @@ public class EventEndpointTests extends ContainerBase {
                 .post()
                 .uri(eventsV1Url)
                 .contentType(MediaType.APPLICATION_JSON)
-                .headers(this::setAuthHeader)
+                .headers(headers -> setAuthHeader(headers, "punna"))
                 .bodyValue(eventReqDto)
                 .exchange()
                 .expectStatus()
@@ -141,7 +137,6 @@ public class EventEndpointTests extends ContainerBase {
 
     }
 
-
     @Test
     @Order(4)
     void givenEventWithInvalidVenueId_whenCreateEvent_thenReturnNotFound() {
@@ -151,7 +146,7 @@ public class EventEndpointTests extends ContainerBase {
                 .post()
                 .uri(eventsV1Url)
                 .contentType(MediaType.APPLICATION_JSON)
-                .headers(this::setAuthHeader)
+                .headers(headers -> setAuthHeader(headers, "punna"))
                 .bodyValue(eventReqDto)
                 .exchange()
                 .expectStatus()
@@ -164,16 +159,15 @@ public class EventEndpointTests extends ContainerBase {
         assertThat(responseBody.getStatus()).isEqualTo(404);
     }
 
-
     @Test
-    @Order(3)
+    @Order(5)
     void givenEventWithoutId_whenCreateEvent_thenCreateEventAndReturn() {
         EventRequestDto eventReqDto = clone(SAMPLE_EVENT_REQ_DTO, EventRequestDto.class);
         EventResponseDto responseBody = webTestClient
                 .post()
                 .uri(eventsV1Url)
                 .contentType(MediaType.APPLICATION_JSON)
-                .headers(this::setAuthHeader)
+                .headers(headers -> setAuthHeader(headers, "punna"))
                 .bodyValue(eventReqDto)
                 .exchange()
                 .expectStatus()
@@ -192,7 +186,7 @@ public class EventEndpointTests extends ContainerBase {
     }
 
     @Test
-    @Order(4)
+    @Order(6)
     void givenInvalidEventWithId_whenUpdateEvent_thenReturnBadRequest() {
         EventRequestDto eventRequestDto = EventRequestDto
                 .builder()
@@ -213,7 +207,7 @@ public class EventEndpointTests extends ContainerBase {
                 .patch()
                 .uri(eventsV1Url)
                 .contentType(MediaType.APPLICATION_JSON)
-                .headers(this::setAuthHeader)
+                .headers(headers -> setAuthHeader(headers, "punna"))
                 .bodyValue(eventRequestDto)
                 .exchange()
                 .expectStatus()
@@ -230,7 +224,7 @@ public class EventEndpointTests extends ContainerBase {
     }
 
     @Test
-    @Order(5)
+    @Order(7)
     void givenEventWithInvalidVenueId_whenUpdateEvent_thenReturnVenueNotFound() {
         EventRequestDto eventRequestDto = clone(SAMPLE_EVENT_REQ_DTO, EventRequestDto.class);
         BigDecimal newPrice = BigDecimal.valueOf(9999999999.9999999989);
@@ -252,7 +246,7 @@ public class EventEndpointTests extends ContainerBase {
                 .patch()
                 .uri(eventsV1Url)
                 .contentType(MediaType.APPLICATION_JSON)
-                .headers(this::setAuthHeader)
+                .headers(headers -> setAuthHeader(headers, "punna"))
                 .bodyValue(eventRequestDto)
                 .exchange()
                 .expectStatus()
@@ -265,9 +259,8 @@ public class EventEndpointTests extends ContainerBase {
         assertThat(responseBody.getMessage()).contains("Venue with id::Dummy not found");
     }
 
-
     @Test
-    @Order(5)
+    @Order(8)
     void givenEventWithId_whenUpdateEvent_thenUpdateEventAndReturn() {
         EventRequestDto eventRequestDto = clone(SAMPLE_EVENT_REQ_DTO, EventRequestDto.class);
         BigDecimal newPrice = BigDecimal.valueOf(9999999999.9999999989);
@@ -288,7 +281,7 @@ public class EventEndpointTests extends ContainerBase {
                 .patch()
                 .uri(eventsV1Url)
                 .contentType(MediaType.APPLICATION_JSON)
-                .headers(this::setAuthHeader)
+                .headers(headers -> setAuthHeader(headers, "punna"))
                 .bodyValue(eventRequestDto)
                 .exchange()
                 .expectStatus()
@@ -314,19 +307,19 @@ public class EventEndpointTests extends ContainerBase {
     }
 
     @Test
-    @Order(6)
+    @Order(9)
     void givenInvalidEventWithId_whenDeleteEvent_thenReturnNotFound() {
         webTestClient
                 .delete()
                 .uri(eventsV1Url + "/" + 123213)
-                .headers(this::setAuthHeader)
+                .headers(headers -> setAuthHeader(headers, "punna"))
                 .exchange()
                 .expectStatus()
                 .isNotFound();
     }
 
     @Test
-    @Order(7)
+    @Order(10)
     void givenInvalidId_whenFindById_thenReturnNotFound() {
         webTestClient
                 .get()
@@ -337,12 +330,12 @@ public class EventEndpointTests extends ContainerBase {
     }
 
     @Test
-    @Order(7)
+    @Order(11)
     void givenValidId_whenFindById_thenReturnOk() {
         List<EventResponseDto> responseBody = webTestClient
                 .get()
                 .uri(eventsV1Url + "/" + eventId)
-                .headers(this::setAuthHeader)
+                .headers(headers -> setAuthHeader(headers, "punna"))
                 .exchange()
                 .expectStatus()
                 .isOk()
@@ -354,12 +347,43 @@ public class EventEndpointTests extends ContainerBase {
     }
 
     @Test
-    @Order(9)
+    @Order(12)
+    void givenNonAdminUser_whenUpdateEvent_thenReturnForbidden() {
+        webTestClient
+                .patch()
+                .uri(eventsV1Url)
+                .contentType(MediaType.APPLICATION_JSON)
+                .headers(headers -> setAuthHeader(headers, "non-admin"))
+                .bodyValue(EventRequestDto
+                        .builder()
+                        .id(eventId)
+                        .price(BigDecimal.valueOf(123))
+                        .build())
+                .exchange()
+                .expectStatus()
+                .isForbidden();
+    }
+
+    @Test
+    @Order(13)
+    void giveNonAdminUser_whenDeleteEvent_thenReturnUnAuthorized() {
+        webTestClient
+                .delete()
+                .uri(eventsV1Url + "/" + eventId)
+                .accept(MediaType.APPLICATION_JSON)
+                .headers(headers -> setAuthHeader(headers, "non-admin"))
+                .exchange()
+                .expectStatus()
+                .isForbidden();
+    }
+
+    @Test
+    @Order(14)
     void givenEventWithId_whenDeleteEvent_thenDelete() {
         webTestClient
                 .delete()
                 .uri(eventsV1Url + "/" + eventId)
-                .headers(this::setAuthHeader)
+                .headers(headers -> setAuthHeader(headers, "punna"))
                 .exchange()
                 .expectStatus()
                 .isOk();
@@ -370,7 +394,7 @@ public class EventEndpointTests extends ContainerBase {
     }
 
     @Test
-    @Order(10)
+    @Order(15)
     void givenNonExistingEvent_whenUpdatingEvent_thenReturnBadRequestWithErrors() {
         EventRequestDto eventRequestDto = EventRequestDto
                 .builder()
@@ -382,7 +406,7 @@ public class EventEndpointTests extends ContainerBase {
                 .patch()
                 .uri(eventsV1Url)
                 .contentType(MediaType.APPLICATION_JSON)
-                .headers(this::setAuthHeader)
+                .headers(headers -> setAuthHeader(headers, "punna"))
                 .bodyValue(eventRequestDto)
                 .exchange()
                 .expectStatus()

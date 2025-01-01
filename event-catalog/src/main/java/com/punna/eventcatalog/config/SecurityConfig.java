@@ -25,7 +25,7 @@ public class SecurityConfig {
                 .authorizeExchange(p -> p
                         .pathMatchers(HttpMethod.GET, "/api/v1/events/**", "/api/v1/venues/**")
                         .permitAll()
-                        .pathMatchers("/swagger-ui/**", "/v3/api-docs/**")
+                        .pathMatchers("/swagger-ui.html", "/swagger-ui/**", "/v3/api-docs/**")
                         .permitAll()
                         // centralized swagger
                         .pathMatchers(HttpMethod.OPTIONS, "/**")

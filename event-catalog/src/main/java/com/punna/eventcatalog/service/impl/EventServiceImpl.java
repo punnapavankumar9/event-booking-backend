@@ -6,6 +6,7 @@ import com.punna.eventcatalog.mapper.EventMapper;
 import com.punna.eventcatalog.model.Event;
 import com.punna.eventcatalog.model.Venue;
 import com.punna.eventcatalog.repository.EventRepository;
+import com.punna.eventcatalog.service.AuthService;
 import com.punna.eventcatalog.service.EventService;
 import com.punna.eventcatalog.service.VenueService;
 import lombok.RequiredArgsConstructor;
@@ -17,6 +18,8 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.ReactiveMongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.security.access.AccessDeniedException;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -28,6 +31,7 @@ public class EventServiceImpl implements EventService {
     private final EventRepository eventRepository;
     private final ReactiveMongoTemplate mongoTemplate;
     private final VenueService venueService;
+    private final AuthService authService;
 
     @Override
     public Mono<EventResponseDto> createEvent(EventRequestDto eventRequestDto) {
@@ -64,20 +68,27 @@ public class EventServiceImpl implements EventService {
                 .switchIfEmpty(Mono.error(new EntityNotFoundException("Event", id)))
                 .flatMap(event -> {
                     EventMapper.merge(event, eventRequestDto);
-                    if (eventRequestDto.getVenueId() != null) {
-                        return venueService
-                                .exists(eventRequestDto.getVenueId())
-                                .filter(a -> a)
-                                .flatMap(exists -> eventRepository.save(event))
-                                .switchIfEmpty(Mono.error(new EntityNotFoundException(Venue.class.getSimpleName(),
-                                        eventRequestDto.getVenueId())));
-                    }
-                    return eventRepository.save(event);
+                    return isAdminOrOwner(event)
+                            .filter(m -> m)
+                            .flatMap(permission -> {
+                                if (eventRequestDto.getVenueId() != null) {
+                                    return venueService
+                                            .exists(eventRequestDto.getVenueId())
+                                            .filter(a -> a)
+                                            .flatMap(exists -> eventRepository.save(event))
+                                            .switchIfEmpty(Mono.error(new EntityNotFoundException(Venue.class.getSimpleName(),
+                                                    eventRequestDto.getVenueId())));
+                                }
+                                return eventRepository.save(event);
+                            })
+                            .switchIfEmpty(Mono.error(new AccessDeniedException(
+                                    "You don't have permission to edit this Event")));
                 })
                 .map(EventMapper::toEventResponseDto);
     }
 
     @Override
+    @PreAuthorize("@eventServiceImpl.isAdminOrOwner(#id)")
     public Mono<Void> deleteEvent(String id) {
         Query query = new Query(Criteria
                 .where("_id")
@@ -94,5 +105,27 @@ public class EventServiceImpl implements EventService {
                 .findById(id)
                 .switchIfEmpty(Mono.error(() -> new EntityNotFoundException(Event.class.getSimpleName(), id)))
                 .map(EventMapper::toEventResponseDto);
+    }
+
+    @Override
+    public Mono<Boolean> isAdminOrOwner(String id) {
+        return authService
+                .hasRole("ADMIN")
+                .filter(m -> m)
+                .switchIfEmpty(this
+                        .findById(id)
+                        .flatMap(event -> authService
+                                .getUserName()
+                                .map(username -> username.equals(event.getOrganizerId()))));
+    }
+
+    @Override
+    public Mono<Boolean> isAdminOrOwner(Event event) {
+        return authService
+                .hasRole("ADMIN")
+                .filter(m -> m)
+                .switchIfEmpty(authService
+                        .getUserName()
+                        .map(username -> username.equals(event.getOrganizerId())));
     }
 }
