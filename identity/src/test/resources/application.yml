@@ -5,10 +5,6 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
-    properties:
-      hibernate:
-        show_sql: true
-        format_sql: true
 application:
   security:
     jwt-secret-key: test-secret-from-test-resource-folder
