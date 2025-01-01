@@ -3,6 +3,8 @@ package com.punna.eventcatalog.service.impl;
 import com.punna.eventcatalog.dto.SeatingArrangementDto;
 import com.punna.eventcatalog.mapper.SeatingArrangementMapper;
 import com.punna.eventcatalog.model.Event;
+import com.punna.eventcatalog.model.Seat;
+import com.punna.eventcatalog.model.SeatTier;
 import com.punna.eventcatalog.model.SeatingArrangement;
 import com.punna.eventcatalog.repository.SeatingArrangementRepository;
 import com.punna.eventcatalog.service.SeatingArrangementService;
@@ -25,6 +27,7 @@ public class SeatingArrangementServiceImpl implements SeatingArrangementService 
 
     @Override
     public Mono<SeatingArrangementDto> createSeatingArrangement(SeatingArrangementDto seatingArrangement) {
+        isSeatingArrangementValid(seatingArrangement);
         return seatingArrangementRepository
                 .save(SeatingArrangementMapper.toSeatingArrangement(seatingArrangement))
                 .map(SeatingArrangementMapper::toSeatingArrangementDto);
@@ -50,6 +53,9 @@ public class SeatingArrangementServiceImpl implements SeatingArrangementService 
                 .switchIfEmpty(Mono.error(new EntityNotFoundException(SeatingArrangement.class.getSimpleName(), id)))
                 .flatMap(seatingArrangement1 -> {
                     SeatingArrangementMapper.merge(seatingArrangement1, seatingArrangement);
+                    if (seatingArrangement.getSeatTiers() != null) {
+                        isSeatingArrangementValid(SeatingArrangementMapper.toSeatingArrangementDto(seatingArrangement1));
+                    }
                     return seatingArrangementRepository.save(seatingArrangement1);
                 })
                 .map(SeatingArrangementMapper::toSeatingArrangementDto);
@@ -65,5 +71,34 @@ public class SeatingArrangementServiceImpl implements SeatingArrangementService 
                 .switchIfEmpty(Mono.error(() -> new EntityNotFoundException(Event.class.getSimpleName(),
                         seatingArrangementId)))
                 .flatMap((event) -> Mono.empty());
+    }
+
+    @Override
+    public void isSeatingArrangementValid(SeatingArrangementDto seatingArrangementDto) {
+        int capacity = seatingArrangementDto.getCapacity();
+        int currentCapacity = 0;
+        for (SeatTier tier : seatingArrangementDto.getSeatTiers()) {
+            int cnt = isTierValid(tier);
+            if (cnt == -1) {
+                throw new EventApplicationException("Seating arrangement is not valid", 400);
+            }
+            currentCapacity += cnt;
+        }
+        if (currentCapacity != capacity) {
+            throw new EventApplicationException("Seating capacity mismatch in seat arrangements", 400);
+        }
+    }
+
+    public int isTierValid(SeatTier tier) {
+        int columns = tier.getColumns();
+        int rows = tier.getRows();
+        int cnt = 0;
+        for (Seat seat : tier.getSeats()) {
+            if (seat.getRow() > rows || seat.getColumn() > columns) return -1;
+            if (!seat.getIsSpace()) {
+                cnt++;
+            }
+        }
+        return cnt;
     }
 }

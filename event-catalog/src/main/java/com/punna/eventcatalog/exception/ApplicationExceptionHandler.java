@@ -3,6 +3,7 @@ package com.punna.eventcatalog.exception;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.punna.commons.exception.EntityNotFoundException;
+import org.punna.commons.exception.EventApplicationException;
 import org.punna.commons.exception.ProblemDetail;
 import org.springframework.context.MessageSource;
 import org.springframework.http.HttpStatus;
@@ -35,6 +36,16 @@ public class ApplicationExceptionHandler {
                 .build());
     }
 
+    @ExceptionHandler(EventApplicationException.class)
+    public Mono<ResponseEntity<ProblemDetail>> handleEventApplicationException(EventApplicationException e) {
+        return Mono.just(ResponseEntity
+                .status(e.getStatus())
+                .body(ProblemDetail
+                        .builder()
+                        .message(e.getMessage())
+                        .status(e.getStatus())
+                        .build()));
+    }
 
     @ExceptionHandler(WebExchangeBindException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)

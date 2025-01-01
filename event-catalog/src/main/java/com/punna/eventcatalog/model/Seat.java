@@ -10,13 +10,13 @@ import org.punna.commons.validation.groups.CreateGroup;
 @Builder
 public class Seat {
     @NotNull(message = "isSpace must not be null", groups = CreateGroup.class)
-    public Boolean isSpace;
+    private Boolean isSpace;
 
     @NotNull(message = "row must not be null", groups = CreateGroup.class)
     @Positive(message = "row must be positive")
-    public Integer row;
+    private Integer row;
 
     @NotNull(message = "column must not be null", groups = CreateGroup.class)
     @Positive(message = "column must be positive")
-    public Integer column;
+    private Integer column;
 }

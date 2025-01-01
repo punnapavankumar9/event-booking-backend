@@ -31,8 +31,6 @@ public class SeatingArrangementEndpointTests extends ContainerBase {
     @Autowired
     private SeatingArrangementRepository seatingArrangementRepository;
     @Autowired
-    private SeatingArrangementServiceImpl seatingArrangementServiceImpl;
-    @Autowired
     private WebTestClient webTestClient;
 
     @SneakyThrows

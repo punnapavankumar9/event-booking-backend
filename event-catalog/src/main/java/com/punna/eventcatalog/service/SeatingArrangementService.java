@@ -13,4 +13,6 @@ public interface SeatingArrangementService {
 
     Mono<Void> deleteSeatingArrangement(String seatingArrangementId);
 
+    void isSeatingArrangementValid(SeatingArrangementDto seatingArrangementDto);
+
 }
