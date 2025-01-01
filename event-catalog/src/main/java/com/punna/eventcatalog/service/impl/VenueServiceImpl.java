@@ -5,6 +5,7 @@ import com.punna.eventcatalog.mapper.VenueMapper;
 import com.punna.eventcatalog.model.Venue;
 import com.punna.eventcatalog.repository.VenueRepository;
 import com.punna.eventcatalog.service.AuthService;
+import com.punna.eventcatalog.service.SeatingArrangementService;
 import com.punna.eventcatalog.service.VenueService;
 import lombok.RequiredArgsConstructor;
 import org.punna.commons.exception.EntityNotFoundException;
@@ -26,6 +27,7 @@ import reactor.core.publisher.Mono;
 public class VenueServiceImpl implements VenueService {
 
     private final VenueRepository venueRepository;
+    private final SeatingArrangementService seatingArrangementService;
 
     private final ReactiveMongoTemplate mongoTemplate;
 
@@ -33,9 +35,11 @@ public class VenueServiceImpl implements VenueService {
 
     @Override
     public Mono<VenueDto> createVenue(VenueDto venue) {
-        return venueRepository
-                .save(VenueMapper.toVenue(venue))
-                .map(VenueMapper::toVenueDto);
+        return seatingArrangementService
+                .getSeatingArrangementById(venue.getSeatingArrangementId())
+                .flatMap(seatArr -> venueRepository
+                        .save(VenueMapper.toVenue(venue))
+                        .map(VenueMapper::toVenueDto));
     }
 
     @Override
@@ -60,10 +64,17 @@ public class VenueServiceImpl implements VenueService {
                 .findById(id)
                 .switchIfEmpty(Mono.error(() -> new EntityNotFoundException(Venue.class.getSimpleName(), id)))
                 .flatMap(existingVenue -> {
-                    Venue mergedVenue = VenueMapper.merge(venue, existingVenue);
+                    VenueMapper.merge(venue, existingVenue);
                     return isAdminOrOwner(existingVenue)
                             .filter(m -> m)
-                            .flatMap(permission -> venueRepository.save(mergedVenue))
+                            .flatMap(permission -> {
+                                if (venue.getSeatingArrangementId() != null) {
+                                    return seatingArrangementService
+                                            .getSeatingArrangementById(venue.getSeatingArrangementId())
+                                            .flatMap(seatingArrangementDto -> venueRepository.save(existingVenue));
+                                }
+                                return venueRepository.save(existingVenue);
+                            })
                             .switchIfEmpty(Mono.error(new AccessDeniedException(
                                     "You don't have permission to edit this Venue")));
                 })

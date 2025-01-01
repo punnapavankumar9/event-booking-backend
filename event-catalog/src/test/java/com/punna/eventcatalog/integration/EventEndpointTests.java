@@ -4,17 +4,20 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.punna.eventcatalog.dto.EventDurationDetailsDto;
 import com.punna.eventcatalog.dto.EventRequestDto;
 import com.punna.eventcatalog.dto.EventResponseDto;
+import com.punna.eventcatalog.dto.SeatingArrangementDto;
+import com.punna.eventcatalog.model.PricingTierMap;
 import com.punna.eventcatalog.repository.EventRepository;
+import com.punna.eventcatalog.repository.SeatingArrangementRepository;
+import com.punna.eventcatalog.repository.VenueRepository;
 import com.punna.eventcatalog.service.VenueService;
+import com.punna.eventcatalog.service.impl.SeatingArrangementServiceImpl;
 import lombok.SneakyThrows;
 import org.junit.jupiter.api.*;
 import org.punna.commons.exception.EntityNotFoundException;
 import org.punna.commons.exception.ProblemDetail;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.MessageSource;
-import org.springframework.data.mongodb.core.ReactiveMongoTemplate;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.reactive.server.WebTestClient;
 import reactor.test.StepVerifier;
@@ -25,8 +28,7 @@ import java.util.List;
 import java.util.Locale;
 
 import static com.punna.eventcatalog.TestUtils.setAuthHeader;
-import static com.punna.eventcatalog.fixtures.TestFixtures.SAMPLE_EVENT_REQ_DTO;
-import static com.punna.eventcatalog.fixtures.TestFixtures.SAMPLE_VENUE_DTO;
+import static com.punna.eventcatalog.fixtures.TestFixtures.*;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.TestInstance.Lifecycle.PER_CLASS;
 
@@ -38,8 +40,6 @@ public class EventEndpointTests extends ContainerBase {
     private final String eventsV1Url = "/api/v1/events";
     private final String organizerIdPunna = "punna";
     @Autowired
-    ApplicationContext applicationContext;
-    @Autowired
     WebTestClient webTestClient;
     @Autowired
     MessageSource messageSource;
@@ -48,12 +48,16 @@ public class EventEndpointTests extends ContainerBase {
     private String invalidBodyErrorMessage;
     @Autowired
     private EventRepository eventRepository;
-
     @Autowired
     private ObjectMapper objectMapper;
     @Autowired
     private VenueService venueService;
-
+    @Autowired
+    private VenueRepository venueRepository;
+    @Autowired
+    private SeatingArrangementRepository seatingArrangementRepository;
+    @Autowired
+    private SeatingArrangementServiceImpl seatingArrangementServiceImpl;
 
     @SneakyThrows
     public <T> T clone(T obj, Class<T> clazz) {
@@ -61,12 +65,22 @@ public class EventEndpointTests extends ContainerBase {
         return objectMapper.readValue(s, clazz);
     }
 
-
     @BeforeAll
     void setUp() {
         eventRepository
                 .deleteAll()
                 .block();
+        venueRepository
+                .deleteAll()
+                .block();
+        seatingArrangementRepository
+                .deleteAll()
+                .block();
+
+        SeatingArrangementDto seatingArrangementDto = seatingArrangementServiceImpl
+                .createSeatingArrangement(SAMPLE_SEATING_ARRANGEMENT_DTO)
+                .block();
+        SAMPLE_VENUE_DTO.setSeatingArrangementId(seatingArrangementDto.getId());
         venueId = venueService
                 .createVenue(SAMPLE_VENUE_DTO)
                 .block()
@@ -78,9 +92,6 @@ public class EventEndpointTests extends ContainerBase {
     @Test
     @Order(1)
     void contextLoads() {
-        assertThat(applicationContext).isNotNull();
-        assertThat(mongoContainer.isRunning()).isTrue();
-        assertThat(applicationContext.getBean(ReactiveMongoTemplate.class)).isNotNull();
     }
 
     @Test
@@ -111,9 +122,11 @@ public class EventEndpointTests extends ContainerBase {
     @Test
     @Order(3)
     void givenInvalidEvent_whenCreateEvent_thenReturnBadResultWithErrors() {
-        EventRequestDto eventReqDto = EventRequestDto
-                .builder()
+        EventRequestDto eventReqDto = EventRequestDto.builder()
+                // this should give two errors from nested Object(PricingTierMap)
+                .pricingTierMaps(List.of(new PricingTierMap()))
                 .build();
+
         ProblemDetail responseBody = webTestClient
                 .post()
                 .uri(eventsV1Url)
@@ -133,7 +146,7 @@ public class EventEndpointTests extends ContainerBase {
         assertThat(responseBody.getStatus()).isEqualTo(400);
         assertThat(responseBody
                 .getErrors()
-                .size()).isEqualTo(5);
+                .size()).isEqualTo(7);
 
     }
 

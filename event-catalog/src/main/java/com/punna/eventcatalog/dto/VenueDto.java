@@ -55,4 +55,7 @@ public class VenueDto {
 
     @Size(min = 5, max = 1000, message = "Venue googleMapsUrl must be between 5 and 1000 characters long")
     private String googleMapsUrl;
+
+    @NotNull(message = "seating arrangement id must not be null", groups = CreateGroup.class)
+    private String seatingArrangementId;
 }

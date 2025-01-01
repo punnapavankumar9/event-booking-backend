@@ -1,8 +1,11 @@
 package com.punna.eventcatalog.integration;
 
+import com.punna.eventcatalog.dto.SeatingArrangementDto;
 import com.punna.eventcatalog.dto.VenueDto;
 import com.punna.eventcatalog.fixtures.TestFixtures;
+import com.punna.eventcatalog.repository.SeatingArrangementRepository;
 import com.punna.eventcatalog.repository.VenueRepository;
+import com.punna.eventcatalog.service.impl.SeatingArrangementServiceImpl;
 import org.junit.jupiter.api.*;
 import org.punna.commons.exception.ProblemDetail;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +16,8 @@ import org.springframework.test.web.reactive.server.WebTestClient;
 import java.util.List;
 
 import static com.punna.eventcatalog.TestUtils.setAuthHeader;
+import static com.punna.eventcatalog.fixtures.TestFixtures.SAMPLE_SEATING_ARRANGEMENT_DTO;
+import static com.punna.eventcatalog.fixtures.TestFixtures.SAMPLE_VENUE_DTO;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.TestInstance.Lifecycle.PER_CLASS;
 
@@ -28,13 +33,25 @@ public class VenueEndpointTests extends ContainerBase {
     @Autowired
     private VenueRepository venueRepository;
 
+    @Autowired
+    private SeatingArrangementRepository seatingArrangementRepository;
+    @Autowired
+    private SeatingArrangementServiceImpl seatingArrangementServiceImpl;
+
     @BeforeAll
     void setUp() {
         venueRepository
                 .deleteAll()
                 .block();
+        seatingArrangementRepository
+                .deleteAll()
+                .block();
+        SeatingArrangementDto seatingArrangementDto = seatingArrangementServiceImpl
+                .createSeatingArrangement(SAMPLE_SEATING_ARRANGEMENT_DTO)
+                .block();
+        assert seatingArrangementDto != null;
+        SAMPLE_VENUE_DTO.setSeatingArrangementId(seatingArrangementDto.getId());
     }
-
 
     @Test
     @Order(1)
@@ -56,7 +73,7 @@ public class VenueEndpointTests extends ContainerBase {
         assertThat(responseBody.getStatus()).isEqualTo(400);
         assertThat(responseBody
                 .getErrors()
-                .size()).isEqualTo(8);
+                .size()).isEqualTo(9);
     }
 
     @Test
@@ -153,6 +170,7 @@ public class VenueEndpointTests extends ContainerBase {
                         .builder()
                         .id(venueId)
                         .name("Dummy name")
+                        .seatingArrangementId("Dummy seating arrangement")
                         .build())
                 .headers(headers -> setAuthHeader(headers, "non-admin"))
                 .exchange()
@@ -162,6 +180,29 @@ public class VenueEndpointTests extends ContainerBase {
 
     @Test
     @Order(7)
+    void givenInvalidSeatArrangementId_whenUpdating_thenReturnBadRequest() {
+        final String newStateName = "Telangana TS";
+        VenueDto venueDto = VenueDto
+                .builder()
+                .id(venueId)
+                .state(newStateName)
+                .seatingArrangementId("InvalidId")
+                .capacity(1000)
+                .build();
+        webTestClient
+                .patch()
+                .uri(venuesV1Url)
+                .contentType(MediaType.APPLICATION_JSON)
+                .headers(headers -> setAuthHeader(headers, "punna"))
+                .bodyValue(venueDto)
+                .exchange()
+                .expectStatus()
+                .isNotFound();
+    }
+
+
+    @Test
+    @Order(8)
     void givenValidVenue_whenUpdating_thenReturnOk() {
         final String newStateName = "Telangana TS";
         VenueDto venueDto = VenueDto
@@ -189,7 +230,7 @@ public class VenueEndpointTests extends ContainerBase {
     }
 
     @Test
-    @Order(8)
+    @Order(9)
     void givenInvalidVenueId_whenDeleting_thenReturnNotFound() {
         webTestClient
                 .delete()
@@ -201,7 +242,7 @@ public class VenueEndpointTests extends ContainerBase {
     }
 
     @Test
-    @Order(9)
+    @Order(10)
     void givenNothing_whenFindAll_thenReturnOk() {
         List<VenueDto> responseBody = webTestClient
                 .get()
@@ -219,7 +260,7 @@ public class VenueEndpointTests extends ContainerBase {
     }
 
     @Test
-    @Order(10)
+    @Order(11)
     void givenInvalidId_whenFindById_thenReturnNotFound() {
         webTestClient
                 .get()
@@ -231,7 +272,7 @@ public class VenueEndpointTests extends ContainerBase {
     }
 
     @Test
-    @Order(11)
+    @Order(12)
     void givenValidId_whenFindById_thenReturnOk() {
         List<VenueDto> responseBody = webTestClient
                 .get()
@@ -248,7 +289,7 @@ public class VenueEndpointTests extends ContainerBase {
     }
 
     @Test
-    @Order(12)
+    @Order(13)
     void givenNonAdminUser_whenDelete_thenReturnForbidden() {
         webTestClient
                 .delete()
@@ -260,7 +301,7 @@ public class VenueEndpointTests extends ContainerBase {
     }
 
     @Test
-    @Order(13)
+    @Order(14)
     void givenValidVenue_whenDeleting_thenReturnOk() {
         webTestClient
                 .delete()

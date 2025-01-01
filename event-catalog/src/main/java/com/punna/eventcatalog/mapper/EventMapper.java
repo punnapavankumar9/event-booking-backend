@@ -26,6 +26,7 @@ public class EventMapper {
                 .venueId(eventRequestDto.getVenueId())
                 .additionalDetails(eventRequestDto.getAdditionalDetails())
                 .eventDurationDetails(toEventDurationDetails(eventRequestDto.getEventDurationDetails()))
+                .pricingTierMaps(eventRequestDto.getPricingTierMaps())
                 .build();
 
     }
@@ -48,6 +49,7 @@ public class EventMapper {
                 .eventDurationDetails(toEventDurationDetailsDto(event.getEventDurationDetails()))
                 .createdAt(event.getCreatedAt())
                 .lastModifiedAt(event.getLastModifiedAt())
+                .pricingTierMaps(event.getPricingTierMaps())
                 .build();
 
     }
@@ -64,7 +66,7 @@ public class EventMapper {
                 .build();
     }
 
-    public static Event merge(Event event, EventRequestDto eventRequestDto) {
+    public static void merge(Event event, EventRequestDto eventRequestDto) {
 
         if (eventRequestDto.getName() != null) {
             event.setName(eventRequestDto.getName());
@@ -96,7 +98,9 @@ public class EventMapper {
                     .getAdditionalDetails()
                     .putAll(eventRequestDto.getAdditionalDetails());
         }
-        return event;
+        if (eventRequestDto.getPricingTierMaps() != null) {
+            event.setPricingTierMaps(eventRequestDto.getPricingTierMaps());
+        }
     }
 
     public static EventDurationDetailsDto toEventDurationDetailsDto(EventDurationDetails eventDurationDetails) {

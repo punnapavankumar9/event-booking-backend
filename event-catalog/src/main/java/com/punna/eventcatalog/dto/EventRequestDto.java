@@ -1,5 +1,6 @@
 package com.punna.eventcatalog.dto;
 
+import com.punna.eventcatalog.model.PricingTierMap;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Null;
@@ -13,6 +14,7 @@ import org.punna.commons.validation.groups.CreateGroup;
 import org.punna.commons.validation.groups.UpdateGroup;
 
 import java.math.BigDecimal;
+import java.util.List;
 import java.util.Map;
 
 @Data
@@ -53,4 +55,7 @@ public class EventRequestDto {
     private EventDurationDetailsDto eventDurationDetails;
 
     private Map<String, Object> additionalDetails;
+
+    @Valid
+    private List<PricingTierMap> pricingTierMaps;
 }

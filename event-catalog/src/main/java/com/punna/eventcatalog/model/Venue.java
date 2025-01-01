@@ -38,4 +38,6 @@ public class Venue {
     private String state;
 
     private String googleMapsUrl;
+
+    private String seatingArrangementId;
 }
