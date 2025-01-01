@@ -1,5 +1,6 @@
 package com.punna.eventcatalog.model;
 
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import lombok.Builder;
@@ -15,6 +16,7 @@ public class SeatTier {
     @NotNull(message = "tier name must not be null", groups = CreateGroup.class)
     private String name;
 
+    @Valid
     private List<Seat> seats;
 
     // higher the order the longer the distance from screen/stage

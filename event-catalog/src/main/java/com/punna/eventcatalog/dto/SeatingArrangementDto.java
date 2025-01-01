@@ -2,6 +2,7 @@ package com.punna.eventcatalog.dto;
 
 
 import com.punna.eventcatalog.model.SeatTier;
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Null;
 import jakarta.validation.constraints.Positive;
@@ -28,5 +29,6 @@ public class SeatingArrangementDto {
     @Positive(message = "capacity must be positive")
     private Integer capacity;
 
+    @Valid
     private List<SeatTier> seatTiers;
 }

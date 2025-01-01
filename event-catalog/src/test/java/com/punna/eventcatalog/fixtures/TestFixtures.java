@@ -61,35 +61,11 @@ public abstract class TestFixtures {
                         .builder()
                         .rows(2)
                         .columns(3)
-                        .order(0)
+                        .order(1)
                         .name("VIP")
                         .seats(new ArrayList<>() {{
                             add(Seat
                                     .builder()
-                                    .row(0)
-                                    .column(0)
-                                    .isSpace(false)
-                                    .build());
-                            add(Seat
-                                    .builder()
-                                    .row(0)
-                                    .column(1)
-                                    .isSpace(false)
-                                    .build());
-                            add(Seat
-                                    .builder()
-                                    .row(0)
-                                    .column(2)
-                                    .isSpace(false)
-                                    .build());
-                            add(Seat
-                                    .builder()
-                                    .row(1)
-                                    .column(0)
-                                    .isSpace(false)
-                                    .build());
-                            add(Seat
-                                    .builder()
                                     .row(1)
                                     .column(1)
                                     .isSpace(false)
@@ -98,6 +74,30 @@ public abstract class TestFixtures {
                                     .builder()
                                     .row(1)
                                     .column(2)
+                                    .isSpace(false)
+                                    .build());
+                            add(Seat
+                                    .builder()
+                                    .row(1)
+                                    .column(3)
+                                    .isSpace(false)
+                                    .build());
+                            add(Seat
+                                    .builder()
+                                    .row(2)
+                                    .column(1)
+                                    .isSpace(false)
+                                    .build());
+                            add(Seat
+                                    .builder()
+                                    .row(2)
+                                    .column(2)
+                                    .isSpace(false)
+                                    .build());
+                            add(Seat
+                                    .builder()
+                                    .row(2)
+                                    .column(3)
                                     .isSpace(false)
                                     .build());
                         }})
