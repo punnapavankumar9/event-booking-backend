@@ -4,13 +4,13 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.punna.eventcatalog.dto.EventDurationDetailsDto;
 import com.punna.eventcatalog.dto.EventRequestDto;
 import com.punna.eventcatalog.dto.EventResponseDto;
-import com.punna.eventcatalog.dto.SeatingArrangementDto;
+import com.punna.eventcatalog.dto.SeatingLayoutDto;
 import com.punna.eventcatalog.model.PricingTierMap;
 import com.punna.eventcatalog.repository.EventRepository;
-import com.punna.eventcatalog.repository.SeatingArrangementRepository;
+import com.punna.eventcatalog.repository.SeatingLayoutRepository;
 import com.punna.eventcatalog.repository.VenueRepository;
 import com.punna.eventcatalog.service.VenueService;
-import com.punna.eventcatalog.service.impl.SeatingArrangementServiceImpl;
+import com.punna.eventcatalog.service.impl.SeatingLayoutServiceImpl;
 import lombok.SneakyThrows;
 import org.junit.jupiter.api.*;
 import org.punna.commons.exception.EntityNotFoundException;
@@ -55,9 +55,9 @@ public class EventEndpointTests extends ContainerBase {
     @Autowired
     private VenueRepository venueRepository;
     @Autowired
-    private SeatingArrangementRepository seatingArrangementRepository;
+    private SeatingLayoutRepository seatingLayoutRepository;
     @Autowired
-    private SeatingArrangementServiceImpl seatingArrangementServiceImpl;
+    private SeatingLayoutServiceImpl seatingLayoutServiceImpl;
 
     @SneakyThrows
     public <T> T clone(T obj, Class<T> clazz) {
@@ -73,14 +73,14 @@ public class EventEndpointTests extends ContainerBase {
         venueRepository
                 .deleteAll()
                 .block();
-        seatingArrangementRepository
+        seatingLayoutRepository
                 .deleteAll()
                 .block();
 
-        SeatingArrangementDto seatingArrangementDto = seatingArrangementServiceImpl
-                .createSeatingArrangement(SAMPLE_SEATING_ARRANGEMENT_DTO)
+        SeatingLayoutDto seatingLayoutDto = seatingLayoutServiceImpl
+                .createSeatingLayout(SAMPLE_SEATING_ARRANGEMENT_DTO)
                 .block();
-        SAMPLE_VENUE_DTO.setSeatingArrangementId(seatingArrangementDto.getId());
+        SAMPLE_VENUE_DTO.setSeatingLayoutId(seatingLayoutDto.getId());
         venueId = venueService
                 .createVenue(SAMPLE_VENUE_DTO)
                 .block()

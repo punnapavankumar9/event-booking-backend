@@ -1,11 +1,11 @@
 package com.punna.eventcatalog.integration;
 
-import com.punna.eventcatalog.dto.SeatingArrangementDto;
+import com.punna.eventcatalog.dto.SeatingLayoutDto;
 import com.punna.eventcatalog.dto.VenueDto;
 import com.punna.eventcatalog.fixtures.TestFixtures;
-import com.punna.eventcatalog.repository.SeatingArrangementRepository;
+import com.punna.eventcatalog.repository.SeatingLayoutRepository;
 import com.punna.eventcatalog.repository.VenueRepository;
-import com.punna.eventcatalog.service.impl.SeatingArrangementServiceImpl;
+import com.punna.eventcatalog.service.impl.SeatingLayoutServiceImpl;
 import org.junit.jupiter.api.*;
 import org.punna.commons.exception.ProblemDetail;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,23 +34,23 @@ public class VenueEndpointTests extends ContainerBase {
     private VenueRepository venueRepository;
 
     @Autowired
-    private SeatingArrangementRepository seatingArrangementRepository;
+    private SeatingLayoutRepository seatingLayoutRepository;
     @Autowired
-    private SeatingArrangementServiceImpl seatingArrangementServiceImpl;
+    private SeatingLayoutServiceImpl seatingLayoutServiceImpl;
 
     @BeforeAll
     void setUp() {
         venueRepository
                 .deleteAll()
                 .block();
-        seatingArrangementRepository
+        seatingLayoutRepository
                 .deleteAll()
                 .block();
-        SeatingArrangementDto seatingArrangementDto = seatingArrangementServiceImpl
-                .createSeatingArrangement(SAMPLE_SEATING_ARRANGEMENT_DTO)
+        SeatingLayoutDto seatingLayoutDto = seatingLayoutServiceImpl
+                .createSeatingLayout(SAMPLE_SEATING_ARRANGEMENT_DTO)
                 .block();
-        assert seatingArrangementDto != null;
-        SAMPLE_VENUE_DTO.setSeatingArrangementId(seatingArrangementDto.getId());
+        assert seatingLayoutDto != null;
+        SAMPLE_VENUE_DTO.setSeatingLayoutId(seatingLayoutDto.getId());
     }
 
     @Test
@@ -170,7 +170,7 @@ public class VenueEndpointTests extends ContainerBase {
                         .builder()
                         .id(venueId)
                         .name("Dummy name")
-                        .seatingArrangementId("Dummy seating arrangement")
+                        .seatingLayoutId("Dummy seating arrangement")
                         .build())
                 .headers(headers -> setAuthHeader(headers, "non-admin"))
                 .exchange()
@@ -186,7 +186,7 @@ public class VenueEndpointTests extends ContainerBase {
                 .builder()
                 .id(venueId)
                 .state(newStateName)
-                .seatingArrangementId("InvalidId")
+                .seatingLayoutId("InvalidId")
                 .capacity(1000)
                 .build();
         webTestClient

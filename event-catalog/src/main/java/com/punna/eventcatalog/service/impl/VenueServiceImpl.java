@@ -5,7 +5,7 @@ import com.punna.eventcatalog.mapper.VenueMapper;
 import com.punna.eventcatalog.model.Venue;
 import com.punna.eventcatalog.repository.VenueRepository;
 import com.punna.eventcatalog.service.AuthService;
-import com.punna.eventcatalog.service.SeatingArrangementService;
+import com.punna.eventcatalog.service.SeatingLayoutService;
 import com.punna.eventcatalog.service.VenueService;
 import lombok.RequiredArgsConstructor;
 import org.punna.commons.exception.EntityNotFoundException;
@@ -27,7 +27,7 @@ import reactor.core.publisher.Mono;
 public class VenueServiceImpl implements VenueService {
 
     private final VenueRepository venueRepository;
-    private final SeatingArrangementService seatingArrangementService;
+    private final SeatingLayoutService seatingLayoutService;
 
     private final ReactiveMongoTemplate mongoTemplate;
 
@@ -35,8 +35,8 @@ public class VenueServiceImpl implements VenueService {
 
     @Override
     public Mono<VenueDto> createVenue(VenueDto venue) {
-        return seatingArrangementService
-                .getSeatingArrangementById(venue.getSeatingArrangementId())
+        return seatingLayoutService
+                .getSeatingLayoutById(venue.getSeatingLayoutId())
                 .flatMap(seatArr -> venueRepository
                         .save(VenueMapper.toVenue(venue))
                         .map(VenueMapper::toVenueDto));
@@ -68,10 +68,10 @@ public class VenueServiceImpl implements VenueService {
                     return isAdminOrOwner(existingVenue)
                             .filter(m -> m)
                             .flatMap(permission -> {
-                                if (venue.getSeatingArrangementId() != null) {
-                                    return seatingArrangementService
-                                            .getSeatingArrangementById(venue.getSeatingArrangementId())
-                                            .flatMap(seatingArrangementDto -> venueRepository.save(existingVenue));
+                                if (venue.getSeatingLayoutId() != null) {
+                                    return seatingLayoutService
+                                            .getSeatingLayoutById(venue.getSeatingLayoutId())
+                                            .flatMap(seatingLayoutDto -> venueRepository.save(existingVenue));
                                 }
                                 return venueRepository.save(existingVenue);
                             })

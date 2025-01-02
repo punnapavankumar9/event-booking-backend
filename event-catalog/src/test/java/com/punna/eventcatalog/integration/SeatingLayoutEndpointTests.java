@@ -1,12 +1,11 @@
 package com.punna.eventcatalog.integration;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.punna.eventcatalog.dto.SeatingArrangementDto;
+import com.punna.eventcatalog.dto.SeatingLayoutDto;
 import com.punna.eventcatalog.fixtures.TestFixtures;
 import com.punna.eventcatalog.model.Seat;
 import com.punna.eventcatalog.model.SeatTier;
-import com.punna.eventcatalog.repository.SeatingArrangementRepository;
-import com.punna.eventcatalog.service.impl.SeatingArrangementServiceImpl;
+import com.punna.eventcatalog.repository.SeatingLayoutRepository;
 import lombok.SneakyThrows;
 import org.junit.jupiter.api.*;
 import org.punna.commons.exception.ProblemDetail;
@@ -23,13 +22,13 @@ import static org.junit.jupiter.api.TestInstance.Lifecycle.PER_CLASS;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @TestInstance(PER_CLASS)
-public class SeatingArrangementEndpointTests extends ContainerBase {
+public class SeatingLayoutEndpointTests extends ContainerBase {
 
-    private final String arrangementsV1Url = "/api/v1/seating-arrangement";
+    private final String arrangementsV1Url = "/api/v1/seating-layout";
     @Autowired
     private ObjectMapper objectMapper;
     @Autowired
-    private SeatingArrangementRepository seatingArrangementRepository;
+    private SeatingLayoutRepository seatingLayoutRepository;
     @Autowired
     private WebTestClient webTestClient;
 
@@ -41,16 +40,16 @@ public class SeatingArrangementEndpointTests extends ContainerBase {
 
     @BeforeAll
     void setUp() {
-        seatingArrangementRepository
+        seatingLayoutRepository
                 .deleteAll()
                 .block();
     }
 
     @Test
     @Order(1)
-    void givenInvalidSeatingArrangement_whenCreate_thenReturnBadRequest() {
+    void givenInvalidSeatingLayout_whenCreate_thenReturnBadRequest() {
         // total 9 errors should come.
-        SeatingArrangementDto arrangementDto = SeatingArrangementDto
+        SeatingLayoutDto arrangementDto = SeatingLayoutDto
                 // 1 error
                 .builder()
                 .id("DummyId") // 1 error
@@ -81,10 +80,10 @@ public class SeatingArrangementEndpointTests extends ContainerBase {
 
     @Test
     @Order(2)
-    void givenValidSeatingArrangement_whenCreate_thenReturnCreated() {
-        SeatingArrangementDto arrangementDto = clone(TestFixtures.SAMPLE_SEATING_ARRANGEMENT_DTO,
-                SeatingArrangementDto.class);
-        SeatingArrangementDto responseBody = webTestClient
+    void givenValidSeatingLayout_whenCreate_thenReturnCreated() {
+        SeatingLayoutDto arrangementDto = clone(TestFixtures.SAMPLE_SEATING_ARRANGEMENT_DTO,
+                SeatingLayoutDto.class);
+        SeatingLayoutDto responseBody = webTestClient
                 .post()
                 .uri(arrangementsV1Url)
                 .bodyValue(arrangementDto)
@@ -92,7 +91,7 @@ public class SeatingArrangementEndpointTests extends ContainerBase {
                 .exchange()
                 .expectStatus()
                 .isCreated()
-                .expectBody(SeatingArrangementDto.class)
+                .expectBody(SeatingLayoutDto.class)
                 .returnResult()
                 .getResponseBody();
         assertThat(responseBody).isNotNull();

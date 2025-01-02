@@ -57,5 +57,5 @@ public class VenueDto {
     private String googleMapsUrl;
 
     @NotNull(message = "seating arrangement id must not be null", groups = CreateGroup.class)
-    private String seatingArrangementId;
+    private String seatingLayoutId;
 }

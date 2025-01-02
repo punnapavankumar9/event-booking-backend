@@ -19,7 +19,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class SeatingArrangementDto {
+public class SeatingLayoutDto {
 
     @NotNull(message = "id must not be null", groups = UpdateGroup.class)
     @Null(message = "id must not be provided", groups = CreateGroup.class)

@@ -13,8 +13,8 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Document("seating_arrangements")
-public class SeatingArrangement {
+@Document("seating_layout")
+public class SeatingLayout {
     @Id
     private String id;
 

@@ -3,7 +3,7 @@ package com.punna.eventcatalog.fixtures;
 
 import com.punna.eventcatalog.dto.EventDurationDetailsDto;
 import com.punna.eventcatalog.dto.EventRequestDto;
-import com.punna.eventcatalog.dto.SeatingArrangementDto;
+import com.punna.eventcatalog.dto.SeatingLayoutDto;
 import com.punna.eventcatalog.dto.VenueDto;
 import com.punna.eventcatalog.model.PricingTierMap;
 import com.punna.eventcatalog.model.Seat;
@@ -51,10 +51,10 @@ public abstract class TestFixtures {
             .pincode(500001)
             .state("Telangana")
             .googleMapsUrl("DummyUrl")
-            .seatingArrangementId("DummyId")
+            .seatingLayoutId("DummyId")
             .build();
 
-    public static SeatingArrangementDto SAMPLE_SEATING_ARRANGEMENT_DTO = SeatingArrangementDto
+    public static SeatingLayoutDto SAMPLE_SEATING_ARRANGEMENT_DTO = SeatingLayoutDto
             .builder()
             .seatTiers(new ArrayList<>() {{
                 add(SeatTier

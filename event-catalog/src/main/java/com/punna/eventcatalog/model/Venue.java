@@ -39,5 +39,5 @@ public class Venue {
 
     private String googleMapsUrl;
 
-    private String seatingArrangementId;
+    private String seatingLayoutId;
 }

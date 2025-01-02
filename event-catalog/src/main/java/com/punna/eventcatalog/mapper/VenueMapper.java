@@ -19,7 +19,7 @@ public class VenueMapper {
                 .pincode(venue.getPincode())
                 .state(venue.getState())
                 .googleMapsUrl(venue.getGoogleMapsUrl())
-                .seatingArrangementId(venue.getSeatingArrangementId())
+                .seatingLayoutId(venue.getSeatingLayoutId())
                 .build();
     }
 
@@ -37,7 +37,7 @@ public class VenueMapper {
                 .pincode(venueDto.getPincode())
                 .state(venueDto.getState())
                 .googleMapsUrl(venueDto.getGoogleMapsUrl())
-                .seatingArrangementId(venueDto.getSeatingArrangementId())
+                .seatingLayoutId(venueDto.getSeatingLayoutId())
                 .build();
     }
 
@@ -75,8 +75,8 @@ public class VenueMapper {
         if (venueDto.getGoogleMapsUrl() != null) {
             venue.setGoogleMapsUrl(venueDto.getGoogleMapsUrl());
         }
-        if (venueDto.getSeatingArrangementId() != null) {
-            venue.setSeatingArrangementId(venueDto.getSeatingArrangementId());
+        if (venueDto.getSeatingLayoutId() != null) {
+            venue.setSeatingLayoutId(venueDto.getSeatingLayoutId());
         }
     }
 }
