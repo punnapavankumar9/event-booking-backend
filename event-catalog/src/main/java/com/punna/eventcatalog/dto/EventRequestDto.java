@@ -1,6 +1,7 @@
 package com.punna.eventcatalog.dto;
 
 import com.punna.eventcatalog.model.PricingTierMap;
+import com.punna.eventcatalog.model.SeatState;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Null;
@@ -58,4 +59,7 @@ public class EventRequestDto {
 
     @Valid
     private List<PricingTierMap> pricingTierMaps;
+
+    @Valid
+    private SeatState seatState;
 }

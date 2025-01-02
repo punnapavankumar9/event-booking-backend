@@ -52,4 +52,6 @@ public class Event {
     private LocalDateTime lastModifiedAt;
 
     private List<PricingTierMap> pricingTierMaps;
+
+    private SeatState seatState;
 }

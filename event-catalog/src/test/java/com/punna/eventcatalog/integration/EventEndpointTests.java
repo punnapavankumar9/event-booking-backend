@@ -6,6 +6,8 @@ import com.punna.eventcatalog.dto.EventRequestDto;
 import com.punna.eventcatalog.dto.EventResponseDto;
 import com.punna.eventcatalog.dto.SeatingLayoutDto;
 import com.punna.eventcatalog.model.PricingTierMap;
+import com.punna.eventcatalog.model.SeatLocation;
+import com.punna.eventcatalog.model.SeatState;
 import com.punna.eventcatalog.repository.EventRepository;
 import com.punna.eventcatalog.repository.SeatingLayoutRepository;
 import com.punna.eventcatalog.repository.VenueRepository;
@@ -125,6 +127,15 @@ public class EventEndpointTests extends ContainerBase {
         EventRequestDto eventReqDto = EventRequestDto.builder()
                 // this should give two errors from nested Object(PricingTierMap)
                 .pricingTierMaps(List.of(new PricingTierMap()))
+                .seatState(SeatState
+                        .builder()
+                        .blockedSeats(List.of(SeatLocation
+                                .builder()
+                                .build()))
+                        .bookedSeats(List.of(SeatLocation
+                                .builder()
+                                .build()))
+                        .build())
                 .build();
 
         ProblemDetail responseBody = webTestClient
@@ -146,7 +157,7 @@ public class EventEndpointTests extends ContainerBase {
         assertThat(responseBody.getStatus()).isEqualTo(400);
         assertThat(responseBody
                 .getErrors()
-                .size()).isEqualTo(7);
+                .size()).isEqualTo(11);
 
     }
 

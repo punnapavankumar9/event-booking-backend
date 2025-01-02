@@ -27,6 +27,7 @@ public class EventMapper {
                 .additionalDetails(eventRequestDto.getAdditionalDetails())
                 .eventDurationDetails(toEventDurationDetails(eventRequestDto.getEventDurationDetails()))
                 .pricingTierMaps(eventRequestDto.getPricingTierMaps())
+                .seatState(eventRequestDto.getSeatState())
                 .build();
 
     }
@@ -50,6 +51,7 @@ public class EventMapper {
                 .createdAt(event.getCreatedAt())
                 .lastModifiedAt(event.getLastModifiedAt())
                 .pricingTierMaps(event.getPricingTierMaps())
+                .seatState(event.getSeatState())
                 .build();
 
     }
@@ -100,6 +102,9 @@ public class EventMapper {
         }
         if (eventRequestDto.getPricingTierMaps() != null) {
             event.setPricingTierMaps(eventRequestDto.getPricingTierMaps());
+        }
+        if (eventRequestDto.getSeatState() != null) {
+            event.setSeatState(eventRequestDto.getSeatState());
         }
     }
 
