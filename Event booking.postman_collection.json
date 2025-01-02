@@ -144,7 +144,7 @@
 			"name": "event-catalog",
 			"item": [
 				{
-					"name": "seating arrangements",
+					"name": "seating layout",
 					"item": [
 						{
 							"name": "create",
@@ -155,7 +155,7 @@
 										"exec": [
 											"const body = pm.response.json();\r",
 											"console.log(body);\r",
-											"pm.collectionVariables.set(\"seatArrangementId\", body.id);"
+											"pm.collectionVariables.set(\"seatLayoutId\", body.id);"
 										],
 										"type": "text/javascript",
 										"packages": {}
@@ -167,7 +167,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"capacity\": 4,\r\n    \"seatTiers\": [\r\n        {\r\n            \"name\": \"VIP\",\r\n            \"seats\": [\r\n                {\r\n                    \"isSpace\": false,\r\n                    \"row\": 1,\r\n                    \"column\": 1\r\n                },\r\n                {\r\n                    \"isSpace\": true,\r\n                    \"row\": 1,\r\n                    \"column\": 2\r\n                },\r\n                {\r\n                    \"isSpace\": false,\r\n                    \"row\": 1,\r\n                    \"column\": 3\r\n                },\r\n                {\r\n                    \"isSpace\": false,\r\n                    \"row\": 2,\r\n                    \"column\": 1\r\n                },\r\n                {\r\n                    \"isSpace\": true,\r\n                    \"row\": 2,\r\n                    \"column\": 2\r\n                },\r\n                {\r\n                    \"isSpace\": false,\r\n                    \"row\": 2,\r\n                    \"column\": 3\r\n                }\r\n            ],\r\n            \"order\": 1,\r\n            \"rows\": 2,\r\n            \"columns\": 3\r\n        }\r\n    ]\r\n}",
+									"raw": "{\r\n    \"capacity\": 8,\r\n    \"seatTiers\": [\r\n        {\r\n            \"name\": \"VIP\",\r\n            \"seats\": [\r\n                {\r\n                    \"isSpace\": false,\r\n                    \"row\": 1,\r\n                    \"column\": 1\r\n                },\r\n                {\r\n                    \"isSpace\": false,\r\n                    \"row\": 1,\r\n                    \"column\": 2\r\n                },\r\n                {\r\n                    \"isSpace\": true,\r\n                    \"row\": 1,\r\n                    \"column\": 3\r\n                },\r\n                {\r\n                    \"isSpace\": false,\r\n                    \"row\": 1,\r\n                    \"column\": 4\r\n                },\r\n                {\r\n                    \"isSpace\": false,\r\n                    \"row\": 1,\r\n                    \"column\": 5\r\n                },\r\n                {\r\n                    \"isSpace\": false,\r\n                    \"row\": 2,\r\n                    \"column\": 1\r\n                },\r\n                {\r\n                    \"isSpace\": false,\r\n                    \"row\": 2,\r\n                    \"column\": 2\r\n                },\r\n                {\r\n                    \"isSpace\": true,\r\n                    \"row\": 2,\r\n                    \"column\": 3\r\n                },\r\n                {\r\n                    \"isSpace\": false,\r\n                    \"row\": 2,\r\n                    \"column\": 4\r\n                },\r\n                {\r\n                    \"isSpace\": false,\r\n                    \"row\": 2,\r\n                    \"column\": 5\r\n                }\r\n            ],\r\n            \"order\": 1,\r\n            \"rows\": 2,\r\n            \"columns\": 5\r\n        }\r\n    ]\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -175,9 +175,9 @@
 									}
 								},
 								"url": {
-									"raw": "{{url}}{{seating-arrangemets}}",
+									"raw": "{{url}}{{seating-layout}}",
 									"host": [
-										"{{url}}{{seating-arrangemets}}"
+										"{{url}}{{seating-layout}}"
 									]
 								}
 							},
@@ -189,12 +189,12 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{url}}{{seating-arrangemets}}/{{seatArrangementId}}",
+									"raw": "{{url}}{{seating-layout}}/{{seatLayoutId}}",
 									"host": [
-										"{{url}}{{seating-arrangemets}}"
+										"{{url}}{{seating-layout}}"
 									],
 									"path": [
-										"{{seatArrangementId}}"
+										"{{seatLayoutId}}"
 									]
 								}
 							},
@@ -226,7 +226,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"name\": \"PVR Next Punjagutta\",\r\n    \"description\": \"PVR Mall in pujagutta\",\r\n    \"capacity\": 450,\r\n    \"location\": \"punjagutta\",\r\n    \"city\": \"Hyderabad\",\r\n    \"country\": \"India\",\r\n    \"pincode\": 500012,\r\n    \"state\": \"Telangana\",\r\n    \"seatingArrangementId\": \"{{seatArrangementId}}\"\r\n}\r\n\r\n\r\n// {\r\n//   \"id\": \"string\",\r\n//   \"name\": \"string\",\r\n//   \"description\": \"string\",\r\n//   \"capacity\": 0,\r\n//   \"ownerId\": \"string\",\r\n//   \"location\": \"string\",\r\n//   \"city\": \"string\",\r\n//   \"country\": \"string\",\r\n//   \"pincode\": 999999,\r\n//   \"state\": \"string\",\r\n//   \"googleMapsUrl\": \"string\",\r\n//   \"seatingArrangementId\": \"string\"\r\n// }\r\n// ",
+									"raw": "{\r\n    \"name\": \"PVR Next Punjagutta\",\r\n    \"description\": \"PVR Mall in pujagutta\",\r\n    \"capacity\": 450,\r\n    \"location\": \"punjagutta\",\r\n    \"city\": \"Hyderabad\",\r\n    \"country\": \"India\",\r\n    \"pincode\": 500012,\r\n    \"state\": \"Telangana\",\r\n    \"seatingLayoutId\": \"{{seatLayoutId}}\"\r\n}\r\n\r\n\r\n// {\r\n//   \"id\": \"string\",\r\n//   \"name\": \"string\",\r\n//   \"description\": \"string\",\r\n//   \"capacity\": 0,\r\n//   \"ownerId\": \"string\",\r\n//   \"location\": \"string\",\r\n//   \"city\": \"string\",\r\n//   \"country\": \"string\",\r\n//   \"pincode\": 999999,\r\n//   \"state\": \"string\",\r\n//   \"googleMapsUrl\": \"string\",\r\n//   \"seatingLayoutId\": \"string\"\r\n// }\r\n// ",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -297,12 +297,12 @@
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "{{url}}{{venues}}/67743b67a5a9d87a8f9f25e0",
+									"raw": "{{url}}{{venues}}/{{seatLayoutId}}",
 									"host": [
 										"{{url}}{{venues}}"
 									],
 									"path": [
-										"67743b67a5a9d87a8f9f25e0"
+										"{{seatLayoutId}}"
 									]
 								}
 							},
@@ -315,12 +315,26 @@
 					"item": [
 						{
 							"name": "create event",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const body = pm.response.json();\r",
+											"console.log(body);\r",
+											"pm.collectionVariables.set(\"eventId\", body.id);"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
 							"request": {
 								"method": "POST",
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"name\": \"Pushpa 2\",\r\n  \"description\": \"Screening Pushpa 2 Movie\",\r\n  \"maximumCapacity\": 450,\r\n  \"price\": 450,\r\n  \"venueId\": \"{{venueId}}\",\r\n  \"eventDurationDetails\": {\r\n    \"startTime\": \"2025-11-01T13:18:36.181Z\",\r\n    \"endTime\": \"2025-11-30T13:18:36.181Z\",\r\n    \"eventDurationType\": \"MULTI_DAY\"\r\n  },\r\n  \"openForBooking\": false\r\n}\r\n\r\n\r\n// {\r\n//   \"id\": \"string\",\r\n//   \"name\": \"string\",\r\n//   \"description\": \"string\",\r\n//   \"organizerId\": \"string\",\r\n//   \"maximumCapacity\": 0,\r\n//   \"price\": 0,\r\n//   \"venueId\": \"string\",\r\n//   \"eventDurationDetails\": {\r\n//     \"startTime\": \"2024-12-31T13:18:36.181Z\",\r\n//     \"endTime\": \"2024-12-31T13:18:36.181Z\",\r\n//     \"eventDurationType\": \"SHORT_TERM\"\r\n//   },\r\n//   \"additionalDetails\": {\r\n//     \"additionalProp1\": {},\r\n//     \"additionalProp2\": {},\r\n//     \"additionalProp3\": {}\r\n//   },\r\n//   \"openForBooking\": true\r\n// }",
+									"raw": "{\r\n    \"name\": \"Pushpa 2\",\r\n    \"description\": \"Screening Pushpa 2 Movie\",\r\n    \"maximumCapacity\": 450,\r\n    \"price\": 450,\r\n    \"venueId\": \"{{venueId}}\",\r\n    \"eventDurationDetails\": {\r\n        \"startTime\": \"2025-11-01T13:18:36.181Z\",\r\n        \"endTime\": \"2025-11-30T13:18:36.181Z\",\r\n        \"eventDurationType\": \"MULTI_DAY\"\r\n    },\r\n    \"openForBooking\": false,\r\n    \"pricingTierMaps\": [\r\n        {\r\n            \"name\": \"VIP\",\r\n            \"price\": 123\r\n        }\r\n    ]\r\n}\r\n    // {\r\n    //   \"id\": \"string\",\r\n    //   \"name\": \"string\",\r\n    //   \"description\": \"string\",\r\n    //   \"organizerId\": \"string\",\r\n    //   \"maximumCapacity\": 0,\r\n    //   \"price\": 0,\r\n    //   \"venueId\": \"string\",\r\n    //   \"eventDurationDetails\": {\r\n    //     \"startTime\": \"2025-01-02T18:26:32.001Z\",\r\n    //     \"endTime\": \"2025-01-02T18:26:32.001Z\",\r\n    //     \"eventDurationType\": \"SHORT_TERM\"\r\n    //   },\r\n    //   \"additionalDetails\": {\r\n    //     \"additionalProp1\": {},\r\n    //     \"additionalProp2\": {},\r\n    //     \"additionalProp3\": {}\r\n    //   },\r\n    //   \"pricingTierMaps\": [\r\n    //     {\r\n    //       \"name\": \"string\",\r\n    //       \"price\": 0\r\n    //     }\r\n    //   ],\r\n    //   \"seatState\": {\r\n    //     \"blockedSeats\": [\r\n    //       {\r\n    //         \"row\": 0,\r\n    //         \"column\": 0\r\n    //       }\r\n    //     ],\r\n    //     \"bookedSeats\": [\r\n    //       {\r\n    //         \"row\": 0,\r\n    //         \"column\": 0\r\n    //       }\r\n    //     ]\r\n    //   },\r\n    //   \"openForBooking\": true\r\n    // }",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -338,6 +352,18 @@
 						},
 						{
 							"name": "get events",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
 							"request": {
 								"method": "GET",
 								"header": [],
@@ -356,18 +382,108 @@
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "{{url}}{{events}}/6773f8764024f8017607255e",
+									"raw": "{{url}}{{events}}/6776db927372aa087afa2d66",
 									"host": [
 										"{{url}}{{events}}"
 									],
 									"path": [
-										"6773f8764024f8017607255e"
+										"6776db927372aa087afa2d66"
 									]
 								}
 							},
 							"response": []
 						}
 					]
+				},
+				{
+					"name": "seatState controller",
+					"item": [
+						{
+							"name": "block seats",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "[\r\n    {\r\n        \"row\": 1,\r\n        \"column\": 1\r\n    },\r\n    {\r\n        \"row\": 1,\r\n        \"column\": 2\r\n    },\r\n    {\r\n        \"row\": 1,\r\n        \"column\": 4\r\n    },\r\n    {\r\n        \"row\": 1,\r\n        \"column\": 5\r\n    }\r\n]",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}{{events}}/{{eventId}}/seats/block",
+									"host": [
+										"{{url}}{{events}}"
+									],
+									"path": [
+										"{{eventId}}",
+										"seats",
+										"block"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "book seats",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "[\r\n    {\r\n        \"row\": 1,\r\n        \"column\": 1\r\n    }\r\n]",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}{{events}}/{{eventId}}/seats/book",
+									"host": [
+										"{{url}}{{events}}"
+									],
+									"path": [
+										"{{eventId}}",
+										"seats",
+										"book"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "unblock seats",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "[\r\n    {\r\n        \"row\": 1,\r\n        \"column\": 1\r\n    }\r\n]",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}{{events}}/{{eventId}}/seats/unblock",
+									"host": [
+										"{{url}}{{events}}"
+									],
+									"path": [
+										"{{eventId}}",
+										"seats",
+										"unblock"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "For booking/unblocking/blocking seats"
 				}
 			]
 		}
@@ -426,7 +542,7 @@
 			"type": "string"
 		},
 		{
-			"key": "seating-arrangemets",
+			"key": "seating-layout",
 			"value": "",
 			"type": "string"
 		},
@@ -441,6 +557,14 @@
 		},
 		{
 			"key": "seatArrangementId",
+			"value": ""
+		},
+		{
+			"key": "seatLayoutId",
+			"value": ""
+		},
+		{
+			"key": "eventId",
 			"value": ""
 		}
 	]
