@@ -1,7 +1,10 @@
 package com.punna.eventcatalog.service;
 
 import com.punna.eventcatalog.dto.SeatingLayoutDto;
+import com.punna.eventcatalog.model.SeatLocation;
 import reactor.core.publisher.Mono;
+
+import java.util.List;
 
 public interface SeatingLayoutService {
 
@@ -15,4 +18,5 @@ public interface SeatingLayoutService {
 
     void isSeatingLayoutValid(SeatingLayoutDto seatingLayoutDto);
 
+    Mono<Boolean> areSelectedSeatsValid(String seatingLayoutId, List<SeatLocation> seatLocations);
 }

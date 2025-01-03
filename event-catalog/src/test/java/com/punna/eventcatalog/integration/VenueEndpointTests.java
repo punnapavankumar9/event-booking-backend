@@ -3,9 +3,6 @@ package com.punna.eventcatalog.integration;
 import com.punna.eventcatalog.dto.SeatingLayoutDto;
 import com.punna.eventcatalog.dto.VenueDto;
 import com.punna.eventcatalog.fixtures.TestFixtures;
-import com.punna.eventcatalog.repository.SeatingLayoutRepository;
-import com.punna.eventcatalog.repository.VenueRepository;
-import com.punna.eventcatalog.service.impl.SeatingLayoutServiceImpl;
 import org.junit.jupiter.api.*;
 import org.punna.commons.exception.ProblemDetail;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +13,7 @@ import org.springframework.test.web.reactive.server.WebTestClient;
 import java.util.List;
 
 import static com.punna.eventcatalog.TestUtils.setAuthHeader;
-import static com.punna.eventcatalog.fixtures.TestFixtures.SAMPLE_SEATING_ARRANGEMENT_DTO;
+import static com.punna.eventcatalog.fixtures.TestFixtures.SAMPLE_SEATING_LAYOUT_DTO;
 import static com.punna.eventcatalog.fixtures.TestFixtures.SAMPLE_VENUE_DTO;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.TestInstance.Lifecycle.PER_CLASS;
@@ -24,19 +21,13 @@ import static org.junit.jupiter.api.TestInstance.Lifecycle.PER_CLASS;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @TestInstance(PER_CLASS)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-public class VenueEndpointTests extends ContainerBase {
+public class VenueEndpointTests extends EndPointTests {
 
     private final String venuesV1Url = "/api/v1/venues";
     public String venueId = null;
     @Autowired
     private WebTestClient webTestClient;
-    @Autowired
-    private VenueRepository venueRepository;
 
-    @Autowired
-    private SeatingLayoutRepository seatingLayoutRepository;
-    @Autowired
-    private SeatingLayoutServiceImpl seatingLayoutServiceImpl;
 
     @BeforeAll
     void setUp() {
@@ -46,8 +37,8 @@ public class VenueEndpointTests extends ContainerBase {
         seatingLayoutRepository
                 .deleteAll()
                 .block();
-        SeatingLayoutDto seatingLayoutDto = seatingLayoutServiceImpl
-                .createSeatingLayout(SAMPLE_SEATING_ARRANGEMENT_DTO)
+        SeatingLayoutDto seatingLayoutDto = seatingLayoutService
+                .createSeatingLayout(SAMPLE_SEATING_LAYOUT_DTO)
                 .block();
         assert seatingLayoutDto != null;
         SAMPLE_VENUE_DTO.setSeatingLayoutId(seatingLayoutDto.getId());

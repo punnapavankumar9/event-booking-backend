@@ -4,7 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="270ad57c-65bc-4f7e-86cf-537bc93322f9" name="Changes" comment="" />
+    <list default="true" id="270ad57c-65bc-4f7e-86cf-537bc93322f9" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/event-catalog/src/test/java/com/punna/eventcatalog/integration/EndPointTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/event-catalog/src/test/java/com/punna/eventcatalog/integration/EventSeatStateEndpointTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/repository/SeatingLayoutRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/repository/SeatingLayoutRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/repository/VenueRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/repository/VenueRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/service/EventSeatStateService.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/service/EventSeatStateService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/service/SeatingLayoutService.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/service/SeatingLayoutService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/service/impl/EventSeatStateServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/service/impl/EventSeatStateServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/service/impl/SeatingLayoutServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/service/impl/SeatingLayoutServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/service/impl/VenueServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/service/impl/VenueServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-catalog/src/test/java/com/punna/eventcatalog/fixtures/TestFixtures.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-catalog/src/test/java/com/punna/eventcatalog/fixtures/TestFixtures.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-catalog/src/test/java/com/punna/eventcatalog/integration/EventEndpointTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-catalog/src/test/java/com/punna/eventcatalog/integration/EventEndpointTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-catalog/src/test/java/com/punna/eventcatalog/integration/SeatingLayoutEndpointTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-catalog/src/test/java/com/punna/eventcatalog/integration/SeatingLayoutEndpointTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-catalog/src/test/java/com/punna/eventcatalog/integration/VenueEndpointTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-catalog/src/test/java/com/punna/eventcatalog/integration/VenueEndpointTests.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -65,6 +80,8 @@
     "JUnit.EventCatalogApplicationTest.givenNonExistingEvent_whenUpdatingEvent_thenReturnBadRequestWithErrors.executor": "Run",
     "JUnit.EventEndpointTests.executor": "Run",
     "JUnit.EventEndpointTests.giveNonAdminUser_whenDeleteEvent_thenReturnUnAuthorized.executor": "Run",
+    "JUnit.EventSeatStateEndpointTests.executor": "Run",
+    "JUnit.EventSeatStateEndpointTests.givenInvalidSeatLocation_whenBook_thenReturnBadRequest.executor": "Debug",
     "JUnit.IdentityServiceApplicationTests.executor": "Debug",
     "JUnit.IdentityServiceApplicationTests.givenInvalidPassword_whenLoggingUser_thenReturnNotFound.executor": "Run",
     "JUnit.IdentityServiceApplicationTests.givenInvalidUser_whenCreatingUser_thenReturnBadRequest.executor": "Run",
@@ -89,6 +106,8 @@
     "Spring Boot.EventCatalogApplication.executor": "Debug",
     "Spring Boot.GatewayApplication.executor": "Run",
     "Spring Boot.IdentityServiceApplication.executor": "Run",
+    "database.data.extractors.current.export.id": "JSON-Groovy.json.groovy",
+    "database.data.extractors.current.id": "JSON-Groovy.json.groovy",
     "deletionFromPopupRequiresConfirmation": "false",
     "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
@@ -103,12 +122,13 @@
     "project.structure.side.proportion": "0.3859375",
     "run.code.analysis.last.selected.profile": "pProject Default",
     "run.configurations.included.in.services": "true",
-    "settings.editor.selected.configurable": "preferences.keymap",
+    "settings.editor.selected.configurable": "database.query.execution",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
     "DatabaseDriversLRU": [
-      "postgresql"
+      "postgresql",
+      "mongo"
     ]
   }
 }]]></component>
@@ -117,11 +137,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.punna.eventcatalog.integration" />
       <recent name="com.punna.eventcatalog.service" />
       <recent name="com.punna.eventcatalog.model" />
       <recent name="com.punna.eventcatalog.mapper" />
       <recent name="com.punna.identity.utils" />
-      <recent name="com.punna.eventcatalog.dto" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\software\codes\java\spring\event-booking\commons" />
@@ -142,7 +162,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.VenueEndpointTests">
+  <component name="RunManager" selected="JUnit.EventSeatStateEndpointTests">
     <configuration name="All in event-catalog" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="event-catalog" />
       <option name="PACKAGE_NAME" value="" />
@@ -166,7 +186,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SeatingLayoutEndpointTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="EventSeatStateEndpointTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="event-catalog" />
       <extension name="coverage">
         <pattern>
@@ -175,8 +195,24 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.punna.eventcatalog.integration" />
-      <option name="MAIN_CLASS_NAME" value="com.punna.eventcatalog.integration.SeatingLayoutEndpointTests" />
+      <option name="MAIN_CLASS_NAME" value="com.punna.eventcatalog.integration.EventSeatStateEndpointTests" />
       <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="EventSeatStateEndpointTests.givenInvalidSeatLocation_whenBook_thenReturnBadRequest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="event-catalog" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.punna.eventcatalog.integration.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.punna.eventcatalog.integration" />
+      <option name="MAIN_CLASS_NAME" value="com.punna.eventcatalog.integration.EventSeatStateEndpointTests" />
+      <option name="METHOD_NAME" value="givenInvalidSeatLocation_whenBook_thenReturnBadRequest" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -224,26 +260,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="IdentityServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
-      <module name="identity" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.punna.identity.IdentityServiceApplication" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.punna.identity.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.EventSeatStateEndpointTests" />
+        <item itemvalue="JUnit.EventSeatStateEndpointTests.givenInvalidSeatLocation_whenBook_thenReturnBadRequest" />
+        <item itemvalue="JUnit.All in event-catalog" />
         <item itemvalue="JUnit.VenueEndpointTests" />
         <item itemvalue="JUnit.EventEndpointTests" />
-        <item itemvalue="JUnit.SeatingLayoutEndpointTests" />
-        <item itemvalue="JUnit.All in event-catalog" />
-        <item itemvalue="Spring Boot.IdentityServiceApplication" />
       </list>
     </recent_temporary>
   </component>
@@ -284,7 +307,7 @@
       <workItem from="1735682491018" duration="14013000" />
       <workItem from="1735728069729" duration="17570000" />
       <workItem from="1735838190453" duration="885000" />
-      <workItem from="1735914884043" duration="7057000" />
+      <workItem from="1735914884043" duration="20647000" />
     </task>
     <servers />
   </component>

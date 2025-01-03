@@ -4,6 +4,7 @@ import com.punna.eventcatalog.dto.SeatingLayoutDto;
 import com.punna.eventcatalog.mapper.SeatingLayoutMapper;
 import com.punna.eventcatalog.model.Event;
 import com.punna.eventcatalog.model.Seat;
+import com.punna.eventcatalog.model.SeatLocation;
 import com.punna.eventcatalog.model.SeatingLayout;
 import com.punna.eventcatalog.repository.SeatingLayoutRepository;
 import com.punna.eventcatalog.service.SeatingLayoutService;
@@ -15,6 +16,8 @@ import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
+
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -88,6 +91,15 @@ public class SeatingLayoutServiceImpl implements SeatingLayoutService {
         if (currentCapacity != capacity) {
             throw new EventApplicationException("Seating capacity mismatch in seat arrangements", 400);
         }
+    }
+
+    @Override
+    public Mono<Boolean> areSelectedSeatsValid(String seatingLayoutId, List<SeatLocation> seatLocations) {
+        return seatingLayoutRepository
+                .validatedSelectedSeatsAreValid(seatingLayoutId, seatLocations)
+                .switchIfEmpty(Mono.error(new EventApplicationException(
+                        "Something went wrong while checking valid seats")))
+                .map(m -> m.get("valid"));
     }
 
     public boolean isSeatValid(int rows, int columns, Seat seat) {

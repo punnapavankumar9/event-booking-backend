@@ -128,8 +128,18 @@ public class VenueServiceImpl implements VenueService {
 
     @Override
     public Mono<String> getSeatingLayoutId(String id) {
-        return venueRepository
-                .getSeatingLayoutId(id)
+
+        Query query = Query.query(Criteria
+                .where("_id")
+                .is(id));
+        query
+                .fields()
+                .include("seatingLayoutId")
+                .exclude("_id");
+
+        return mongoTemplate
+                .findOne(query, Venue.class)
+                .map(Venue::getSeatingLayoutId)
                 .switchIfEmpty(Mono.error(new EntityNotFoundException(Venue.class.getSimpleName(), id)));
     }
 }

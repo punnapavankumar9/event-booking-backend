@@ -1,10 +1,8 @@
 package com.punna.eventcatalog.integration;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.punna.eventcatalog.dto.SeatingLayoutDto;
 import com.punna.eventcatalog.fixtures.TestFixtures;
 import com.punna.eventcatalog.model.Seat;
-import com.punna.eventcatalog.repository.SeatingLayoutRepository;
 import lombok.SneakyThrows;
 import org.junit.jupiter.api.*;
 import org.punna.commons.exception.ProblemDetail;
@@ -21,13 +19,9 @@ import static org.junit.jupiter.api.TestInstance.Lifecycle.PER_CLASS;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @TestInstance(PER_CLASS)
-public class SeatingLayoutEndpointTests extends ContainerBase {
+public class SeatingLayoutEndpointTests extends EndPointTests {
 
     private final String arrangementsV1Url = "/api/v1/seating-layout";
-    @Autowired
-    private ObjectMapper objectMapper;
-    @Autowired
-    private SeatingLayoutRepository seatingLayoutRepository;
     @Autowired
     private WebTestClient webTestClient;
 
@@ -76,7 +70,7 @@ public class SeatingLayoutEndpointTests extends ContainerBase {
     @Test
     @Order(2)
     void givenValidSeatingLayout_whenCreate_thenReturnCreated() {
-        SeatingLayoutDto arrangementDto = clone(TestFixtures.SAMPLE_SEATING_ARRANGEMENT_DTO, SeatingLayoutDto.class);
+        SeatingLayoutDto arrangementDto = clone(TestFixtures.SAMPLE_SEATING_LAYOUT_DTO, SeatingLayoutDto.class);
         SeatingLayoutDto responseBody = webTestClient
                 .post()
                 .uri(arrangementsV1Url)

@@ -53,7 +53,7 @@ public abstract class TestFixtures {
             .seatingLayoutId("DummyId")
             .build();
 
-    public static SeatingLayoutDto SAMPLE_SEATING_ARRANGEMENT_DTO = SeatingLayoutDto
+    public static SeatingLayoutDto SAMPLE_SEATING_LAYOUT_DTO = SeatingLayoutDto
             .builder()
             .seats(new ArrayList<>() {{
                 add(Seat

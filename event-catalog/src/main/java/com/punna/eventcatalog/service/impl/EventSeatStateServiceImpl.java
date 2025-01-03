@@ -2,8 +2,9 @@ package com.punna.eventcatalog.service.impl;
 
 import com.punna.eventcatalog.model.Event;
 import com.punna.eventcatalog.model.SeatLocation;
-import com.punna.eventcatalog.model.SeatState;
 import com.punna.eventcatalog.service.EventSeatStateService;
+import com.punna.eventcatalog.service.EventService;
+import com.punna.eventcatalog.service.SeatingLayoutService;
 import lombok.RequiredArgsConstructor;
 import org.punna.commons.exception.EventApplicationException;
 import org.springframework.data.mongodb.core.ReactiveMongoTemplate;
@@ -24,6 +25,8 @@ public class EventSeatStateServiceImpl implements EventSeatStateService {
 
     private final String bookedSeatsKey = "seatState.bookedSeats";
     private final String blockedSeatsKey = "seatState.blockedSeats";
+    private final EventService eventService;
+    private final SeatingLayoutService seatingLayoutService;
 
     @Override
     public Mono<Void> bookSeats(String eventId, List<SeatLocation> seatLocations) {
@@ -62,15 +65,18 @@ public class EventSeatStateServiceImpl implements EventSeatStateService {
         Update update = new Update()
                 .addToSet(bookedSeatsKey)
                 .each(seatLocations);
-
         return Mono
                 .zip(mongoTemplate.count(checkAlreadyBookedQuery, Event.class),
-                        mongoTemplate.count(checkBlockedQuery, Event.class))
+                        mongoTemplate.count(checkBlockedQuery, Event.class),
+                        areSelectedSeatsValid(eventId, seatLocations))
                 .flatMap(tuple -> {
                     if (tuple.getT1() > 0) {
                         return Mono.error(new EventApplicationException("Few of the tickets are already booked", 409));
                     } else if (tuple.getT2() > 0) {
                         return Mono.error(new EventApplicationException("Few of the tickets are already blocked", 409));
+                    } else if (!tuple.getT3()) {
+                        return Mono.error(new EventApplicationException("selected seats are containing invalid location",
+                                400));
                     }
                     return mongoTemplate
                             .updateFirst(query, update, Event.class)
@@ -102,11 +108,15 @@ public class EventSeatStateServiceImpl implements EventSeatStateService {
                                 .is(seat.getColumn())))
                 .toArray(Criteria[]::new)));
 
-        return mongoTemplate
-                .count(checkAlreadyBookedQuery, Event.class)
-                .flatMap(count -> {
-                    if (count > 0) {
+        return Mono
+                .zip(mongoTemplate.count(checkAlreadyBookedQuery, Event.class),
+                        areSelectedSeatsValid(eventId, seatLocations))
+                .flatMap(tuple2 -> {
+                    if (tuple2.getT1() > 0) {
                         return Mono.error(new EventApplicationException("Few of the tickets are already booked", 409));
+                    } else if (!tuple2.getT2()) {
+                        return Mono.error(new EventApplicationException("selected seats are containing invalid location",
+                                400));
                     }
                     return mongoTemplate
                             .updateFirst(query, update, Event.class)
@@ -123,11 +133,16 @@ public class EventSeatStateServiceImpl implements EventSeatStateService {
                 .is(eventId));
         Update update = new Update().pullAll(blockedSeatsKey, seatLocations.toArray());
 
-        return mongoTemplate
-                .updateFirst(query, update, Event.class)
-                .filter(r -> r.getModifiedCount() != 0)
-                .switchIfEmpty(Mono.error(new EventApplicationException("Unable to unblock seats")))
-                .flatMap(r -> Mono.empty());
+        return areSelectedSeatsValid(eventId, seatLocations).flatMap(valid -> {
+            if (!valid) {
+                return Mono.error(new EventApplicationException("selected seats are containing invalid location", 400));
+            }
+            return mongoTemplate
+                    .updateFirst(query, update, Event.class)
+                    .filter(r -> r.getModifiedCount() != 0)
+                    .switchIfEmpty(Mono.error(new EventApplicationException("Unable to unblock seats")))
+                    .flatMap(r -> Mono.empty());
+        });
     }
 
     @Override
@@ -138,10 +153,23 @@ public class EventSeatStateServiceImpl implements EventSeatStateService {
 
         Update update = new Update().pullAll(bookedSeatsKey, seatLocations.toArray());
 
-        return mongoTemplate
-                .updateFirst(query, update, Event.class)
-                .filter(r -> r.getModifiedCount() != 0)
-                .switchIfEmpty(Mono.error(new EventApplicationException("Unable to unbook seats")))
-                .flatMap(r -> Mono.empty());
+        return areSelectedSeatsValid(eventId, seatLocations).flatMap(valid -> {
+            if (!valid) {
+                return Mono.error(new EventApplicationException("selected seats are containing invalid location", 400));
+            }
+            return mongoTemplate
+                    .updateFirst(query, update, Event.class)
+                    .filter(r -> r.getModifiedCount() != 0)
+                    .switchIfEmpty(Mono.error(new EventApplicationException("Unable to unbook seats")))
+                    .flatMap(r -> Mono.empty());
+        });
+    }
+
+    @Override
+    public Mono<Boolean> areSelectedSeatsValid(String eventId, List<SeatLocation> seatLocations) {
+        return eventService
+                .findById(eventId)
+                .flatMap(event -> seatingLayoutService.areSelectedSeatsValid(event.getSeatingLayoutId(),
+                        seatLocations));
     }
 }

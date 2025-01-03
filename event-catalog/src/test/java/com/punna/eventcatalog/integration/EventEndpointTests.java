@@ -1,6 +1,5 @@
 package com.punna.eventcatalog.integration;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.punna.eventcatalog.dto.EventDurationDetailsDto;
 import com.punna.eventcatalog.dto.EventRequestDto;
 import com.punna.eventcatalog.dto.EventResponseDto;
@@ -8,12 +7,6 @@ import com.punna.eventcatalog.dto.SeatingLayoutDto;
 import com.punna.eventcatalog.model.PricingTierMap;
 import com.punna.eventcatalog.model.SeatLocation;
 import com.punna.eventcatalog.model.SeatState;
-import com.punna.eventcatalog.repository.EventRepository;
-import com.punna.eventcatalog.repository.SeatingLayoutRepository;
-import com.punna.eventcatalog.repository.VenueRepository;
-import com.punna.eventcatalog.service.VenueService;
-import com.punna.eventcatalog.service.impl.SeatingLayoutServiceImpl;
-import lombok.SneakyThrows;
 import org.junit.jupiter.api.*;
 import org.punna.commons.exception.EntityNotFoundException;
 import org.punna.commons.exception.ProblemDetail;
@@ -37,35 +30,18 @@ import static org.junit.jupiter.api.TestInstance.Lifecycle.PER_CLASS;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @TestInstance(PER_CLASS)
-public class EventEndpointTests extends ContainerBase {
+public class EventEndpointTests extends EndPointTests {
 
     private final String eventsV1Url = "/api/v1/events";
     private final String organizerIdPunna = "punna";
-    @Autowired
-    WebTestClient webTestClient;
     @Autowired
     MessageSource messageSource;
     private String eventId;
     private String venueId;
     private String invalidBodyErrorMessage;
-    @Autowired
-    private EventRepository eventRepository;
-    @Autowired
-    private ObjectMapper objectMapper;
-    @Autowired
-    private VenueService venueService;
-    @Autowired
-    private VenueRepository venueRepository;
-    @Autowired
-    private SeatingLayoutRepository seatingLayoutRepository;
-    @Autowired
-    private SeatingLayoutServiceImpl seatingLayoutServiceImpl;
 
-    @SneakyThrows
-    public <T> T clone(T obj, Class<T> clazz) {
-        String s = objectMapper.writeValueAsString(obj);
-        return objectMapper.readValue(s, clazz);
-    }
+    @Autowired
+    public WebTestClient webTestClient;
 
     @BeforeAll
     void setUp() {
@@ -79,8 +55,8 @@ public class EventEndpointTests extends ContainerBase {
                 .deleteAll()
                 .block();
 
-        SeatingLayoutDto seatingLayoutDto = seatingLayoutServiceImpl
-                .createSeatingLayout(SAMPLE_SEATING_ARRANGEMENT_DTO)
+        SeatingLayoutDto seatingLayoutDto = seatingLayoutService
+                .createSeatingLayout(SAMPLE_SEATING_LAYOUT_DTO)
                 .block();
         SAMPLE_VENUE_DTO.setSeatingLayoutId(seatingLayoutDto.getId());
         venueId = venueService
