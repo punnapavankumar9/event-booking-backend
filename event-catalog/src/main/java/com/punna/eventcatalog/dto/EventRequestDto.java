@@ -2,6 +2,7 @@ package com.punna.eventcatalog.dto;
 
 import com.punna.eventcatalog.model.PricingTierMap;
 import com.punna.eventcatalog.model.SeatState;
+import io.swagger.v3.oas.annotations.Hidden;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Null;
@@ -62,4 +63,7 @@ public class EventRequestDto {
 
     @Valid
     private SeatState seatState;
+
+    @Hidden
+    private String seatingLayoutId;
 }

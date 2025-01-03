@@ -54,4 +54,6 @@ public class Event {
     private List<PricingTierMap> pricingTierMaps;
 
     private SeatState seatState;
+
+    private String seatingLayoutId;
 }

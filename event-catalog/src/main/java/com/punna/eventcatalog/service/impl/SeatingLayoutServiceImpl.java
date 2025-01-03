@@ -4,7 +4,6 @@ import com.punna.eventcatalog.dto.SeatingLayoutDto;
 import com.punna.eventcatalog.mapper.SeatingLayoutMapper;
 import com.punna.eventcatalog.model.Event;
 import com.punna.eventcatalog.model.Seat;
-import com.punna.eventcatalog.model.SeatTier;
 import com.punna.eventcatalog.model.SeatingLayout;
 import com.punna.eventcatalog.repository.SeatingLayoutRepository;
 import com.punna.eventcatalog.service.SeatingLayoutService;
@@ -53,7 +52,7 @@ public class SeatingLayoutServiceImpl implements SeatingLayoutService {
                 .switchIfEmpty(Mono.error(new EntityNotFoundException(SeatingLayout.class.getSimpleName(), id)))
                 .flatMap(seatingLayout1 -> {
                     SeatingLayoutMapper.merge(seatingLayout1, seatingLayout);
-                    if (seatingLayout.getSeatTiers() != null) {
+                    if (seatingLayout.getSeats() != null) {
                         isSeatingLayoutValid(SeatingLayoutMapper.toSeatingLayoutDto(seatingLayout1));
                     }
                     return seatingLayoutRepository.save(seatingLayout1);
@@ -77,28 +76,22 @@ public class SeatingLayoutServiceImpl implements SeatingLayoutService {
     public void isSeatingLayoutValid(SeatingLayoutDto seatingLayoutDto) {
         int capacity = seatingLayoutDto.getCapacity();
         int currentCapacity = 0;
-        for (SeatTier tier : seatingLayoutDto.getSeatTiers()) {
-            int cnt = isTierValid(tier);
-            if (cnt == -1) {
+        int rows = seatingLayoutDto.getRows();
+        int columns = seatingLayoutDto.getColumns();
+        for (Seat seat : seatingLayoutDto.getSeats()) {
+            boolean cnt = isSeatValid(rows, columns, seat);
+            if (!cnt) {
                 throw new EventApplicationException("Seating arrangement is not valid", 400);
             }
-            currentCapacity += cnt;
+            currentCapacity++;
         }
         if (currentCapacity != capacity) {
             throw new EventApplicationException("Seating capacity mismatch in seat arrangements", 400);
         }
     }
 
-    public int isTierValid(SeatTier tier) {
-        int columns = tier.getColumns();
-        int rows = tier.getRows();
-        int cnt = 0;
-        for (Seat seat : tier.getSeats()) {
-            if (seat.getRow() > rows || seat.getColumn() > columns) return -1;
-            if (!seat.getIsSpace()) {
-                cnt++;
-            }
-        }
-        return cnt;
+    public boolean isSeatValid(int rows, int columns, Seat seat) {
+        if (seat.getRow() > rows || seat.getColumn() > columns) return false;
+        return !seat.getIsSpace();
     }
 }

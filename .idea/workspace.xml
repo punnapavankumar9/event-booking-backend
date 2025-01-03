@@ -5,10 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="270ad57c-65bc-4f7e-86cf-537bc93322f9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/controller/EventSeatStateController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/service/EventSeatStateService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/service/impl/EventSeatStateServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/dto/EventRequestDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/dto/EventRequestDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/dto/SeatingLayoutDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/dto/SeatingLayoutDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/mapper/EventMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/mapper/EventMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/mapper/SeatingLayoutMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/mapper/SeatingLayoutMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/model/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/model/Event.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/model/PricingTierMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/model/PricingTierMap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/model/Seat.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/model/Seat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/model/SeatingLayout.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/model/SeatingLayout.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/repository/EventRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/repository/EventRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/repository/VenueRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/repository/VenueRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/service/VenueService.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/service/VenueService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/service/impl/EventServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/service/impl/EventServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/service/impl/SeatingLayoutServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/service/impl/SeatingLayoutServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/service/impl/VenueServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/service/impl/VenueServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-catalog/src/test/java/com/punna/eventcatalog/fixtures/TestFixtures.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-catalog/src/test/java/com/punna/eventcatalog/fixtures/TestFixtures.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-catalog/src/test/java/com/punna/eventcatalog/integration/EventEndpointTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-catalog/src/test/java/com/punna/eventcatalog/integration/EventEndpointTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-catalog/src/test/java/com/punna/eventcatalog/integration/SeatingLayoutEndpointTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-catalog/src/test/java/com/punna/eventcatalog/integration/SeatingLayoutEndpointTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,12 +69,15 @@
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectViewState">
+    <option name="autoscrollToSource" value="true" />
     <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="openDirectoriesWithSingleClick" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "ASKED_ADD_EXTERNAL_FILES": "true",
+    "JUnit.All in event-catalog.executor": "Run",
     "JUnit.EventCatalogApplicationTest.executor": "Run",
     "JUnit.EventCatalogApplicationTest.givenInvalidEventWithId_whenUpdateEvent_thenUpdateEventAndReturn.executor": "Run",
     "JUnit.EventCatalogApplicationTest.givenInvalidEvent_whenCreateEvent_thenReturnBadResultWithErrors.executor": "Debug",
@@ -72,6 +89,7 @@
     "JUnit.IdentityServiceApplicationTests.givenInvalidUser_whenCreatingUser_thenReturnBadRequest.executor": "Run",
     "JUnit.IdentityServiceApplicationTests.givenValidUser_whenCreatingUser_thenCreateAndReturnUser.executor": "Debug",
     "JUnit.SeatingArrangementEndpointTests.executor": "Run",
+    "JUnit.SeatingLayoutEndpointTests.executor": "Run",
     "JUnit.VenueEndpointTests.executor": "Run",
     "JUnit.VenueEndpointTests.givenInvalidVenue_whenCreatingVenue_thenShouldReturnBadRequest.executor": "Debug",
     "Maven.bom [clean].executor": "Run",
@@ -104,7 +122,7 @@
     "project.structure.side.proportion": "0.3859375",
     "run.code.analysis.last.selected.profile": "pProject Default",
     "run.configurations.included.in.services": "true",
-    "settings.editor.selected.configurable": "reference.settings.project.maven.importing",
+    "settings.editor.selected.configurable": "preferences.keymap",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -143,7 +161,15 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.EventEndpointTests">
+  <component name="RunManager" selected="JUnit.VenueEndpointTests">
+    <configuration name="All in event-catalog" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="event-catalog" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="EventEndpointTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="event-catalog" />
       <extension name="coverage">
@@ -155,22 +181,6 @@
       <option name="PACKAGE_NAME" value="com.punna.eventcatalog.integration" />
       <option name="MAIN_CLASS_NAME" value="com.punna.eventcatalog.integration.EventEndpointTests" />
       <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="EventEndpointTests.giveNonAdminUser_whenDeleteEvent_thenReturnUnAuthorized" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="event-catalog" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.punna.eventcatalog.integration.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.punna.eventcatalog.integration" />
-      <option name="MAIN_CLASS_NAME" value="com.punna.eventcatalog.integration.EventEndpointTests" />
-      <option name="METHOD_NAME" value="giveNonAdminUser_whenDeleteEvent_thenReturnUnAuthorized" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -248,11 +258,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.EventEndpointTests" />
-        <item itemvalue="Spring Boot.IdentityServiceApplication" />
-        <item itemvalue="JUnit.SeatingLayoutEndpointTests" />
         <item itemvalue="JUnit.VenueEndpointTests" />
-        <item itemvalue="JUnit.EventEndpointTests.giveNonAdminUser_whenDeleteEvent_thenReturnUnAuthorized" />
+        <item itemvalue="JUnit.EventEndpointTests" />
+        <item itemvalue="JUnit.SeatingLayoutEndpointTests" />
+        <item itemvalue="JUnit.All in event-catalog" />
+        <item itemvalue="Spring Boot.IdentityServiceApplication" />
       </list>
     </recent_temporary>
   </component>
@@ -293,6 +303,7 @@
       <workItem from="1735682491018" duration="14013000" />
       <workItem from="1735728069729" duration="17570000" />
       <workItem from="1735838190453" duration="885000" />
+      <workItem from="1735914884043" duration="6743000" />
     </task>
     <servers />
   </component>
@@ -304,51 +315,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/controller/VenueController.java</url>
-          <line>25</line>
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/service/impl/VenueServiceImpl.java</url>
-          <line>37</line>
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/service/impl/VenueServiceImpl.java</url>
-          <line>39</line>
-          <properties>
-            <option name="lambda-ordinal" value="-1" />
-          </properties>
-          <option name="timeStamp" value="9" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/service/impl/VenueServiceImpl.java</url>
-          <line>39</line>
-          <properties>
-            <option name="lambda-ordinal" value="0" />
-          </properties>
-          <option name="timeStamp" value="10" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/mapper/VenueMapper.java</url>
-          <line>8</line>
-          <option name="timeStamp" value="11" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/mapper/VenueMapper.java</url>
-          <line>26</line>
-          <option name="timeStamp" value="12" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/event-catalog/src/test/java/com/punna/eventcatalog/integration/VenueEndpointTests.java</url>
-          <line>42</line>
-          <option name="timeStamp" value="13" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo parentTag="org.springframework.http.ResponseEntity" memberName="body" />

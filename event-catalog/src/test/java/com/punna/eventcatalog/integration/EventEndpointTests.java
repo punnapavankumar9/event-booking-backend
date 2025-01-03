@@ -157,7 +157,7 @@ public class EventEndpointTests extends ContainerBase {
         assertThat(responseBody.getStatus()).isEqualTo(400);
         assertThat(responseBody
                 .getErrors()
-                .size()).isEqualTo(11);
+                .size()).isEqualTo(12);
 
     }
 
@@ -206,6 +206,7 @@ public class EventEndpointTests extends ContainerBase {
         assertThat(responseBody.getVenueId()).isEqualTo(venueId);
         assertThat(responseBody.getOrganizerId()).isEqualTo(organizerIdPunna);
         assertThat(responseBody.getId()).hasSize(24);
+        assertThat(responseBody.getSeatingLayoutId()).isNotNull();
         eventId = responseBody.getId();
     }
 

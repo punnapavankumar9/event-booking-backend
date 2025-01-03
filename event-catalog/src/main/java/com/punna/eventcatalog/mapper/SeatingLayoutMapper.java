@@ -9,8 +9,10 @@ public class SeatingLayoutMapper {
         return SeatingLayout
                 .builder()
                 .id(seatingLayout.getId())
-                .seatTiers(seatingLayout.getSeatTiers())
                 .capacity(seatingLayout.getCapacity())
+                .seats(seatingLayout.getSeats())
+                .rows(seatingLayout.getRows())
+                .columns(seatingLayout.getColumns())
                 .build();
     }
 
@@ -18,7 +20,9 @@ public class SeatingLayoutMapper {
         return SeatingLayoutDto
                 .builder()
                 .capacity(seatingLayout.getCapacity())
-                .seatTiers(seatingLayout.getSeatTiers())
+                .seats(seatingLayout.getSeats())
+                .rows(seatingLayout.getRows())
+                .columns(seatingLayout.getColumns())
                 .id(seatingLayout.getId())
                 .build();
     }
@@ -27,8 +31,14 @@ public class SeatingLayoutMapper {
         if (seatingLayoutDto.getCapacity() != null) {
             seatingLayout.setCapacity(seatingLayoutDto.getCapacity());
         }
-        if (seatingLayoutDto.getSeatTiers() != null) {
-            seatingLayout.setSeatTiers(seatingLayoutDto.getSeatTiers());
+        if (seatingLayoutDto.getSeats() != null) {
+            seatingLayout.setSeats(seatingLayoutDto.getSeats());
+        }
+        if (seatingLayoutDto.getRows() != null) {
+            seatingLayout.setRows(seatingLayoutDto.getRows());
+        }
+        if (seatingLayoutDto.getColumns() != null) {
+            seatingLayout.setColumns(seatingLayoutDto.getColumns());
         }
     }
 }

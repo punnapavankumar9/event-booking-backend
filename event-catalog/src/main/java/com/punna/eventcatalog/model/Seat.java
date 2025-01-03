@@ -19,4 +19,7 @@ public class Seat {
     @NotNull(message = "column must not be null", groups = CreateGroup.class)
     @Positive(message = "column must be positive")
     private Integer column;
+
+    @NotNull(message = "tier name must not be null", groups = CreateGroup.class)
+    private String tier;
 }

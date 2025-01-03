@@ -28,9 +28,7 @@ public class VenueServiceImpl implements VenueService {
 
     private final VenueRepository venueRepository;
     private final SeatingLayoutService seatingLayoutService;
-
     private final ReactiveMongoTemplate mongoTemplate;
-
     private final AuthService authService;
 
     @Override
@@ -126,5 +124,12 @@ public class VenueServiceImpl implements VenueService {
                 .switchIfEmpty(authService
                         .getUserName()
                         .map(username -> username.equals(venue.getOwnerId())));
+    }
+
+    @Override
+    public Mono<String> getSeatingLayoutId(String id) {
+        return venueRepository
+                .getSeatingLayoutId(id)
+                .switchIfEmpty(Mono.error(new EntityNotFoundException(Venue.class.getSimpleName(), id)));
     }
 }

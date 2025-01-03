@@ -4,7 +4,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.punna.eventcatalog.dto.SeatingLayoutDto;
 import com.punna.eventcatalog.fixtures.TestFixtures;
 import com.punna.eventcatalog.model.Seat;
-import com.punna.eventcatalog.model.SeatTier;
 import com.punna.eventcatalog.repository.SeatingLayoutRepository;
 import lombok.SneakyThrows;
 import org.junit.jupiter.api.*;
@@ -53,12 +52,8 @@ public class SeatingLayoutEndpointTests extends ContainerBase {
                 // 1 error
                 .builder()
                 .id("DummyId") // 1 error
-                // 4 errors
-                .seatTiers(List.of(SeatTier
+                .seats(List.of(Seat // 4 errors
                         .builder()
-                        .seats(List.of(Seat // 3 errors
-                                .builder()
-                                .build()))
                         .build()))
                 .build();
         ProblemDetail responseBody = webTestClient
@@ -75,14 +70,13 @@ public class SeatingLayoutEndpointTests extends ContainerBase {
         assertThat(responseBody).isNotNull();
         assertThat(responseBody
                 .getErrors()
-                .size()).isEqualTo(9);
+                .size()).isEqualTo(8);
     }
 
     @Test
     @Order(2)
     void givenValidSeatingLayout_whenCreate_thenReturnCreated() {
-        SeatingLayoutDto arrangementDto = clone(TestFixtures.SAMPLE_SEATING_ARRANGEMENT_DTO,
-                SeatingLayoutDto.class);
+        SeatingLayoutDto arrangementDto = clone(TestFixtures.SAMPLE_SEATING_ARRANGEMENT_DTO, SeatingLayoutDto.class);
         SeatingLayoutDto responseBody = webTestClient
                 .post()
                 .uri(arrangementsV1Url)

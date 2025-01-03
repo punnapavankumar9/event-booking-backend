@@ -28,6 +28,7 @@ public class EventMapper {
                 .eventDurationDetails(toEventDurationDetails(eventRequestDto.getEventDurationDetails()))
                 .pricingTierMaps(eventRequestDto.getPricingTierMaps())
                 .seatState(eventRequestDto.getSeatState())
+                .seatingLayoutId(eventRequestDto.getSeatingLayoutId())
                 .build();
 
     }
@@ -52,6 +53,7 @@ public class EventMapper {
                 .lastModifiedAt(event.getLastModifiedAt())
                 .pricingTierMaps(event.getPricingTierMaps())
                 .seatState(event.getSeatState())
+                .seatingLayoutId(event.getSeatingLayoutId())
                 .build();
 
     }
@@ -69,7 +71,6 @@ public class EventMapper {
     }
 
     public static void merge(Event event, EventRequestDto eventRequestDto) {
-
         if (eventRequestDto.getName() != null) {
             event.setName(eventRequestDto.getName());
         }
@@ -133,6 +134,4 @@ public class EventMapper {
         }
         return eventDurationDetails;
     }
-
-
 }

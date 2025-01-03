@@ -1,7 +1,7 @@
 package com.punna.eventcatalog.dto;
 
 
-import com.punna.eventcatalog.model.SeatTier;
+import com.punna.eventcatalog.model.Seat;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Null;
@@ -29,6 +29,14 @@ public class SeatingLayoutDto {
     @Positive(message = "capacity must be positive")
     private Integer capacity;
 
+    @NotNull(message = "rows must not be null", groups = CreateGroup.class)
+    @Positive(message = "rows must be positive")
+    private Integer rows;
+
+    @NotNull(message = "columns must not be null", groups = CreateGroup.class)
+    @Positive(message = "columns must be positive")
+    private Integer columns;
+
     @Valid
-    private List<SeatTier> seatTiers;
+    private List<Seat> seats;
 }

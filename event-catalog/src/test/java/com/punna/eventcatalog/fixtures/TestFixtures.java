@@ -7,7 +7,6 @@ import com.punna.eventcatalog.dto.SeatingLayoutDto;
 import com.punna.eventcatalog.dto.VenueDto;
 import com.punna.eventcatalog.model.PricingTierMap;
 import com.punna.eventcatalog.model.Seat;
-import com.punna.eventcatalog.model.SeatTier;
 import com.punna.eventcatalog.utils.EventDurationType;
 
 import java.math.BigDecimal;
@@ -38,7 +37,7 @@ public abstract class TestFixtures {
             .additionalDetails(new HashMap<>() {{
                 put("event cause", "charity");
             }})
-            .pricingTierMaps(List.of(new PricingTierMap("VIP", BigDecimal.valueOf(249))))
+            .pricingTierMaps(List.of(new PricingTierMap("VIP", BigDecimal.valueOf(249), 1)))
             .build();
     public static VenueDto SAMPLE_VENUE_DTO = VenueDto
             .builder()
@@ -56,53 +55,52 @@ public abstract class TestFixtures {
 
     public static SeatingLayoutDto SAMPLE_SEATING_ARRANGEMENT_DTO = SeatingLayoutDto
             .builder()
-            .seatTiers(new ArrayList<>() {{
-                add(SeatTier
+            .seats(new ArrayList<>() {{
+                add(Seat
                         .builder()
-                        .rows(2)
-                        .columns(3)
-                        .order(1)
-                        .name("VIP")
-                        .seats(new ArrayList<>() {{
-                            add(Seat
-                                    .builder()
-                                    .row(1)
-                                    .column(1)
-                                    .isSpace(false)
-                                    .build());
-                            add(Seat
-                                    .builder()
-                                    .row(1)
-                                    .column(2)
-                                    .isSpace(false)
-                                    .build());
-                            add(Seat
-                                    .builder()
-                                    .row(1)
-                                    .column(3)
-                                    .isSpace(false)
-                                    .build());
-                            add(Seat
-                                    .builder()
-                                    .row(2)
-                                    .column(1)
-                                    .isSpace(false)
-                                    .build());
-                            add(Seat
-                                    .builder()
-                                    .row(2)
-                                    .column(2)
-                                    .isSpace(false)
-                                    .build());
-                            add(Seat
-                                    .builder()
-                                    .row(2)
-                                    .column(3)
-                                    .isSpace(false)
-                                    .build());
-                        }})
+                        .row(1)
+                        .column(1)
+                        .isSpace(false)
+                        .tier("VIP")
+                        .build());
+                add(Seat
+                        .builder()
+                        .row(1)
+                        .column(2)
+                        .isSpace(false)
+                        .tier("VIP")
+                        .build());
+                add(Seat
+                        .builder()
+                        .row(1)
+                        .column(3)
+                        .isSpace(false)
+                        .tier("VIP")
+                        .build());
+                add(Seat
+                        .builder()
+                        .row(2)
+                        .column(1)
+                        .isSpace(false)
+                        .tier("VIP")
+                        .build());
+                add(Seat
+                        .builder()
+                        .row(2)
+                        .column(2)
+                        .isSpace(false)
+                        .tier("VIP")
+                        .build());
+                add(Seat
+                        .builder()
+                        .row(2)
+                        .column(3)
+                        .isSpace(false)
+                        .tier("VIP")
                         .build());
             }})
+            .rows(2)
+            .columns(3)
             .capacity(6)
             .build();
 }

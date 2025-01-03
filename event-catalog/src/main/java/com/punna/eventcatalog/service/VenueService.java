@@ -22,4 +22,7 @@ public interface VenueService {
     Mono<Boolean> isAdminOrOwner(String id);
 
     Mono<Boolean> isAdminOrOwner(Venue venue);
+
+    Mono<String> getSeatingLayoutId(String id);
+
 }

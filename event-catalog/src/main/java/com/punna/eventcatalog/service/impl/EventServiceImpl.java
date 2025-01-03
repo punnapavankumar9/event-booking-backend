@@ -36,13 +36,13 @@ public class EventServiceImpl implements EventService {
     @Override
     public Mono<EventResponseDto> createEvent(EventRequestDto eventRequestDto) {
         return venueService
-                .exists(eventRequestDto.getVenueId())
-                .filter(a -> a)
-                .flatMap(exists -> eventRepository
-                        .save(EventMapper.toEvent(eventRequestDto))
-                        .map(EventMapper::toEventResponseDto))
-                .switchIfEmpty(Mono.error(new EntityNotFoundException(Venue.class.getSimpleName(),
-                        eventRequestDto.getVenueId())));
+                .getSeatingLayoutId(eventRequestDto.getVenueId())
+                .flatMap(seatingLayoutId -> {
+                    eventRequestDto.setSeatingLayoutId(seatingLayoutId);
+                    return eventRepository
+                            .save(EventMapper.toEvent(eventRequestDto))
+                            .map(EventMapper::toEventResponseDto);
+                });
     }
 
     @Override
@@ -73,9 +73,11 @@ public class EventServiceImpl implements EventService {
                             .flatMap(permission -> {
                                 if (eventRequestDto.getVenueId() != null) {
                                     return venueService
-                                            .exists(eventRequestDto.getVenueId())
-                                            .filter(a -> a)
-                                            .flatMap(exists -> eventRepository.save(event))
+                                            .getSeatingLayoutId(eventRequestDto.getVenueId())
+                                            .flatMap(seatingLayoutId -> {
+                                                event.setSeatingLayoutId(seatingLayoutId);
+                                                return eventRepository.save(event);
+                                            })
                                             .switchIfEmpty(Mono.error(new EntityNotFoundException(Venue.class.getSimpleName(),
                                                     eventRequestDto.getVenueId())));
                                 }
