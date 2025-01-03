@@ -4,26 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="270ad57c-65bc-4f7e-86cf-537bc93322f9" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/dto/EventRequestDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/dto/EventRequestDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/dto/SeatingLayoutDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/dto/SeatingLayoutDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/mapper/EventMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/mapper/EventMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/mapper/SeatingLayoutMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/mapper/SeatingLayoutMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/model/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/model/Event.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/model/PricingTierMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/model/PricingTierMap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/model/Seat.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/model/Seat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/model/SeatingLayout.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/model/SeatingLayout.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/repository/EventRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/repository/EventRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/repository/VenueRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/repository/VenueRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/service/VenueService.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/service/VenueService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/service/impl/EventServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/service/impl/EventServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/service/impl/SeatingLayoutServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/service/impl/SeatingLayoutServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/service/impl/VenueServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/service/impl/VenueServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-catalog/src/test/java/com/punna/eventcatalog/fixtures/TestFixtures.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-catalog/src/test/java/com/punna/eventcatalog/fixtures/TestFixtures.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-catalog/src/test/java/com/punna/eventcatalog/integration/EventEndpointTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-catalog/src/test/java/com/punna/eventcatalog/integration/EventEndpointTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-catalog/src/test/java/com/punna/eventcatalog/integration/SeatingLayoutEndpointTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-catalog/src/test/java/com/punna/eventcatalog/integration/SeatingLayoutEndpointTests.java" afterDir="false" />
-    </list>
+    <list default="true" id="270ad57c-65bc-4f7e-86cf-537bc93322f9" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -303,7 +284,7 @@
       <workItem from="1735682491018" duration="14013000" />
       <workItem from="1735728069729" duration="17570000" />
       <workItem from="1735838190453" duration="885000" />
-      <workItem from="1735914884043" duration="6743000" />
+      <workItem from="1735914884043" duration="7057000" />
     </task>
     <servers />
   </component>
