@@ -5,8 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="270ad57c-65bc-4f7e-86cf-537bc93322f9" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-catalog/src/test/java/com/punna/eventcatalog/integration/EventSeatStateEndpointTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-catalog/src/test/java/com/punna/eventcatalog/integration/EventSeatStateEndpointTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/workflows/ci.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/ci.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -296,7 +295,7 @@
       <workItem from="1735728069729" duration="17570000" />
       <workItem from="1735838190453" duration="885000" />
       <workItem from="1735914884043" duration="20999000" />
-      <workItem from="1735976499531" duration="3258000" />
+      <workItem from="1735976499531" duration="4382000" />
     </task>
     <servers />
   </component>
