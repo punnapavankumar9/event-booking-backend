@@ -6,6 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="270ad57c-65bc-4f7e-86cf-537bc93322f9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.github/workflows/ci.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/ci.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-catalog/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/event-catalog/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/identity/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/identity/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,6 +64,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "ASKED_ADD_EXTERNAL_FILES": "true",
+    "JUnit.All in event-catalog (1).executor": "Run",
     "JUnit.All in event-catalog.executor": "Run",
     "JUnit.EventCatalogApplicationTest.executor": "Run",
     "JUnit.EventCatalogApplicationTest.givenInvalidEventWithId_whenUpdateEvent_thenUpdateEventAndReturn.executor": "Run",
@@ -149,8 +154,8 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.EventSeatStateEndpointTests">
-    <configuration name="All in event-catalog" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.All in event-catalog (1)">
+    <configuration name="All in event-catalog (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="event-catalog" />
       <option name="PACKAGE_NAME" value="" />
       <option name="TEST_OBJECT" value="package" />
@@ -158,17 +163,10 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="EventEndpointTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="All in event-catalog" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="event-catalog" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.punna.eventcatalog.integration.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.punna.eventcatalog.integration" />
-      <option name="MAIN_CLASS_NAME" value="com.punna.eventcatalog.integration.EventEndpointTests" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -249,11 +247,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.All in event-catalog (1)" />
         <item itemvalue="JUnit.EventSeatStateEndpointTests" />
         <item itemvalue="JUnit.EventSeatStateEndpointTests.givenInvalidSeatLocation_whenBook_thenReturnBadRequest" />
         <item itemvalue="JUnit.All in event-catalog" />
         <item itemvalue="JUnit.VenueEndpointTests" />
-        <item itemvalue="JUnit.EventEndpointTests" />
       </list>
     </recent_temporary>
   </component>
@@ -295,7 +293,7 @@
       <workItem from="1735728069729" duration="17570000" />
       <workItem from="1735838190453" duration="885000" />
       <workItem from="1735914884043" duration="20999000" />
-      <workItem from="1735976499531" duration="4382000" />
+      <workItem from="1735976499531" duration="11415000" />
     </task>
     <servers />
   </component>

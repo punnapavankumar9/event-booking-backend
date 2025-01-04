@@ -21,8 +21,9 @@ jobs:
           distribution: "temurin"
           java-version: 21
       - name: Maven Install
-        run: mvn clean install -DskipTests --no-transfer-progress
-      - name: Run Tests
-        run: |
-          cd ${{matrix.project-folder}}
-          mvn test --no-transfer-progress
+        run: mvn clean verify -pl ${{matrix.project-folder}} -am --no-transfer-progress
+      - name: upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          path: ${{matrix.project-folder}}/target/site/jacoco
+          name: coverage-report-${{matrix.project-folder}}
