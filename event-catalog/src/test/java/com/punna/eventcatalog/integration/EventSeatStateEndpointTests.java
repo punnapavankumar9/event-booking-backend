@@ -201,7 +201,7 @@ public class EventSeatStateEndpointTests extends EndPointTests {
     // blocking already blocked tickets will ignore and add other than those to blocked set
     @Test
     @Order(6)
-    void givenBlockedSeatLocation_whenBlock_thenReturnConflict() {
+    void givenBlockedSeatLocation_whenBlock_thenReturnOk() {
         webClient
                 .post()
                 .uri(seatStateV1Url + "/block")
@@ -222,10 +222,127 @@ public class EventSeatStateEndpointTests extends EndPointTests {
                 .isOk();
     }
 
+    // seat layout 1-open, 0-blocked
+    // 0 0 1
+    // 1 0 1
+    // unblocking the unblocked tickets will ignore the unblocked and unblock the blocked. 😂
+    @Test
+    @Order(7)
+    void givenUnblockedSeatLocation_whenUnblock_thenReturnOk() {
+        webClient
+                .post()
+                .uri(seatStateV1Url + "/unblock")
+                .bodyValue(List.of(SeatLocation
+                                .builder()
+                                .row(1)
+                                .column(1)
+                                .build(), // valid
+                        SeatLocation
+                                .builder()
+                                .row(1)
+                                .column(3)
+                                .build()// open ticket will result in error
+                ))
+                .headers(headers -> TestUtils.setAuthHeader(headers, "punna"))
+                .exchange()
+                .expectStatus()
+                .isOk();
+    }
 
-    // seat layout
-    //  1-blocked     2-blocked       3-open
-    //  4-open        5-blocked       6-open
+    // seat layout, 1-open, 0-blocked
+    // 1 0 1
+    // 1 0 1
 
+    @Test
+    @Order(8)
+    void givenUnblockedSeatLocation_whenUnbook_thenReturnOk() {
+        webClient
+                .post()
+                .uri(seatStateV1Url + "/book")
+                .bodyValue(List.of(SeatLocation
+                                .builder()
+                                .row(1)
+                                .column(1)
+                                .build(), // valid
+                        SeatLocation
+                                .builder()
+                                .row(1)
+                                .column(3)
+                                .build()// valid
+                ))
+                .headers(headers -> TestUtils.setAuthHeader(headers, "punna"))
+                .exchange()
+                .expectStatus()
+                .isOk();
+    }
 
+    @Test
+    @Order(9)
+    void givenBookedSeatLocation_whenBook_thenReturnConflict() {
+        webClient
+                .post()
+                .uri(seatStateV1Url + "/book")
+                .bodyValue(List.of(SeatLocation
+                                .builder()
+                                .row(1)
+                                .column(1)
+                                .build(), // already booked
+                        SeatLocation
+                                .builder()
+                                .row(2)
+                                .column(3)
+                                .build()// valid
+                ))
+                .headers(headers -> TestUtils.setAuthHeader(headers, "punna"))
+                .exchange()
+                .expectStatus()
+                .isEqualTo(HttpStatus.CONFLICT);
+
+    }
+
+    @Test
+    @Order(10)
+    void givenBookedSeatLocation_whenBlock_thenReturnConflict() {
+        webClient
+                .post()
+                .uri(seatStateV1Url + "/block")
+                .bodyValue(List.of(SeatLocation
+                                .builder()
+                                .row(1)
+                                .column(1)
+                                .build(), // already booked
+                        SeatLocation
+                                .builder()
+                                .row(2)
+                                .column(3)
+                                .build()// valid
+                ))
+                .headers(headers -> TestUtils.setAuthHeader(headers, "punna"))
+                .exchange()
+                .expectStatus()
+                .isEqualTo(HttpStatus.CONFLICT);
+    }
+
+    @Test
+    @Order(11)
+    void givenBookedSeatLocation_whenUnblock_thenReturnConflict() {
+        webClient
+                .post()
+                .uri(seatStateV1Url + "/block")
+                .bodyValue(List.of(SeatLocation
+                                .builder()
+                                .row(1)
+                                .column(1)
+                                .build(), // already booked
+                        SeatLocation
+                                .builder()
+                                .row(2)
+                                .column(3)
+                                .build()// valid
+                ))
+                .headers(headers -> TestUtils.setAuthHeader(headers, "punna"))
+                .exchange()
+                .expectStatus()
+                .isEqualTo(HttpStatus.CONFLICT);
+    }
 }
