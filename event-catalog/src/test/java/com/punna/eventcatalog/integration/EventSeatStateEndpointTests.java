@@ -84,7 +84,7 @@ public class EventSeatStateEndpointTests extends EndPointTests {
                                 .row(1)
                                 .column(5)
                                 .build()// invalid
-                ))
+                                  ))
                 .headers(headers -> TestUtils.setAuthHeader(headers, "punna"))
                 .exchange()
                 .expectStatus()
@@ -111,7 +111,7 @@ public class EventSeatStateEndpointTests extends EndPointTests {
                                 .row(1)
                                 .column(5)
                                 .build()// invalid
-                ))
+                                  ))
                 .headers(headers -> TestUtils.setAuthHeader(headers, "punna"))
                 .exchange()
                 .expectStatus()
@@ -138,7 +138,7 @@ public class EventSeatStateEndpointTests extends EndPointTests {
                                 .row(1)
                                 .column(5)
                                 .build()// invalid
-                ))
+                                  ))
                 .headers(headers -> TestUtils.setAuthHeader(headers, "punna"))
                 .exchange()
                 .expectStatus()
@@ -166,7 +166,7 @@ public class EventSeatStateEndpointTests extends EndPointTests {
                                 .row(2)
                                 .column(3)
                                 .build()// valid
-                ))
+                                  ))
                 .headers(headers -> TestUtils.setAuthHeader(headers, "punna"))
                 .exchange()
                 .expectStatus()
@@ -191,7 +191,7 @@ public class EventSeatStateEndpointTests extends EndPointTests {
                                 .row(1)
                                 .column(2)
                                 .build()// invalid
-                ))
+                                  ))
                 .headers(headers -> TestUtils.setAuthHeader(headers, "punna"))
                 .exchange()
                 .expectStatus()
@@ -215,7 +215,7 @@ public class EventSeatStateEndpointTests extends EndPointTests {
                                 .row(1)
                                 .column(2)
                                 .build()// invalid
-                ))
+                                  ))
                 .headers(headers -> TestUtils.setAuthHeader(headers, "punna"))
                 .exchange()
                 .expectStatus()
@@ -242,7 +242,7 @@ public class EventSeatStateEndpointTests extends EndPointTests {
                                 .row(1)
                                 .column(3)
                                 .build()// open ticket will result in error
-                ))
+                                  ))
                 .headers(headers -> TestUtils.setAuthHeader(headers, "punna"))
                 .exchange()
                 .expectStatus()
@@ -269,7 +269,7 @@ public class EventSeatStateEndpointTests extends EndPointTests {
                                 .row(1)
                                 .column(3)
                                 .build()// valid
-                ))
+                                  ))
                 .headers(headers -> TestUtils.setAuthHeader(headers, "punna"))
                 .exchange()
                 .expectStatus()
@@ -292,7 +292,7 @@ public class EventSeatStateEndpointTests extends EndPointTests {
                                 .row(2)
                                 .column(3)
                                 .build()// valid
-                ))
+                                  ))
                 .headers(headers -> TestUtils.setAuthHeader(headers, "punna"))
                 .exchange()
                 .expectStatus()
@@ -316,7 +316,7 @@ public class EventSeatStateEndpointTests extends EndPointTests {
                                 .row(2)
                                 .column(3)
                                 .build()// valid
-                ))
+                                  ))
                 .headers(headers -> TestUtils.setAuthHeader(headers, "punna"))
                 .exchange()
                 .expectStatus()
@@ -339,7 +339,7 @@ public class EventSeatStateEndpointTests extends EndPointTests {
                                 .row(2)
                                 .column(3)
                                 .build()// valid
-                ))
+                                  ))
                 .headers(headers -> TestUtils.setAuthHeader(headers, "punna"))
                 .exchange()
                 .expectStatus()

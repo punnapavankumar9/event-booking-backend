@@ -21,12 +21,14 @@ public class GatewayApplication {
                 .route("identity-service",
                         p -> p
                                 .path("/api/v*/users/**")
-                                .uri("lb://IDENTITY-SERVICE"))
+                                .uri("lb://IDENTITY-SERVICE")
+                      )
                 .route("event-catalog",
                         p -> p
                                 .path("/api/v*/venues/**", "/api/v*/events/**", "/api/v*/seating-layout/**")
                                 .filters(f -> f.filter(authFilter))
-                                .uri("lb://EVENT-CATALOG-SERVICE"))
+                                .uri("lb://EVENT-CATALOG-SERVICE")
+                      )
                 .build();
     }
 }

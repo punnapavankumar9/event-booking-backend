@@ -129,7 +129,8 @@ public class EventEndpointTests extends EndPointTests {
         assertThat(responseBody).isNotNull();
         assertThat(responseBody.getMessage()).isEqualTo(messageSource.getMessage("validation.invalid-body",
                 null,
-                Locale.getDefault()));
+                Locale.getDefault()
+                                                                                ));
         assertThat(responseBody.getStatus()).isEqualTo(400);
         assertThat(responseBody
                 .getErrors()

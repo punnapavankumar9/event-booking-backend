@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "ceba12c1-daac-4065-9850-37569c1f7f6b",
+		"_postman_id": "4d84053b-9d2b-47bb-bd59-6d6942f02502",
 		"name": "Event booking",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "32221023"
+		"_exporter_id": "14107988"
 	},
 	"item": [
 		{
@@ -20,29 +20,6 @@
 						"body": {
 							"mode": "raw",
 							"raw": "{\r\n    \"username\":\"punna\",\r\n    \"password\":\"password\",\r\n    \"email\": \"punna@gmail.com\",\r\n    \"authorities\": [\"ROLE_ADMIN\", \"ROLE_OWNER\"]\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}{{identity}}",
-							"host": [
-								"{{url}}{{identity}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "update user",
-					"request": {
-						"method": "PATCH",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"username\":\"punna\",\r\n    \"authorities\": [\"ROLE_ADMIN\", \"ROLE_OWNER\"]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -96,6 +73,29 @@
 							],
 							"path": [
 								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update user",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"punna\",\r\n    \"authorities\": [\"ROLE_ADMIN\", \"ROLE_OWNER\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}{{identity}}",
+							"host": [
+								"{{url}}{{identity}}"
 							]
 						}
 					},
@@ -167,7 +167,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"capacity\": 8,\r\n    \"seatTiers\": [\r\n        {\r\n            \"name\": \"VIP\",\r\n            \"seats\": [\r\n                {\r\n                    \"isSpace\": false,\r\n                    \"row\": 1,\r\n                    \"column\": 1\r\n                },\r\n                {\r\n                    \"isSpace\": false,\r\n                    \"row\": 1,\r\n                    \"column\": 2\r\n                },\r\n                {\r\n                    \"isSpace\": true,\r\n                    \"row\": 1,\r\n                    \"column\": 3\r\n                },\r\n                {\r\n                    \"isSpace\": false,\r\n                    \"row\": 1,\r\n                    \"column\": 4\r\n                },\r\n                {\r\n                    \"isSpace\": false,\r\n                    \"row\": 1,\r\n                    \"column\": 5\r\n                },\r\n                {\r\n                    \"isSpace\": false,\r\n                    \"row\": 2,\r\n                    \"column\": 1\r\n                },\r\n                {\r\n                    \"isSpace\": false,\r\n                    \"row\": 2,\r\n                    \"column\": 2\r\n                },\r\n                {\r\n                    \"isSpace\": true,\r\n                    \"row\": 2,\r\n                    \"column\": 3\r\n                },\r\n                {\r\n                    \"isSpace\": false,\r\n                    \"row\": 2,\r\n                    \"column\": 4\r\n                },\r\n                {\r\n                    \"isSpace\": false,\r\n                    \"row\": 2,\r\n                    \"column\": 5\r\n                }\r\n            ],\r\n            \"order\": 1,\r\n            \"rows\": 2,\r\n            \"columns\": 5\r\n        }\r\n    ]\r\n}",
+									"raw": "{\r\n    \"capacity\": 8,\r\n    \"seats\": [\r\n        {\r\n            \"isSpace\": false,\r\n            \"tier\": \"VIP\",\r\n            \"row\": 1,\r\n            \"column\": 1\r\n        },\r\n        {\r\n            \"isSpace\": false,\r\n            \"tier\": \"VIP\",\r\n            \"row\": 1,\r\n            \"column\": 2\r\n        },\r\n        {\r\n            \"isSpace\": true,\r\n            \"tier\": \"VIP\",\r\n            \"row\": 1,\r\n            \"column\": 3\r\n        },\r\n        {\r\n            \"isSpace\": false,\r\n            \"tier\": \"VIP\",\r\n            \"row\": 1,\r\n            \"column\": 4\r\n        },\r\n        {\r\n            \"isSpace\": false,\r\n            \"tier\": \"VIP\",\r\n            \"row\": 1,\r\n            \"column\": 5\r\n        },\r\n        {\r\n            \"isSpace\": false,\r\n            \"tier\": \"VIP\",\r\n            \"row\": 2,\r\n            \"column\": 1\r\n        },\r\n        {\r\n            \"isSpace\": false,\r\n            \"tier\": \"VIP\",\r\n            \"row\": 2,\r\n            \"column\": 2\r\n        },\r\n        {\r\n            \"isSpace\": true,\r\n            \"tier\": \"VIP\",\r\n            \"row\": 2,\r\n            \"column\": 3\r\n        },\r\n        {\r\n            \"isSpace\": false,\r\n            \"tier\": \"VIP\",\r\n            \"row\": 2,\r\n            \"column\": 4\r\n        },\r\n        {\r\n            \"isSpace\": false,\r\n            \"tier\": \"VIP\",\r\n            \"row\": 2,\r\n            \"column\": 5\r\n        }\r\n    ],\r\n    \"rows\": 2,\r\n    \"columns\": 5\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -261,7 +261,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"id\": \"67743b67a5a9d87a8f9f25e0\",\r\n    \"pincode\": 500002\r\n}\r\n// {\r\n//   \"id\": \"string\",\r\n//   \"name\": \"string\",\r\n//   \"description\": \"string\",\r\n//   \"capacity\": 0,\r\n//   \"ownerId\": \"string\",\r\n//   \"location\": \"string\",\r\n//   \"city\": \"string\",\r\n//   \"country\": \"string\",\r\n//   \"pincode\": 999999,\r\n//   \"state\": \"string\",\r\n//   \"googleMapsUrl\": \"string\"\r\n// }",
+									"raw": "{\r\n    \"id\": \"{{venueId}}\",\r\n    \"pincode\": 500002\r\n}\r\n// {\r\n//   \"id\": \"string\",\r\n//   \"name\": \"string\",\r\n//   \"description\": \"string\",\r\n//   \"capacity\": 0,\r\n//   \"ownerId\": \"string\",\r\n//   \"location\": \"string\",\r\n//   \"city\": \"string\",\r\n//   \"country\": \"string\",\r\n//   \"pincode\": 999999,\r\n//   \"state\": \"string\",\r\n//   \"googleMapsUrl\": \"string\"\r\n// }",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -334,7 +334,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"name\": \"Pushpa 2\",\r\n    \"description\": \"Screening Pushpa 2 Movie\",\r\n    \"maximumCapacity\": 450,\r\n    \"price\": 450,\r\n    \"venueId\": \"{{venueId}}\",\r\n    \"eventDurationDetails\": {\r\n        \"startTime\": \"2025-11-01T13:18:36.181Z\",\r\n        \"endTime\": \"2025-11-30T13:18:36.181Z\",\r\n        \"eventDurationType\": \"MULTI_DAY\"\r\n    },\r\n    \"openForBooking\": false,\r\n    \"pricingTierMaps\": [\r\n        {\r\n            \"name\": \"VIP\",\r\n            \"price\": 123\r\n        }\r\n    ]\r\n}\r\n    // {\r\n    //   \"id\": \"string\",\r\n    //   \"name\": \"string\",\r\n    //   \"description\": \"string\",\r\n    //   \"organizerId\": \"string\",\r\n    //   \"maximumCapacity\": 0,\r\n    //   \"price\": 0,\r\n    //   \"venueId\": \"string\",\r\n    //   \"eventDurationDetails\": {\r\n    //     \"startTime\": \"2025-01-02T18:26:32.001Z\",\r\n    //     \"endTime\": \"2025-01-02T18:26:32.001Z\",\r\n    //     \"eventDurationType\": \"SHORT_TERM\"\r\n    //   },\r\n    //   \"additionalDetails\": {\r\n    //     \"additionalProp1\": {},\r\n    //     \"additionalProp2\": {},\r\n    //     \"additionalProp3\": {}\r\n    //   },\r\n    //   \"pricingTierMaps\": [\r\n    //     {\r\n    //       \"name\": \"string\",\r\n    //       \"price\": 0\r\n    //     }\r\n    //   ],\r\n    //   \"seatState\": {\r\n    //     \"blockedSeats\": [\r\n    //       {\r\n    //         \"row\": 0,\r\n    //         \"column\": 0\r\n    //       }\r\n    //     ],\r\n    //     \"bookedSeats\": [\r\n    //       {\r\n    //         \"row\": 0,\r\n    //         \"column\": 0\r\n    //       }\r\n    //     ]\r\n    //   },\r\n    //   \"openForBooking\": true\r\n    // }",
+									"raw": "{\r\n    \"name\": \"Pushpa 2\",\r\n    \"description\": \"Screening Pushpa 2 Movie\",\r\n    \"maximumCapacity\": 450,\r\n    \"price\": 450,\r\n    \"venueId\": \"{{venueId}}\",\r\n    \"eventDurationDetails\": {\r\n        \"startTime\": \"2025-11-01T13:18:36.181Z\",\r\n        \"endTime\": \"2025-11-30T13:18:36.181Z\",\r\n        \"eventDurationType\": \"MULTI_DAY\"\r\n    },\r\n    \"openForBooking\": false,\r\n    \"pricingTierMaps\": [\r\n        {\r\n            \"tierOrder\":1,\r\n            \"name\": \"VIP\",\r\n            \"price\": 123\r\n        }\r\n    ]\r\n}\r\n    // {\r\n    //   \"id\": \"string\",\r\n    //   \"name\": \"string\",\r\n    //   \"description\": \"string\",\r\n    //   \"organizerId\": \"string\",\r\n    //   \"maximumCapacity\": 0,\r\n    //   \"price\": 0,\r\n    //   \"venueId\": \"string\",\r\n    //   \"eventDurationDetails\": {\r\n    //     \"startTime\": \"2025-01-02T18:26:32.001Z\",\r\n    //     \"endTime\": \"2025-01-02T18:26:32.001Z\",\r\n    //     \"eventDurationType\": \"SHORT_TERM\"\r\n    //   },\r\n    //   \"additionalDetails\": {\r\n    //     \"additionalProp1\": {},\r\n    //     \"additionalProp2\": {},\r\n    //     \"additionalProp3\": {}\r\n    //   },\r\n    //   \"pricingTierMaps\": [\r\n    //     {\r\n    //       \"name\": \"string\",\r\n    //       \"price\": 0\r\n    //     }\r\n    //   ],\r\n    //   \"seatState\": {\r\n    //     \"blockedSeats\": [\r\n    //       {\r\n    //         \"row\": 0,\r\n    //         \"column\": 0\r\n    //       }\r\n    //     ],\r\n    //     \"bookedSeats\": [\r\n    //       {\r\n    //         \"row\": 0,\r\n    //         \"column\": 0\r\n    //       }\r\n    //     ]\r\n    //   },\r\n    //   \"openForBooking\": true\r\n    // }",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -543,7 +543,7 @@
 		},
 		{
 			"key": "seating-layout",
-			"value": "",
+			"value": "/v1/seating-layout",
 			"type": "string"
 		},
 		{

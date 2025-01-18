@@ -40,7 +40,8 @@ public class SeatingLayoutServiceImpl implements SeatingLayoutService {
         return seatingLayoutRepository
                 .findById(seatingLayoutId)
                 .switchIfEmpty(Mono.error(new EntityNotFoundException(SeatingLayout.class.getSimpleName(),
-                        seatingLayoutId)))
+                        seatingLayoutId
+                )))
                 .map(SeatingLayoutMapper::toSeatingLayoutDto);
     }
 
@@ -71,7 +72,8 @@ public class SeatingLayoutServiceImpl implements SeatingLayoutService {
         return reactiveMongoTemplate
                 .findAndRemove(query, Event.class)
                 .switchIfEmpty(Mono.error(() -> new EntityNotFoundException(Event.class.getSimpleName(),
-                        seatingLayoutId)))
+                        seatingLayoutId
+                )))
                 .flatMap((event) -> Mono.empty());
     }
 
@@ -82,11 +84,11 @@ public class SeatingLayoutServiceImpl implements SeatingLayoutService {
         int rows = seatingLayoutDto.getRows();
         int columns = seatingLayoutDto.getColumns();
         for (Seat seat : seatingLayoutDto.getSeats()) {
-            boolean cnt = isSeatValid(rows, columns, seat);
-            if (!cnt) {
+            int cnt = isSeatValid(rows, columns, seat);
+            if (cnt == -1) {
                 throw new EventApplicationException("Seating arrangement is not valid", 400);
             }
-            currentCapacity++;
+            currentCapacity += cnt;
         }
         if (currentCapacity != capacity) {
             throw new EventApplicationException("Seating capacity mismatch in seat arrangements", 400);
@@ -102,8 +104,8 @@ public class SeatingLayoutServiceImpl implements SeatingLayoutService {
                 .map(m -> m.get("valid"));
     }
 
-    public boolean isSeatValid(int rows, int columns, Seat seat) {
-        if (seat.getRow() > rows || seat.getColumn() > columns) return false;
-        return !seat.getIsSpace();
+    public int isSeatValid(int rows, int columns, Seat seat) {
+        if (seat.getRow() > rows || seat.getColumn() > columns) return -1;
+        return !seat.getIsSpace() ? 1 : 0;
     }
 }

@@ -91,7 +91,8 @@ public class EventMapper {
         }
         if (eventRequestDto.getEventDurationDetails() != null) {
             event.setEventDurationDetails(merge(event.getEventDurationDetails(),
-                    eventRequestDto.getEventDurationDetails()));
+                    eventRequestDto.getEventDurationDetails()
+                                               ));
         }
         if (eventRequestDto.getAdditionalDetails() != null) {
             if (event.getAdditionalDetails() == null) {

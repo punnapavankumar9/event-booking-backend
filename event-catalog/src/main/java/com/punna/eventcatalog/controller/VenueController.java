@@ -1,6 +1,5 @@
 package com.punna.eventcatalog.controller;
 
-import com.punna.eventcatalog.dto.EventResponseDto;
 import com.punna.eventcatalog.dto.VenueDto;
 import com.punna.eventcatalog.service.VenueService;
 import lombok.RequiredArgsConstructor;

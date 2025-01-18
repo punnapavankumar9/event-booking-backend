@@ -25,14 +25,15 @@ public class AuthService {
                 .header(HttpHeaders.AUTHORIZATION, header)
                 .retrieve()
                 .onStatus(httpStatusCode -> !httpStatusCode.is2xxSuccessful(), clientResponse -> {
-                    if (clientResponse
-                            .statusCode()
-                            .is4xxClientError()) {
-                        return Mono.error(() -> new RuntimeException("CLIENT_ERROR"));
-                    }else{
-                        return Mono.error(new RuntimeException("INTERNAL_SERVER_ERROR"));
-                    }
-                })
+                            if (clientResponse
+                                    .statusCode()
+                                    .is4xxClientError()) {
+                                return Mono.error(() -> new RuntimeException("CLIENT_ERROR"));
+                            } else {
+                                return Mono.error(new RuntimeException("INTERNAL_SERVER_ERROR"));
+                            }
+                        }
+                         )
                 .bodyToMono(LoggedInUserDto.class);
     }
 }

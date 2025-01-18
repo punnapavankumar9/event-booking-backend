@@ -12,9 +12,11 @@ public abstract class ContainerBase {
 
     static final GenericContainer<?> mongoContainer = new GenericContainer<>("mongo:latest")
             .withEnv(TestConfigSettings.MONGO_CONTAINER_USER.getKey(),
-                    TestConfigSettings.MONGO_CONTAINER_USER.getValue())
+                    TestConfigSettings.MONGO_CONTAINER_USER.getValue()
+                    )
             .withEnv(TestConfigSettings.MONGO_CONTAINER_PASSWORD.getKey(),
-                    TestConfigSettings.MONGO_CONTAINER_PASSWORD.getValue())
+                    TestConfigSettings.MONGO_CONTAINER_PASSWORD.getValue()
+                    )
             .withExposedPorts(27017)
             .withReuse(true)
             .waitingFor(Wait.forLogMessage(".*Waiting for connections.*", 2));

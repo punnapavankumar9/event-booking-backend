@@ -30,9 +30,10 @@ public class PopulateAuthentication implements WebFilter {
                 .getHeaders()
                 .get(authHeader) != null) {
             UserDto userDto = objectMapper.readValue(exchange
-                    .getRequest()
-                    .getHeaders()
-                    .getFirst(authHeader), UserDto.class);
+                            .getRequest()
+                            .getHeaders()
+                            .getFirst(authHeader), UserDto.class
+                                                    );
             return chain
                     .filter(exchange)
                     .contextWrite(ReactiveSecurityContextHolder.withAuthentication(new UsernamePasswordAuthenticationToken(
@@ -42,7 +43,8 @@ public class PopulateAuthentication implements WebFilter {
                                     .getAuthorities()
                                     .stream()
                                     .map(SimpleGrantedAuthority::new)
-                                    .toList())));
+                                    .toList()
+                    )));
         }
         return chain.filter(exchange);
     }

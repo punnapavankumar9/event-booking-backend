@@ -42,7 +42,8 @@ class ConfigServerApplicationTests {
         ResponseEntity<ConfigObject> exchange = testRestTemplate.exchange(baseUrl + "/default/default",
                 HttpMethod.GET,
                 null,
-                ConfigObject.class);
+                ConfigObject.class
+                                                                         );
 
         ConfigObject responseBody = exchange.getBody();
         assert responseBody != null;
@@ -53,11 +54,12 @@ class ConfigServerApplicationTests {
     }
 
     @Test
-    void sendApplicationYmlWithRequestConfig(){
+    void sendApplicationYmlWithRequestConfig() {
         ResponseEntity<ConfigObject> exchange = testRestTemplate.exchange(baseUrl + "/discovery-service/default",
                 HttpMethod.GET,
                 null,
-                ConfigObject.class);
+                ConfigObject.class
+                                                                         );
 
         ConfigObject responseBody = exchange.getBody();
         assert responseBody != null;
@@ -65,7 +67,8 @@ class ConfigServerApplicationTests {
         assertThat(responseBody
                 .getProfiles()
                 .size()).isEqualTo(1);
-        assertThat(responseBody.getPropertySources().size()).isEqualTo(2);
+        assertThat(responseBody.getPropertySources()
+                .size()).isEqualTo(2);
 
     }
 

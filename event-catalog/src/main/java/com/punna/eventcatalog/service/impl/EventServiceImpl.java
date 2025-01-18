@@ -79,7 +79,8 @@ public class EventServiceImpl implements EventService {
                                                 return eventRepository.save(event);
                                             })
                                             .switchIfEmpty(Mono.error(new EntityNotFoundException(Venue.class.getSimpleName(),
-                                                    eventRequestDto.getVenueId())));
+                                                    eventRequestDto.getVenueId()
+                                            )));
                                 }
                                 return eventRepository.save(event);
                             })

@@ -12,6 +12,6 @@ spring:
         show_sql: true
 application:
   security:
-    jwt-secret-key:  hello-mr-secret-key-will-not-be-used-in-production
+    jwt-secret-key: hello-mr-secret-key-will-not-be-used-in-production
 server:
   port: 8084

@@ -45,7 +45,8 @@ public class SwaggerConfig {
                 .getUrls()
                 .add(new SwaggerUiConfigProperties.SwaggerUrl(url.getName(),
                         url.getUrl(),
-                        url.getDisplayName())));
+                        url.getDisplayName()
+                )));
         return properties;
     }
 }

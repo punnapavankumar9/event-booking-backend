@@ -68,7 +68,8 @@ public class EventSeatStateServiceImpl implements EventSeatStateService {
         return Mono
                 .zip(mongoTemplate.count(checkAlreadyBookedQuery, Event.class),
                         mongoTemplate.count(checkBlockedQuery, Event.class),
-                        areSelectedSeatsValid(eventId, seatLocations))
+                        areSelectedSeatsValid(eventId, seatLocations)
+                    )
                 .flatMap(tuple -> {
                     if (tuple.getT1() > 0) {
                         return Mono.error(new EventApplicationException("Few of the tickets are already booked", 409));
@@ -76,7 +77,8 @@ public class EventSeatStateServiceImpl implements EventSeatStateService {
                         return Mono.error(new EventApplicationException("Few of the tickets are already blocked", 409));
                     } else if (!tuple.getT3()) {
                         return Mono.error(new EventApplicationException("selected seats are containing invalid location",
-                                400));
+                                400
+                        ));
                     }
                     return mongoTemplate
                             .updateFirst(query, update, Event.class)
@@ -110,13 +112,15 @@ public class EventSeatStateServiceImpl implements EventSeatStateService {
 
         return Mono
                 .zip(mongoTemplate.count(checkAlreadyBookedQuery, Event.class),
-                        areSelectedSeatsValid(eventId, seatLocations))
+                        areSelectedSeatsValid(eventId, seatLocations)
+                    )
                 .flatMap(tuple2 -> {
                     if (tuple2.getT1() > 0) {
                         return Mono.error(new EventApplicationException("Few of the tickets are already booked", 409));
                     } else if (!tuple2.getT2()) {
                         return Mono.error(new EventApplicationException("selected seats are containing invalid location",
-                                400));
+                                400
+                        ));
                     }
                     return mongoTemplate
                             .updateFirst(query, update, Event.class)
@@ -170,6 +174,7 @@ public class EventSeatStateServiceImpl implements EventSeatStateService {
         return eventService
                 .findById(eventId)
                 .flatMap(event -> seatingLayoutService.areSelectedSeatsValid(event.getSeatingLayoutId(),
-                        seatLocations));
+                        seatLocations
+                                                                            ));
     }
 }

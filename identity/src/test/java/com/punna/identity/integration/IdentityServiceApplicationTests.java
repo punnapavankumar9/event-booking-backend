@@ -63,7 +63,8 @@ class IdentityServiceApplicationTests extends ContainerBase {
     void givenInvalidUser_whenCreatingUser_thenReturnBadRequest() {
         ResponseEntity<ProblemDetail> problemDetailResponseEntity = restTemplate.postForEntity(usersV1BaseUrl,
                 new UserRequestDto(),
-                ProblemDetail.class);
+                ProblemDetail.class
+                                                                                              );
         assertThat(problemDetailResponseEntity.getStatusCode()).isEqualTo(HttpStatus.BAD_REQUEST);
         ProblemDetail body = problemDetailResponseEntity.getBody();
         assertThat(body).isNotNull();
@@ -78,7 +79,8 @@ class IdentityServiceApplicationTests extends ContainerBase {
         UserRequestDto userRequestDto = clone(SAMPLE_USER_DTO, UserRequestDto.class);
         ResponseEntity<UserResponseDto> response = restTemplate.postForEntity(usersV1BaseUrl,
                 userRequestDto,
-                UserResponseDto.class);
+                UserResponseDto.class
+                                                                             );
 
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.CREATED);
         UserResponseDto body = response.getBody();
@@ -95,7 +97,8 @@ class IdentityServiceApplicationTests extends ContainerBase {
         UsernamePasswordDto usernamePasswordDto = new UsernamePasswordDto("Dummy", SAMPLE_USER_DTO.getPassword());
         ResponseEntity<String> response = restTemplate.postForEntity(usersV1BaseUrl + "/login",
                 usernamePasswordDto,
-                String.class);
+                String.class
+                                                                    );
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
     }
 
@@ -105,7 +108,8 @@ class IdentityServiceApplicationTests extends ContainerBase {
         UsernamePasswordDto usernamePasswordDto = new UsernamePasswordDto("pavan", "Dummy123");
         ResponseEntity<String> response = restTemplate.postForEntity(usersV1BaseUrl + "/login",
                 usernamePasswordDto,
-                String.class);
+                String.class
+                                                                    );
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.UNAUTHORIZED);
     }
 
@@ -113,10 +117,12 @@ class IdentityServiceApplicationTests extends ContainerBase {
     @Order(6)
     void givenValidUser_whenLoggingUser_thenLoginAndReturnToken() {
         UsernamePasswordDto usernamePasswordDto = new UsernamePasswordDto(SAMPLE_USER_DTO.getUsername(),
-                SAMPLE_USER_DTO.getPassword());
+                SAMPLE_USER_DTO.getPassword()
+        );
         ResponseEntity<String> response = restTemplate.postForEntity(usersV1BaseUrl + "/login",
                 usernamePasswordDto,
-                String.class);
+                String.class
+                                                                    );
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
         String body = response.getBody();
         assertThat(body).isNotNull();
@@ -144,7 +150,8 @@ class IdentityServiceApplicationTests extends ContainerBase {
         ResponseEntity<String> exchange = restTemplate.exchange(URI.create(usersV1BaseUrl),
                 HttpMethod.PATCH,
                 new HttpEntity<>(userRequestDto),
-                String.class);
+                String.class
+                                                               );
         assertThat(exchange.getStatusCode()).isEqualTo(HttpStatus.FORBIDDEN);
     }
 
@@ -159,7 +166,8 @@ class IdentityServiceApplicationTests extends ContainerBase {
         ResponseEntity<ProblemDetail> exchange = restTemplate.exchange(URI.create(usersV1BaseUrl),
                 HttpMethod.PATCH,
                 new HttpEntity<>(userRequestDto, authHeader(jwtToken)),
-                ProblemDetail.class);
+                ProblemDetail.class
+                                                                      );
         assertThat(exchange.getStatusCode()).isEqualTo(HttpStatus.BAD_REQUEST);
         ProblemDetail body = exchange.getBody();
         assertThat(body).isNotNull();
@@ -180,7 +188,8 @@ class IdentityServiceApplicationTests extends ContainerBase {
         ResponseEntity<UserResponseDto> exchange = restTemplate.exchange(URI.create(usersV1BaseUrl),
                 HttpMethod.PATCH,
                 new HttpEntity<>(userRequestDto, authHeader(jwtToken)),
-                UserResponseDto.class);
+                UserResponseDto.class
+                                                                        );
         assertThat(exchange.getStatusCode()).isEqualTo(HttpStatus.OK);
         UserResponseDto body = exchange.getBody();
         assertThat(body).isNotNull();
@@ -195,7 +204,8 @@ class IdentityServiceApplicationTests extends ContainerBase {
         ResponseEntity<ProblemDetail> response = restTemplate.exchange(usersV1BaseUrl + "/dummy",
                 HttpMethod.GET,
                 createHttpEntity(null, jwtToken),
-                ProblemDetail.class);
+                ProblemDetail.class
+                                                                      );
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
     }
 
@@ -205,7 +215,8 @@ class IdentityServiceApplicationTests extends ContainerBase {
         ResponseEntity<UserResponseDto> response = restTemplate.exchange(usersV1BaseUrl + "/" + SAMPLE_USER_DTO.getUsername(),
                 HttpMethod.GET,
                 createHttpEntity(null, jwtToken),
-                UserResponseDto.class);
+                UserResponseDto.class
+                                                                        );
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
         UserResponseDto body = response.getBody();
         assertThat(body).isNotNull();

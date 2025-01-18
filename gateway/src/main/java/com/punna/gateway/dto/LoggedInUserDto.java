@@ -5,17 +5,17 @@ import java.util.List;
 
 public record LoggedInUserDto(String username,
 
-        String email,
+                              String email,
 
-        boolean enabled,
+                              boolean enabled,
 
-        List<String> authorities,
+                              List<String> authorities,
 
-        LocalDateTime createdAt,
+                              LocalDateTime createdAt,
 
-        LocalDateTime lastModifiedAt,
+                              LocalDateTime lastModifiedAt,
 
-        LocalDateTime lastLoginAt
+                              LocalDateTime lastLoginAt
 
 ) {
 

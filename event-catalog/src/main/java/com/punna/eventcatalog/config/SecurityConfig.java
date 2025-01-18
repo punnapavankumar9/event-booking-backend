@@ -28,7 +28,8 @@ public class SecurityConfig {
                         .pathMatchers(HttpMethod.GET,
                                 "/api/v1/events/**",
                                 "/api/v1/venues/**",
-                                "/api/v1/seating-layout/**")
+                                "/api/v1/seating-layout/**"
+                                     )
                         .permitAll()
                         .pathMatchers("/swagger-ui.html", "/swagger-ui/**", "/v3/api-docs/**")
                         .permitAll()
