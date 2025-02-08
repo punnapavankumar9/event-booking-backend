@@ -21,8 +21,6 @@ public class UserResponseDto {
 
     private boolean enabled = true;
 
-    private List<String> authorities = new ArrayList<>();
-
     private LocalDateTime createdAt;
 
     private LocalDateTime lastModifiedAt;

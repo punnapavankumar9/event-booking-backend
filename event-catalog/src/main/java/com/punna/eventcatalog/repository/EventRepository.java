@@ -1,6 +1,7 @@
 package com.punna.eventcatalog.repository;
 
 import com.punna.eventcatalog.model.Event;
+import com.punna.eventcatalog.model.EventType;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
 import org.springframework.stereotype.Repository;
@@ -10,4 +11,6 @@ import reactor.core.publisher.Flux;
 public interface EventRepository extends ReactiveMongoRepository<Event, String> {
 
     Flux<Event> findAllBy(Pageable pageable);
+
+    Flux<Event> findAllByEventType(EventType eventType);
 }

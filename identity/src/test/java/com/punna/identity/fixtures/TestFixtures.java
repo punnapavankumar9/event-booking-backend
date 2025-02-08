@@ -12,7 +12,6 @@ public class TestFixtures {
             .username("pavan")
             .password("password")
             .enabled(true)
-            .authorities(List.of("ROLE_USER", "ROLE_ADMIN"))
             .build();
 
 }

@@ -2,6 +2,7 @@ package com.punna.eventcatalog.controller;
 
 import com.punna.eventcatalog.dto.EventRequestDto;
 import com.punna.eventcatalog.dto.EventResponseDto;
+import com.punna.eventcatalog.model.EventType;
 import com.punna.eventcatalog.service.EventService;
 import lombok.RequiredArgsConstructor;
 import org.punna.commons.validation.groups.CreateGroup;
@@ -48,5 +49,10 @@ public class EventController {
     @GetMapping("/{id}")
     public Mono<EventResponseDto> getVenue(@PathVariable String id) {
         return eventService.findById(id);
+    }
+
+    @GetMapping("/byEventType/{}")
+    public Flux<EventResponseDto> getVenuesByType(@PathVariable EventType eventType) {
+        return eventService.getEventsByType(eventType);
     }
 }

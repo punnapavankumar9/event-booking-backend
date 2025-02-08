@@ -56,4 +56,6 @@ public class Event {
     private SeatState seatState;
 
     private String seatingLayoutId;
+
+    private EventType eventType = EventType.MOVIE;
 }

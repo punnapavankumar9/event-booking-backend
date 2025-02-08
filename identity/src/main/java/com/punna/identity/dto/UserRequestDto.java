@@ -29,6 +29,4 @@ public class UserRequestDto {
     private String email;
 
     private boolean enabled = true;
-
-    private List<String> authorities = new ArrayList<>();
 }

@@ -18,8 +18,7 @@ public class ApplicationExceptionHandler {
     @ExceptionHandler(EntityNotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public ProblemDetail handleEntityNotFoundException(EntityNotFoundException e) {
-        return ProblemDetail
-                .builder()
+        return ProblemDetail.builder()
                 .message(e.getMessage())
                 .status(HttpStatus.NOT_FOUND.value())
                 .build();
@@ -28,10 +27,18 @@ public class ApplicationExceptionHandler {
     @ExceptionHandler(InvalidUsernamePasswordCombination.class)
     @ResponseStatus(HttpStatus.UNAUTHORIZED)
     public ProblemDetail handleInvalidUsernamePasswordCombination(InvalidUsernamePasswordCombination ex) {
-        return ProblemDetail
-                .builder()
+        return ProblemDetail.builder()
                 .message(ex.getMessage())
                 .status(HttpStatus.UNAUTHORIZED.value())
+                .build();
+    }
+
+    @ExceptionHandler(UserNameOrEmailExists.class)
+    @ResponseStatus(HttpStatus.CONFLICT)
+    public ProblemDetail handleUserNameOrEmailExists(UserNameOrEmailExists ex) {
+        return ProblemDetail.builder()
+                .message(ex.getMessage())
+                .status(HttpStatus.CONFLICT.value())
                 .build();
     }
 
@@ -40,8 +47,7 @@ public class ApplicationExceptionHandler {
     public ProblemDetail handleMethodArgumentNotValidException(MethodArgumentNotValidException exception) {
         ProblemDetail problemDetail = new ProblemDetail();
         Map<String, Object> errors = problemDetail.getErrors();
-        exception
-                .getAllErrors()
+        exception.getAllErrors()
                 .forEach(error -> {
                     errors.put(((FieldError) error).getField(), error.getDefaultMessage());
                 });

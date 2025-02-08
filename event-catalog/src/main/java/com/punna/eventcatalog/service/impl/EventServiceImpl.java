@@ -4,6 +4,7 @@ import com.punna.eventcatalog.dto.EventRequestDto;
 import com.punna.eventcatalog.dto.EventResponseDto;
 import com.punna.eventcatalog.mapper.EventMapper;
 import com.punna.eventcatalog.model.Event;
+import com.punna.eventcatalog.model.EventType;
 import com.punna.eventcatalog.model.Venue;
 import com.punna.eventcatalog.repository.EventRepository;
 import com.punna.eventcatalog.service.AuthService;
@@ -130,5 +131,11 @@ public class EventServiceImpl implements EventService {
                 .switchIfEmpty(authService
                         .getUserName()
                         .map(username -> username.equals(event.getOrganizerId())));
+    }
+
+    @Override
+    public Flux<EventResponseDto> getEventsByType(EventType eventType) {
+        return eventRepository.findAllByEventType(eventType)
+                .map(EventMapper::toEventResponseDto);
     }
 }
