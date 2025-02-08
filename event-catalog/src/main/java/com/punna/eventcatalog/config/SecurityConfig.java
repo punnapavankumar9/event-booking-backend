@@ -33,7 +33,7 @@ public class SecurityConfig {
                         .permitAll()
                         .pathMatchers("/swagger-ui.html", "/swagger-ui/**", "/v3/api-docs/**")
                         .permitAll()
-                        // centralized swagger
+                        // for web browsers
                         .pathMatchers(HttpMethod.OPTIONS, "/**")
                         .permitAll()
                         .anyExchange()

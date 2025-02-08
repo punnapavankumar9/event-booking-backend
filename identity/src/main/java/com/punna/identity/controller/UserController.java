@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.punna.commons.validation.groups.CreateGroup;
 import org.punna.commons.validation.groups.UpdateGroup;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -50,7 +51,7 @@ public class UserController {
         userService.deleteUserByUsername(username);
     }
 
-    @PostMapping("/login")
+    @PostMapping(value = "/login", produces = MediaType.TEXT_PLAIN_VALUE)
     public String login(@Validated @RequestBody UsernamePasswordDto usernamePasswordDto) {
         return userService.loginUser(usernamePasswordDto);
     }
