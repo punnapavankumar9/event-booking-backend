@@ -22,6 +22,7 @@
         <module>discovery</module>
         <module>gateway</module>
         <module>event-core</module>
+        <module>event-catalog</module>
         <module>identity</module>
     </modules>
 

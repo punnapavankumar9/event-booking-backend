@@ -4,7 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="270ad57c-65bc-4f7e-86cf-537bc93322f9" name="Changes" comment="" />
+    <list default="true" id="270ad57c-65bc-4f7e-86cf-537bc93322f9" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/config-server/src/main/resources/config/event-core-service.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/event-catalog/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/event-catalog/mvnw" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/event-catalog/mvnw.cmd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/event-catalog/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/EventCatalogApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/event-catalog/src/main/resources/application.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/event-catalog/src/test/java/com/punna/eventcatalog/EventCatalogApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config-server/src/main/resources/config/event-catalog-service.yml" beforeDir="false" afterPath="$PROJECT_DIR$/config-server/src/main/resources/config/event-catalog-service.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/event-core/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -86,6 +98,7 @@
     "Maven.bom [test].executor": "Run",
     "Maven.event-catalog [install].executor": "Run",
     "Maven.event-catalog [test].executor": "Run",
+    "Maven.event-core [test].executor": "Run",
     "RequestMappingsPanelOrder0": "0",
     "RequestMappingsPanelOrder1": "1",
     "RequestMappingsPanelWidth0": "75",
@@ -155,17 +168,9 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.IdentityServiceApplication">
+  <component name="RunManager" selected="Spring Boot.EventCatalogApplication">
     <configuration name="All in event-catalog (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="event-catalog" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="TEST_OBJECT" value="package" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="All in event-catalog" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="event-catalog" />
+      <module name="event-core" />
       <option name="PACKAGE_NAME" value="" />
       <option name="TEST_OBJECT" value="package" />
       <method v="2">
@@ -173,35 +178,46 @@
       </method>
     </configuration>
     <configuration name="EventSeatStateEndpointTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="event-catalog" />
+      <module name="event-core" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.punna.eventcatalog.integration.*" />
+          <option name="PATTERN" value="com.punna.eventcore.integration.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.punna.eventcatalog.integration" />
-      <option name="MAIN_CLASS_NAME" value="com.punna.eventcatalog.integration.EventSeatStateEndpointTests" />
+      <option name="MAIN_CLASS_NAME" value="com.punna.eventcore.integration.EventSeatStateEndpointTests" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <configuration name="EventSeatStateEndpointTests.givenInvalidSeatLocation_whenBook_thenReturnBadRequest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="event-catalog" />
+      <module name="event-core" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.punna.eventcatalog.integration.*" />
+          <option name="PATTERN" value="com.punna.eventcore.integration.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.punna.eventcatalog.integration" />
-      <option name="MAIN_CLASS_NAME" value="com.punna.eventcatalog.integration.EventSeatStateEndpointTests" />
+      <option name="MAIN_CLASS_NAME" value="com.punna.eventcore.integration.EventSeatStateEndpointTests" />
       <option name="METHOD_NAME" value="givenInvalidSeatLocation_whenBook_thenReturnBadRequest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="identity" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="identity" />
+      <option name="filePath" />
+      <method v="2" />
     </configuration>
     <configuration name="ConfigServerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="config-server" />
@@ -217,9 +233,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="EventCatalogApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+    <configuration name="EventCatalogApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="event-catalog" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.punna.eventcatalog.EventCatalogApplication" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.punna.eventcatalog.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="EventCoreApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="event-core" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.punna.eventcore.EventCoreApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -246,11 +275,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Spring Boot.EventCatalogApplication" />
         <item itemvalue="Spring Boot.IdentityServiceApplication" />
         <item itemvalue="JUnit.All in event-catalog (1)" />
         <item itemvalue="JUnit.EventSeatStateEndpointTests" />
         <item itemvalue="JUnit.EventSeatStateEndpointTests.givenInvalidSeatLocation_whenBook_thenReturnBadRequest" />
-        <item itemvalue="JUnit.All in event-catalog" />
       </list>
     </recent_temporary>
   </component>
@@ -314,6 +343,7 @@
       <workItem from="1739024252018" duration="3365000" />
       <workItem from="1739030426118" duration="3597000" />
       <workItem from="1739143137423" duration="179000" />
+      <workItem from="1739143425793" duration="1562000" />
     </task>
     <servers />
   </component>

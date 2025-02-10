@@ -1,5 +1,5 @@
 spring:
   application:
-    name: event-catalog-service
+    name: event-core-service
   config:
     import: optional:configserver:http://localhost:8081

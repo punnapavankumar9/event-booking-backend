@@ -3,10 +3,9 @@ spring:
     mongodb:
       username: event
       password: event
+      database: event-core
       host: localhost
       port: 27017
-      database: event-catalog
       authentication-database: admin
-
 server:
-  port: 8085
+  port: 8083
