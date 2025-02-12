@@ -19,32 +19,23 @@ public class SecurityConfig {
 
     @Bean
     public SecurityWebFilterChain webFilterChain(ServerHttpSecurity http,
-                                                 PopulateAuthentication populateAuthentication) {
-        return http
-                .httpBasic(ServerHttpSecurity.HttpBasicSpec::disable)
-                .formLogin(ServerHttpSecurity.FormLoginSpec::disable)
-                .csrf(ServerHttpSecurity.CsrfSpec::disable)
-                .authorizeExchange(p -> p
-                        .pathMatchers(HttpMethod.GET,
-                                "/api/v1/events/**",
-                                "/api/v1/venues/**",
-                                "/api/v1/seating-layout/**"
-                                     )
-                        .permitAll()
-                        .pathMatchers("/swagger-ui.html", "/swagger-ui/**", "/v3/api-docs/**")
-                        .permitAll()
-                        // for web browsers
-                        .pathMatchers(HttpMethod.OPTIONS, "/**")
-                        .permitAll()
-                        .anyExchange()
-                        .authenticated())
-                .addFilterAt(populateAuthentication, SecurityWebFiltersOrder.HTTP_BASIC)
-                .build();
+        PopulateAuthentication populateAuthentication) {
+        return http.httpBasic(ServerHttpSecurity.HttpBasicSpec::disable)
+            .formLogin(ServerHttpSecurity.FormLoginSpec::disable)
+            .csrf(ServerHttpSecurity.CsrfSpec::disable).authorizeExchange(
+                p -> p.pathMatchers(HttpMethod.GET, "/api/v1/events/**", "/api/v1/venues/**",
+                        "/api/v1/seating-layout/**").permitAll()
+                    .pathMatchers("/swagger-ui.html", "/swagger-ui/**", "/v3/api-docs/**")
+                    .permitAll()
+                    // for web browsers
+                    .pathMatchers(HttpMethod.OPTIONS, "/**").permitAll().anyExchange()
+                    .authenticated())
+            .addFilterAt(populateAuthentication, SecurityWebFiltersOrder.HTTP_BASIC).build();
     }
 
     @Bean
     public ReactiveAuthenticationManager reactiveAuthenticationManager() {
         return authentication -> Mono.error(new UnsupportedOperationException(
-                "Authentication is not supported here at downstream service."));
+            "Authentication is not supported here at downstream service."));
     }
 }

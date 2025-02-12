@@ -15,20 +15,11 @@ public class SwaggerSecurityConfig {
 
     @Bean
     public OpenAPI customOpenAPI() {
-        return new OpenAPI()
-                .components(new Components().addSecuritySchemes("bearer-key",
-                        new SecurityScheme()
-                                .type(SecurityScheme.Type.HTTP)
-                                .scheme("bearer")
-                                .bearerFormat("jwt")
-                                                               ))
-                .info(new Info()
-                        .title("Identity Security API")
-                        .version("1.0")
-                        .contact(new Contact()
-                                .email("pavankumar.punna@outlook.com")
-                                .name("Pavan Kumar Punna"))
-                        .description("Identity Service for Event booking platform"))
-                .addSecurityItem(new SecurityRequirement().addList("bearer-key"));
+        return new OpenAPI().components(new Components().addSecuritySchemes("bearer-key",
+                new SecurityScheme().type(SecurityScheme.Type.HTTP).scheme("bearer")
+                    .bearerFormat("jwt"))).info(new Info().title("Identity Security API").version("1.0")
+                .contact(new Contact().email("pavankumar.punna@outlook.com").name("Pavan Kumar Punna"))
+                .description("Identity Service for Event booking platform"))
+            .addSecurityItem(new SecurityRequirement().addList("bearer-key"));
     }
 }

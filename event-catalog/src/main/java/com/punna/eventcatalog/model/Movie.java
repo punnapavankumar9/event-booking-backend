@@ -28,7 +28,7 @@ public class Movie {
 
     private String description;
 
-    private float rating;
+    private Float rating;
 
     private List<String> imageUrls;
 }

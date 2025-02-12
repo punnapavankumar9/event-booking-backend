@@ -22,6 +22,10 @@
             <artifactId>spring-boot-starter-validation</artifactId>
         </dependency>
         <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+        <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-config</artifactId>
         </dependency>
@@ -69,39 +73,4 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
-    <build>
-        <plugins>
-            <!--            <plugin>-->
-            <!--                <groupId>org.jacoco</groupId>-->
-            <!--                <artifactId>jacoco-maven-plugin</artifactId>-->
-            <!--                <version>0.8.12</version>-->
-            <!--                <executions>-->
-            <!--                    <execution>-->
-            <!--                        <goals>-->
-            <!--                            <goal>check</goal>-->
-            <!--                        </goals>-->
-            <!--                        <id>check</id>-->
-            <!--                        <configuration>-->
-            <!--                            <rules>-->
-            <!--                                <rule>-->
-            <!--                                    <element>BUNDLE</element>-->
-            <!--                                    <limits>-->
-            <!--                                        <limit>-->
-            <!--                                            <counter>LINE</counter>-->
-            <!--                                            <value>COVEREDRATIO</value>-->
-            <!--                                            <minimum>80%</minimum>-->
-            <!--                                        </limit>-->
-            <!--                                    </limits>-->
-            <!--                                </rule>-->
-            <!--                            </rules>-->
-            <!--                            &lt;!&ndash; coverage may drop below the minimum but don't fail the job&ndash;&gt;-->
-            <!--                            <haltOnFailure>false</haltOnFailure>-->
-            <!--                        </configuration>-->
-            <!--                    </execution>-->
-            <!--                </executions>-->
-            <!--            </plugin>-->
-        </plugins>
-    </build>
-
 </project>

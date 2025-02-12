@@ -1,17 +1,19 @@
 package com.punna.eventcatalog.repository;
 
 import com.punna.eventcatalog.model.Movie;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.repository.reactive.ReactiveCrudRepository;
 import org.springframework.stereotype.Repository;
+import reactor.core.publisher.Flux;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Repository
-public interface MovieRepository extends MongoRepository<Movie, String> {
+public interface MovieRepository extends ReactiveCrudRepository<Movie, String> {
 
-    List<Movie> findByTitleContaining(String title, Sort sort);
+    Flux<Movie> findByTitleContaining(String title, Pageable pageable);
 
-    List<Movie> findByReleaseDate(LocalDateTime releaseDate);
+    Flux<Movie> findByReleaseDate(LocalDateTime releaseDate, Pageable pageable);
+
+    Flux<Movie> findByIdNotNull(Pageable pageable);
 }

@@ -25,26 +25,15 @@ public class PopulateAuthentication implements WebFilter {
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, WebFilterChain chain) {
         String authHeader = "X-USER-DETAILS";
-        if (exchange
-                .getRequest()
-                .getHeaders()
-                .get(authHeader) != null) {
-            UserDto userDto = objectMapper.readValue(exchange
-                            .getRequest()
-                            .getHeaders()
-                            .getFirst(authHeader), UserDto.class
-                                                    );
-            return chain
-                    .filter(exchange)
-                    .contextWrite(ReactiveSecurityContextHolder.withAuthentication(new UsernamePasswordAuthenticationToken(
-                            userDto,
-                            null,
-                            userDto
-                                    .getAuthorities()
-                                    .stream()
-                                    .map(SimpleGrantedAuthority::new)
-                                    .toList()
-                    )));
+        if (exchange.getRequest().getHeaders().get(authHeader) != null) {
+            UserDto userDto = objectMapper.readValue(exchange.getRequest()
+                                                             .getHeaders()
+                                                             .getFirst(authHeader), UserDto.class);
+            return chain.filter(exchange)
+                        .contextWrite(ReactiveSecurityContextHolder.withAuthentication(new UsernamePasswordAuthenticationToken(userDto, null, userDto.getAuthorities()
+                                                                                                                                                     .stream()
+                                                                                                                                                     .map(SimpleGrantedAuthority::new)
+                                                                                                                                                     .toList())));
         }
         return chain.filter(exchange);
     }

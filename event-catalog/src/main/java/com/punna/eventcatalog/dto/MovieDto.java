@@ -37,8 +37,7 @@ public class MovieDto {
     @NotNull(message = "rating must no be null", groups = CreateGroup.class)
     @Min(message = "rating must be at least 1", value = 1)
     @Max(message = "rating must not be greater than 10", value = 10)
-    private float rating;
+    private Float rating;
 
-    @Size(min = 1, max = 5, message = "ImageUrls must not be null and must not be more than 5")
     private List<String> imageUrls;
 }
