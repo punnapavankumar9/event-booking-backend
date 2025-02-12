@@ -14,7 +14,7 @@ import reactor.core.publisher.Mono;
 @RequiredArgsConstructor
 public class FileStorageServiceImpl implements StorageService {
 
-    @Value("${application.config.assets:assets/movie-catalog}")
+    @Value("${application.config.assets")
     private String assetsPath;
 
     @Override

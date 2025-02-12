@@ -20,7 +20,7 @@ public class EventCatalogApplication {
         SpringApplication.run(EventCatalogApplication.class, args);
     }
 
-    @Value("${application.config.assets:assets/movie-catalog}")
+    @Value("${application.config.assets}")
     private String assetsPath;
 
     @PostConstruct

@@ -4,47 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="270ad57c-65bc-4f7e-86cf-537bc93322f9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/assets/movie-catalog/5fd8cf3c-6bc4-4938-8285-68881dfe69d8-Chhaava.avif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/movie-catalog/650d810b-a32a-4f96-865e-02138288ae60-Neural_Pathways_(DARK).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/movie-catalog/72b99efd-050f-455d-9a39-f7c17cb5ed5a-chhaava image 2.avif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/movie-catalog/844072bd-3863-4919-a796-0c50fe34ebc4-Thandel image 1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/movie-catalog/92f83d5a-56f9-4819-ab2d-5248503d2fe9-Thandel Image 2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/movie-catalog/9d7861f0-03f3-4ffd-9daa-e076d4cf1c54-Chhaava.avif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/movie-catalog/e2af7cb6-2424-4f71-82a6-62c9092c77ed-chhaava image 2.avif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/movie-catalog/fe184d4e-627d-4eb4-8087-8046808cd465-Thandle Image 3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/controller/MovieController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/dto/UserDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/exception/ApplicationExceptionHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/mapper/MovieMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/security/PopulateAuthenticationFilter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/security/SecurityConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/service/StorageService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/service/impl/FileStorageServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/service/impl/MovieServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config-server/src/main/resources/config/event-catalog-service.yml" beforeDir="false" afterPath="$PROJECT_DIR$/config-server/src/main/resources/config/event-catalog-service.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-catalog/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/event-catalog/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/EventCatalogApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/EventCatalogApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/dto/MovieDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/dto/MovieDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/model/Movie.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/model/Movie.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/repository/MovieRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/repository/MovieRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/service/MovieService.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/service/MovieService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/config/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/config/SwaggerSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/config/SwaggerSecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/exception/ApplicationExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/exception/ApplicationExceptionHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/security/PopulateAuthentication.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/security/PopulateAuthentication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/com/punna/gateway/GatewayApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/com/punna/gateway/GatewayApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/com/punna/gateway/filter/AuthFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/com/punna/gateway/filter/AuthFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/com/punna/gateway/service/AuthService.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/com/punna/gateway/service/AuthService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/identity/src/main/java/com/punna/identity/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/identity/src/main/java/com/punna/identity/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/identity/src/main/java/com/punna/identity/exception/ApplicationExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/identity/src/main/java/com/punna/identity/exception/ApplicationExceptionHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/identity/src/main/java/com/punna/identity/security/JwtRequestFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/identity/src/main/java/com/punna/identity/security/JwtRequestFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/identity/src/main/java/com/punna/identity/security/JwtService.java" beforeDir="false" afterPath="$PROJECT_DIR$/identity/src/main/java/com/punna/identity/security/JwtService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/identity/src/main/java/com/punna/identity/security/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/identity/src/main/java/com/punna/identity/security/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/identity/src/test/java/com/punna/identity/integration/IdentityServiceApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/identity/src/test/java/com/punna/identity/integration/IdentityServiceApplicationTests.java" afterDir="false" />
-    </list>
+    <list default="true" id="270ad57c-65bc-4f7e-86cf-537bc93322f9" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -384,7 +344,7 @@
       <workItem from="1739291425937" duration="5839000" />
       <workItem from="1739343850086" duration="2278000" />
       <workItem from="1739347671534" duration="1112000" />
-      <workItem from="1739369373905" duration="3121000" />
+      <workItem from="1739369373905" duration="3434000" />
     </task>
     <servers />
   </component>
