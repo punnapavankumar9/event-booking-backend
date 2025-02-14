@@ -1,4 +1,4 @@
-name: Maven Install With tests for entire project
+name: Maven CI
 
 
 on:
@@ -9,8 +9,8 @@ jobs:
   test:
     strategy:
       matrix:
-        project-folder: [ "config-server", "event-catalog", "identity" ]
-    name: Install and test
+        project-folder: [ "config-server", "event-catalog", "identity", "event-core"]
+    name: Install and Test
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
