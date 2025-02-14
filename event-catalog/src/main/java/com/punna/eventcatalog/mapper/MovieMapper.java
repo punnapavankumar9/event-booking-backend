@@ -3,6 +3,7 @@ package com.punna.eventcatalog.mapper;
 import com.punna.eventcatalog.dto.MovieDto;
 import com.punna.eventcatalog.model.Movie;
 
+
 public class MovieMapper {
 
   public static Movie toMovie(MovieDto movieDto) {
@@ -17,6 +18,7 @@ public class MovieMapper {
         .likes(movieDto.getLikes())
         .duration(movieDto.getDuration())
         .tags(movieDto.getTags())
+        .posterUrl(movieDto.getPosterUrl())
         .build();
   }
 
@@ -32,6 +34,7 @@ public class MovieMapper {
         .likes(movie.getLikes())
         .duration(movie.getDuration())
         .tags(movie.getTags())
+        .posterUrl(movie.getPosterUrl())
         .build();
   }
 
@@ -65,6 +68,9 @@ public class MovieMapper {
     }
     if (movieDto.getTags() != null) {
       movie.setTags(movieDto.getTags());
+    }
+    if (movieDto.getPosterUrl() != null) {
+      movie.setPosterUrl(movieDto.getPosterUrl());
     }
   }
 

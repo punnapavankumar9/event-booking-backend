@@ -10,5 +10,11 @@ spring:
 application:
   config:
     assets: "assets/movie-catalog/"
+  storage: minio
+minio:
+  endpoint: http://localhost:9000
+  accessKey: igxzPjRklf1IqP5yA2JL
+  secretKey: DfYjH4fBSrTPIlGcXbjwmf5t1kDxN8vKMO5a3VA7
+  bucket: event
 server:
   port: 8085

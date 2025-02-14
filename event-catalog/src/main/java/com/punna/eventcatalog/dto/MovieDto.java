@@ -36,7 +36,6 @@ public class MovieDto {
   @Size(min = 10, max = 512)
   private String description;
 
-  @NotNull(message = "rating must no be null", groups = CreateGroup.class)
   @Min(message = "rating must be at least 1", value = 1)
   @Max(message = "rating must not be greater than 10", value = 10)
   private Float rating;
@@ -52,4 +51,7 @@ public class MovieDto {
 
   // movie tags like, 2D, 3D, Telugu Hindi, UA, A, U
   private List<String> tags;
+
+  @NotNull(message = "poster must not be null", groups = CreateGroup.class)
+  private String posterUrl;
 }

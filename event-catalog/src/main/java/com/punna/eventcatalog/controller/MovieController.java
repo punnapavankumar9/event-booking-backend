@@ -33,11 +33,12 @@ public class MovieController {
 
   @PostMapping
   public Mono<MovieDto> createMovie(@RequestPart("movie") Mono<String> movieDtoStringMono,
-      @RequestPart("images") Flux<FilePart> fileParts) throws IOException {
+      @RequestPart("images") Flux<FilePart> fileParts,
+      @RequestPart("posterImage") Mono<FilePart> posterImageMono) throws IOException {
     return movieDtoStringMono.flatMap(dtoString -> {
       try {
         MovieDto movieDto = objectMapper.readValue(dtoString, MovieDto.class);
-        return movieService.create(movieDto, fileParts);
+        return movieService.create(movieDto, fileParts, posterImageMono);
       } catch (IOException e) {
         return Mono.error(new EventApplicationException("Unable to parse movie dto"));
       }
@@ -48,6 +49,7 @@ public class MovieController {
   public Mono<MovieDto> findById(@PathVariable String id) {
     return movieService.findById(id);
   }
+
 
   @GetMapping
   public Flux<MovieDto> findAll(@RequestParam(value = "page", defaultValue = "0") int page,

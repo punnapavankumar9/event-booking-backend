@@ -6,6 +6,7 @@ import reactor.core.publisher.Mono;
 
 public interface StorageService {
 
-    Mono<String> storeImage(FilePart filePart);
+  Mono<String> storeImage(FilePart filePart);
 
+  String getImageUrl(String path);
 }

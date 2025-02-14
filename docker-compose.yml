@@ -7,7 +7,7 @@ services:
     networks:
       - event-booking-network
     ports:
-      - 27017:27017
+      - "27017:27017"
     environment:
       MONGO_INITDB_ROOT_USERNAME: event
       MONGO_INITDB_ROOT_PASSWORD: event
@@ -21,13 +21,28 @@ services:
     networks:
       - event-booking-network
     ports:
-      - 5432:5432
+      - "5432:5432"
     environment:
       POSTGRES_PASSWORD: identity
       POSTGRES_USER: identity
       POSTGRES_DB: identity
     volumes:
       - event_pg:/var/lib/postgresql/
+  minio:
+    container_name: minio
+    image: quay.io/minio/minio:latest
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    #    network can be global as I don't minio to be separate from the global installation in the machine
+    environment:
+      MINIO_ROOT_USER: minio1234
+      MINIO_ROOT_PASSWORD: minio1234
+    volumes:
+      - minio:/data
+    command: server /data --console-address ":9001"
+    restart: unless-stopped
+
 networks:
   event-booking-network:
     driver: bridge
@@ -35,3 +50,9 @@ networks:
 volumes:
   event_mongo:
   event_pg:
+  minio:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /Users/pavankumarpunna/pavan/software/minio-volume-mount

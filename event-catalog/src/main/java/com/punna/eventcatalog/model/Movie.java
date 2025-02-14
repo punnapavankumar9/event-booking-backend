@@ -27,15 +27,16 @@ public class Movie {
 
   private String description;
 
-  private Float rating;
+  private Float rating = 0.0f;
 
   private List<String> imageUrls;
 
-  private Integer likes;
+  private String posterUrl;
+
+  private Integer likes = 0;
 
   // minutes
   private Integer duration;
-
 
   // movie tags like, 2D, 3D, Telugu Hindi, UA, A, U
   private List<String> tags;

@@ -22,5 +22,5 @@ public interface MovieService {
 
     Mono<MovieDto> updateById(String id, MovieDto movieDto);
 
-    Mono<MovieDto> create(MovieDto movieDto, Flux<FilePart> fileParts) throws IOException;
+    Mono<MovieDto> create(MovieDto movieDto, Flux<FilePart> fileParts, Mono<FilePart> posterImageMono) throws IOException;
 }

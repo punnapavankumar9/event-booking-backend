@@ -11,6 +11,7 @@ import jakarta.validation.ConstraintViolationException;
 import jakarta.validation.Validator;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 import lombok.RequiredArgsConstructor;
 import org.punna.commons.exception.EntityNotFoundException;
@@ -39,25 +40,23 @@ public class MovieServiceImpl implements MovieService {
   public Mono<MovieDto> findById(String id) {
     return movieRepository.findById(id)
         .switchIfEmpty(Mono.error(new EntityNotFoundException(Movie.class.getSimpleName(), id)))
-        .map(MovieMapper::toMovieDto);
+        .map(this::updateImageUrls);
   }
 
   @Override
   public Flux<MovieDto> findAllByTitle(String title, int page, int size) {
     return movieRepository.findByTitleContaining(title,
-            PageRequest.of(page, size, Sort.by("rating").descending()))
-        .map(MovieMapper::toMovieDto);
+        PageRequest.of(page, size, Sort.by("rating").descending())).map(this::updateImageUrls);
   }
 
   @Override
   public Flux<MovieDto> findByReleaseDate(LocalDateTime releaseDate, int page, int size) {
     return movieRepository.findByReleaseDate(releaseDate, PageRequest.of(page, size))
-        .map(MovieMapper::toMovieDto);
+        .map(this::updateImageUrls);
   }
 
   public Flux<MovieDto> find(int page, int size) {
-    return movieRepository.findByIdNotNull(PageRequest.of(page, size))
-        .map(MovieMapper::toMovieDto);
+    return movieRepository.findByIdNotNull(PageRequest.of(page, size)).map(this::updateImageUrls);
   }
 
   @Override
@@ -69,10 +68,12 @@ public class MovieServiceImpl implements MovieService {
         .flatMap(movie -> Mono.empty());
   }
 
-  public Mono<MovieDto> create(MovieDto movieDto, Flux<FilePart> filePartFlux) {
+  @Override
+  public Mono<MovieDto> create(MovieDto movieDto, Flux<FilePart> filePartFlux,
+      Mono<FilePart> posterImageFilePartMono) {
 
-    Set<ConstraintViolation<MovieDto>> violations = validator.validate(movieDto,
-        CreateGroup.class);
+    movieDto.setPosterUrl("Dummy");
+    Set<ConstraintViolation<MovieDto>> violations = validator.validate(movieDto, CreateGroup.class);
     if (!violations.isEmpty()) {
       return Mono.error(new ConstraintViolationException(violations));
     }
@@ -80,15 +81,21 @@ public class MovieServiceImpl implements MovieService {
       movieDto.setImageUrls(new ArrayList<>());
     }
 
-    return filePartFlux.collectList().flatMap(fileParts -> {
-      if (fileParts.isEmpty()) {
-        return Mono.error(new EventApplicationException("At least one image is required"));
-      }
-      return Flux.fromIterable(fileParts).flatMap(
-          filePart -> storageService.storeImage(filePart)
-              .map(filePath -> movieDto.getImageUrls().add(filePath))).then(Mono.empty());
-    }).then(movieRepository.save(MovieMapper.toMovie(movieDto))
-        .map(MovieMapper::toMovieDto));
+    return posterImageFilePartMono.flatMap(
+        posterImageFilePart -> storageService.storeImage(posterImageFilePart)
+            .flatMap(posterImagePath -> {
+              movieDto.setPosterUrl(posterImagePath);
+              return filePartFlux.collectList().flatMap(fileParts -> {
+                if (fileParts.isEmpty()) {
+                  return Mono.error(
+                      new EventApplicationException("At least one image is required"));
+                }
+                return Flux.fromIterable(fileParts).flatMap(
+                    filePart -> storageService.storeImage(filePart)
+                        .map(filePath -> movieDto.getImageUrls().add(filePath))).then(Mono.empty());
+              }).then(
+                  movieRepository.save(MovieMapper.toMovie(movieDto)).map(this::updateImageUrls));
+            }));
   }
 
   @Override
@@ -98,6 +105,17 @@ public class MovieServiceImpl implements MovieService {
         .flatMap(movie -> {
           MovieMapper.merge(movie, movieDto);
           return movieRepository.save(movie);
-        }).map(MovieMapper::toMovieDto);
+        }).map(this::updateImageUrls);
+  }
+
+  public MovieDto updateImageUrls(Movie movie) {
+    MovieDto movieDto = MovieMapper.toMovieDto(movie);
+    movieDto.setPosterUrl(storageService.getImageUrl(movieDto.getPosterUrl()));
+    if (!movieDto.getImageUrls().isEmpty()) {
+      List<String> ls = new ArrayList<>(
+          movieDto.getImageUrls().stream().map(storageService::getImageUrl).toList());
+      movieDto.setImageUrls(ls);
+    }
+    return movieDto;
   }
 }
