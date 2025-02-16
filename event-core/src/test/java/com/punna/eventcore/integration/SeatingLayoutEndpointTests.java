@@ -45,12 +45,11 @@ public class SeatingLayoutEndpointTests extends EndPointTests {
   @Test
   @Order(1)
   void givenInvalidSeatingLayout_whenCreate_thenReturnBadRequest() {
-    // total 9 errors should come.
+    // total 10 errors should come.
     SeatingLayoutDto arrangementDto = SeatingLayoutDto
-        // 1 error
         .builder()
-        .id("DummyId") // 1 error
-        .seats(List.of(Seat // 4 errors
+        .id("DummyId")
+        .seats(List.of(Seat
             .builder()
             .build()))
         .build();
@@ -68,7 +67,7 @@ public class SeatingLayoutEndpointTests extends EndPointTests {
     assertThat(responseBody).isNotNull();
     assertThat(responseBody
         .getErrors()
-        .size()).isEqualTo(9);
+        .size()).isEqualTo(10);
   }
 
   @Test

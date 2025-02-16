@@ -102,6 +102,7 @@ public abstract class TestFixtures {
       .rows(2)
       .columns(3)
       .capacity(6)
+      .name("Example-layout")
       .screenPosition(ScreenPosition.TOP)
       .build();
 }
