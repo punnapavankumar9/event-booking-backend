@@ -1,6 +1,6 @@
 package com.punna.eventcore.dto;
 
-public enum SeatPosition {
+public enum ScreenPosition {
   TOP,
   BOTTOM
 }

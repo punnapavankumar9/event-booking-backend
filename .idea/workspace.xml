@@ -4,7 +4,67 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="270ad57c-65bc-4f7e-86cf-537bc93322f9" name="Changes" comment="" />
+    <list default="true" id="270ad57c-65bc-4f7e-86cf-537bc93322f9" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/data/event-catalog/data.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/event-catalog/movie-images/Brahma-Anandam/brahma-anandam-et00430098-1739443663.avif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/event-catalog/movie-images/Brahma-Anandam/download.avif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/event-catalog/movie-images/Brahma-Anandam/movie.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/event-catalog/movie-images/Kudumbasthan/download.avif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/event-catalog/movie-images/Kudumbasthan/kudumbasthan-et00429890-1737524358.avif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/event-catalog/movie-images/Kudumbasthan/movie.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/event-catalog/movie-images/Sankranthiki-Vasthunam/download.avif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/event-catalog/movie-images/Sankranthiki-Vasthunam/movie.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/event-catalog/movie-images/Sankranthiki-Vasthunam/sankranthiki-vasthunam-et00418119-1731656543.avif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/event-catalog/movie-images/captain-america/captain-america-brave-new-world-et00399765-1737957738.avif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/event-catalog/movie-images/captain-america/download.avif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/event-catalog/movie-images/captain-america/movie.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/event-catalog/movie-images/chhaava/chhaava-et00408691-1737623374.avif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/event-catalog/movie-images/chhaava/download.avif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/event-catalog/movie-images/chhaava/movie.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/event-catalog/movie-images/ddlj/dilwale-dulhania-le-jayenge-et00000652-1685508478.avif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/event-catalog/movie-images/ddlj/download.avif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/event-catalog/movie-images/ddlj/movie.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/event-catalog/movie-images/deva/deva-et00374104-1738145051.avif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/event-catalog/movie-images/deva/download.avif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/event-catalog/movie-images/deva/movie.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/event-catalog/movie-images/laila/download.avif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/event-catalog/movie-images/laila/laila-et00403539-1738664691.avif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/event-catalog/movie-images/laila/movie.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/event-catalog/movie-images/love-yapa/download.avif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/event-catalog/movie-images/love-yapa/loveyapa-et00427632-1738580822.avif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/event-catalog/movie-images/love-yapa/movie.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/event-catalog/movie-images/mufasa/download.avif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/event-catalog/movie-images/mufasa/movie.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/event-catalog/movie-images/mufasa/mufasa-the-lion-king-et00396541-1734081980.avif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/event-catalog/movie-images/orange/download.avif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/event-catalog/movie-images/orange/movie.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/event-catalog/movie-images/orange/orange-telugu-et00005527-1738763120.avif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/event-catalog/movie-images/sanam-teri-kasam/download.avif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/event-catalog/movie-images/sanam-teri-kasam/movie.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/event-catalog/movie-images/sanam-teri-kasam/sanam-teri-kasam-et00036895-1730964847.avif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/event-catalog/movie-images/sky-force/download.avif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/event-catalog/movie-images/sky-force/movie.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/event-catalog/movie-images/sky-force/sky-force-et00371539-1737535327.avif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/event-catalog/movie-images/sos/download.avif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/event-catalog/movie-images/sos/movie.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/event-catalog/movie-images/sos/surya-s-o-krishnan-et00002203-1689661215.avif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/event-catalog/movie-images/thandel/download.avif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/event-catalog/movie-images/thandel/movie.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/event-catalog/movie-images/thandel/thandel-et00384012-1705486794.avif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/event-catalog/movie-images/the-wild-robot/download.avif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/event-catalog/movie-images/the-wild-robot/movie.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/event-catalog/movie-images/the-wild-robot/the-wild-robot-et00398665-1732271118.avif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/dto/ScreenPosition.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/movie-catalog/365762c6-dbc5-4b85-acdb-b27f91d24354-Thandle Image 3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/movie-catalog/844072bd-3863-4919-a796-0c50fe34ebc4-Thandel image 1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/movie-catalog/92f83d5a-56f9-4819-ab2d-5248503d2fe9-Thandel Image 2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/movie-catalog/9d7861f0-03f3-4ffd-9daa-e076d4cf1c54-Chhaava.avif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/movie-catalog/acfcfb2f-4445-45ea-9c3f-18c6f6dada64-Thandel Image 2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/dto/SeatingLayoutDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/dto/SeatingLayoutDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/mapper/SeatingLayoutMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/mapper/SeatingLayoutMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/model/SeatingLayout.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/model/SeatingLayout.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,10 +73,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Enum" />
         <option value="Interface" />
         <option value="TypeScript File" />
         <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -61,90 +121,93 @@
     <option name="openDirectoriesWithSingleClick" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "JUnit.All in event-catalog (1).executor": "Run",
-    "JUnit.All in event-catalog.executor": "Run",
-    "JUnit.EventCatalogApplicationTest.executor": "Run",
-    "JUnit.EventCatalogApplicationTest.givenInvalidEventWithId_whenUpdateEvent_thenUpdateEventAndReturn.executor": "Run",
-    "JUnit.EventCatalogApplicationTest.givenInvalidEvent_whenCreateEvent_thenReturnBadResultWithErrors.executor": "Debug",
-    "JUnit.EventCatalogApplicationTest.givenNonExistingEvent_whenUpdatingEvent_thenReturnBadRequestWithErrors.executor": "Run",
-    "JUnit.EventEndpointTests.executor": "Run",
-    "JUnit.EventEndpointTests.giveNonAdminUser_whenDeleteEvent_thenReturnUnAuthorized.executor": "Run",
-    "JUnit.EventSeatStateEndpointTests.executor": "Run",
-    "JUnit.EventSeatStateEndpointTests.givenInvalidSeatLocation_whenBook_thenReturnBadRequest.executor": "Debug",
-    "JUnit.IdentityServiceApplicationTests.executor": "Debug",
-    "JUnit.IdentityServiceApplicationTests.givenInvalidPassword_whenLoggingUser_thenReturnNotFound.executor": "Run",
-    "JUnit.IdentityServiceApplicationTests.givenInvalidUser_whenCreatingUser_thenReturnBadRequest.executor": "Run",
-    "JUnit.IdentityServiceApplicationTests.givenValidUser_whenCreatingUser_thenCreateAndReturnUser.executor": "Debug",
-    "JUnit.SeatingArrangementEndpointTests.executor": "Run",
-    "JUnit.SeatingLayoutEndpointTests.executor": "Run",
-    "JUnit.VenueEndpointTests.executor": "Run",
-    "JUnit.VenueEndpointTests.givenInvalidVenue_whenCreatingVenue_thenShouldReturnBadRequest.executor": "Debug",
-    "Maven.bom [clean].executor": "Run",
-    "Maven.bom [install].executor": "Run",
-    "Maven.bom [package].executor": "Run",
-    "Maven.bom [test].executor": "Run",
-    "Maven.event-catalog [install].executor": "Run",
-    "Maven.event-catalog [test].executor": "Run",
-    "Maven.event-core [test].executor": "Run",
-    "Maven.identity [test].executor": "Run",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Spring Boot.ConfigServerApplication.executor": "Run",
-    "Spring Boot.DiscoveryApplication.executor": "Run",
-    "Spring Boot.EventCatalogApplication.executor": "Run",
-    "Spring Boot.EventCoreApplication.executor": "Run",
-    "Spring Boot.GatewayApplication.executor": "Run",
-    "Spring Boot.IdentityServiceApplication.executor": "Run",
-    "database.data.extractors.current.export.id": "JSON-Groovy.json.groovy",
-    "database.data.extractors.current.id": "JSON-Groovy.json.groovy",
-    "deletionFromPopupRequiresConfirmation": "false",
-    "git-widget-placeholder": "master",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/pavankumarpunna/pavan/codes/github/event-booking-backend",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "npm.start.executor": "Run",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.18901303",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "run.configurations.included.in.services": "true",
-    "settings.editor.selected.configurable": "preferences.intentionPowerPack",
-    "ts.external.directory.path": "/Applications/IntelliJ IDEA.app/Contents/plugins/javascript-plugin/jsLanguageServicesImpl/external",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;JUnit.All in event-catalog (1).executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.All in event-catalog.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.EventCatalogApplicationTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.EventCatalogApplicationTest.givenInvalidEventWithId_whenUpdateEvent_thenUpdateEventAndReturn.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.EventCatalogApplicationTest.givenInvalidEvent_whenCreateEvent_thenReturnBadResultWithErrors.executor&quot;: &quot;Debug&quot;,
+    &quot;JUnit.EventCatalogApplicationTest.givenNonExistingEvent_whenUpdatingEvent_thenReturnBadRequestWithErrors.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.EventEndpointTests.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.EventEndpointTests.giveNonAdminUser_whenDeleteEvent_thenReturnUnAuthorized.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.EventSeatStateEndpointTests.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.EventSeatStateEndpointTests.givenInvalidSeatLocation_whenBook_thenReturnBadRequest.executor&quot;: &quot;Debug&quot;,
+    &quot;JUnit.IdentityServiceApplicationTests.executor&quot;: &quot;Debug&quot;,
+    &quot;JUnit.IdentityServiceApplicationTests.givenInvalidPassword_whenLoggingUser_thenReturnNotFound.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.IdentityServiceApplicationTests.givenInvalidUser_whenCreatingUser_thenReturnBadRequest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.IdentityServiceApplicationTests.givenValidUser_whenCreatingUser_thenCreateAndReturnUser.executor&quot;: &quot;Debug&quot;,
+    &quot;JUnit.SeatingArrangementEndpointTests.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.SeatingLayoutEndpointTests.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.VenueEndpointTests.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.VenueEndpointTests.givenInvalidVenue_whenCreatingVenue_thenShouldReturnBadRequest.executor&quot;: &quot;Debug&quot;,
+    &quot;Maven.bom [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.bom [install].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.bom [package].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.bom [test].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.event-catalog [install].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.event-catalog [test].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.event-core [test].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.identity [test].executor&quot;: &quot;Run&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Spring Boot.ConfigServerApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.DiscoveryApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.EventCatalogApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.EventCoreApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.GatewayApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.IdentityServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;database.data.extractors.current.export.id&quot;: &quot;JSON-Groovy.json.groovy&quot;,
+    &quot;database.data.extractors.current.id&quot;: &quot;JSON-Groovy.json.groovy&quot;,
+    &quot;deletionFromPopupRequiresConfirmation&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/pavankumarpunna/pavan/codes/github/event-booking-backend/data/event-catalog/movie-images/the-wild-robot&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;npm.start.executor&quot;: &quot;Run&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.18901303&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;run.configurations.included.in.services&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.editor&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Applications/IntelliJ IDEA.app/Contents/plugins/javascript-plugin/jsLanguageServicesImpl/external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "postgresql",
-      "mongo"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;,
+      &quot;mongo&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="ReactorSettings">
     <option name="notificationShown" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.punna.eventcore.dto" />
       <recent name="com.punna.eventcatalog.integration" />
       <recent name="com.punna.eventcatalog.service" />
       <recent name="com.punna.eventcatalog.model" />
       <recent name="com.punna.eventcatalog.mapper" />
-      <recent name="com.punna.identity.utils" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\software\codes\java\spring\event-booking\commons" />
-      <recent name="D:\software\codes\java\spring\event-booking" />
+      <recent name="$PROJECT_DIR$/data/event-catalog/movie-images/the-wild-robot" />
+      <recent name="$PROJECT_DIR$/data/event-catalog/movie-images/orange" />
+      <recent name="$PROJECT_DIR$/data/event-catalog/movie-images/sos" />
+      <recent name="$PROJECT_DIR$/data/event-catalog/movie-images/ddlj" />
+      <recent name="$PROJECT_DIR$/data/event-catalog/movie-images/chhaava" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/../event-frontend/src/app/features/movies/components" />
@@ -347,7 +410,12 @@
       <workItem from="1739369373905" duration="9464000" />
       <workItem from="1739462777171" duration="5676000" />
       <workItem from="1739527917662" duration="4468000" />
-      <workItem from="1739537615004" duration="13546000" />
+      <workItem from="1739537615004" duration="23024000" />
+      <workItem from="1739605911785" duration="2037000" />
+      <workItem from="1739612522975" duration="603000" />
+      <workItem from="1739618267647" duration="7617000" />
+      <workItem from="1739687891105" duration="1676000" />
+      <workItem from="1739702764255" duration="1853000" />
     </task>
     <servers />
   </component>
@@ -391,6 +459,10 @@
           <line>75</line>
           <option name="timeStamp" value="11" />
         </line-breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="org.springframework.web.server.MissingRequestValueException" package="org.springframework.web.server" />
+          <option name="timeStamp" value="12" />
+        </breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <pin-to-top-manager>
