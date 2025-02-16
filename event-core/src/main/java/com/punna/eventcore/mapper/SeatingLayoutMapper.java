@@ -6,17 +6,29 @@ import com.punna.eventcore.model.SeatingLayout;
 public class SeatingLayoutMapper {
 
   public static SeatingLayout toSeatingLayout(SeatingLayoutDto seatingLayout) {
-    return SeatingLayout.builder().id(seatingLayout.getId()).capacity(seatingLayout.getCapacity())
-        .seats(seatingLayout.getSeats()).rows(seatingLayout.getRows())
-        .columns(seatingLayout.getColumns()).screenPosition(seatingLayout.getScreenPosition())
+    return SeatingLayout
+        .builder()
+        .id(seatingLayout.getId())
+        .capacity(seatingLayout.getCapacity())
+        .seats(seatingLayout.getSeats())
+        .rows(seatingLayout.getRows())
+        .columns(seatingLayout.getColumns())
+        .screenPosition(seatingLayout.getScreenPosition())
+        .name(seatingLayout.getName())
         .build();
   }
 
   public static SeatingLayoutDto toSeatingLayoutDto(SeatingLayout seatingLayout) {
-    return SeatingLayoutDto.builder().capacity(seatingLayout.getCapacity())
-        .seats(seatingLayout.getSeats()).rows(seatingLayout.getRows())
-        .columns(seatingLayout.getColumns()).id(seatingLayout.getId())
-        .screenPosition(seatingLayout.getScreenPosition()).build();
+    return SeatingLayoutDto
+        .builder()
+        .capacity(seatingLayout.getCapacity())
+        .seats(seatingLayout.getSeats())
+        .rows(seatingLayout.getRows())
+        .columns(seatingLayout.getColumns())
+        .id(seatingLayout.getId())
+        .screenPosition(seatingLayout.getScreenPosition())
+        .name(seatingLayout.getName())
+        .build();
   }
 
   public static void merge(SeatingLayout seatingLayout, SeatingLayoutDto seatingLayoutDto) {
@@ -34,6 +46,9 @@ public class SeatingLayoutMapper {
     }
     if (seatingLayoutDto.getScreenPosition() != null) {
       seatingLayout.setScreenPosition(seatingLayoutDto.getScreenPosition());
+    }
+    if (seatingLayoutDto.getName() != null) {
+      seatingLayout.setName(seatingLayoutDto.getName());
     }
   }
 }

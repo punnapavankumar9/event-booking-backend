@@ -18,21 +18,20 @@ import reactor.core.publisher.Mono;
 @RequiredArgsConstructor
 public class PopulateAuthenticationFilter implements WebFilter {
 
-    private final ObjectMapper objectMapper;
+  private final ObjectMapper objectMapper;
 
-    @SneakyThrows
-    @Override
-    public Mono<Void> filter(ServerWebExchange exchange, WebFilterChain chain) {
-        String authHeader = "X-USER-DETAILS";
-        if (exchange.getRequest().getHeaders().get(authHeader) != null) {
-            UserDto userDto = objectMapper.readValue(
-                exchange.getRequest().getHeaders().getFirst(authHeader), UserDto.class);
-            return chain.filter(exchange).contextWrite(
-                ReactiveSecurityContextHolder.withAuthentication(
-                    new UsernamePasswordAuthenticationToken(userDto, null,
-                        userDto.getAuthorities() != null ? userDto.getAuthorities().stream()
-                            .map(SimpleGrantedAuthority::new).toList() : new ArrayList<>())));
-        }
-        return chain.filter(exchange);
+  @SneakyThrows
+  @Override
+  public Mono<Void> filter(ServerWebExchange exchange, WebFilterChain chain) {
+    String authHeader = "X-USER-DETAILS";
+    if (exchange.getRequest().getHeaders().get(authHeader) != null) {
+      UserDto userDto = objectMapper.readValue(
+          exchange.getRequest().getHeaders().getFirst(authHeader), UserDto.class);
+      return chain.filter(exchange).contextWrite(ReactiveSecurityContextHolder.withAuthentication(
+          new UsernamePasswordAuthenticationToken(userDto, null,
+              userDto.getAuthorities() != null ? userDto.getAuthorities().stream()
+                  .map(SimpleGrantedAuthority::new).toList() : new ArrayList<>())));
     }
+    return chain.filter(exchange);
+  }
 }

@@ -89,5 +89,4 @@ public class SeatingLayoutEndpointTests extends EndPointTests {
         .getResponseBody();
     assertThat(responseBody).isNotNull();
   }
-
 }
