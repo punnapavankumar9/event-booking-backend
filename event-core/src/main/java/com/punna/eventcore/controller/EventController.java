@@ -55,4 +55,5 @@ public class EventController {
     public Flux<EventResponseDto> getVenuesByType(@PathVariable EventType eventType) {
         return eventService.getEventsByType(eventType);
     }
+
 }

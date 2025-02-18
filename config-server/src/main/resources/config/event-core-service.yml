@@ -1,11 +1,8 @@
 spring:
   data:
     mongodb:
-      username: event
-      password: event
       database: event-core
       host: localhost
       port: 27017
-      authentication-database: admin
 server:
   port: 8083

@@ -7,22 +7,24 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 public interface VenueService {
-    Mono<VenueDto> createVenue(VenueDto venue);
 
-    Mono<Void> deleteVenue(String id);
+  Mono<VenueDto> createVenue(VenueDto venue);
 
-    Mono<VenueDto> updateVenue(VenueDto venue);
+  Mono<Void> deleteVenue(String id);
 
-    Flux<VenueDto> findAllVenues(int page);
+  Mono<VenueDto> updateVenue(VenueDto venue);
 
-    Mono<VenueDto> findById(String id);
+  Flux<VenueDto> findAllVenues(int page);
 
-    Mono<Boolean> exists(String id);
+  Mono<VenueDto> findById(String id);
 
-    Mono<Boolean> isAdminOrOwner(String id);
+  Mono<Boolean> exists(String id);
 
-    Mono<Boolean> isAdminOrOwner(Venue venue);
+  Mono<Boolean> isAdminOrOwner(String id);
 
-    Mono<String> getSeatingLayoutId(String id);
+  Mono<Boolean> isAdminOrOwner(Venue venue);
 
+  Mono<String> getSeatingLayoutId(String id);
+
+  Flux<VenueDto> createVenues(Flux<VenueDto> venueDto);
 }

@@ -2,18 +2,22 @@ name: event-booking-application
 
 services:
   mongodb:
+    image: mongo:latest
     container_name: event_mongo
-    image: mongo
-    networks:
-      - event-booking-network
+    command: [ "--replSet", "rs0", "--bind_ip_all", "--port", "27017" ]
     ports:
       - "27017:27017"
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: event
-      MONGO_INITDB_ROOT_PASSWORD: event
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    healthcheck:
+      test: echo "try { rs.status() } catch (err) { rs.initiate({_id:'rs0',members:[{_id:0,host:'host.docker.internal:27017'}]}) }" | mongosh --port 27017 --quiet
+      interval: 5s
+      timeout: 30s
+      start_period: 0s
+      start_interval: 1s
+      retries: 30
     volumes:
-      - event_mongo:/data
-    restart: unless-stopped
+      - "event_mongo:/data"
 
   postgres:
     container_name: event_postgres
