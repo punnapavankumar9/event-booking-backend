@@ -34,12 +34,6 @@ public class VenueController {
     return venueService.createVenue(venue);
   }
 
-  @PostMapping(value = "", params = {"batch"})
-  public Flux<VenueDto> createVenue(
-      @Validated(CreateGroup.class) @RequestBody Flux<VenueDto> venues) {
-    return venueService.createVenues(venues);
-  }
-
   @GetMapping
   public Flux<VenueDto> allEvents(
       @RequestParam(name = "page", required = false, defaultValue = "0") Integer page) {

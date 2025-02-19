@@ -4,24 +4,28 @@ import com.punna.eventcore.dto.EventRequestDto;
 import com.punna.eventcore.dto.EventResponseDto;
 import com.punna.eventcore.model.Event;
 import com.punna.eventcore.model.EventType;
+import java.util.List;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 public interface EventService {
 
-    Mono<EventResponseDto> createEvent(EventRequestDto event);
+  Mono<EventResponseDto> createEvent(EventRequestDto event);
 
-    Flux<EventResponseDto> findAllEvents(Integer page);
+  Mono<List<EventResponseDto>> createEvents(Flux<EventRequestDto> eventRequestDtos);
 
-    Mono<EventResponseDto> updateEvent(EventRequestDto event);
+  Flux<EventResponseDto> findAllEvents(Integer page);
 
-    Mono<Void> deleteEvent(String id);
+  Mono<EventResponseDto> updateEvent(EventRequestDto event);
 
-    Mono<EventResponseDto> findById(String id);
+  Mono<Void> deleteEvent(String id);
 
-    Mono<Boolean> isAdminOrOwner(String id);
+  Mono<EventResponseDto> findById(String id);
 
-    Mono<Boolean> isAdminOrOwner(Event event);
+  Mono<Boolean> isAdminOrOwner(String id);
 
-    Flux<EventResponseDto> getEventsByType(EventType eventType);
+  Mono<Boolean> isAdminOrOwner(Event event);
+
+  Flux<EventResponseDto> getEventsByType(EventType eventType);
+
 }

@@ -25,6 +25,4 @@ public interface VenueService {
   Mono<Boolean> isAdminOrOwner(Venue venue);
 
   Mono<String> getSeatingLayoutId(String id);
-
-  Flux<VenueDto> createVenues(Flux<VenueDto> venueDto);
 }

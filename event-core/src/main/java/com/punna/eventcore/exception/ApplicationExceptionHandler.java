@@ -23,52 +23,52 @@ import reactor.core.publisher.Mono;
 public class ApplicationExceptionHandler {
 
 
-    private final MessageSource messageSource;
+  private final MessageSource messageSource;
 
-    @ExceptionHandler(EntityNotFoundException.class)
-    @ResponseStatus(HttpStatus.NOT_FOUND)
-    public Mono<ProblemDetail> handleEntityNotFoundException(EntityNotFoundException e) {
-        return Mono.just(
-            ProblemDetail.builder().message(e.getMessage()).status(HttpStatus.NOT_FOUND.value())
-                .build());
-    }
+  @ExceptionHandler(EntityNotFoundException.class)
+  @ResponseStatus(HttpStatus.NOT_FOUND)
+  public Mono<ProblemDetail> handleEntityNotFoundException(EntityNotFoundException e) {
+    return Mono.just(
+        ProblemDetail.builder().message(e.getMessage()).status(HttpStatus.NOT_FOUND.value())
+            .build());
+  }
 
-    @ExceptionHandler(EventApplicationException.class)
-    public Mono<ResponseEntity<ProblemDetail>> handleEventApplicationException(
-        EventApplicationException e) {
-        return Mono.just(ResponseEntity.status(e.getStatus())
-            .body(ProblemDetail.builder().message(e.getMessage()).status(e.getStatus()).build()));
-    }
+  @ExceptionHandler(EventApplicationException.class)
+  public Mono<ResponseEntity<ProblemDetail>> handleEventApplicationException(
+      EventApplicationException e) {
+    return Mono.just(ResponseEntity.status(e.getStatus())
+        .body(ProblemDetail.builder().message(e.getMessage()).status(e.getStatus()).build()));
+  }
 
-    @ExceptionHandler(WebExchangeBindException.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public Mono<ProblemDetail> handleWebExchangeBindException(WebExchangeBindException ex) {
-        ProblemDetail problemDetail = new ProblemDetail();
-        ex.getAllErrors().forEach(error -> {
-            String fieldName = ((FieldError) error).getField();
-            String message = error.getDefaultMessage();
-            problemDetail.getErrors().put(fieldName, message);
-        });
-        problemDetail.setStatus(HttpStatus.BAD_REQUEST.value());
-        problemDetail.setMessage(
-            messageSource.getMessage("validation.invalid-body", null, Locale.getDefault()));
-        return Mono.just(problemDetail);
-    }
+  @ExceptionHandler(WebExchangeBindException.class)
+  @ResponseStatus(HttpStatus.BAD_REQUEST)
+  public Mono<ProblemDetail> handleWebExchangeBindException(WebExchangeBindException ex) {
+    ProblemDetail problemDetail = new ProblemDetail();
+    ex.getAllErrors().forEach(error -> {
+      String fieldName = ((FieldError) error).getField();
+      String message = error.getDefaultMessage();
+      problemDetail.getErrors().put(fieldName, message);
+    });
+    problemDetail.setStatus(HttpStatus.BAD_REQUEST.value());
+    problemDetail.setMessage(
+        messageSource.getMessage("validation.invalid-body", null, Locale.getDefault()));
+    return Mono.just(problemDetail);
+  }
 
-    @ExceptionHandler(AccessDeniedException.class)
-    @ResponseStatus(HttpStatus.FORBIDDEN)
-    public Mono<ProblemDetail> handleAccessDeniedException(AccessDeniedException e) {
-        return Mono.just(
-            ProblemDetail.builder().status(HttpStatus.FORBIDDEN.value()).message(e.getMessage())
-                .build());
-    }
+  @ExceptionHandler(AccessDeniedException.class)
+  @ResponseStatus(HttpStatus.FORBIDDEN)
+  public Mono<ProblemDetail> handleAccessDeniedException(AccessDeniedException e) {
+    return Mono.just(
+        ProblemDetail.builder().status(HttpStatus.FORBIDDEN.value()).message(e.getMessage())
+            .build());
+  }
 
 
-    // Handle all other exceptions
-    @ExceptionHandler(Exception.class)
-    public Mono<ResponseEntity<String>> handleException(Exception ex) {
-        log.error(ex.getMessage(), ex);
-        return Mono.just(ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-            .body("An unexpected error occurred: "));
-    }
+  // Handle all other exceptions
+  @ExceptionHandler(Exception.class)
+  public Mono<ResponseEntity<String>> handleException(Exception ex) {
+    log.error(ex.getMessage(), ex);
+    return Mono.just(ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+        .body("An unexpected error occurred: "));
+  }
 }

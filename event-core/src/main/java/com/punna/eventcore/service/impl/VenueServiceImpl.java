@@ -19,10 +19,8 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-import reactor.core.scheduler.Schedulers;
 
 @Service
 @RequiredArgsConstructor
@@ -146,11 +144,5 @@ public class VenueServiceImpl implements VenueService {
         .findOne(query, Venue.class)
         .map(Venue::getSeatingLayoutId)
         .switchIfEmpty(Mono.error(new EntityNotFoundException(Venue.class.getSimpleName(), id)));
-  }
-
-  @Override
-  @Transactional
-  public Flux<VenueDto> createVenues(Flux<VenueDto> venues) {
-    return venues.flatMap(this::createVenue).subscribeOn(Schedulers.parallel());
   }
 }
