@@ -57,6 +57,7 @@ public class EventEndpointTests extends EndPointTests {
     eventRepository.deleteAll().block();
     venueRepository.deleteAll().block();
     seatingLayoutRepository.deleteAll().block();
+    this.mockCatalogServiceWebClient(true);
 
     SeatingLayoutDto seatingLayoutDto = seatingLayoutService.createSeatingLayout(
         SAMPLE_SEATING_LAYOUT_DTO).block();
@@ -76,6 +77,7 @@ public class EventEndpointTests extends EndPointTests {
   @Test
   @Order(2)
   void givenEventWithId_whenCreateEvent_thenReturnBadRequest() {
+    mockCatalogServiceWebClient(true);
     EventRequestDto eventReqDto = clone(SAMPLE_EVENT_REQ_DTO, EventRequestDto.class);
     eventReqDto.setId("dummyId");
     ProblemDetail responseBody = webTestClient.post().uri(eventsV1Url)
@@ -91,6 +93,7 @@ public class EventEndpointTests extends EndPointTests {
   @Test
   @Order(3)
   void givenInvalidEvent_whenCreateEvent_thenReturnBadResultWithErrors() {
+    mockCatalogServiceWebClient(true);
     EventRequestDto eventReqDto = EventRequestDto.builder()
         // this should give two errors from nested Object(PricingTierMap)
         .pricingTierMaps(List.of(new PricingTierMap())).seatState(
@@ -105,13 +108,14 @@ public class EventEndpointTests extends EndPointTests {
     assertThat(responseBody.getMessage()).isEqualTo(
         messageSource.getMessage("validation.invalid-body", null, Locale.getDefault()));
     assertThat(responseBody.getStatus()).isEqualTo(400);
-    assertThat(responseBody.getErrors().size()).isEqualTo(12);
+    assertThat(responseBody.getErrors().size()).isEqualTo(13);
 
   }
 
   @Test
   @Order(4)
   void givenEventWithInvalidVenueId_whenCreateEvent_thenReturnNotFound() {
+    mockCatalogServiceWebClient(true);
     EventRequestDto eventReqDto = clone(SAMPLE_EVENT_REQ_DTO, EventRequestDto.class);
     eventReqDto.setVenueId("Dummy");
     ProblemDetail responseBody = webTestClient.post().uri(eventsV1Url)
@@ -126,6 +130,7 @@ public class EventEndpointTests extends EndPointTests {
   @Test
   @Order(5)
   void givenEventWithoutId_whenCreateEvent_thenCreateEventAndReturn() {
+    mockCatalogServiceWebClient(true);
     EventRequestDto eventReqDto = clone(SAMPLE_EVENT_REQ_DTO, EventRequestDto.class);
     EventResponseDto responseBody = webTestClient.post().uri(eventsV1Url)
         .contentType(MediaType.APPLICATION_JSON).headers(headers -> setAuthHeader(headers, "punna"))
@@ -279,13 +284,14 @@ public class EventEndpointTests extends EndPointTests {
   @Order(16)
   @Timeout(value = 10000, unit = TimeUnit.SECONDS)
   void givenValidEventsWithNonAdmin_WhenCreate_thenReturnCreated() {
+    mockCatalogServiceWebClient(true);
     var event2 = clone(SAMPLE_EVENT_REQ_DTO, EventRequestDto.class);
     event2.getEventDurationDetails().setStartTime(LocalDateTime.now().plusDays(20));
     event2.getEventDurationDetails().setEndTime(LocalDateTime.now().plusDays(20).plusMinutes(150));
     Flux<EventRequestDto> eventResponseDtoFlux = Flux.fromIterable(
         List.of(clone(SAMPLE_EVENT_REQ_DTO, EventRequestDto.class), event2));
 
-    List<EventResponseDto> response = webTestClient.post().uri(eventsV1Url + "?batch=true")
+    List<EventResponseDto> response = webTestClient.post().uri(eventsV1Url + "?bulk=true")
         .contentType(MediaType.APPLICATION_JSON)
         .headers(httpHeaders -> setAuthHeader(httpHeaders, "non-admin"))
         .body(eventResponseDtoFlux, EventRequestDto.class).exchange().expectStatus().isCreated()
@@ -299,25 +305,41 @@ public class EventEndpointTests extends EndPointTests {
   @Test
   @Order(17)
   void givenOverlappingEvents_whenCreate_thenReturnBadRequestWithErrors() {
+    mockCatalogServiceWebClient(true);
     EventRequestDto event = clone(SAMPLE_EVENT_REQ_DTO, EventRequestDto.class);
     event.getEventDurationDetails().setStartTime(LocalDateTime.now().plusDays(30));
     event.getEventDurationDetails().setEndTime(LocalDateTime.now().plusDays(30).plusMinutes(100));
     Flux<EventRequestDto> eventResponseDtoFlux = Flux.fromIterable(List.of(event, event));
 
-    ProblemDetail response = webTestClient.post().uri(eventsV1Url + "?batch=true")
+    ProblemDetail response = webTestClient.post().uri(eventsV1Url + "?bulk=true")
         .contentType(MediaType.APPLICATION_JSON)
         .headers(httpHeaders -> setAuthHeader(httpHeaders, "non-admin"))
         .body(eventResponseDtoFlux, EventRequestDto.class).exchange().expectStatus().isBadRequest()
         .expectBody(ProblemDetail.class).returnResult().getResponseBody();
     assertThat(response).isNotNull();
-//    assertThat(response.getMessage()).contains("Event Overlap found");
-//
-//    List<EventResponseDto> responseBody = webTestClient.get().uri(eventsV1Url).exchange()
-//        .expectStatus().isOk().expectBodyList(EventResponseDto.class).returnResult()
-//        .getResponseBody();
-//
-//    assertThat(responseBody).isNotNull();
-//    // should rollback the first event
-//    assertThat(responseBody).hasSize(2);
+    assertThat(response.getMessage()).contains("Event Overlap found");
+
+    List<EventResponseDto> responseBody = webTestClient.get().uri(eventsV1Url).exchange()
+        .expectStatus().isOk().expectBodyList(EventResponseDto.class).returnResult()
+        .getResponseBody();
+
+    assertThat(responseBody).isNotNull();
+    // should rollback the first event
+    assertThat(responseBody).hasSize(2);
+  }
+
+  @Test
+  @Order(18)
+  void givenInMovieIdEventWithAdmin_WhenCreate_thenReturnCreated() {
+    mockCatalogServiceWebClient(false);
+    EventRequestDto eventReqDto = clone(SAMPLE_EVENT_REQ_DTO, EventRequestDto.class);
+    eventReqDto.setVenueId(venueId);
+    ProblemDetail responseBody = webTestClient.post().uri(eventsV1Url)
+        .contentType(MediaType.APPLICATION_JSON).headers(headers -> setAuthHeader(headers, "punna"))
+        .bodyValue(eventReqDto).exchange()
+        .expectStatus().isBadRequest()
+        .expectBody(ProblemDetail.class).returnResult().getResponseBody();
+    assertThat(responseBody).isNotNull();
+    assertThat(responseBody.getMessage()).contains("Event ID does not exist");
   }
 }

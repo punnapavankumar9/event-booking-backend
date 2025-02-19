@@ -1,5 +1,9 @@
 package com.punna.eventcore.model;
 
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+import java.util.List;
+import java.util.Map;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -10,11 +14,6 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.math.BigDecimal;
-import java.time.LocalDateTime;
-import java.util.List;
-import java.util.Map;
-
 @Document(collection = "events")
 @Data
 @NoArgsConstructor
@@ -22,40 +21,42 @@ import java.util.Map;
 @Builder
 public class Event {
 
-    @Id
-    private String id;
+  @Id
+  private String id;
 
-    private String eventId;
+  private String eventId;
 
-    private String name;
+  private EventCategory eventCategory;
 
-    @CreatedBy
-    private String organizerId;
+  private String name;
 
-    // default to venue capacity
-    private Integer maximumCapacity;
+  @CreatedBy
+  private String organizerId;
 
-    private BigDecimal price;
+  // default to venue capacity
+  private Integer maximumCapacity;
 
-    private String venueId;
+  private BigDecimal price;
 
-    private EventDurationDetails eventDurationDetails;
+  private String venueId;
 
-    private Map<String, Object> additionalDetails;
+  private EventDurationDetails eventDurationDetails;
 
-    private boolean isOpenForBooking;
+  private Map<String, Object> additionalDetails;
 
-    @CreatedDate
-    private LocalDateTime createdAt;
+  private boolean isOpenForBooking;
 
-    @LastModifiedDate
-    private LocalDateTime lastModifiedAt;
+  @CreatedDate
+  private LocalDateTime createdAt;
 
-    private List<PricingTierMap> pricingTierMaps;
+  @LastModifiedDate
+  private LocalDateTime lastModifiedAt;
 
-    private SeatState seatState;
+  private List<PricingTierMap> pricingTierMaps;
 
-    private String seatingLayoutId;
+  private SeatState seatState;
 
-    private EventType eventType = EventType.MOVIE;
+  private String seatingLayoutId;
+
+  private EventType eventType = EventType.MOVIE;
 }

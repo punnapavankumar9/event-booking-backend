@@ -1,6 +1,10 @@
 package com.punna.eventcore.integration;
 
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.Mockito.when;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.punna.eventcore.client.CatalogServiceWebClient;
 import com.punna.eventcore.repository.EventRepository;
 import com.punna.eventcore.repository.SeatingLayoutRepository;
 import com.punna.eventcore.repository.VenueRepository;
@@ -11,38 +15,47 @@ import com.punna.eventcore.service.VenueService;
 import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.test.context.bean.override.mockito.MockitoBean;
+import reactor.core.publisher.Mono;
 
 @Component
 public class EndPointTests extends ContainerBase {
-    @Autowired
-    EventService eventService;
 
-    @Autowired
-    EventRepository eventRepository;
+  @Autowired
+  EventService eventService;
 
-    @Autowired
-    VenueRepository venueRepository;
+  @Autowired
+  EventRepository eventRepository;
 
-    @Autowired
-    VenueService venueService;
+  @Autowired
+  VenueRepository venueRepository;
 
-    @Autowired
-    SeatingLayoutService seatingLayoutService;
+  @Autowired
+  VenueService venueService;
 
-    @Autowired
-    SeatingLayoutRepository seatingLayoutRepository;
+  @Autowired
+  SeatingLayoutService seatingLayoutService;
 
-    @Autowired
-    EventSeatStateService eventSeatStateService;
+  @Autowired
+  SeatingLayoutRepository seatingLayoutRepository;
 
-    @Autowired
-    ObjectMapper objectMapper;
+  @Autowired
+  EventSeatStateService eventSeatStateService;
 
-    @SneakyThrows
-    <T> T clone(T obj, Class<T> clazz) {
-        String s = objectMapper.writeValueAsString(obj);
-        return objectMapper.readValue(s, clazz);
-    }
+  @Autowired
+  ObjectMapper objectMapper;
+  @MockitoBean
+  private CatalogServiceWebClient catalogServiceWebClient;
 
+  @SneakyThrows
+  <T> T clone(T obj, Class<T> clazz) {
+    String s = objectMapper.writeValueAsString(obj);
+    return objectMapper.readValue(s, clazz);
+  }
+
+  protected void mockCatalogServiceWebClient(boolean result) {
+    when(catalogServiceWebClient.checkMovieIdExists(anyString())).thenReturn(
+        Mono.just(result));
+  }
 
 }

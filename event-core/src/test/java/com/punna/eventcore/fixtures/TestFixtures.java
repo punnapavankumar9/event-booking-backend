@@ -6,6 +6,7 @@ import com.punna.eventcore.dto.EventRequestDto;
 import com.punna.eventcore.dto.ScreenPosition;
 import com.punna.eventcore.dto.SeatingLayoutDto;
 import com.punna.eventcore.dto.VenueDto;
+import com.punna.eventcore.model.EventCategory;
 import com.punna.eventcore.model.PricingTierMap;
 import com.punna.eventcore.model.Seat;
 import com.punna.eventcore.utils.EventDurationType;
@@ -23,6 +24,7 @@ public abstract class TestFixtures {
       .name("Coldplay concert")
       .maximumCapacity(12_000)
       .eventId("DummyEventId")
+      .eventCategory(EventCategory.MOVIE)
       .isOpenForBooking(true)
       .eventDurationDetails(EventDurationDetailsDto
           .builder()

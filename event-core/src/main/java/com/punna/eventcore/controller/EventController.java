@@ -39,11 +39,11 @@ public class EventController {
   }
 
 
-  @PostMapping(value = "", params = {"batch"})
+  @PostMapping(value = "", params = {"bulk"})
   public ResponseEntity<Mono<List<EventResponseDto>>> createEvents(
       @Validated({CreateGroup.class}) @RequestBody Flux<EventRequestDto> events,
-      @RequestParam() Boolean batch) {
-    if (batch) {
+      @RequestParam() Boolean bulk) {
+    if (bulk) {
       return ResponseEntity.status(HttpStatus.CREATED).body(eventService
           .createEvents(events));
     }

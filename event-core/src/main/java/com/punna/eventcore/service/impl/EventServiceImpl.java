@@ -1,5 +1,6 @@
 package com.punna.eventcore.service.impl;
 
+import com.punna.eventcore.client.CatalogServiceWebClient;
 import com.punna.eventcore.dto.EventRequestDto;
 import com.punna.eventcore.dto.EventResponseDto;
 import com.punna.eventcore.mapper.EventMapper;
@@ -42,6 +43,7 @@ public class EventServiceImpl implements EventService {
   private final AuthService authService;
 
   private final TransactionalOperator txOperator;
+  private final CatalogServiceWebClient catalogServiceWebClient;
 
   @Override
   public Mono<EventResponseDto> createEvent(EventRequestDto eventRequestDto) {
@@ -49,8 +51,19 @@ public class EventServiceImpl implements EventService {
         .isAfter(eventRequestDto.getEventDurationDetails().getEndTime())) {
       return Mono.error(new EventApplicationException("Start time cannot be after end time"));
     }
-    return venueService.getSeatingLayoutId(eventRequestDto.getVenueId())
-        .flatMap(seatingLayoutId -> this.checkForOverlaps(eventRequestDto).flatMap((overlap) -> {
+    Mono<Boolean> idCheckMono = switch (eventRequestDto.getEventCategory()) {
+      case MOVIE -> catalogServiceWebClient.checkMovieIdExists(eventRequestDto.getEventId());
+      case SPORTS -> catalogServiceWebClient.checkSportsIdExists(eventRequestDto.getEventId());
+      default -> Mono.error(new EventApplicationException("Invalid event category"));
+    };
+    return Mono.zip(venueService.getSeatingLayoutId(eventRequestDto.getVenueId()), idCheckMono)
+        .flatMap(tuple -> this.checkForOverlaps(eventRequestDto).flatMap((overlap) -> {
+          String seatingLayoutId = tuple.getT1();
+          Boolean eventIdExists = tuple.getT2();
+          if (!eventIdExists) {
+            return Mono.error(new EventApplicationException("Event ID does not exist",
+                HttpStatus.BAD_REQUEST.value()));
+          }
           if (!overlap) {
             eventRequestDto.setSeatingLayoutId(seatingLayoutId);
             return eventRepository.save(EventMapper.toEvent(eventRequestDto))
