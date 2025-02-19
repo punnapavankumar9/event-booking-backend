@@ -51,7 +51,7 @@ public class EventSeatStateEndpointTests extends EndPointTests {
         .deleteAll()
         .block();
     SeatingLayoutDto seatingLayoutDto = clone(SAMPLE_SEATING_LAYOUT_DTO, SeatingLayoutDto.class);
-
+    mockCatalogServiceWebClient(true);
     // creation order: layout -> venue -> event
     EventResponseDto eventResponseDto = seatingLayoutService
         .createSeatingLayout(seatingLayoutDto)
