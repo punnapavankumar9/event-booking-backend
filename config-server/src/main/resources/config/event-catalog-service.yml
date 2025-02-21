@@ -1,12 +1,9 @@
 spring:
   data:
     mongodb:
-      username: event
-      password: event
       host: localhost
       port: 27017
       database: event-catalog
-      authentication-database: admin
 application:
   config:
     assets: "assets/movie-catalog/"

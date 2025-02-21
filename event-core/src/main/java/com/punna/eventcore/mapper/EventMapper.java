@@ -20,7 +20,6 @@ public class EventMapper {
         .name(eventRequestDto.getName())
         .organizerId(eventRequestDto.getOrganizerId())
         .maximumCapacity(eventRequestDto.getMaximumCapacity())
-        .price(eventRequestDto.getPrice())
         .venueId(eventRequestDto.getVenueId())
         .additionalDetails(eventRequestDto.getAdditionalDetails())
         .eventDurationDetails(toEventDurationDetails(eventRequestDto.getEventDurationDetails()))
@@ -44,7 +43,6 @@ public class EventMapper {
         .organizerId(event.getOrganizerId())
         .eventId(event.getId())
         .maximumCapacity(event.getMaximumCapacity())
-        .price(event.getPrice())
         .venueId(event.getVenueId())
         .additionalDetails(event.getAdditionalDetails())
         .eventDurationDetails(toEventDurationDetailsDto(event.getEventDurationDetails()))
@@ -80,9 +78,6 @@ public class EventMapper {
     }
     if (eventRequestDto.getMaximumCapacity() != null) {
       event.setMaximumCapacity(eventRequestDto.getMaximumCapacity());
-    }
-    if (eventRequestDto.getPrice() != null) {
-      event.setPrice(eventRequestDto.getPrice());
     }
     if (eventRequestDto.getVenueId() != null) {
       event.setVenueId(eventRequestDto.getVenueId());

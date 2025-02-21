@@ -35,8 +35,12 @@ public class VenueServiceImpl implements VenueService {
   public Mono<VenueDto> createVenue(VenueDto venue) {
     return seatingLayoutService
         .getSeatingLayoutById(venue.getSeatingLayoutId())
-        .flatMap(seatArr -> venueRepository
-            .save(VenueMapper.toVenue(venue))
+        .flatMap(seatArr -> authService.getUserName().map(username -> {
+          venue.setOwnerId(username);
+          return venue;
+        }))
+        .flatMap(venueDto -> venueRepository
+            .save(VenueMapper.toVenue(venueDto))
             .map(VenueMapper::toVenueDto));
   }
 

@@ -20,7 +20,6 @@ public abstract class TestFixtures {
 
   public static EventRequestDto SAMPLE_EVENT_REQ_DTO = EventRequestDto
       .builder()
-      .price(BigDecimal.valueOf(150))
       .name("Coldplay concert")
       .maximumCapacity(12_000)
       .eventId("DummyEventId")

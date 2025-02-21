@@ -9,7 +9,6 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Null;
 import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
-import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 import lombok.AllArgsConstructor;
@@ -43,10 +42,6 @@ public class EventRequestDto {
 
   @Positive(message = "maximum capacity must be greater than 0")
   private Integer maximumCapacity;
-
-  @NotNull(message = "price must not be null", groups = CreateGroup.class)
-  @Positive(message = "price must be greater than 0")
-  private BigDecimal price;
 
   @NotNull(message = "venueId must not be null", groups = CreateGroup.class)
   private String venueId;

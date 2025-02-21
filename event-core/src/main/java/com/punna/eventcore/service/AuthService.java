@@ -5,10 +5,9 @@ import reactor.core.publisher.Mono;
 
 public interface AuthService {
 
-    Mono<UserDto> getUserDto();
+  Mono<UserDto> getUserDto();
 
-    Mono<Boolean> hasRole(String role);
+  Mono<Boolean> hasRole(String role);
 
-    Mono<String> getUserName();
-
+  Mono<String> getUserName();
 }

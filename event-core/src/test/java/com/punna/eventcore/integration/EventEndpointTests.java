@@ -58,6 +58,7 @@ public class EventEndpointTests extends EndPointTests {
     venueRepository.deleteAll().block();
     seatingLayoutRepository.deleteAll().block();
     this.mockCatalogServiceWebClient(true);
+    mockAuthServiceUsername();
 
     SeatingLayoutDto seatingLayoutDto = seatingLayoutService.createSeatingLayout(
         SAMPLE_SEATING_LAYOUT_DTO).block();
@@ -108,7 +109,7 @@ public class EventEndpointTests extends EndPointTests {
     assertThat(responseBody.getMessage()).isEqualTo(
         messageSource.getMessage("validation.invalid-body", null, Locale.getDefault()));
     assertThat(responseBody.getStatus()).isEqualTo(400);
-    assertThat(responseBody.getErrors().size()).isEqualTo(13);
+    assertThat(responseBody.getErrors().size()).isEqualTo(12);
 
   }
 
@@ -151,7 +152,7 @@ public class EventEndpointTests extends EndPointTests {
   @Order(6)
   void givenInvalidEventWithId_whenUpdateEvent_thenReturnBadRequest() {
     EventRequestDto eventRequestDto = EventRequestDto.builder().id(eventId).name("min")
-        .price(BigDecimal.valueOf(-1)).eventDurationDetails(
+        .eventDurationDetails(
             EventDurationDetailsDto.builder().startTime(LocalDateTime.now().minusDays(10))
                 .endTime(LocalDateTime.now().minusDays(10)).build()).build();
     ProblemDetail responseBody = webTestClient.patch().uri(eventsV1Url)
@@ -160,7 +161,7 @@ public class EventEndpointTests extends EndPointTests {
         .expectBody(ProblemDetail.class).returnResult().getResponseBody();
     assertThat(responseBody).isNotNull();
     assertThat(responseBody.getMessage()).isEqualTo(invalidBodyErrorMessage);
-    assertThat(responseBody.getErrors().size()).isEqualTo(4);
+    assertThat(responseBody.getErrors().size()).isEqualTo(3);
     assertThat(responseBody.getStatus()).isEqualTo(400);
   }
 
@@ -173,7 +174,6 @@ public class EventEndpointTests extends EndPointTests {
     String newEventCause = "new chase is charity";
     eventRequestDto.setId(eventId);
     eventRequestDto.setOpenForBooking(true);
-    eventRequestDto.setPrice(newPrice);
     eventRequestDto.setVenueId("Dummy");
     eventRequestDto.getEventDurationDetails().setEndTime(newEndDate);
     eventRequestDto.getAdditionalDetails().put("event cause", newEventCause);
@@ -195,7 +195,6 @@ public class EventEndpointTests extends EndPointTests {
     String newEventCause = "new chase is charity";
     eventRequestDto.setId(eventId);
     eventRequestDto.setOpenForBooking(true);
-    eventRequestDto.setPrice(newPrice);
     eventRequestDto.getEventDurationDetails().setEndTime(newEndDate);
     eventRequestDto.getAdditionalDetails().put("event cause", newEventCause);
     EventResponseDto responseBody = webTestClient.patch().uri(eventsV1Url)
@@ -208,7 +207,6 @@ public class EventEndpointTests extends EndPointTests {
     assertThat(responseBody.getEventDurationDetails().getEndTime()).isEqualTo(newEndDate);
     assertThat(responseBody.getEventDurationDetails().getStartTime()).isNotNull();
     assertThat(responseBody.getOrganizerId()).isEqualTo(organizerIdPunna);
-    assertThat(responseBody.getPrice()).isEqualTo(newPrice);
     assertThat(responseBody.getAdditionalDetails().get("event cause")).isEqualTo(newEventCause);
 
   }
@@ -241,7 +239,7 @@ public class EventEndpointTests extends EndPointTests {
   void givenNonAdminUser_whenUpdateEvent_thenReturnForbidden() {
     webTestClient.patch().uri(eventsV1Url).contentType(MediaType.APPLICATION_JSON)
         .headers(headers -> setAuthHeader(headers, "non-admin"))
-        .bodyValue(EventRequestDto.builder().id(eventId).price(BigDecimal.valueOf(123)).build())
+        .bodyValue(EventRequestDto.builder().id(eventId).build())
         .exchange().expectStatus().isForbidden();
   }
 

@@ -35,6 +35,7 @@ public class EventSeatStateEndpointTests extends EndPointTests {
   @Autowired
   private WebTestClient webClient;
 
+
   @BeforeAll
   void setUp() {
     webClient = webClient
@@ -52,6 +53,7 @@ public class EventSeatStateEndpointTests extends EndPointTests {
         .block();
     SeatingLayoutDto seatingLayoutDto = clone(SAMPLE_SEATING_LAYOUT_DTO, SeatingLayoutDto.class);
     mockCatalogServiceWebClient(true);
+    mockAuthServiceUsername();
     // creation order: layout -> venue -> event
     EventResponseDto eventResponseDto = seatingLayoutService
         .createSeatingLayout(seatingLayoutDto)

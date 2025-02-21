@@ -1,6 +1,7 @@
 package com.punna.eventcore.integration;
 
 import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.when;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -8,6 +9,7 @@ import com.punna.eventcore.client.CatalogServiceWebClient;
 import com.punna.eventcore.repository.EventRepository;
 import com.punna.eventcore.repository.SeatingLayoutRepository;
 import com.punna.eventcore.repository.VenueRepository;
+import com.punna.eventcore.service.AuthService;
 import com.punna.eventcore.service.EventSeatStateService;
 import com.punna.eventcore.service.EventService;
 import com.punna.eventcore.service.SeatingLayoutService;
@@ -16,6 +18,7 @@ import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
+import org.springframework.test.context.bean.override.mockito.MockitoSpyBean;
 import reactor.core.publisher.Mono;
 
 @Component
@@ -26,24 +29,20 @@ public class EndPointTests extends ContainerBase {
 
   @Autowired
   EventRepository eventRepository;
-
   @Autowired
   VenueRepository venueRepository;
-
   @Autowired
   VenueService venueService;
-
   @Autowired
   SeatingLayoutService seatingLayoutService;
-
   @Autowired
   SeatingLayoutRepository seatingLayoutRepository;
-
   @Autowired
   EventSeatStateService eventSeatStateService;
-
   @Autowired
   ObjectMapper objectMapper;
+  @MockitoSpyBean
+  private AuthService authService;
   @MockitoBean
   private CatalogServiceWebClient catalogServiceWebClient;
 
@@ -54,8 +53,10 @@ public class EndPointTests extends ContainerBase {
   }
 
   protected void mockCatalogServiceWebClient(boolean result) {
-    when(catalogServiceWebClient.checkMovieIdExists(anyString())).thenReturn(
-        Mono.just(result));
+    when(catalogServiceWebClient.checkMovieIdExists(anyString())).thenReturn(Mono.just(result));
   }
 
+  protected void mockAuthServiceUsername() {
+    doReturn(Mono.just("username")).when(authService).getUserName();
+  }
 }

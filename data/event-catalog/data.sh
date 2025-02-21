@@ -1,4 +1,4 @@
-AUTH_TOKEN="eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwYXZhbiIsImV4cCI6MTczOTU2NDk4OSwiaWF0IjoxNzM5NTYxMzg5fQ.lANiTUla4EDqyODBvY2Wk8sRSmSVXVX4e23NpR4sqjs"
+AUTH_TOKEN="eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwYXZhbiIsImV4cCI6MTc0MDAwMTY3OCwiaWF0IjoxNzM5OTk4MDc4fQ.OHFPc1pT81AKVBrxJs6hP27_KweEufmqSYmyqNLunkk"
 
 curl --location 'http://localhost:8080/api/v1/movies' \
 --header "Authorization: Bearer $AUTH_TOKEN" \
@@ -109,6 +109,13 @@ curl --location 'http://localhost:8080/api/v1/movies' \
 
 curl --location 'http://localhost:8080/api/v1/movies' \
 --header "Authorization: Bearer $AUTH_TOKEN" \
---form 'images=@"./movie-images/the-wild-robot-et00398665-1732271118.avif"' \
+--form 'images=@"./movie-images/the-wild-robot/the-wild-robot-et00398665-1732271118.avif"' \
 --form 'posterImage=@"./movie-images/the-wild-robot/download.avif"' \
 --form 'movie=@./movie-images/the-wild-robot/movie.json;type=application/json'
+
+
+curl --location 'http://localhost:8080/api/v1/movies' \
+--header "Authorization: Bearer $AUTH_TOKEN" \
+--form 'images=@"./movie-images/ramam-ragavam/ramam-raghavam-et00390589-1709978238.avif"' \
+--form 'posterImage=@"./movie-images/ramam-ragavam/download.avif"' \
+--form 'movie=@./movie-images/ramam-ragavam/movie.json;type=application/json'
