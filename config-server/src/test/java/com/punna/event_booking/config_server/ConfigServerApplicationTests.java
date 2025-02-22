@@ -67,8 +67,8 @@ class ConfigServerApplicationTests {
         assertThat(responseBody
                 .getProfiles()
                 .size()).isEqualTo(1);
-//        assertThat(responseBody.getPropertySources()
-//                .size()).isEqualTo(2);
+        assertThat(responseBody.getPropertySources()
+            .size()).isEqualTo(2);
 
     }
 
