@@ -22,8 +22,4 @@ public class PricingTierMap {
     @NotNull(message = "price must not be null", groups = CreateGroup.class)
     @Positive(message = "price must be positive")
     private BigDecimal price;
-
-    @NotNull(message = "tier order must not be null", groups = CreateGroup.class)
-    @Positive(message = "price must be positive")
-    private Integer tierOrder;
 }

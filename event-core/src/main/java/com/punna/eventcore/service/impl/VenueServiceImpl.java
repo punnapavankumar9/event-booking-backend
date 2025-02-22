@@ -1,6 +1,7 @@
 package com.punna.eventcore.service.impl;
 
 import com.punna.eventcore.dto.VenueDto;
+import com.punna.eventcore.dto.projections.VenueNameWithLayoutIdProjection;
 import com.punna.eventcore.mapper.VenueMapper;
 import com.punna.eventcore.model.Venue;
 import com.punna.eventcore.repository.VenueRepository;
@@ -148,5 +149,10 @@ public class VenueServiceImpl implements VenueService {
         .findOne(query, Venue.class)
         .map(Venue::getSeatingLayoutId)
         .switchIfEmpty(Mono.error(new EntityNotFoundException(Venue.class.getSimpleName(), id)));
+  }
+
+  @Override
+  public Flux<VenueNameWithLayoutIdProjection> findByName(String name, int page) {
+    return venueRepository.findAllByNameContainingIgnoreCase(name,PageRequest.of(page, 10));
   }
 }

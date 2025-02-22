@@ -1,6 +1,5 @@
 package com.punna.eventcore.model;
 
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
@@ -26,17 +25,10 @@ public class Event {
 
   private String eventId;
 
-  private EventCategory eventCategory;
-
   private String name;
 
   @CreatedBy
   private String organizerId;
-
-  // default to venue capacity
-  private Integer maximumCapacity;
-
-  private BigDecimal price;
 
   private String venueId;
 
@@ -44,7 +36,7 @@ public class Event {
 
   private Map<String, Object> additionalDetails;
 
-  private boolean isOpenForBooking;
+  private Boolean openForBooking;
 
   @CreatedDate
   private LocalDateTime createdAt;

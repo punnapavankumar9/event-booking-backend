@@ -63,7 +63,6 @@ public class ApplicationExceptionHandler {
             .build());
   }
 
-
   // Handle all other exceptions
   @ExceptionHandler(Exception.class)
   public Mono<ResponseEntity<String>> handleException(Exception ex) {

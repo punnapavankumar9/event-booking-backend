@@ -5,28 +5,34 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="270ad57c-65bc-4f7e-86cf-537bc93322f9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/data/event-catalog/movie-images/ramam-ragavam/download.avif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/event-catalog/movie-images/ramam-ragavam/movie.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/event-catalog/movie-images/ramam-ragavam/ramam-raghavam-et00390589-1709978238.avif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/client/CountriesNowLocationService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/client/LocationService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/controller/LocationDetailsController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/prettier.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/dto/projections/EventSeatsProjection.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/dto/projections/VenueNameWithLayoutIdProjection.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config-server/src/main/resources/config/event-catalog-service.yml" beforeDir="false" afterPath="$PROJECT_DIR$/config-server/src/main/resources/config/event-catalog-service.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/event-catalog/data.sh" beforeDir="false" afterPath="$PROJECT_DIR$/data/event-catalog/data.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/event-catalog/movie-images/Sankranthiki-Vasthunam/movie.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/event-catalog/movie-images/Sankranthiki-Vasthunam/movie.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/event-catalog/movie-images/sky-force/movie.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/event-catalog/movie-images/sky-force/movie.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/config/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/event-core/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/client/CatalogServiceWebClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/client/CatalogServiceWebClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/client/CountriesNowLocationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/client/CountriesNowLocationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/config/WebClientConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/config/WebClientConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/controller/EventController.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/controller/EventController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/controller/SeatingLayoutController.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/controller/SeatingLayoutController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/controller/VenueController.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/controller/VenueController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/dto/EventRequestDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/dto/EventRequestDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/exception/ApplicationExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/exception/ApplicationExceptionHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/mapper/EventMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/mapper/EventMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/service/AuthService.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/service/AuthService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/service/impl/AuthServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/service/impl/AuthServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/model/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/model/Event.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/model/EventCategory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/model/EventType.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/model/EventType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/model/PricingTierMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/model/PricingTierMap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/repository/EventRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/repository/EventRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/repository/SeatingLayoutRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/repository/SeatingLayoutRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/repository/VenueRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/repository/VenueRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/service/SeatingLayoutService.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/service/SeatingLayoutService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/service/VenueService.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/service/VenueService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/service/impl/EventServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/service/impl/EventServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/service/impl/SeatingLayoutServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/service/impl/SeatingLayoutServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/service/impl/VenueServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/service/impl/VenueServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/event-core/src/test/java/com/punna/eventcore/fixtures/TestFixtures.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-core/src/test/java/com/punna/eventcore/fixtures/TestFixtures.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-core/src/test/java/com/punna/eventcore/integration/EndPointTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-core/src/test/java/com/punna/eventcore/integration/EndPointTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/event-core/src/test/java/com/punna/eventcore/integration/EventEndpointTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-core/src/test/java/com/punna/eventcore/integration/EventEndpointTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-core/src/test/java/com/punna/eventcore/integration/EventSeatStateEndpointTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-core/src/test/java/com/punna/eventcore/integration/EventSeatStateEndpointTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/com/punna/gateway/GatewayApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/com/punna/gateway/GatewayApplication.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,6 +46,8 @@
         <option value="Dockerfile" />
         <option value="Enum" />
         <option value="Interface" />
+        <option value="Record" />
+        <option value="JUnit5 Test Class" />
         <option value="Class" />
       </list>
     </option>
@@ -50,6 +58,7 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="jar://$MAVEN_REPOSITORY$/io/projectreactor/reactor-core/3.7.1/reactor-core-3.7.1-sources.jar!/reactor/core/publisher/MonoFlatMap.java" root0="SKIP_INSPECTION" />
     <setting file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webflux/6.2.1/spring-webflux-6.2.1-sources.jar!/org/springframework/web/reactive/result/method/InvocableHandlerMethod.java" root0="SKIP_INSPECTION" />
+    <setting file="jar://$USER_HOME$/Library/Java/JavaVirtualMachines/corretto-21.0.5/Contents/Home/lib/src.zip!/java.base/java/lang/IllegalArgumentException.java" root0="SKIP_INSPECTION" />
   </component>
   <component name="KubernetesApiPersistence">{}</component>
   <component name="KubernetesApiProvider">{
@@ -70,7 +79,7 @@
     </option>
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="ProjectErrors" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 2
@@ -127,10 +136,12 @@
     "Spring Boot.ConfigServerApplication.executor": "Run",
     "Spring Boot.DiscoveryApplication.executor": "Run",
     "Spring Boot.EventCatalogApplication.executor": "Run",
-    "Spring Boot.EventCoreApplication.executor": "Run",
+    "Spring Boot.EventCoreApplication.executor": "Debug",
     "Spring Boot.GatewayApplication.executor": "Run",
     "Spring Boot.IdentityServiceApplication.executor": "Run",
     "com.codeium.enabled": "true",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
     "database.data.extractors.current.export.id": "JSON-Groovy.json.groovy",
     "database.data.extractors.current.id": "JSON-Groovy.json.groovy",
     "deletionFromPopupRequiresConfirmation": "false",
@@ -148,7 +159,7 @@
     "project.structure.side.proportion": "0.18901303",
     "run.code.analysis.last.selected.profile": "pProject Default",
     "run.configurations.included.in.services": "true",
-    "settings.editor.selected.configurable": "preferences.editor",
+    "settings.editor.selected.configurable": "preferences.sourceCode.Java",
     "ts.external.directory.path": "/Applications/IntelliJ IDEA.app/Contents/plugins/javascript-plugin/jsLanguageServicesImpl/external",
     "vue.rearranger.settings.migration": "true"
   },
@@ -181,6 +192,12 @@
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/helpers" />
       <recent name="$PROJECT_DIR$/../event-frontend/src/app/features/movies/components" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.punna.eventcore.dto.projections" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.punna.eventcatalog.dto" />
@@ -424,7 +441,8 @@
       <workItem from="1740129482073" duration="900000" />
       <workItem from="1740143571927" duration="155000" />
       <workItem from="1740143737997" duration="3363000" />
-      <workItem from="1740157330200" duration="8269000" />
+      <workItem from="1740157330200" duration="10152000" />
+      <workItem from="1740206322864" duration="16040000" />
     </task>
     <servers />
   </component>
@@ -436,35 +454,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/event-core/src/test/java/com/punna/eventcore/integration/EventSeatStateEndpointTests.java</url>
-          <line>62</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/event-core/src/test/java/com/punna/eventcore/integration/EventSeatStateEndpointTests.java</url>
-          <line>65</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/event-core/src/test/java/com/punna/eventcore/integration/EventSeatStateEndpointTests.java</url>
-          <line>70</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/event-core/src/test/java/com/punna/eventcore/integration/EventSeatStateEndpointTests.java</url>
-          <line>77</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/service/impl/VenueServiceImpl.java</url>
-          <line>35</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo parentTag="org.springframework.http.ResponseEntity" memberName="body" />

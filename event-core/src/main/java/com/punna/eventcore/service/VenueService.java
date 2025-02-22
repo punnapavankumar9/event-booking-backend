@@ -2,6 +2,7 @@ package com.punna.eventcore.service;
 
 
 import com.punna.eventcore.dto.VenueDto;
+import com.punna.eventcore.dto.projections.VenueNameWithLayoutIdProjection;
 import com.punna.eventcore.model.Venue;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -25,4 +26,6 @@ public interface VenueService {
   Mono<Boolean> isAdminOrOwner(Venue venue);
 
   Mono<String> getSeatingLayoutId(String id);
+
+  Flux<VenueNameWithLayoutIdProjection> findByName(String name, int page);
 }

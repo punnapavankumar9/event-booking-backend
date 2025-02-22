@@ -10,7 +10,7 @@ import reactor.core.publisher.Flux;
 @Repository
 public interface EventRepository extends ReactiveMongoRepository<Event, String> {
 
-    Flux<Event> findAllBy(Pageable pageable);
+  Flux<Event> findAllBy(Pageable pageable);
 
-    Flux<Event> findAllByEventType(EventType eventType);
+  Flux<Event> findAllByEventType(EventType eventType);
 }

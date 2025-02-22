@@ -44,8 +44,7 @@ public class EventController {
       @Validated({CreateGroup.class}) @RequestBody Flux<EventRequestDto> events,
       @RequestParam() Boolean bulk) {
     if (bulk) {
-      return ResponseEntity.status(HttpStatus.CREATED).body(eventService
-          .createEvents(events));
+      return ResponseEntity.status(HttpStatus.CREATED).body(eventService.createEvents(events));
     }
     return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(Mono.error(
         new EventApplicationException("Something Went Wrong", HttpStatus.FORBIDDEN.value())));

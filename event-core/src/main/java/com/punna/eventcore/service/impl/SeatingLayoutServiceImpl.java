@@ -8,7 +8,10 @@ import com.punna.eventcore.model.SeatLocation;
 import com.punna.eventcore.model.SeatingLayout;
 import com.punna.eventcore.repository.SeatingLayoutRepository;
 import com.punna.eventcore.service.SeatingLayoutService;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import lombok.RequiredArgsConstructor;
 import org.punna.commons.exception.EntityNotFoundException;
 import org.punna.commons.exception.EventApplicationException;
@@ -116,6 +119,17 @@ public class SeatingLayoutServiceImpl implements SeatingLayoutService {
         .switchIfEmpty(Mono.error(new EventApplicationException(
             "Something went wrong while checking valid seats")))
         .map(m -> m.get("valid"));
+  }
+
+  @Override
+  public Mono<List<String>> getPricingTiers(String id) {
+    return seatingLayoutRepository.findEventSeatsProjectionById(id).map(eventSeatsProjection -> {
+      Set<String> tiers = new HashSet<>();
+      eventSeatsProjection.seats().forEach(seat -> {
+        tiers.add(seat.getTier());
+      });
+      return new ArrayList<>(tiers);
+    });
   }
 
   public int isSeatValid(int rows, int columns, Seat seat) {

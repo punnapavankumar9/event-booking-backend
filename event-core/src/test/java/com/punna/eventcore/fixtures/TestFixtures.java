@@ -6,7 +6,7 @@ import com.punna.eventcore.dto.EventRequestDto;
 import com.punna.eventcore.dto.ScreenPosition;
 import com.punna.eventcore.dto.SeatingLayoutDto;
 import com.punna.eventcore.dto.VenueDto;
-import com.punna.eventcore.model.EventCategory;
+import com.punna.eventcore.model.EventType;
 import com.punna.eventcore.model.PricingTierMap;
 import com.punna.eventcore.model.Seat;
 import com.punna.eventcore.utils.EventDurationType;
@@ -21,10 +21,9 @@ public abstract class TestFixtures {
   public static EventRequestDto SAMPLE_EVENT_REQ_DTO = EventRequestDto
       .builder()
       .name("Coldplay concert")
-      .maximumCapacity(12_000)
       .eventId("DummyEventId")
-      .eventCategory(EventCategory.MOVIE)
-      .isOpenForBooking(true)
+      .eventType(EventType.MOVIE)
+      .openForBooking(true)
       .eventDurationDetails(EventDurationDetailsDto
           .builder()
           .startTime(LocalDateTime
@@ -38,7 +37,7 @@ public abstract class TestFixtures {
       .additionalDetails(new HashMap<>() {{
         put("event cause", "charity");
       }})
-      .pricingTierMaps(List.of(new PricingTierMap("VIP", BigDecimal.valueOf(249), 1)))
+      .pricingTierMaps(List.of(new PricingTierMap("VIP", BigDecimal.valueOf(249))))
       .build();
   public static VenueDto SAMPLE_VENUE_DTO = VenueDto
       .builder()

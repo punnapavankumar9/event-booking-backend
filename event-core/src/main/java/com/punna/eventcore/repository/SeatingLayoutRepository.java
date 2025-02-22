@@ -1,5 +1,6 @@
 package com.punna.eventcore.repository;
 
+import com.punna.eventcore.dto.projections.EventSeatsProjection;
 import com.punna.eventcore.model.SeatLocation;
 import com.punna.eventcore.model.SeatingLayout;
 import java.util.List;
@@ -37,4 +38,6 @@ public interface SeatingLayoutRepository extends ReactiveMongoRepository<Seating
       List<SeatLocation> seatLocations);
 
   Flux<SeatingLayout> findByName(String name);
+
+  Mono<EventSeatsProjection> findEventSeatsProjectionById(String id);
 }

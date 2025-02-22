@@ -28,7 +28,6 @@ import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.transaction.reactive.TransactionalOperator;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
@@ -42,7 +41,6 @@ public class EventServiceImpl implements EventService {
   private final VenueService venueService;
   private final AuthService authService;
 
-  private final TransactionalOperator txOperator;
   private final CatalogServiceWebClient catalogServiceWebClient;
 
   @Override
@@ -51,7 +49,7 @@ public class EventServiceImpl implements EventService {
         .isAfter(eventRequestDto.getEventDurationDetails().getEndTime())) {
       return Mono.error(new EventApplicationException("Start time cannot be after end time"));
     }
-    Mono<Boolean> idCheckMono = switch (eventRequestDto.getEventCategory()) {
+    Mono<Boolean> idCheckMono = switch (eventRequestDto.getEventType()) {
       case MOVIE -> catalogServiceWebClient.checkMovieIdExists(eventRequestDto.getEventId());
       case SPORTS -> catalogServiceWebClient.checkSportsIdExists(eventRequestDto.getEventId());
       default -> Mono.error(new EventApplicationException("Invalid event category"));
@@ -163,9 +161,6 @@ public class EventServiceImpl implements EventService {
       return Mono.error(
           new IllegalArgumentException("Start time, end time, and venue ID cannot be null"));
     }
-
-    System.out.println("Checking for overlaps");
-
     // Build query to find overlapping events at the same venue
     Query query = Query.query(
         Criteria.where("venueId").is(newVenueId) // Only check events with matching venueId

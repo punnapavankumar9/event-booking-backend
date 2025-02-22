@@ -14,20 +14,16 @@ public class EventMapper {
     if (eventRequestDto == null) {
       return null;
     }
-    return Event
-        .builder()
-        .id(eventRequestDto.getId())
-        .name(eventRequestDto.getName())
-        .organizerId(eventRequestDto.getOrganizerId())
-        .maximumCapacity(eventRequestDto.getMaximumCapacity())
+    return Event.builder().id(eventRequestDto.getId()).name(eventRequestDto.getName())
+        .organizerId(eventRequestDto.getOrganizerId()).eventId(eventRequestDto.getEventId())
         .venueId(eventRequestDto.getVenueId())
         .additionalDetails(eventRequestDto.getAdditionalDetails())
         .eventDurationDetails(toEventDurationDetails(eventRequestDto.getEventDurationDetails()))
         .pricingTierMaps(eventRequestDto.getPricingTierMaps())
         .seatState(eventRequestDto.getSeatState())
         .seatingLayoutId(eventRequestDto.getSeatingLayoutId())
-        .eventCategory(eventRequestDto.getEventCategory())
-        .build();
+        .openForBooking(eventRequestDto.getOpenForBooking())
+        .eventType(eventRequestDto.getEventType()).build();
 
   }
 
@@ -36,23 +32,14 @@ public class EventMapper {
     if (event == null) {
       return null;
     }
-    return EventResponseDto
-        .builder()
-        .id(event.getId())
-        .name(event.getName())
-        .organizerId(event.getOrganizerId())
-        .eventId(event.getId())
-        .maximumCapacity(event.getMaximumCapacity())
-        .venueId(event.getVenueId())
+    return EventResponseDto.builder().id(event.getId()).name(event.getName())
+        .organizerId(event.getOrganizerId()).eventId(event.getId()).venueId(event.getVenueId())
         .additionalDetails(event.getAdditionalDetails())
         .eventDurationDetails(toEventDurationDetailsDto(event.getEventDurationDetails()))
-        .createdAt(event.getCreatedAt())
-        .lastModifiedAt(event.getLastModifiedAt())
-        .pricingTierMaps(event.getPricingTierMaps())
-        .seatState(event.getSeatState())
-        .eventCategory(event.getEventCategory())
-        .seatingLayoutId(event.getSeatingLayoutId())
-        .build();
+        .createdAt(event.getCreatedAt()).lastModifiedAt(event.getLastModifiedAt())
+        .pricingTierMaps(event.getPricingTierMaps()).seatState(event.getSeatState())
+        .openForBooking(event.getOpenForBooking()).eventType(event.getEventType())
+        .seatingLayoutId(event.getSeatingLayoutId()).build();
 
   }
 
@@ -61,12 +48,9 @@ public class EventMapper {
     if (eventDurationDetailsDto == null) {
       return null;
     }
-    return EventDurationDetails
-        .builder()
-        .startTime(eventDurationDetailsDto.getStartTime())
+    return EventDurationDetails.builder().startTime(eventDurationDetailsDto.getStartTime())
         .endTime(eventDurationDetailsDto.getEndTime())
-        .eventDurationType(eventDurationDetailsDto.getEventDurationType())
-        .build();
+        .eventDurationType(eventDurationDetailsDto.getEventDurationType()).build();
   }
 
   public static void merge(Event event, EventRequestDto eventRequestDto) {
@@ -76,9 +60,6 @@ public class EventMapper {
     if (eventRequestDto.getEventId() != null) {
       event.setEventId(eventRequestDto.getEventId());
     }
-    if (eventRequestDto.getMaximumCapacity() != null) {
-      event.setMaximumCapacity(eventRequestDto.getMaximumCapacity());
-    }
     if (eventRequestDto.getVenueId() != null) {
       event.setVenueId(eventRequestDto.getVenueId());
     }
@@ -86,17 +67,17 @@ public class EventMapper {
       event.setOrganizerId(eventRequestDto.getOrganizerId());
     }
     if (eventRequestDto.getEventDurationDetails() != null) {
-      event.setEventDurationDetails(merge(event.getEventDurationDetails(),
-          eventRequestDto.getEventDurationDetails()
-      ));
+      event.setEventDurationDetails(
+          merge(event.getEventDurationDetails(), eventRequestDto.getEventDurationDetails()));
+    }
+    if (eventRequestDto.getOpenForBooking() != null) {
+      event.setOpenForBooking(eventRequestDto.getOpenForBooking());
     }
     if (eventRequestDto.getAdditionalDetails() != null) {
       if (event.getAdditionalDetails() == null) {
         event.setAdditionalDetails(new HashMap<>());
       }
-      event
-          .getAdditionalDetails()
-          .putAll(eventRequestDto.getAdditionalDetails());
+      event.getAdditionalDetails().putAll(eventRequestDto.getAdditionalDetails());
     }
     if (eventRequestDto.getPricingTierMaps() != null) {
       event.setPricingTierMaps(eventRequestDto.getPricingTierMaps());
@@ -104,9 +85,10 @@ public class EventMapper {
     if (eventRequestDto.getSeatState() != null) {
       event.setSeatState(eventRequestDto.getSeatState());
     }
-    if (eventRequestDto.getEventCategory() != null) {
-      event.setEventCategory(eventRequestDto.getEventCategory());
+    if (eventRequestDto.getEventType() != null) {
+      event.setEventType(eventRequestDto.getEventType());
     }
+
   }
 
   public static EventDurationDetailsDto toEventDurationDetailsDto(
@@ -114,12 +96,9 @@ public class EventMapper {
     if (eventDurationDetails == null) {
       return null;
     }
-    return EventDurationDetailsDto
-        .builder()
-        .startTime(eventDurationDetails.getStartTime())
+    return EventDurationDetailsDto.builder().startTime(eventDurationDetails.getStartTime())
         .endTime(eventDurationDetails.getEndTime())
-        .eventDurationType(eventDurationDetails.getEventDurationType())
-        .build();
+        .eventDurationType(eventDurationDetails.getEventDurationType()).build();
   }
 
   public static EventDurationDetails merge(EventDurationDetails eventDurationDetails,

@@ -1,13 +1,12 @@
 package com.punna.eventcore.dto;
 
-import com.punna.eventcore.model.EventCategory;
+import com.punna.eventcore.model.EventType;
 import com.punna.eventcore.model.PricingTierMap;
 import com.punna.eventcore.model.SeatState;
 import io.swagger.v3.oas.annotations.Hidden;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Null;
-import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
 import java.util.List;
 import java.util.Map;
@@ -37,20 +36,17 @@ public class EventRequestDto {
 
   private String organizerId;
 
-  @NotNull(message = "Event Category must not be null", groups = CreateGroup.class)
-  private EventCategory eventCategory;
-
-  @Positive(message = "maximum capacity must be greater than 0")
-  private Integer maximumCapacity;
+  @NotNull(message = "Event Type must not be null", groups = CreateGroup.class)
+  private EventType eventType;
 
   @NotNull(message = "venueId must not be null", groups = CreateGroup.class)
   private String venueId;
 
-  @NotNull(message = "isOpenForBooking must not be null", groups = CreateGroup.class)
-  private boolean isOpenForBooking;
+  @NotNull(message = "OpenForBooking must not be null", groups = CreateGroup.class)
+  private Boolean openForBooking;
 
   @Valid
-  @NotNull(message = "event duration details must not be null", groups = CreateGroup.class)
+  @NotNull(message = "event durat ion details must not be null", groups = CreateGroup.class)
   private EventDurationDetailsDto eventDurationDetails;
 
   private Map<String, Object> additionalDetails;

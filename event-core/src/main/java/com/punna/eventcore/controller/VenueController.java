@@ -1,6 +1,7 @@
 package com.punna.eventcore.controller;
 
 import com.punna.eventcore.dto.VenueDto;
+import com.punna.eventcore.dto.projections.VenueNameWithLayoutIdProjection;
 import com.punna.eventcore.service.VenueService;
 import lombok.RequiredArgsConstructor;
 import org.punna.commons.validation.groups.CreateGroup;
@@ -32,6 +33,13 @@ public class VenueController {
   @ResponseStatus(HttpStatus.CREATED)
   public Mono<VenueDto> createVenue(@Validated(CreateGroup.class) @RequestBody VenueDto venue) {
     return venueService.createVenue(venue);
+  }
+
+  @GetMapping(value = "/search")
+  public Flux<VenueNameWithLayoutIdProjection> searchVenue(
+      @RequestParam(value = "name", required = false) String name,
+      @RequestParam(value = "page", required = false, defaultValue = "0") int page) {
+    return venueService.findByName(name, page);
   }
 
   @GetMapping
