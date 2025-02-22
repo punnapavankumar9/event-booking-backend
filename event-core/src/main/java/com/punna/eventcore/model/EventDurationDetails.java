@@ -4,15 +4,15 @@ import com.punna.eventcore.utils.EventDurationType;
 import lombok.Builder;
 import lombok.Data;
 
-import java.time.LocalDateTime;
+import java.time.Instant;
 
 @Data
 @Builder
 public class EventDurationDetails {
 
-    private LocalDateTime startTime;
+    private Instant startTime;
 
-    private LocalDateTime endTime;
+    private Instant endTime;
 
     private EventDurationType eventDurationType;
 }

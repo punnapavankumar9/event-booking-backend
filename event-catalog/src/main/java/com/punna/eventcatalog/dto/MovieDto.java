@@ -5,7 +5,7 @@ import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Null;
 import jakarta.validation.constraints.Size;
-import java.time.LocalDateTime;
+import java.time.Instant;
 import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -28,7 +28,7 @@ public class MovieDto {
   private String title;
 
   @NotNull(message = "release data is required", groups = CreateGroup.class)
-  private LocalDateTime releaseDate;
+  private Instant releaseDate;
 
   @Size(min = 1, max = 5)
   private List<String> genres;

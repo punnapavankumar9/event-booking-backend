@@ -28,4 +28,5 @@ public interface EventService {
 
   Flux<EventResponseDto> getEventsByType(EventType eventType);
 
+  Flux<EventResponseDto> getEventsByEventId(String eventId);
 }

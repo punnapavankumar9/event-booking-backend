@@ -1,6 +1,6 @@
 package com.punna.gateway.dto;
 
-import java.time.LocalDateTime;
+import java.time.Instant;
 import java.util.List;
 
 public record LoggedInUserDto(String username,
@@ -11,11 +11,11 @@ public record LoggedInUserDto(String username,
 
                               List<String> authorities,
 
-                              LocalDateTime createdAt,
+                              Instant createdAt,
 
-                              LocalDateTime lastModifiedAt,
+                              Instant lastModifiedAt,
 
-                              LocalDateTime lastLoginAt
+                              Instant lastLoginAt
 
 ) {
 

@@ -68,13 +68,18 @@ public class EventController {
   }
 
   @GetMapping("/{id}")
-  public Mono<EventResponseDto> getVenue(@PathVariable String id) {
+  public Mono<EventResponseDto> getEvent(@PathVariable String id) {
     return eventService.findById(id);
   }
 
-  @GetMapping("/byEventType/{}")
-  public Flux<EventResponseDto> getVenuesByType(@PathVariable EventType eventType) {
-    return eventService.getEventsByType(eventType);
+  @GetMapping("/byEventType/{type}")
+  public Flux<EventResponseDto> getEventsByType(@PathVariable EventType type) {
+    return eventService.getEventsByType(type);
+  }
+
+  @GetMapping("/byEventId/{eventId}")
+  public Flux<EventResponseDto> getEventsForEventId(@PathVariable String eventId) {
+    return eventService.getEventsByEventId(eventId);
   }
 
 }

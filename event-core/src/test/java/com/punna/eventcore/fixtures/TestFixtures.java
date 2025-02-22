@@ -11,7 +11,8 @@ import com.punna.eventcore.model.PricingTierMap;
 import com.punna.eventcore.model.Seat;
 import com.punna.eventcore.utils.EventDurationType;
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -26,12 +27,12 @@ public abstract class TestFixtures {
       .openForBooking(true)
       .eventDurationDetails(EventDurationDetailsDto
           .builder()
-          .startTime(LocalDateTime
+          .startTime(Instant
               .now()
-              .plusDays(10))
-          .endTime(LocalDateTime
+              .plus(10, ChronoUnit.DAYS))
+          .endTime(Instant
               .now()
-              .plusDays(20))
+              .plus(20, ChronoUnit.DAYS))
           .eventDurationType(EventDurationType.MULTI_DAY)
           .build())
       .additionalDetails(new HashMap<>() {{

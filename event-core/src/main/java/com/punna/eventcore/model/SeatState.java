@@ -1,12 +1,11 @@
 package com.punna.eventcore.model;
 
 import jakarta.validation.Valid;
+import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -14,9 +13,9 @@ import java.util.List;
 @Builder
 public class SeatState {
 
-    @Valid
-    private List<SeatLocation> blockedSeats;
+  @Valid
+  private List<SeatLocation> blockedSeats;
 
-    @Valid
-    private List<SeatLocation> bookedSeats;
+  @Valid
+  private List<SeatLocation> bookedSeats;
 }

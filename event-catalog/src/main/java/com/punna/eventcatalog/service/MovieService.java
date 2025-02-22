@@ -3,7 +3,7 @@ package com.punna.eventcatalog.service;
 
 import com.punna.eventcatalog.dto.MovieDto;
 import java.io.IOException;
-import java.time.LocalDateTime;
+import java.time.Instant;
 import org.springframework.http.codec.multipart.FilePart;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -14,7 +14,7 @@ public interface MovieService {
 
     Flux<MovieDto> findAllByTitle(String title, int page, int size);
 
-    Flux<MovieDto> findByReleaseDate(LocalDateTime releaseDate, int page, int size);
+    Flux<MovieDto> findByReleaseDate(Instant releaseDate, int page, int size);
 
     Flux<MovieDto> find(int page, int size);
 

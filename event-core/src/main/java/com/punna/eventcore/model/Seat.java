@@ -2,12 +2,16 @@ package com.punna.eventcore.model;
 
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.punna.commons.validation.groups.CreateGroup;
 
 @Data
 @Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Seat {
 
   @NotNull(message = "isSpace must not be null", groups = CreateGroup.class)

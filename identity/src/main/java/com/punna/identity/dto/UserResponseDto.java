@@ -1,13 +1,10 @@
 package com.punna.identity.dto;
 
+import java.time.Instant;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
-
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 
 @Data
 @SuperBuilder
@@ -15,15 +12,15 @@ import java.util.List;
 @AllArgsConstructor
 public class UserResponseDto {
 
-    private String username;
+  private String username;
 
-    private String email;
+  private String email;
 
-    private boolean enabled = true;
+  private boolean enabled = true;
 
-    private LocalDateTime createdAt;
+  private Instant createdAt;
 
-    private LocalDateTime lastModifiedAt;
+  private Instant lastModifiedAt;
 
-    private LocalDateTime lastLoginAt;
+  private Instant lastLoginAt;
 }

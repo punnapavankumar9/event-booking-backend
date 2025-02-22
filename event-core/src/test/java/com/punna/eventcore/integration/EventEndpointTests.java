@@ -14,8 +14,8 @@ import com.punna.eventcore.dto.SeatingLayoutDto;
 import com.punna.eventcore.model.PricingTierMap;
 import com.punna.eventcore.model.SeatLocation;
 import com.punna.eventcore.model.SeatState;
-import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
@@ -152,8 +152,8 @@ public class EventEndpointTests extends EndPointTests {
   void givenInvalidEventWithId_whenUpdateEvent_thenReturnBadRequest() {
     EventRequestDto eventRequestDto = EventRequestDto.builder().id(eventId).name("min")
         .eventDurationDetails(
-            EventDurationDetailsDto.builder().startTime(LocalDateTime.now().minusDays(10))
-                .endTime(LocalDateTime.now().minusDays(10)).build()).build();
+            EventDurationDetailsDto.builder().startTime(Instant.now().minus(10, ChronoUnit.DAYS))
+                .endTime(Instant.now().minus(10, ChronoUnit.DAYS)).build()).build();
     ProblemDetail responseBody = webTestClient.patch().uri(eventsV1Url)
         .contentType(MediaType.APPLICATION_JSON).headers(headers -> setAuthHeader(headers, "punna"))
         .bodyValue(eventRequestDto).exchange().expectStatus().isBadRequest()
@@ -168,8 +168,7 @@ public class EventEndpointTests extends EndPointTests {
   @Order(7)
   void givenEventWithInvalidVenueId_whenUpdateEvent_thenReturnVenueNotFound() {
     EventRequestDto eventRequestDto = clone(SAMPLE_EVENT_REQ_DTO, EventRequestDto.class);
-    BigDecimal newPrice = BigDecimal.valueOf(9999999999.9999999989);
-    LocalDateTime newEndDate = LocalDateTime.now().plusDays(50);
+    Instant newEndDate = Instant.now().plus(50, ChronoUnit.DAYS);
     String newEventCause = "new chase is charity";
     eventRequestDto.setId(eventId);
     eventRequestDto.setOpenForBooking(true);
@@ -189,8 +188,7 @@ public class EventEndpointTests extends EndPointTests {
   @Order(8)
   void givenEventWithId_whenUpdateEvent_thenUpdateEventAndReturn() {
     EventRequestDto eventRequestDto = clone(SAMPLE_EVENT_REQ_DTO, EventRequestDto.class);
-    BigDecimal newPrice = BigDecimal.valueOf(9999999999.9999999989);
-    LocalDateTime newEndDate = LocalDateTime.now().plusDays(50);
+    Instant newEndDate = Instant.now().plus(50, ChronoUnit.DAYS);
     String newEventCause = "new chase is charity";
     eventRequestDto.setId(eventId);
     eventRequestDto.setOpenForBooking(true);
@@ -238,8 +236,8 @@ public class EventEndpointTests extends EndPointTests {
   void givenNonAdminUser_whenUpdateEvent_thenReturnForbidden() {
     webTestClient.patch().uri(eventsV1Url).contentType(MediaType.APPLICATION_JSON)
         .headers(headers -> setAuthHeader(headers, "non-admin"))
-        .bodyValue(EventRequestDto.builder().id(eventId).build())
-        .exchange().expectStatus().isForbidden();
+        .bodyValue(EventRequestDto.builder().id(eventId).build()).exchange().expectStatus()
+        .isForbidden();
   }
 
   @Test
@@ -283,8 +281,9 @@ public class EventEndpointTests extends EndPointTests {
   void givenValidEventsWithNonAdmin_WhenCreate_thenReturnCreated() {
     mockCatalogServiceWebClient(true);
     var event2 = clone(SAMPLE_EVENT_REQ_DTO, EventRequestDto.class);
-    event2.getEventDurationDetails().setStartTime(LocalDateTime.now().plusDays(20));
-    event2.getEventDurationDetails().setEndTime(LocalDateTime.now().plusDays(20).plusMinutes(150));
+    event2.getEventDurationDetails().setStartTime(Instant.now().plus(20, ChronoUnit.DAYS));
+    event2.getEventDurationDetails()
+        .setEndTime(Instant.now().plus(20, ChronoUnit.DAYS).plus(150, ChronoUnit.MINUTES));
     Flux<EventRequestDto> eventResponseDtoFlux = Flux.fromIterable(
         List.of(clone(SAMPLE_EVENT_REQ_DTO, EventRequestDto.class), event2));
 
@@ -304,8 +303,9 @@ public class EventEndpointTests extends EndPointTests {
   void givenOverlappingEvents_whenCreate_thenReturnBadRequestWithErrors() {
     mockCatalogServiceWebClient(true);
     EventRequestDto event = clone(SAMPLE_EVENT_REQ_DTO, EventRequestDto.class);
-    event.getEventDurationDetails().setStartTime(LocalDateTime.now().plusDays(30));
-    event.getEventDurationDetails().setEndTime(LocalDateTime.now().plusDays(30).plusMinutes(100));
+    event.getEventDurationDetails().setStartTime(Instant.now().plus(30, ChronoUnit.DAYS));
+    event.getEventDurationDetails()
+        .setEndTime(Instant.now().plus(30, ChronoUnit.DAYS).plus(100, ChronoUnit.MINUTES));
     Flux<EventRequestDto> eventResponseDtoFlux = Flux.fromIterable(List.of(event, event));
 
     ProblemDetail response = webTestClient.post().uri(eventsV1Url + "?bulk=true")
@@ -333,8 +333,7 @@ public class EventEndpointTests extends EndPointTests {
     eventReqDto.setVenueId(venueId);
     ProblemDetail responseBody = webTestClient.post().uri(eventsV1Url)
         .contentType(MediaType.APPLICATION_JSON).headers(headers -> setAuthHeader(headers, "punna"))
-        .bodyValue(eventReqDto).exchange()
-        .expectStatus().isBadRequest()
+        .bodyValue(eventReqDto).exchange().expectStatus().isBadRequest()
         .expectBody(ProblemDetail.class).returnResult().getResponseBody();
     assertThat(responseBody).isNotNull();
     assertThat(responseBody.getMessage()).contains("Event ID does not exist");

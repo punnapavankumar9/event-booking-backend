@@ -4,7 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.punna.eventcatalog.dto.MovieDto;
 import com.punna.eventcatalog.service.MovieService;
 import java.io.IOException;
-import java.time.LocalDateTime;
+import java.time.Instant;
 import lombok.RequiredArgsConstructor;
 import org.punna.commons.exception.EventApplicationException;
 import org.punna.commons.validation.groups.UpdateGroup;
@@ -54,7 +54,7 @@ public class MovieController {
   @GetMapping
   public Flux<MovieDto> findAll(@RequestParam(value = "page", defaultValue = "0") int page,
       @RequestParam(required = false) String title,
-      @RequestParam(required = false) LocalDateTime releaseDate) {
+      @RequestParam(required = false) Instant releaseDate) {
     if (title != null && !title.trim().isEmpty()) {
       return movieService.findAllByTitle(title, page, 10);
     }

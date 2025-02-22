@@ -1,7 +1,10 @@
 spring:
   jackson:
-    date-format: yyyy-MM-dd'T'HH:mm
-    time-zone: UTC
+    property-naming-strategy: SNAKE_CASE
+    serialization:
+      write-dates-as-timestamps: false
+    deserialization:
+      fail-on-unknown-properties: true
 
 application:
   server:

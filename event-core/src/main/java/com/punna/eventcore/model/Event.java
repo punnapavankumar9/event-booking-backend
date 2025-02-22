@@ -1,6 +1,6 @@
 package com.punna.eventcore.model;
 
-import java.time.LocalDateTime;
+import java.time.Instant;
 import java.util.List;
 import java.util.Map;
 import lombok.AllArgsConstructor;
@@ -39,10 +39,10 @@ public class Event {
   private Boolean openForBooking;
 
   @CreatedDate
-  private LocalDateTime createdAt;
+  private Instant createdAt;
 
   @LastModifiedDate
-  private LocalDateTime lastModifiedAt;
+  private Instant lastModifiedAt;
 
   private List<PricingTierMap> pricingTierMaps;
 

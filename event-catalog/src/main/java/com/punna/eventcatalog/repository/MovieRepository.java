@@ -6,14 +6,14 @@ import org.springframework.data.repository.reactive.ReactiveCrudRepository;
 import org.springframework.stereotype.Repository;
 import reactor.core.publisher.Flux;
 
-import java.time.LocalDateTime;
+import java.time.Instant;
 
 @Repository
 public interface MovieRepository extends ReactiveCrudRepository<Movie, String> {
 
     Flux<Movie> findByTitleContaining(String title, Pageable pageable);
 
-    Flux<Movie> findByReleaseDate(LocalDateTime releaseDate, Pageable pageable);
+    Flux<Movie> findByReleaseDate(Instant releaseDate, Pageable pageable);
 
     Flux<Movie> findByIdNotNull(Pageable pageable);
 }

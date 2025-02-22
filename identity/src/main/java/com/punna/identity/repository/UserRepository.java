@@ -9,7 +9,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Repository;
 
-import java.time.LocalDateTime;
+import java.time.Instant;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 
@@ -27,5 +27,5 @@ public interface UserRepository extends JpaRepository<User, String> {
     @Async
     @Query("update User u set u.lastLoginAt = :loginTime  where u.username = :username")
     CompletableFuture<Void> updateLastLogin(@Param("username") String username,
-                                            @Param("loginTime") LocalDateTime loginTime);
+                                            @Param("loginTime") Instant loginTime);
 }

@@ -9,7 +9,7 @@ import com.punna.eventcatalog.service.StorageService;
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.ConstraintViolationException;
 import jakarta.validation.Validator;
-import java.time.LocalDateTime;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -50,7 +50,7 @@ public class MovieServiceImpl implements MovieService {
   }
 
   @Override
-  public Flux<MovieDto> findByReleaseDate(LocalDateTime releaseDate, int page, int size) {
+  public Flux<MovieDto> findByReleaseDate(Instant releaseDate, int page, int size) {
     return movieRepository.findByReleaseDate(releaseDate, PageRequest.of(page, size))
         .map(this::updateImageUrls);
   }

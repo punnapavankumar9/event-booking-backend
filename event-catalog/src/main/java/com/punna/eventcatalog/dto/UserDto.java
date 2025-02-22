@@ -1,13 +1,12 @@
 package com.punna.eventcatalog.dto;
 
+import java.time.Instant;
+import java.util.ArrayList;
+import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 
 @Data
 @Builder
@@ -15,17 +14,17 @@ import java.util.List;
 @AllArgsConstructor
 public class UserDto {
 
-    private String username;
+  private String username;
 
-    private String email;
+  private String email;
 
-    private boolean enabled = true;
+  private boolean enabled = true;
 
-    private List<String> authorities = new ArrayList<>();
+  private List<String> authorities = new ArrayList<>();
 
-    private LocalDateTime createdAt;
+  private Instant createdAt;
 
-    private LocalDateTime lastModifiedAt;
+  private Instant lastModifiedAt;
 
-    private LocalDateTime lastLoginAt;
+  private Instant lastLoginAt;
 }

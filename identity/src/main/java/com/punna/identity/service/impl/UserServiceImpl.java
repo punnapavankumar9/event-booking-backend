@@ -17,7 +17,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
+import java.time.Instant;
 
 @Service
 @RequiredArgsConstructor
@@ -105,7 +105,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void updateLastLoginTime(String username) {
-        userRepository.updateLastLogin(username, LocalDateTime.now())
+        userRepository.updateLastLogin(username, Instant.now())
                 .thenRun(() -> System.out.println("last login time for user:: " + username + " is updated"));
     }
 }

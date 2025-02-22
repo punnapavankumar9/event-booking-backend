@@ -1,6 +1,6 @@
 package com.punna.eventcatalog.model;
 
-import java.time.LocalDateTime;
+import java.time.Instant;
 import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -21,7 +21,7 @@ public class Movie {
 
   private String title;
 
-  private LocalDateTime releaseDate;
+  private Instant releaseDate;
 
   private List<String> genres;
 

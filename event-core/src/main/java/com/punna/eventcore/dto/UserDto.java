@@ -5,7 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,9 +23,9 @@ public class UserDto {
 
     private List<String> authorities = new ArrayList<>();
 
-    private LocalDateTime createdAt;
+    private Instant createdAt;
 
-    private LocalDateTime lastModifiedAt;
+    private Instant lastModifiedAt;
 
-    private LocalDateTime lastLoginAt;
+    private Instant lastLoginAt;
 }

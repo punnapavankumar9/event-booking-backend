@@ -7,6 +7,13 @@ spring:
   messages:
     basename: messages
     encoding: UTF-8
+  jackson:
+    property-naming-strategy: SNAKE_CASE
+    serialization:
+      write-dates-as-timestamps: false
+    deserialization:
+      fail-on-unknown-properties: true
+
 
 eureka:
   client:

@@ -11,7 +11,7 @@ import com.punna.eventcore.repository.EventRepository;
 import com.punna.eventcore.service.AuthService;
 import com.punna.eventcore.service.EventService;
 import com.punna.eventcore.service.VenueService;
-import java.time.LocalDateTime;
+import java.time.Instant;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -152,9 +152,14 @@ public class EventServiceImpl implements EventService {
     return eventRepository.findAllByEventType(eventType).map(EventMapper::toEventResponseDto);
   }
 
+  @Override
+  public Flux<EventResponseDto> getEventsByEventId(String eventId) {
+    return this.eventRepository.findAllByEventId(eventId, Sort.by("createdAt").descending());
+  }
+
   public Mono<Boolean> checkForOverlaps(EventRequestDto eventRequestDto) {
-    LocalDateTime newStartTime = eventRequestDto.getEventDurationDetails().getStartTime();
-    LocalDateTime newEndTime = eventRequestDto.getEventDurationDetails().getEndTime();
+    Instant newStartTime = eventRequestDto.getEventDurationDetails().getStartTime();
+    Instant newEndTime = eventRequestDto.getEventDurationDetails().getEndTime();
     String newVenueId = eventRequestDto.getVenueId(); // Assume venueId is a field in Event
 
     if (newStartTime == null || newEndTime == null || newVenueId == null) {
