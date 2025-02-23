@@ -2,6 +2,7 @@ package com.punna.eventcore.service;
 
 import com.punna.eventcore.dto.EventRequestDto;
 import com.punna.eventcore.dto.EventResponseDto;
+import com.punna.eventcore.dto.EventsForVenueProjection;
 import com.punna.eventcore.model.Event;
 import com.punna.eventcore.model.EventType;
 import java.util.List;
@@ -28,5 +29,5 @@ public interface EventService {
 
   Flux<EventResponseDto> getEventsByType(EventType eventType);
 
-  Flux<EventResponseDto> getEventsByEventId(String eventId);
+  Flux<EventsForVenueProjection> getEventsByEventId(String eventId, String venueId);
 }

@@ -1,0 +1,89 @@
+### create layouts
+POST {{url}}{{seating-layout}}
+Content-Type: application/json
+Authorization: Bearer {{auth_token}}
+
+{
+  "name": "{{$.data.layouts..name}}",
+  "capacity": {{$.data.layouts..capacity}},
+  "rows": {{$.data.layouts..rows}},
+  "columns": {{$.data.layouts..columns}},
+  "screenPosition": "{{$.data.layouts..screenPosition}}",
+  "seats": {{$.data.layouts..seats}}
+}
+
+> {%
+  client.global.set(response.body.name, response.body.id);
+  client.test("Check layout creation status", function () {
+    client.assert(response.status === 201, "status must be 201");
+  })
+  console.log(client.global.get(response.body.name));
+%}
+
+### create venues
+< {%
+  import {extractAndSetGlobal} from "../utils"
+
+  extractAndSetGlobal(request.body.tryGetSubstituted(), "seatingLayoutIdVar", "layoutId")
+%}
+
+POST {{url}}{{venues}}
+Content-Type: application/json
+Authorization: Bearer {{auth_token}}
+
+{
+  "name": "{{$.data.venues..name}}",
+  "description": "{{$.data.venues..description}}",
+  "capacity": {{$.data.venues..capacity}},
+  "location": "{{$.data.venues..name}}",
+  "city": "{{$.data.venues..name}}",
+  "country": "{{$.data.venues..name}}",
+  "pincode": {{$.data.venues..pincode}},
+  "state": "{{$.data.venues..name}}",
+  "googleMapsUrl": "{{$.data.venues..name}}",
+  "seatingLayoutIdVar": "{{$.data.venues..seatingLayoutIdVar}}",
+  "seatingLayoutId": "{{layoutId}}"
+}
+
+> {%
+
+  client.global.set(response.body.name, response.body.id);
+  client.test("Check venue creation status", function () {
+    client.assert(response.status === 201, "status must be 201");
+  })
+  console.log(client.global.get(response.body.name));
+
+%}
+
+
+### schedule movies
+< {%
+  import {extractAndSetGlobal} from "../utils"
+
+  extractAndSetGlobal(request.body.tryGetSubstituted(), "venueName", "venueId")
+  extractAndSetGlobal(request.body.tryGetSubstituted(), "name", "eventId")
+%}
+
+POST http://localhost:8080/api/v1/events
+Content-Type: application/json
+Authorization: Bearer {{auth_token}}
+
+{
+  "venueName": "{{$.data.events..venueName}}",
+  "name": "{{$.data.events..eventTitle}}",
+  "eventType": "MOVIE",
+  "openForBooking": true,
+  "venueId": "{{venueId}}",
+  "eventId": "{{eventId}}",
+  "eventDurationDetails": {{$.data.events..eventDurationDetails}},
+  "pricingTierMaps": {{$.data.events..pricingTierMaps}}
+}
+
+> {%
+  client.test("Check event creation status", function () {
+    client.assert(response.status === 201, "status must be 201");
+  })
+%}
+
+###
+

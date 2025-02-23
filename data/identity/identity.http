@@ -1,0 +1,89 @@
+### Create Users
+POST {{url}}{{identity}}
+Content-Type: application/json
+
+{
+  "username": "pavan",
+  "password": "password",
+  "authorities": [
+    "ROLE_ADMIN",
+    "ROLE_OWNER"
+  ],
+  "email": "pavan@gmail.com"
+}
+
+### Create Users
+POST {{url}}{{identity}}
+Content-Type: application/json
+
+{
+  "username": "punna",
+  "password": "password",
+  "authorities": [
+    "ROLE_ADMIN",
+    "ROLE_OWNER"
+  ],
+  "email": "punna@gmail.com"
+}
+
+### Create Users
+POST {{url}}{{identity}}
+Content-Type: application/json
+
+{
+  "username": "rajesh",
+  "password": "password",
+  "authorities": [
+    "ROLE_ADMIN",
+    "ROLE_OWNER"
+  ],
+  "email": "rajesh@gmail.com"
+}
+
+### Create Users
+POST {{url}}{{identity}}
+Content-Type: application/json
+
+{
+  "username": "ramesh",
+  "password": "password",
+  "authorities": [
+    "ROLE_USER"
+  ],
+  "email": "ramesh@gmail.com"
+}
+
+### Create Users
+POST {{url}}{{identity}}
+Content-Type: application/json
+
+{
+  "username": "mahesh",
+  "password": "password",
+  "authorities": [
+    "ROLE_USER"
+  ],
+  "email": "mahesh@gmail.com"
+}
+
+### login as pavan
+
+POST {{url}}{{identity}}/login
+Content-Type: application/json
+
+{
+  "password": "password",
+  "username": "pavan"
+}
+
+> {%
+
+  client.test("test login", function () {
+    if (response.status != 200) {
+      client.exit();
+    }
+  })
+  client.global.set("auth_token", response.body.token);
+
+  console.log(client.global.get("auth_token"))
+%}

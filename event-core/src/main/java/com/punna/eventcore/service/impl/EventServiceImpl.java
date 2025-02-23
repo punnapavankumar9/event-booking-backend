@@ -3,6 +3,7 @@ package com.punna.eventcore.service.impl;
 import com.punna.eventcore.client.CatalogServiceWebClient;
 import com.punna.eventcore.dto.EventRequestDto;
 import com.punna.eventcore.dto.EventResponseDto;
+import com.punna.eventcore.dto.EventsForVenueProjection;
 import com.punna.eventcore.mapper.EventMapper;
 import com.punna.eventcore.model.Event;
 import com.punna.eventcore.model.EventType;
@@ -153,8 +154,9 @@ public class EventServiceImpl implements EventService {
   }
 
   @Override
-  public Flux<EventResponseDto> getEventsByEventId(String eventId) {
-    return this.eventRepository.findAllByEventId(eventId, Sort.by("createdAt").descending());
+  public Flux<EventsForVenueProjection> getEventsByEventId(String eventId, String venueId) {
+    return this.eventRepository.findAllByEventIdAndVenueId(eventId, venueId,
+        Sort.by("createdAt").descending());
   }
 
   public Mono<Boolean> checkForOverlaps(EventRequestDto eventRequestDto) {

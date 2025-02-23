@@ -1,0 +1,8 @@
+### create users and login
+run identity/identity.http
+
+### create movies
+run event-catalog/movie-catalog.http
+
+### create seating-layouts and venues.
+run event-core/event-core.http

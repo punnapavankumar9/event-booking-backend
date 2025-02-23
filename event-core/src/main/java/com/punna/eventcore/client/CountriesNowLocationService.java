@@ -6,7 +6,6 @@ import lombok.RequiredArgsConstructor;
 import org.punna.commons.exception.EventApplicationException;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
-import org.springframework.web.reactive.function.client.WebClient.Builder;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
@@ -44,12 +43,11 @@ public class CountriesNowLocationService implements LocationService {
   private static final String countriesUrl = "/countries/capital";
   private static final String statesUrl = "/countries/states";
   private static final String citiesUrl = "/countries/state/cities";
-  private final Builder webClientBuilder;
   private WebClient webClient;
 
   @PostConstruct
   public void init() {
-    webClient = webClientBuilder.baseUrl(baseUrl).build();
+    webClient = WebClient.builder().baseUrl(baseUrl).build();
   }
 
   @Override

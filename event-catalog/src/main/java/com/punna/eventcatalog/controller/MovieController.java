@@ -8,6 +8,8 @@ import java.time.Instant;
 import lombok.RequiredArgsConstructor;
 import org.punna.commons.exception.EventApplicationException;
 import org.punna.commons.validation.groups.UpdateGroup;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.codec.multipart.FilePart;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -31,7 +33,7 @@ public class MovieController {
   private final MovieService movieService;
   private final ObjectMapper objectMapper;
 
-  @PostMapping
+  @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
   public Mono<MovieDto> createMovie(@RequestPart("movie") Mono<String> movieDtoStringMono,
       @RequestPart("images") Flux<FilePart> fileParts,
       @RequestPart("posterImage") Mono<FilePart> posterImageMono) throws IOException {
@@ -40,7 +42,8 @@ public class MovieController {
         MovieDto movieDto = objectMapper.readValue(dtoString, MovieDto.class);
         return movieService.create(movieDto, fileParts, posterImageMono);
       } catch (IOException e) {
-        return Mono.error(new EventApplicationException("Unable to parse movie dto"));
+        return Mono.error(new EventApplicationException("Unable to parse movie dto",
+            HttpStatus.BAD_REQUEST.value()));
       }
     });
   }

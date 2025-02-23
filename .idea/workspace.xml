@@ -5,38 +5,46 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="270ad57c-65bc-4f7e-86cf-537bc93322f9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/config/JacksonConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/event-catalog/movie-catalog.http" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/event-catalog/test.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/event-core/event-core.http" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/http-client.env.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/identity/identity.http" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/main.http" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/utils.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/dto/EventsForVenueProjection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config-server/src/main/resources/config/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/config-server/src/main/resources/config/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config-server/src/main/resources/config/event-core-service.yml" beforeDir="false" afterPath="$PROJECT_DIR$/config-server/src/main/resources/config/event-core-service.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config-server/src/test/java/com/punna/event_booking/config_server/ConfigServerApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/config-server/src/test/java/com/punna/event_booking/config_server/ConfigServerApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/event-catalog/data.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/event-catalog/movie-images/Brahma-Anandam/movie.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/event-catalog/movie-images/Brahma-Anandam/movie.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/event-catalog/movie-images/Kudumbasthan/movie.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/event-catalog/movie-images/Kudumbasthan/movie.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/event-catalog/movie-images/Sankranthiki-Vasthunam/movie.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/event-catalog/movie-images/Sankranthiki-Vasthunam/movie.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/event-catalog/movie-images/captain-america/movie.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/event-catalog/movie-images/captain-america/movie.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/event-catalog/movie-images/chhaava/movie.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/event-catalog/movie-images/chhaava/movie.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/event-catalog/movie-images/ddlj/movie.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/event-catalog/movie-images/ddlj/movie.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/event-catalog/movie-images/deva/movie.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/event-catalog/movie-images/deva/movie.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/event-catalog/movie-images/laila/movie.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/event-catalog/movie-images/laila/movie.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/event-catalog/movie-images/love-yapa/movie.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/event-catalog/movie-images/love-yapa/movie.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/event-catalog/movie-images/mufasa/movie.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/event-catalog/movie-images/mufasa/movie.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/event-catalog/movie-images/orange/movie.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/event-catalog/movie-images/orange/movie.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/event-catalog/movie-images/ramam-ragavam/movie.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/event-catalog/movie-images/ramam-ragavam/movie.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/event-catalog/movie-images/sanam-teri-kasam/movie.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/event-catalog/movie-images/sanam-teri-kasam/movie.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/event-catalog/movie-images/sky-force/movie.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/event-catalog/movie-images/sky-force/movie.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/event-catalog/movie-images/sos/movie.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/event-catalog/movie-images/sos/movie.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/event-catalog/movie-images/thandel/movie.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/event-catalog/movie-images/thandel/movie.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/event-catalog/movie-images/the-wild-robot/movie.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/event-catalog/movie-images/the-wild-robot/movie.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/controller/MovieController.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/controller/MovieController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/dto/MovieDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/dto/MovieDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/dto/UserDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/dto/UserDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/model/Movie.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/model/Movie.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/repository/MovieRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/repository/MovieRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/service/MovieService.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/service/MovieService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/service/impl/MovieServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/service/impl/MovieServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-core/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/event-core/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/client/CountriesNowLocationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/client/CountriesNowLocationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/config/JacksonConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/config/JacksonConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/controller/EventController.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/controller/EventController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/dto/EventDurationDetailsDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/dto/EventDurationDetailsDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/dto/EventResponseDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/dto/EventResponseDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/dto/UserDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/dto/UserDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/model/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/model/Event.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/model/EventDurationDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/model/EventDurationDetails.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/model/Seat.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/model/Seat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/model/SeatState.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/model/SeatState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/dto/VenueDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/dto/VenueDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/exception/ApplicationExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/exception/ApplicationExceptionHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/repository/EventRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/repository/EventRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/service/EventService.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/service/EventService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/service/impl/EventServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/service/impl/EventServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-core/src/test/java/com/punna/eventcore/TestUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-core/src/test/java/com/punna/eventcore/TestUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-core/src/test/java/com/punna/eventcore/fixtures/TestFixtures.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-core/src/test/java/com/punna/eventcore/fixtures/TestFixtures.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-core/src/test/java/com/punna/eventcore/integration/EventEndpointTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-core/src/test/java/com/punna/eventcore/integration/EventEndpointTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-core/src/test/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/event-core/src/test/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/com/punna/gateway/dto/LoggedInUserDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/com/punna/gateway/dto/LoggedInUserDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/identity/src/main/java/com/punna/identity/dto/UserResponseDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/identity/src/main/java/com/punna/identity/dto/UserResponseDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/identity/src/main/java/com/punna/identity/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/identity/src/main/java/com/punna/identity/model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/identity/src/main/java/com/punna/identity/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/identity/src/main/java/com/punna/identity/repository/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/identity/src/main/java/com/punna/identity/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/identity/src/main/java/com/punna/identity/service/impl/UserServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,9 +58,10 @@
         <option value="Dockerfile" />
         <option value="Enum" />
         <option value="Interface" />
-        <option value="Record" />
         <option value="JUnit5 Test Class" />
         <option value="Class" />
+        <option value="Record" />
+        <option value="HTTP Public Environment File" />
       </list>
     </option>
   </component>
@@ -63,6 +72,21 @@
     <setting file="jar://$MAVEN_REPOSITORY$/io/projectreactor/reactor-core/3.7.1/reactor-core-3.7.1-sources.jar!/reactor/core/publisher/MonoFlatMap.java" root0="SKIP_INSPECTION" />
     <setting file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webflux/6.2.1/spring-webflux-6.2.1-sources.jar!/org/springframework/web/reactive/result/method/InvocableHandlerMethod.java" root0="SKIP_INSPECTION" />
     <setting file="jar://$USER_HOME$/Library/Java/JavaVirtualMachines/corretto-21.0.5/Contents/Home/lib/src.zip!/java.base/java/lang/IllegalArgumentException.java" root0="SKIP_INSPECTION" />
+  </component>
+  <component name="HttpClientEndpointsTabState">
+    <option name="cachedRequestData" value="&lt;CachedHttpClientTabRequests /&gt;" />
+  </component>
+  <component name="HttpClientSelectedEnvironments">
+    <file url="jar://$APPLICATION_HOME_DIR$/plugins/restClient/lib/restClient.jar!/com/intellij/ws/rest/client/requests/collection/get-requests.http" environment="test" />
+    <file url="jar://$APPLICATION_HOME_DIR$/plugins/restClient/lib/restClient.jar!/com/intellij/ws/rest/client/requests/collection/requests-with-tests.http" environment="test" />
+    <file url="file://$PROJECT_DIR$/data/identity/identity.http" environment="dev" />
+    <file url="file://$PROJECT_DIR$/data/event-catalog/movie-catalog.http" environment="dev" />
+    <file url="file://$PROJECT_DIR$/data/main.http" environment="dev" />
+    <file url="jar://$APPLICATION_HOME_DIR$/plugins/restClient/lib/restClient.jar!/com/intellij/ws/rest/client/requests/collection/requests-with-loop.http" environment="test" />
+    <file url="jar://$APPLICATION_HOME_DIR$/plugins/restClient/lib/restClient.jar!/com/intellij/ws/rest/client/requests/collection/different-responses.http" environment="test" />
+    <file url="jar://$APPLICATION_HOME_DIR$/plugins/restClient/lib/restClient.jar!/com/intellij/ws/rest/client/requests/collection/requests-with-include.http" environment="test" />
+    <file url="jar://$APPLICATION_HOME_DIR$/plugins/restClient/lib/restClient.jar!/com/intellij/ws/rest/client/requests/collection/requests-with-authorization.http" environment="test" />
+    <file url="file://$PROJECT_DIR$/data/event-core/event-core.http" environment="dev" />
   </component>
   <component name="KubernetesApiPersistence">{}</component>
   <component name="KubernetesApiProvider">{
@@ -98,88 +122,107 @@
     <option name="openDirectoriesWithSingleClick" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;JUnit.All in event-catalog (1).executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.All in event-catalog (2).executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.All in event-catalog.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.All in event-core (1).executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.All in event-core.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.All in gateway.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.All in identity.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ConfigServerApplicationTests.executor&quot;: &quot;Debug&quot;,
-    &quot;JUnit.EventCatalogApplicationTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.EventCatalogApplicationTest.givenInvalidEventWithId_whenUpdateEvent_thenUpdateEventAndReturn.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.EventCatalogApplicationTest.givenInvalidEvent_whenCreateEvent_thenReturnBadResultWithErrors.executor&quot;: &quot;Debug&quot;,
-    &quot;JUnit.EventCatalogApplicationTest.givenNonExistingEvent_whenUpdatingEvent_thenReturnBadRequestWithErrors.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.EventEndpointTests,givenValidEventsWithNonAdmin_WhenCreate_thenReturnCreated and 1 more.executor&quot;: &quot;Debug&quot;,
-    &quot;JUnit.EventEndpointTests.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.EventEndpointTests.giveNonAdminUser_whenDeleteEvent_thenReturnUnAuthorized.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.EventEndpointTests.givenOverlappingEvents_whenCreate_thenReturnBadRequestWithErrors.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.EventEndpointTests.givenValidEventsWithNonAdmin_WhenCreate_thenReturnCreated.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.EventSeatStateEndpointTests.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.EventSeatStateEndpointTests.givenInvalidSeatLocation_whenBook_thenReturnBadRequest.executor&quot;: &quot;Debug&quot;,
-    &quot;JUnit.IdentityServiceApplicationTests.executor&quot;: &quot;Debug&quot;,
-    &quot;JUnit.IdentityServiceApplicationTests.givenInvalidPassword_whenLoggingUser_thenReturnNotFound.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.IdentityServiceApplicationTests.givenInvalidUser_whenCreatingUser_thenReturnBadRequest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.IdentityServiceApplicationTests.givenValidUser_whenCreatingUser_thenCreateAndReturnUser.executor&quot;: &quot;Debug&quot;,
-    &quot;JUnit.SeatingArrangementEndpointTests.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.SeatingLayoutEndpointTests.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.VenueEndpointTests.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.VenueEndpointTests.givenInvalidVenue_whenCreatingVenue_thenShouldReturnBadRequest.executor&quot;: &quot;Debug&quot;,
-    &quot;Maven.bom [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.bom [install].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.bom [package].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.bom [test].executor&quot;: &quot;Debug&quot;,
-    &quot;Maven.event-catalog [install].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.event-catalog [test].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.event-core [test].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.identity [test].executor&quot;: &quot;Run&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;Spring Boot.ConfigServerApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.DiscoveryApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.EventCatalogApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.EventCoreApplication.executor&quot;: &quot;Debug&quot;,
-    &quot;Spring Boot.GatewayApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.IdentityServiceApplication.executor&quot;: &quot;Run&quot;,
-    &quot;com.codeium.enabled&quot;: &quot;true&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
-    &quot;database.data.extractors.current.export.id&quot;: &quot;JSON-Groovy.json.groovy&quot;,
-    &quot;database.data.extractors.current.id&quot;: &quot;JSON-Groovy.json.groovy&quot;,
-    &quot;deletionFromPopupRequiresConfirmation&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/pavankumarpunna/pavan/codes/github/event-booking-backend/data/event-catalog/movie-images/ramam-ragavam&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;npm.start.executor&quot;: &quot;Run&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.18901303&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;run.configurations.included.in.services&quot;: &quot;true&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;advanced.settings&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/Applications/IntelliJ IDEA.app/Contents/plugins/javascript-plugin/jsLanguageServicesImpl/external&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "HTTP Request.All in c.executor": "Run",
+    "HTTP Request.All in dump.executor": "Run",
+    "HTTP Request.All in event-core.executor": "Run",
+    "HTTP Request.All in identity.executor": "Run",
+    "HTTP Request.All in main.executor": "Run",
+    "HTTP Request.All in movie-catalog.executor": "Run",
+    "HTTP Request.dump | #1.executor": "Run",
+    "HTTP Request.dump | #6.executor": "Run",
+    "HTTP Request.dump | login as pavan.executor": "Run",
+    "HTTP Request.event-core | create seating-layout 1.executor": "Run",
+    "HTTP Request.event-core | create seating-layout.executor": "Run",
+    "HTTP Request.event-core | schedule movies.executor": "Run",
+    "HTTP Request.identity | login as pavan.executor": "Run",
+    "HTTP Request.main | #1.executor": "Run",
+    "HTTP Request.movie-catalog | create movies#1.executor": "Run",
+    "HTTP Request.movie-catalog | create movies#11.executor": "Run",
+    "HTTP Request.movie-catalog | create movies#17.executor": "Run",
+    "HTTP Request.movie-catalog | create movies.executor": "Run",
+    "JUnit.All in event-catalog (1).executor": "Run",
+    "JUnit.All in event-catalog (2).executor": "Run",
+    "JUnit.All in event-catalog.executor": "Run",
+    "JUnit.All in event-core (1).executor": "Run",
+    "JUnit.All in event-core.executor": "Run",
+    "JUnit.All in gateway.executor": "Run",
+    "JUnit.All in identity.executor": "Run",
+    "JUnit.ConfigServerApplicationTests.executor": "Debug",
+    "JUnit.EventCatalogApplicationTest.executor": "Run",
+    "JUnit.EventCatalogApplicationTest.givenInvalidEventWithId_whenUpdateEvent_thenUpdateEventAndReturn.executor": "Run",
+    "JUnit.EventCatalogApplicationTest.givenInvalidEvent_whenCreateEvent_thenReturnBadResultWithErrors.executor": "Debug",
+    "JUnit.EventCatalogApplicationTest.givenNonExistingEvent_whenUpdatingEvent_thenReturnBadRequestWithErrors.executor": "Run",
+    "JUnit.EventEndpointTests,givenValidEventsWithNonAdmin_WhenCreate_thenReturnCreated and 1 more.executor": "Debug",
+    "JUnit.EventEndpointTests.executor": "Run",
+    "JUnit.EventEndpointTests.giveNonAdminUser_whenDeleteEvent_thenReturnUnAuthorized.executor": "Run",
+    "JUnit.EventEndpointTests.givenOverlappingEvents_whenCreate_thenReturnBadRequestWithErrors.executor": "Run",
+    "JUnit.EventEndpointTests.givenValidEventsWithNonAdmin_WhenCreate_thenReturnCreated.executor": "Run",
+    "JUnit.EventSeatStateEndpointTests.executor": "Run",
+    "JUnit.EventSeatStateEndpointTests.givenInvalidSeatLocation_whenBook_thenReturnBadRequest.executor": "Debug",
+    "JUnit.IdentityServiceApplicationTests.executor": "Debug",
+    "JUnit.IdentityServiceApplicationTests.givenInvalidPassword_whenLoggingUser_thenReturnNotFound.executor": "Run",
+    "JUnit.IdentityServiceApplicationTests.givenInvalidUser_whenCreatingUser_thenReturnBadRequest.executor": "Run",
+    "JUnit.IdentityServiceApplicationTests.givenValidUser_whenCreatingUser_thenCreateAndReturnUser.executor": "Debug",
+    "JUnit.SeatingArrangementEndpointTests.executor": "Run",
+    "JUnit.SeatingLayoutEndpointTests.executor": "Run",
+    "JUnit.VenueEndpointTests.executor": "Run",
+    "JUnit.VenueEndpointTests.givenInvalidVenue_whenCreatingVenue_thenShouldReturnBadRequest.executor": "Debug",
+    "Maven.bom [clean].executor": "Run",
+    "Maven.bom [install].executor": "Run",
+    "Maven.bom [package].executor": "Run",
+    "Maven.bom [test].executor": "Run",
+    "Maven.event-catalog [install].executor": "Run",
+    "Maven.event-catalog [test].executor": "Run",
+    "Maven.event-core [test].executor": "Run",
+    "Maven.identity [test].executor": "Run",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Spring Boot.ConfigServerApplication.executor": "Run",
+    "Spring Boot.DiscoveryApplication.executor": "Run",
+    "Spring Boot.EventCatalogApplication.executor": "Run",
+    "Spring Boot.EventCoreApplication.executor": "Run",
+    "Spring Boot.GatewayApplication.executor": "Run",
+    "Spring Boot.IdentityServiceApplication.executor": "Run",
+    "com.codeium.enabled": "true",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "database.data.extractors.current.export.id": "JSON-Groovy.json.groovy",
+    "database.data.extractors.current.id": "JSON-Groovy.json.groovy",
+    "deletionFromPopupRequiresConfirmation": "false",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/pavankumarpunna/pavan/codes/github/event-booking-backend/data/event-catalog/movie-images/ramam-ragavam",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "npm.start.executor": "Run",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.18901303",
+    "rest.client.default.execution.environment": "dev",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "run.configurations.included.in.services": "true",
+    "settings.editor.selected.configurable": "advanced.settings",
+    "ts.external.directory.path": "/Applications/IntelliJ IDEA.app/Contents/plugins/javascript-plugin/jsLanguageServicesImpl/external",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;postgresql&quot;,
-      &quot;mongo&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql",
+      "mongo"
     ]
   }
-}</component>
+}]]></component>
   <component name="ReactorSettings">
     <option name="notificationShown" value="true" />
   </component>
@@ -199,9 +242,11 @@
       <recent name="$PROJECT_DIR$/data/event-catalog/movie-images/ddlj" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/data/event-core/seating_layouts" />
+      <recent name="$PROJECT_DIR$/data/identity" />
+      <recent name="$PROJECT_DIR$/data/event-catalog" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/helpers" />
-      <recent name="$PROJECT_DIR$/../event-frontend/src/app/features/movies/components" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
@@ -228,95 +273,11 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.ConfigServerApplicationTests">
-    <configuration name="ConfigServerApplicationTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="config-server" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.punna.event_booking.config_server.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.punna.event_booking.config_server" />
-      <option name="MAIN_CLASS_NAME" value="com.punna.event_booking.config_server.ConfigServerApplicationTests" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
+  <component name="RunManager" selected="HTTP Request.All in main">
+    <configuration name="All in main" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$PROJECT_DIR$/data/main.http">
+      <method v="2" />
     </configuration>
-    <configuration name="EventSeatStateEndpointTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="event-core" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.punna.eventcore.integration.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.punna.eventcore.integration" />
-      <option name="MAIN_CLASS_NAME" value="com.punna.eventcore.integration.EventSeatStateEndpointTests" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="SeatingLayoutEndpointTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="event-core" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.punna.eventcore.integration.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.punna.eventcore.integration" />
-      <option name="MAIN_CLASS_NAME" value="com.punna.eventcore.integration.SeatingLayoutEndpointTests" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="VenueEndpointTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="event-core" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.punna.eventcore.integration.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.punna.eventcore.integration" />
-      <option name="MAIN_CLASS_NAME" value="com.punna.eventcore.integration.VenueEndpointTests" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="bom [test]" type="MavenRunConfiguration" factoryName="Maven" temporary="true">
-      <MavenSettings>
-        <option name="myGeneralSettings" />
-        <option name="myRunnerSettings" />
-        <option name="myRunnerParameters">
-          <MavenRunnerParameters>
-            <option name="cmdOptions" />
-            <option name="profiles">
-              <set />
-            </option>
-            <option name="goals">
-              <list>
-                <option value="test" />
-              </list>
-            </option>
-            <option name="multimoduleDir" />
-            <option name="pomFileName" value="pom.xml" />
-            <option name="profilesMap">
-              <map />
-            </option>
-            <option name="projectsCmdOptionValues">
-              <list />
-            </option>
-            <option name="resolveToWorkspace" value="false" />
-            <option name="workingDirPath" value="$PROJECT_DIR$" />
-          </MavenRunnerParameters>
-        </option>
-      </MavenSettings>
+    <configuration name="identity | login as pavan" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/data/identity/identity.http" executionIdentifier="login as pavan" index="6" runType="Run single request">
       <method v="2" />
     </configuration>
     <configuration name="ConfigServerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
@@ -329,6 +290,19 @@
     <configuration name="DiscoveryApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="discovery" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.punna.discovery.DiscoveryApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="EventCatalogApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="event-catalog" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.punna.eventcatalog.EventCatalogApplication" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.punna.eventcatalog.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -347,24 +321,35 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="IdentityServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="identity" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.punna.identity.IdentityServiceApplication" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.punna.identity.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
-      <item itemvalue="JUnit.ConfigServerApplicationTests" />
-      <item itemvalue="JUnit.SeatingLayoutEndpointTests" />
-      <item itemvalue="JUnit.VenueEndpointTests" />
-      <item itemvalue="JUnit.EventSeatStateEndpointTests" />
-      <item itemvalue="Maven.bom [test]" />
+      <item itemvalue="HTTP Request.All in main" />
+      <item itemvalue="HTTP Request.identity | login as pavan" />
       <item itemvalue="Spring Boot.ConfigServerApplication" />
       <item itemvalue="Spring Boot.DiscoveryApplication" />
       <item itemvalue="Spring Boot.EventCoreApplication" />
       <item itemvalue="Spring Boot.GatewayApplication" />
+      <item itemvalue="Spring Boot.EventCatalogApplication" />
+      <item itemvalue="Spring Boot.IdentityServiceApplication" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.ConfigServerApplicationTests" />
-        <item itemvalue="Maven.bom [test]" />
-        <item itemvalue="JUnit.VenueEndpointTests" />
-        <item itemvalue="JUnit.SeatingLayoutEndpointTests" />
-        <item itemvalue="JUnit.EventSeatStateEndpointTests" />
+        <item itemvalue="HTTP Request.All in main" />
+        <item itemvalue="Spring Boot.IdentityServiceApplication" />
+        <item itemvalue="Spring Boot.EventCatalogApplication" />
+        <item itemvalue="HTTP Request.identity | login as pavan" />
       </list>
     </recent_temporary>
   </component>
@@ -470,6 +455,7 @@
       <workItem from="1740143737997" duration="3363000" />
       <workItem from="1740157330200" duration="10152000" />
       <workItem from="1740206322864" duration="21956000" />
+      <workItem from="1740288259586" duration="22219000" />
     </task>
     <servers />
   </component>
@@ -488,11 +474,22 @@
           <line>66</line>
           <option name="timeStamp" value="30" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/controller/MovieController.java</url>
+          <line>41</line>
+          <option name="timeStamp" value="32" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/controller/MovieController.java</url>
+          <line>43</line>
+          <option name="timeStamp" value="33" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo parentTag="org.springframework.http.ResponseEntity" memberName="body" />
+        <PinnedItemInfo parentTag="com.punna.event_booking.config_server.ConfigServerApplicationTests$ConfigObject" memberName="profiles" />
         <PinnedItemInfo parentTag="org.punna.commons.exception.ProblemDetail" memberName="message" />
         <PinnedItemInfo parentTag="org.springframework.http.ResponseEntity" memberName="headers" />
       </pinned-members>

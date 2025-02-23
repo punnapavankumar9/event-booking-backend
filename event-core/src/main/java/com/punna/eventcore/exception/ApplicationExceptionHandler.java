@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.bind.support.WebExchangeBindException;
+import org.springframework.web.reactive.resource.NoResourceFoundException;
 import reactor.core.publisher.Mono;
 
 @RestControllerAdvice
@@ -60,6 +61,14 @@ public class ApplicationExceptionHandler {
   public Mono<ProblemDetail> handleAccessDeniedException(AccessDeniedException e) {
     return Mono.just(
         ProblemDetail.builder().status(HttpStatus.FORBIDDEN.value()).message(e.getMessage())
+            .build());
+  }
+
+  @ExceptionHandler(NoResourceFoundException.class)
+  @ResponseStatus(HttpStatus.NOT_FOUND)
+  public Mono<ProblemDetail> handleNoResourceFoundException(NoResourceFoundException e) {
+    return Mono.just(
+        ProblemDetail.builder().message("Resource not found").status(HttpStatus.NOT_FOUND.value())
             .build());
   }
 

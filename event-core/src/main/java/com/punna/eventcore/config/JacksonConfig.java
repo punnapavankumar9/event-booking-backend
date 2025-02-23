@@ -13,10 +13,10 @@ public class JacksonConfig {
   @Bean
   public ObjectMapper objectMapper() {
     ObjectMapper objectMapper = new ObjectMapper();
-    objectMapper.registerModule(new JavaTimeModule()); // Supports Java 8 time API (Instant, etc.)
-    objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, true);
+    objectMapper.registerModule(new JavaTimeModule());
+    objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
     objectMapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS,
-        false); // Write dates as ISO strings
+        false);
     return objectMapper;
   }
 }

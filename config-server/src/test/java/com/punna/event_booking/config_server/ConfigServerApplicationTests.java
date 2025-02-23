@@ -81,6 +81,4 @@ class ConfigServerApplicationTests {
         private List<String> profiles;
         private List<Object> propertySources;
     }
-
-
 }

@@ -2,6 +2,7 @@ package com.punna.eventcore.controller;
 
 import com.punna.eventcore.dto.EventRequestDto;
 import com.punna.eventcore.dto.EventResponseDto;
+import com.punna.eventcore.dto.EventsForVenueProjection;
 import com.punna.eventcore.model.EventType;
 import com.punna.eventcore.service.EventService;
 import java.util.List;
@@ -77,9 +78,9 @@ public class EventController {
     return eventService.getEventsByType(type);
   }
 
-  @GetMapping("/byEventId/{eventId}")
-  public Flux<EventResponseDto> getEventsForEventId(@PathVariable String eventId) {
-    return eventService.getEventsByEventId(eventId);
+  @GetMapping("/byEventId/{eventId}/{venueId}")
+  public Flux<EventsForVenueProjection> getEventsForEventId(@PathVariable String eventId,
+      @PathVariable String venueId) {
+    return eventService.getEventsByEventId(eventId, venueId);
   }
-
 }

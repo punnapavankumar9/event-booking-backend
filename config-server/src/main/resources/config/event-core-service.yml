@@ -1,11 +1,4 @@
 spring:
-  jackson:
-    property-naming-strategy: SNAKE_CASE
-    serialization:
-      write-dates-as-timestamps: false
-    deserialization:
-      fail-on-unknown-properties: true
-
   data:
     mongodb:
       database: event-core

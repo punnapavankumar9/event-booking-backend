@@ -1,6 +1,7 @@
 package com.punna.eventcore.repository;
 
 import com.punna.eventcore.dto.EventResponseDto;
+import com.punna.eventcore.dto.EventsForVenueProjection;
 import com.punna.eventcore.model.Event;
 import com.punna.eventcore.model.EventType;
 import org.springframework.data.domain.Pageable;
@@ -16,5 +17,5 @@ public interface EventRepository extends ReactiveMongoRepository<Event, String> 
 
   Flux<Event> findAllByEventType(EventType eventType);
 
-  Flux<EventResponseDto> findAllByEventId(String eventId, Sort sort);
+  Flux<EventsForVenueProjection> findAllByEventIdAndVenueId(String eventId, String venueId, Sort sort);
 }
