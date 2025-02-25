@@ -46,7 +46,7 @@ public class EventRequestDto {
   private Boolean openForBooking;
 
   @Valid
-  @NotNull(message = "event durat ion details must not be null", groups = CreateGroup.class)
+  @NotNull(message = "event duration details must not be null", groups = CreateGroup.class)
   private EventDurationDetailsDto eventDurationDetails;
 
   private Map<String, Object> additionalDetails;

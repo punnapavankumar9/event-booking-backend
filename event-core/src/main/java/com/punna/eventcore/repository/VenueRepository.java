@@ -1,5 +1,6 @@
 package com.punna.eventcore.repository;
 
+import com.punna.eventcore.dto.projections.VenueIdAndNameProjection;
 import com.punna.eventcore.dto.projections.VenueNameWithLayoutIdProjection;
 import com.punna.eventcore.model.Venue;
 import org.springframework.data.domain.Pageable;
@@ -12,5 +13,8 @@ public interface VenueRepository extends ReactiveMongoRepository<Venue, String> 
 
   Flux<Venue> findAllBy(Pageable pageable);
 
-  Flux<VenueNameWithLayoutIdProjection> findAllByNameContainingIgnoreCase(String name, Pageable pageable);
+  Flux<VenueIdAndNameProjection> findAllByCityEqualsIgnoreCase(String city);
+
+  Flux<VenueNameWithLayoutIdProjection> findAllByNameContainingIgnoreCase(String name,
+      Pageable pageable);
 }

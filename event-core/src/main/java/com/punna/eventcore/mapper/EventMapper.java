@@ -3,6 +3,8 @@ package com.punna.eventcore.mapper;
 import com.punna.eventcore.dto.EventDurationDetailsDto;
 import com.punna.eventcore.dto.EventRequestDto;
 import com.punna.eventcore.dto.EventResponseDto;
+import com.punna.eventcore.dto.ShowListingDto;
+import com.punna.eventcore.dto.projections.EventShowListingProjection;
 import com.punna.eventcore.model.Event;
 import com.punna.eventcore.model.EventDurationDetails;
 import java.util.HashMap;
@@ -40,7 +42,6 @@ public class EventMapper {
         .pricingTierMaps(event.getPricingTierMaps()).seatState(event.getSeatState())
         .openForBooking(event.getOpenForBooking()).eventType(event.getEventType())
         .seatingLayoutId(event.getSeatingLayoutId()).build();
-
   }
 
   public static EventDurationDetails toEventDurationDetails(
@@ -113,5 +114,20 @@ public class EventMapper {
       eventDurationDetails.setEndTime(eventDurationDetailsDto.getEndTime());
     }
     return eventDurationDetails;
+  }
+
+  public static ShowListingDto mapToShowListingDto(EventShowListingProjection event,
+      String venueName, Integer totalSeats) {
+    return ShowListingDto.builder()
+        .id(event.id()).eventId(event.eventId())
+        .venueId(event.venueId())
+        .eventDurationDetails(toEventDurationDetailsDto(event.eventDurationDetails()))
+        .pricingTierMaps(event.pricingTierMaps())
+        .seatingLayoutId(event.seatingLayoutId())
+        .eventType(event.eventType())
+        .venueName(venueName)
+        .numberOfBookedAndBlockedSeats(event.numberOfBookedAndBlockedSeats())
+        .totalSeats(totalSeats)
+        .build();
   }
 }

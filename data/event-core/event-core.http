@@ -35,12 +35,12 @@ Authorization: Bearer {{auth_token}}
   "name": "{{$.data.venues..name}}",
   "description": "{{$.data.venues..description}}",
   "capacity": {{$.data.venues..capacity}},
-  "location": "{{$.data.venues..name}}",
-  "city": "{{$.data.venues..name}}",
-  "country": "{{$.data.venues..name}}",
+  "location": "{{$.data.venues..location}}",
+  "city": "{{$.data.venues..city}}",
+  "country": "{{$.data.venues..country}}",
   "pincode": {{$.data.venues..pincode}},
-  "state": "{{$.data.venues..name}}",
-  "googleMapsUrl": "{{$.data.venues..name}}",
+  "state": "{{$.data.venues..state}}",
+  "googleMapsUrl": "{{$.data.venues..googleMapsUrl}}",
   "seatingLayoutIdVar": "{{$.data.venues..seatingLayoutIdVar}}",
   "seatingLayoutId": "{{layoutId}}"
 }
@@ -84,6 +84,4 @@ Authorization: Bearer {{auth_token}}
     client.assert(response.status === 201, "status must be 201");
   })
 %}
-
-###
 

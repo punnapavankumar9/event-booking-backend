@@ -3,10 +3,13 @@ package com.punna.eventcore.controller;
 import com.punna.eventcore.dto.EventRequestDto;
 import com.punna.eventcore.dto.EventResponseDto;
 import com.punna.eventcore.dto.EventsForVenueProjection;
+import com.punna.eventcore.dto.ShowListingDto;
 import com.punna.eventcore.model.EventType;
 import com.punna.eventcore.service.EventService;
+import java.time.Instant;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.punna.commons.exception.EventApplicationException;
 import org.punna.commons.validation.groups.CreateGroup;
 import org.punna.commons.validation.groups.UpdateGroup;
@@ -25,6 +28,7 @@ import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+@Slf4j
 @RestController
 @RequestMapping("/api/v1/events")
 @RequiredArgsConstructor
@@ -38,7 +42,6 @@ public class EventController {
       @Validated(CreateGroup.class) @RequestBody EventRequestDto event) {
     return ResponseEntity.status(HttpStatus.CREATED).body(eventService.createEvent(event));
   }
-
 
   @PostMapping(value = "", params = {"bulk"})
   public ResponseEntity<Mono<List<EventResponseDto>>> createEvents(
@@ -76,6 +79,20 @@ public class EventController {
   @GetMapping("/byEventType/{type}")
   public Flux<EventResponseDto> getEventsByType(@PathVariable EventType type) {
     return eventService.getEventsByType(type);
+  }
+
+  @GetMapping("/event-dates/byEventId")
+  public Flux<Instant> getEventDatesByEventId(@RequestParam() String eventId,
+      @RequestParam() Instant from) {
+    return eventService.getAllStartDatesByEventId(eventId, from);
+  }
+
+  @GetMapping("/byEventId/{eventId}")
+  public Flux<ShowListingDto> getShowListingsWithEventIdForCityStartTimeBetween(
+      @PathVariable String eventId, @RequestParam String city, @RequestParam() Instant startTime,
+      @RequestParam Instant endTime) {
+    log.info("Getting events for city : {}, eventID: {}", city, eventId);
+    return eventService.getShowListings(eventId, startTime, endTime, city);
   }
 
   @GetMapping("/byEventId/{eventId}/{venueId}")

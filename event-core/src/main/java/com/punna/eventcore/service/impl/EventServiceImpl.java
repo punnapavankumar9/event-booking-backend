@@ -4,16 +4,23 @@ import com.punna.eventcore.client.CatalogServiceWebClient;
 import com.punna.eventcore.dto.EventRequestDto;
 import com.punna.eventcore.dto.EventResponseDto;
 import com.punna.eventcore.dto.EventsForVenueProjection;
+import com.punna.eventcore.dto.ShowListingDto;
+import com.punna.eventcore.dto.projections.VenueIdAndNameProjection;
 import com.punna.eventcore.mapper.EventMapper;
 import com.punna.eventcore.model.Event;
 import com.punna.eventcore.model.EventType;
 import com.punna.eventcore.model.Venue;
 import com.punna.eventcore.repository.EventRepository;
+import com.punna.eventcore.repository.VenueRepository;
 import com.punna.eventcore.service.AuthService;
 import com.punna.eventcore.service.EventService;
+import com.punna.eventcore.service.SeatingLayoutService;
 import com.punna.eventcore.service.VenueService;
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.punna.commons.exception.EntityNotFoundException;
@@ -43,6 +50,9 @@ public class EventServiceImpl implements EventService {
   private final AuthService authService;
 
   private final CatalogServiceWebClient catalogServiceWebClient;
+  private final ReactiveMongoTemplate reactiveMongoTemplate;
+  private final VenueRepository venueRepository;
+  private final SeatingLayoutService seatingLayoutService;
 
   @Override
   public Mono<EventResponseDto> createEvent(EventRequestDto eventRequestDto) {
@@ -102,9 +112,11 @@ public class EventServiceImpl implements EventService {
     }
     return eventRepository.findById(eventRequestDto.getId())
         .switchIfEmpty(Mono.error(new EntityNotFoundException("Event", id))).flatMap(event -> {
+          String existingVenueId = event.getVenueId();
           EventMapper.merge(event, eventRequestDto);
           return isAdminOrOwner(event).filter(m -> m).flatMap(permission -> {
-            if (eventRequestDto.getVenueId() != null) {
+            if (eventRequestDto.getVenueId() != null && !eventRequestDto.getVenueId()
+                .equals(existingVenueId)) {
               return venueService.getSeatingLayoutId(eventRequestDto.getVenueId())
                   .flatMap(seatingLayoutId -> {
                     event.setSeatingLayoutId(seatingLayoutId);
@@ -157,6 +169,38 @@ public class EventServiceImpl implements EventService {
   public Flux<EventsForVenueProjection> getEventsByEventId(String eventId, String venueId) {
     return this.eventRepository.findAllByEventIdAndVenueId(eventId, venueId,
         Sort.by("createdAt").descending());
+  }
+
+  @Override
+  public Flux<Instant> getAllStartDatesByEventId(String eventId, Instant from) {
+    String fieldPath = "eventDurationDetails.startTime";
+    Criteria criteria = Criteria.where("eventId").is(eventId).and(fieldPath).gte(from)
+        .and("openForBooking").is(true);
+    return reactiveMongoTemplate.findDistinct(Query.query(criteria), fieldPath, Event.class,
+        Instant.class);
+  }
+
+  @Override
+  public Flux<ShowListingDto> getShowListings(String eventId, Instant startTime, Instant endTime,
+      String city) {
+    if (startTime.isAfter(endTime)) {
+      return Flux.error(new EventApplicationException("Start time is after end time",
+          HttpStatus.BAD_REQUEST.value()));
+    }
+
+    Mono<Map<String, String>> venuesMapMono = venueRepository.findAllByCityEqualsIgnoreCase(city)
+        .collect(Collectors.toMap(VenueIdAndNameProjection::id, VenueIdAndNameProjection::name));
+    return venuesMapMono.flatMapMany(venues -> {
+      if (venues.isEmpty()) {
+        return Flux.empty();
+      }
+      List<String> venueIds = new ArrayList<>(venues.keySet());
+      return eventRepository.findAllByEventIdAndVenueIdInAndEventDurationDetails_StartTimeBetween(
+          eventId, venueIds, startTime, endTime).flatMap(
+          event -> seatingLayoutService.getTotalSeats(event.seatingLayoutId()).map(
+              totalSeats -> EventMapper.mapToShowListingDto(event, venues.get(event.venueId()),
+                  totalSeats)));
+    });
   }
 
   public Mono<Boolean> checkForOverlaps(EventRequestDto eventRequestDto) {

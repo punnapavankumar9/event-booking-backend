@@ -1,11 +1,13 @@
 package com.punna.eventcore.repository;
 
 import com.punna.eventcore.dto.projections.EventSeatsProjection;
+import com.punna.eventcore.dto.projections.SeatStateCapacityProjection;
 import com.punna.eventcore.model.SeatLocation;
 import com.punna.eventcore.model.SeatingLayout;
 import java.util.List;
 import java.util.Map;
 import org.springframework.data.mongodb.repository.Aggregation;
+import org.springframework.data.mongodb.repository.Query;
 import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
 import org.springframework.stereotype.Repository;
 import reactor.core.publisher.Flux;
@@ -40,4 +42,8 @@ public interface SeatingLayoutRepository extends ReactiveMongoRepository<Seating
   Flux<SeatingLayout> findByName(String name);
 
   Mono<EventSeatsProjection> findEventSeatsProjectionById(String id);
+
+
+  @Query(value = "{'id' : ?0}", fields = "{capacity: 1, _id:  0}")
+  Mono<SeatStateCapacityProjection> getCapacityById(String id);
 }

@@ -3,8 +3,10 @@ package com.punna.eventcore.service;
 import com.punna.eventcore.dto.EventRequestDto;
 import com.punna.eventcore.dto.EventResponseDto;
 import com.punna.eventcore.dto.EventsForVenueProjection;
+import com.punna.eventcore.dto.ShowListingDto;
 import com.punna.eventcore.model.Event;
 import com.punna.eventcore.model.EventType;
+import java.time.Instant;
 import java.util.List;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -30,4 +32,8 @@ public interface EventService {
   Flux<EventResponseDto> getEventsByType(EventType eventType);
 
   Flux<EventsForVenueProjection> getEventsByEventId(String eventId, String venueId);
+
+  Flux<Instant> getAllStartDatesByEventId(String eventId, Instant from);
+
+  Flux<ShowListingDto> getShowListings(String eventId, Instant startTime, Instant endTime, String city);
 }

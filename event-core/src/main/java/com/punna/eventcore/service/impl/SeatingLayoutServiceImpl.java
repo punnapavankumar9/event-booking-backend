@@ -1,6 +1,7 @@
 package com.punna.eventcore.service.impl;
 
 import com.punna.eventcore.dto.SeatingLayoutDto;
+import com.punna.eventcore.dto.projections.SeatStateCapacityProjection;
 import com.punna.eventcore.mapper.SeatingLayoutMapper;
 import com.punna.eventcore.model.Event;
 import com.punna.eventcore.model.Seat;
@@ -8,10 +9,8 @@ import com.punna.eventcore.model.SeatLocation;
 import com.punna.eventcore.model.SeatingLayout;
 import com.punna.eventcore.repository.SeatingLayoutRepository;
 import com.punna.eventcore.service.SeatingLayoutService;
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
+import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import org.punna.commons.exception.EntityNotFoundException;
 import org.punna.commons.exception.EventApplicationException;
@@ -32,27 +31,21 @@ public class SeatingLayoutServiceImpl implements SeatingLayoutService {
   @Override
   public Mono<SeatingLayoutDto> createSeatingLayout(SeatingLayoutDto seatingLayout) {
     isSeatingLayoutValid(seatingLayout);
-    return isLayoutNameUnique(seatingLayout.getName())
-        .flatMap(isUnique -> {
-              if (isUnique) {
-                return seatingLayoutRepository
-                    .save(SeatingLayoutMapper.toSeatingLayout(seatingLayout))
-                    .map(SeatingLayoutMapper::toSeatingLayoutDto);
-              } else {
-                return Mono.error(
-                    new EventApplicationException("Seating layout with this name already exists"));
-              }
-            }
-        );
+    return isLayoutNameUnique(seatingLayout.getName()).flatMap(isUnique -> {
+      if (isUnique) {
+        return seatingLayoutRepository.save(SeatingLayoutMapper.toSeatingLayout(seatingLayout))
+            .map(SeatingLayoutMapper::toSeatingLayoutDto);
+      } else {
+        return Mono.error(
+            new EventApplicationException("Seating layout with this name already exists"));
+      }
+    });
   }
 
   @Override
   public Mono<SeatingLayoutDto> getSeatingLayoutById(String seatingLayoutId) {
-    return seatingLayoutRepository
-        .findById(seatingLayoutId)
-        .switchIfEmpty(Mono.error(new EntityNotFoundException(SeatingLayout.class.getSimpleName(),
-            seatingLayoutId
-        )))
+    return seatingLayoutRepository.findById(seatingLayoutId).switchIfEmpty(Mono.error(
+            new EntityNotFoundException(SeatingLayout.class.getSimpleName(), seatingLayoutId)))
         .map(SeatingLayoutMapper::toSeatingLayoutDto);
   }
 
@@ -62,9 +55,7 @@ public class SeatingLayoutServiceImpl implements SeatingLayoutService {
     if (id == null) {
       throw new EventApplicationException("Id must be provided");
     }
-    return seatingLayoutRepository
-        .findById(id)
-        .switchIfEmpty(
+    return seatingLayoutRepository.findById(id).switchIfEmpty(
             Mono.error(new EntityNotFoundException(SeatingLayout.class.getSimpleName(), id)))
         .flatMap(seatingLayout1 -> {
           SeatingLayoutMapper.merge(seatingLayout1, seatingLayout);
@@ -72,21 +63,15 @@ public class SeatingLayoutServiceImpl implements SeatingLayoutService {
             isSeatingLayoutValid(SeatingLayoutMapper.toSeatingLayoutDto(seatingLayout1));
           }
           return seatingLayoutRepository.save(seatingLayout1);
-        })
-        .map(SeatingLayoutMapper::toSeatingLayoutDto);
+        }).map(SeatingLayoutMapper::toSeatingLayoutDto);
   }
 
   @Override
   public Mono<Void> deleteSeatingLayout(String seatingLayoutId) {
-    Query query = new Query(Criteria
-        .where("_id")
-        .is(seatingLayoutId));
-    return reactiveMongoTemplate
-        .findAndRemove(query, Event.class)
-        .switchIfEmpty(Mono.error(() -> new EntityNotFoundException(Event.class.getSimpleName(),
-            seatingLayoutId
-        )))
-        .flatMap((event) -> Mono.empty());
+    Query query = new Query(Criteria.where("_id").is(seatingLayoutId));
+    return reactiveMongoTemplate.findAndRemove(query, SeatingLayout.class).switchIfEmpty(
+            Mono.error(() -> new EntityNotFoundException(Event.class.getSimpleName(), seatingLayoutId)))
+        .flatMap((seatingLayout) -> Mono.empty()).then();
   }
 
   @Override
@@ -114,22 +99,23 @@ public class SeatingLayoutServiceImpl implements SeatingLayoutService {
   @Override
   public Mono<Boolean> areSelectedSeatsValid(String seatingLayoutId,
       List<SeatLocation> seatLocations) {
-    return seatingLayoutRepository
-        .validatedSelectedSeatsAreValid(seatingLayoutId, seatLocations)
-        .switchIfEmpty(Mono.error(new EventApplicationException(
-            "Something went wrong while checking valid seats")))
+    return seatingLayoutRepository.validatedSelectedSeatsAreValid(seatingLayoutId, seatLocations)
+        .switchIfEmpty(Mono.error(
+            new EventApplicationException("Something went wrong while checking valid seats")))
         .map(m -> m.get("valid"));
   }
 
   @Override
   public Mono<List<String>> getPricingTiers(String id) {
-    return seatingLayoutRepository.findEventSeatsProjectionById(id).map(eventSeatsProjection -> {
-      Set<String> tiers = new HashSet<>();
-      eventSeatsProjection.seats().forEach(seat -> {
-        tiers.add(seat.getTier());
-      });
-      return new ArrayList<>(tiers);
-    });
+    return seatingLayoutRepository.findEventSeatsProjectionById(id).map(
+        eventSeatsProjection -> eventSeatsProjection.seats().stream().map(Seat::getTier).distinct()
+            .collect(Collectors.toList()));
+  }
+
+  @Override
+  public Mono<Integer> getTotalSeats(String id) {
+    return seatingLayoutRepository.getCapacityById(id)
+        .map(SeatStateCapacityProjection::capacity);
   }
 
   public int isSeatValid(int rows, int columns, Seat seat) {

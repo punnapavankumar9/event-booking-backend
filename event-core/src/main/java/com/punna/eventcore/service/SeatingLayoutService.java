@@ -20,4 +20,6 @@ public interface SeatingLayoutService {
   Mono<Boolean> areSelectedSeatsValid(String seatingLayoutId, List<SeatLocation> seatLocations);
 
   Mono<List<String>> getPricingTiers(String id);
+
+  Mono<Integer> getTotalSeats(String id);
 }
