@@ -107,6 +107,7 @@ public class VenueServiceImpl implements VenueService {
         .map(VenueMapper::toVenueDto);
   }
 
+
   @Override
   public Mono<Boolean> exists(String id) {
     return venueRepository.existsById(id);
@@ -122,6 +123,11 @@ public class VenueServiceImpl implements VenueService {
             .flatMap(v -> authService
                 .getUserName()
                 .map(s -> s.equals(v.getOwnerId()))));
+  }
+
+  @Override
+  public Mono<VenueNameWithLayoutIdProjection> getVenueNameWithLayoutId(String id) {
+    return this.venueRepository.findByIdVenueNameAndLayoutId(id);
   }
 
   @Override

@@ -1,5 +1,6 @@
 package com.punna.eventcore.service;
 
+import com.punna.eventcore.dto.BookingPageInfo;
 import com.punna.eventcore.dto.EventRequestDto;
 import com.punna.eventcore.dto.EventResponseDto;
 import com.punna.eventcore.dto.EventsForVenueProjection;
@@ -35,5 +36,10 @@ public interface EventService {
 
   Flux<Instant> getAllStartDatesByEventId(String eventId, Instant from);
 
-  Flux<ShowListingDto> getShowListings(String eventId, Instant startTime, Instant endTime, String city);
+  Flux<Instant> getAllStartDatesBetween(String eventId, Instant from, Instant to);
+
+  Flux<ShowListingDto> getShowListings(String eventId, Instant startTime, Instant endTime,
+      String city);
+
+  Mono<BookingPageInfo> getBookingPageDetailsFor(String id);
 }

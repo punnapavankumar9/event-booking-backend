@@ -1,13 +1,17 @@
 package com.punna.eventcore.mapper;
 
+import com.punna.eventcore.dto.BookingPageInfo;
 import com.punna.eventcore.dto.EventDurationDetailsDto;
 import com.punna.eventcore.dto.EventRequestDto;
 import com.punna.eventcore.dto.EventResponseDto;
+import com.punna.eventcore.dto.SeatingLayoutDto;
 import com.punna.eventcore.dto.ShowListingDto;
 import com.punna.eventcore.dto.projections.EventShowListingProjection;
 import com.punna.eventcore.model.Event;
 import com.punna.eventcore.model.EventDurationDetails;
+import java.time.Instant;
 import java.util.HashMap;
+import java.util.List;
 
 public class EventMapper {
 
@@ -128,6 +132,16 @@ public class EventMapper {
         .venueName(venueName)
         .numberOfBookedAndBlockedSeats(event.numberOfBookedAndBlockedSeats())
         .totalSeats(totalSeats)
+        .build();
+  }
+
+  public static BookingPageInfo mapToBookingPageInfo(EventResponseDto eventResponseDto,
+      String venueName,
+      SeatingLayoutDto seatingLayoutDto) {
+    return BookingPageInfo.builder()
+        .seatingLayout(seatingLayoutDto)
+        .venueName(venueName)
+        .event(eventResponseDto)
         .build();
   }
 }

@@ -1,5 +1,6 @@
 package com.punna.eventcore.controller;
 
+import com.punna.eventcore.dto.BookingPageInfo;
 import com.punna.eventcore.dto.EventRequestDto;
 import com.punna.eventcore.dto.EventResponseDto;
 import com.punna.eventcore.dto.EventsForVenueProjection;
@@ -76,6 +77,11 @@ public class EventController {
     return eventService.findById(id);
   }
 
+  @GetMapping("/booking-info/{id}")
+  public Mono<BookingPageInfo> getBookingPageDetailsFor(@PathVariable String id) {
+    return eventService.getBookingPageDetailsFor(id);
+  }
+
   @GetMapping("/byEventType/{type}")
   public Flux<EventResponseDto> getEventsByType(@PathVariable EventType type) {
     return eventService.getEventsByType(type);
@@ -100,4 +106,5 @@ public class EventController {
       @PathVariable String venueId) {
     return eventService.getEventsByEventId(eventId, venueId);
   }
+
 }

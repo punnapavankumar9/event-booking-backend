@@ -5,25 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="270ad57c-65bc-4f7e-86cf-537bc93322f9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/dto/ShowListingDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/dto/projections/EventShowListingProjection.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/dto/projections/SeatStateCapacityProjection.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/dto/projections/VenueIdAndNameProjection.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/dto/BookingPageInfo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/event-catalog/movie-images/Brahma-Anandam/movie.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/event-catalog/movie-images/Brahma-Anandam/movie.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/event-core/event-core.http" beforeDir="false" afterPath="$PROJECT_DIR$/data/event-core/event-core.http" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/http-client.env.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/http-client.env.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/controller/EventController.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/controller/EventController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/dto/EventRequestDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/dto/EventRequestDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/mapper/EventMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/mapper/EventMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/repository/EventRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/repository/EventRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/repository/SeatingLayoutRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/repository/SeatingLayoutRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/repository/VenueRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/repository/VenueRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/service/EventSeatStateService.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/service/EventSeatStateService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/service/EventService.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/service/EventService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/service/SeatingLayoutService.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/service/SeatingLayoutService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/service/VenueService.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/service/VenueService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/service/impl/EventServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/service/impl/EventServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/service/impl/SeatingLayoutServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/service/impl/SeatingLayoutServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/service/impl/VenueServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/service/impl/VenueServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,33 +30,33 @@
         <option value="Interface" />
         <option value="JUnit5 Test Class" />
         <option value="HTTP Public Environment File" />
-        <option value="Record" />
         <option value="Class" />
+        <option value="Record" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "punnapavankumar9"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;punnapavankumar9&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "git@github.com:punnapavankumar9/event-booking-backend.git",
-    "accountId": "de613aa4-399b-4d11-bef9-856b44cbcdf4"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;git@github.com:punnapavankumar9/event-booking-backend.git&quot;,
+    &quot;accountId&quot;: &quot;de613aa4-399b-4d11-bef9-856b44cbcdf4&quot;
   }
-}]]></component>
+}</component>
   <component name="HighlightingSettingsPerFile">
     <setting file="jar://$MAVEN_REPOSITORY$/io/projectreactor/reactor-core/3.7.1/reactor-core-3.7.1-sources.jar!/reactor/core/publisher/MonoFlatMap.java" root0="SKIP_INSPECTION" />
     <setting file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webflux/6.2.1/spring-webflux-6.2.1-sources.jar!/org/springframework/web/reactive/result/method/InvocableHandlerMethod.java" root0="SKIP_INSPECTION" />
     <setting file="jar://$USER_HOME$/Library/Java/JavaVirtualMachines/corretto-21.0.5/Contents/Home/lib/src.zip!/java.base/java/lang/IllegalArgumentException.java" root0="SKIP_INSPECTION" />
   </component>
   <component name="HttpClientEndpointsTabState">
-    <option name="cachedRequestData" value="&lt;CachedHttpClientTabRequests&gt;&#10;  &lt;entry key=&quot;1637d08e35769ce94b9945fef83cad1d90b33f9b&quot; value=&quot;###&amp;#10;POST http://localhost:8080/api/v1/events/67bce86767e0d44ebde3a1c7/seats/block&amp;#10;Content-Type: application/json&amp;#10;&amp;#10;[&amp;#10;  {&amp;#10;    &amp;quot;row&amp;quot;: 3,&amp;#10;    &amp;quot;column&amp;quot;: 3&amp;#10;  }&amp;#10;]&quot; /&gt;&#10;  &lt;entry key=&quot;4a83b69f29811f5c9802d84f0cf00364909f4932&quot; value=&quot;###&amp;#10;GET http://localhost:8080/api/v1/events/byEventId/{{eventId}}?&amp;#10;scity={{$random.alphanumeric(8)}}&amp;amp;&amp;#10;    startTime={{$placeholder}}&amp;amp;&amp;#10;    endTime={{$placeholder}}&quot; /&gt;&#10;&lt;/CachedHttpClientTabRequests&gt;" />
+    <option name="cachedRequestData" value="&lt;CachedHttpClientTabRequests&gt;&#10;  &lt;entry key=&quot;271a086eba401e8de07df5de9b139173e0ac1bb2&quot; value=&quot;###&amp;#10;POST http://localhost:8080/api/v1/events/{{eventId}}/seats/book&amp;#10;Content-Type: application/json&amp;#10;&amp;#10;[&amp;#10;  {&amp;#10;    &amp;quot;row&amp;quot;: 0,&amp;#10;    &amp;quot;column&amp;quot;: 0&amp;#10;  }&amp;#10;]&quot; /&gt;&#10;&lt;/CachedHttpClientTabRequests&gt;" />
   </component>
   <component name="HttpClientSelectedEnvironments">
     <file url="jar://$APPLICATION_HOME_DIR$/plugins/restClient/lib/restClient.jar!/com/intellij/ws/rest/client/requests/collection/get-requests.http" environment="test" />
@@ -128,6 +119,8 @@
     "HTTP Request.event-core | create seating-layout 1.executor": "Run",
     "HTTP Request.event-core | create seating-layout.executor": "Run",
     "HTTP Request.event-core | schedule movies.executor": "Run",
+    "HTTP Request.generated-requests | #1.executor": "Run",
+    "HTTP Request.generated-requests | #2.executor": "Run",
     "HTTP Request.identity | login as pavan.executor": "Run",
     "HTTP Request.main | #1.executor": "Run",
     "HTTP Request.movie-catalog | create movies#1.executor": "Run",
@@ -148,7 +141,7 @@
     "JUnit.EventCatalogApplicationTest.givenInvalidEvent_whenCreateEvent_thenReturnBadResultWithErrors.executor": "Debug",
     "JUnit.EventCatalogApplicationTest.givenNonExistingEvent_whenUpdatingEvent_thenReturnBadRequestWithErrors.executor": "Run",
     "JUnit.EventEndpointTests,givenValidEventsWithNonAdmin_WhenCreate_thenReturnCreated and 1 more.executor": "Debug",
-    "JUnit.EventEndpointTests.executor": "Debug",
+    "JUnit.EventEndpointTests.executor": "Run",
     "JUnit.EventEndpointTests.giveNonAdminUser_whenDeleteEvent_thenReturnUnAuthorized.executor": "Run",
     "JUnit.EventEndpointTests.givenOverlappingEvents_whenCreate_thenReturnBadRequestWithErrors.executor": "Run",
     "JUnit.EventEndpointTests.givenValidEventsWithNonAdmin_WhenCreate_thenReturnCreated.executor": "Run",
@@ -264,27 +257,15 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.EventEndpointTests">
+  <component name="RunManager" selected="HTTP Request.generated-requests | #2">
+    <configuration name="generated-requests | #1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" executionIdentifier="#1" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="generated-requests | #2" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" executionIdentifier="#2" index="2" runType="Run single request">
+      <method v="2" />
+    </configuration>
     <configuration name="identity | login as pavan" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/data/identity/identity.http" executionIdentifier="login as pavan" index="6" runType="Run single request">
       <method v="2" />
-    </configuration>
-    <configuration name="temp | #1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/temp/temp.http" executionIdentifier="#1" runType="Run single request">
-      <method v="2" />
-    </configuration>
-    <configuration name="EventEndpointTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="event-core" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.punna.eventcore.integration.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.punna.eventcore.integration" />
-      <option name="MAIN_CLASS_NAME" value="com.punna.eventcore.integration.EventEndpointTests" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
     </configuration>
     <configuration name="ConfigServerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="config-server" />
@@ -341,9 +322,9 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="HTTP Request.temp | #1" />
+      <item itemvalue="HTTP Request.generated-requests | #1" />
+      <item itemvalue="HTTP Request.generated-requests | #2" />
       <item itemvalue="HTTP Request.identity | login as pavan" />
-      <item itemvalue="JUnit.EventEndpointTests" />
       <item itemvalue="Spring Boot.ConfigServerApplication" />
       <item itemvalue="Spring Boot.DiscoveryApplication" />
       <item itemvalue="Spring Boot.EventCoreApplication" />
@@ -353,11 +334,11 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.EventEndpointTests" />
+        <item itemvalue="HTTP Request.generated-requests | #2" />
+        <item itemvalue="HTTP Request.identity | login as pavan" />
+        <item itemvalue="HTTP Request.generated-requests | #1" />
         <item itemvalue="Spring Boot.IdentityServiceApplication" />
         <item itemvalue="Spring Boot.EventCatalogApplication" />
-        <item itemvalue="HTTP Request.temp | #1" />
-        <item itemvalue="HTTP Request.identity | login as pavan" />
       </list>
     </recent_temporary>
   </component>
@@ -372,6 +353,9 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="StructureViewState">
     <option name="selectedTab" value="Logical" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration>$USER_HOME$/.subversion</configuration>
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -474,7 +458,9 @@
       <workItem from="1740512641821" duration="435000" />
       <workItem from="1740513081687" duration="5294000" />
       <workItem from="1740519897027" duration="60000" />
-      <workItem from="1740519989809" duration="703000" />
+      <workItem from="1740519989809" duration="1414000" />
+      <workItem from="1740566642929" duration="1278000" />
+      <workItem from="1740569914781" duration="13247000" />
     </task>
     <servers />
   </component>
@@ -516,7 +502,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/service/impl/EventServiceImpl.java</url>
-          <line>184</line>
+          <line>196</line>
           <option name="timeStamp" value="34" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">

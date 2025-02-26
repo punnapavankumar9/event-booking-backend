@@ -1,6 +1,7 @@
 package com.punna.eventcore.service.impl;
 
 import com.punna.eventcore.client.CatalogServiceWebClient;
+import com.punna.eventcore.dto.BookingPageInfo;
 import com.punna.eventcore.dto.EventRequestDto;
 import com.punna.eventcore.dto.EventResponseDto;
 import com.punna.eventcore.dto.EventsForVenueProjection;
@@ -181,6 +182,16 @@ public class EventServiceImpl implements EventService {
   }
 
   @Override
+  public Flux<Instant> getAllStartDatesBetween(String eventId, Instant from, Instant to) {
+    String fieldPath = "eventDurationDetails.startTime";
+    Criteria criteria = Criteria.where("eventId").is(eventId)
+        .andOperator(Criteria.where(fieldPath).gte(from).lte(to),
+            Criteria.where("openForBooking").is(true));
+    return reactiveMongoTemplate.findDistinct(Query.query(criteria), fieldPath, Event.class,
+        Instant.class);
+  }
+
+  @Override
   public Flux<ShowListingDto> getShowListings(String eventId, Instant startTime, Instant endTime,
       String city) {
     if (startTime.isAfter(endTime)) {
@@ -201,6 +212,15 @@ public class EventServiceImpl implements EventService {
               totalSeats -> EventMapper.mapToShowListingDto(event, venues.get(event.venueId()),
                   totalSeats)));
     });
+  }
+
+  @Override
+  public Mono<BookingPageInfo> getBookingPageDetailsFor(String id) {
+    return this.findById(id).flatMap(
+        event -> Mono.zip(venueService.getVenueNameWithLayoutId(event.getVenueId()),
+            seatingLayoutService.getSeatingLayoutById(event.getSeatingLayoutId())).map(
+            result -> EventMapper.mapToBookingPageInfo(event, result.getT1().name(),
+                result.getT2())));
   }
 
   public Mono<Boolean> checkForOverlaps(EventRequestDto eventRequestDto) {
