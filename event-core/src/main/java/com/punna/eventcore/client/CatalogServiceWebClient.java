@@ -37,6 +37,4 @@ public class CatalogServiceWebClient {
   public Mono<Boolean> checkSportsIdExists(String eventId) {
     return Mono.just(false);
   }
-
-
 }

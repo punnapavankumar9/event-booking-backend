@@ -20,18 +20,24 @@ services:
       - "event_mongo:/data"
 
   postgres:
-    container_name: event_postgres
-    image: postgres
-    networks:
-      - event-booking-network
+    image: postgres:latest
+    environment:
+      - POSTGRES_USER=event
+      - POSTGRES_PASSWORD=event
+      - POSTGRES_DB=event
     ports:
       - "5432:5432"
-    environment:
-      POSTGRES_PASSWORD: identity
-      POSTGRES_USER: identity
-      POSTGRES_DB: identity
     volumes:
-      - event_pg:/var/lib/postgresql/
+      - event_pg:/var/lib/postgresql/data
+    command: ["postgres", "-c", "listen_addresses=*"]
+    entrypoint: >
+      bash -c "docker-entrypoint.sh postgres &
+      sleep 5 &&
+      psql -U $$POSTGRES_USER -d $$POSTGRES_DB -c 'CREATE DATABASE identity;' &&
+      psql -U $$POSTGRES_USER -d $$POSTGRES_DB -c 'CREATE DATABASE orders;' &&
+      wait"
+    restart: unless-stopped
+
   minio:
     container_name: minio
     image: quay.io/minio/minio:latest

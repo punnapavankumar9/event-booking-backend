@@ -1,8 +1,8 @@
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/identity
-    username: identity
-    password: identity
+    username: event
+    password: event
   jpa:
     hibernate:
       ddl-auto: update
