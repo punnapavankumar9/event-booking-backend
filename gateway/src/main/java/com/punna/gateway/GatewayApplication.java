@@ -19,10 +19,14 @@ public class GatewayApplication {
     return builder.routes()
         .route("identity-service", p -> p.path("/api/v*/users/**").uri("lb://IDENTITY-SERVICE"))
         .route("event-core",
-            p -> p.path("/api/v*/venues/**", "/api/v*/events/**", "/api/v*/seating-layout/**", "/api/v1/locations/**")
+            p -> p.path("/api/v*/venues/**", "/api/v*/events/**", "/api/v*/seating-layout/**",
+                    "/api/v1/locations/**")
                 .filters(f -> f.filter(authFilter)).uri("lb://EVENT-CORE-SERVICE"))
+        .route("order-service", p -> p.path("/api/v*/orders/**").filters(f -> f.filter(authFilter))
+            .uri("lb://ORDER-SERVICE"))
         .route("event-catalog", p -> p.path("/api/v*/movies/**").filters(f -> f.filter(authFilter))
-            .uri("lb://EVENT-CATALOG-SERVICE")).route("event-catalog",
+            .uri("lb://EVENT-CATALOG-SERVICE"))
+        .route("event-catalog",
             p -> p.path("/assets/movie-catalog/**").uri("lb://EVENT-CATALOG-SERVICE")).build();
   }
 }

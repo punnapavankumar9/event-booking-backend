@@ -5,19 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="270ad57c-65bc-4f7e-86cf-537bc93322f9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/config-server/src/main/resources/config/order-service.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/order/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/order/mvnw" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/order/mvnw.cmd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/order/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/order/src/main/java/com/punna/order/OrderApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/order/src/main/resources/application.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/order/src/test/java/com/punna/order/OrderApplicationTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/order/src/main/java/com/punna/order/config/SecurityConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/order/src/main/java/com/punna/order/dto/UserDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/order/src/main/java/com/punna/order/model/EventType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/order/src/main/java/com/punna/order/model/Order.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/order/src/main/java/com/punna/order/security/PopulateAuthentication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/client/CatalogServiceWebClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/client/CatalogServiceWebClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/com/punna/gateway/GatewayApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/com/punna/gateway/GatewayApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/com/punna/gateway/filter/AuthFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/com/punna/gateway/filter/AuthFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/order/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/order/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/order/src/main/java/com/punna/order/OrderApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/order/src/main/java/com/punna/order/OrderApplication.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,11 +26,11 @@
       <list>
         <option value="TypeScript File" />
         <option value="Dockerfile" />
-        <option value="Enum" />
         <option value="Interface" />
         <option value="JUnit5 Test Class" />
         <option value="HTTP Public Environment File" />
         <option value="Record" />
+        <option value="Enum" />
         <option value="Class" />
       </list>
     </option>
@@ -216,11 +213,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.punna.order.model" />
       <recent name="com.punna.eventcore.dto" />
       <recent name="com.punna.eventcatalog.integration" />
       <recent name="com.punna.eventcatalog.service" />
       <recent name="com.punna.eventcatalog.model" />
-      <recent name="com.punna.eventcatalog.mapper" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/order" />
@@ -490,7 +487,7 @@
       <workItem from="1740673289662" duration="20000" />
       <workItem from="1740674734553" duration="434000" />
       <workItem from="1740934240882" duration="27000" />
-      <workItem from="1741009359319" duration="10559000" />
+      <workItem from="1741009359319" duration="15092000" />
     </task>
     <servers />
   </component>
