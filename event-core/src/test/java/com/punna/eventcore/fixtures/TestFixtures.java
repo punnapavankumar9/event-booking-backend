@@ -1,6 +1,7 @@
 package com.punna.eventcore.fixtures;
 
 
+import com.punna.eventcore.dto.BookSeatRequestDto;
 import com.punna.eventcore.dto.EventDurationDetailsDto;
 import com.punna.eventcore.dto.EventRequestDto;
 import com.punna.eventcore.dto.ScreenPosition;
@@ -9,6 +10,7 @@ import com.punna.eventcore.dto.VenueDto;
 import com.punna.eventcore.model.EventType;
 import com.punna.eventcore.model.PricingTierMap;
 import com.punna.eventcore.model.Seat;
+import com.punna.eventcore.model.SeatLocation;
 import com.punna.eventcore.utils.EventDurationType;
 import java.math.BigDecimal;
 import java.time.Instant;
@@ -54,56 +56,15 @@ public abstract class TestFixtures {
       .seatingLayoutId("DummyId")
       .build();
 
-  public static SeatingLayoutDto SAMPLE_SEATING_LAYOUT_DTO = SeatingLayoutDto
-      .builder()
+  public static SeatingLayoutDto SAMPLE_SEATING_LAYOUT_DTO = SeatingLayoutDto.builder()
       .seats(new ArrayList<>() {{
-        add(Seat
-            .builder()
-            .row(1)
-            .column(1)
-            .isSpace(false)
-            .tier("VIP")
-            .build());
-        add(Seat
-            .builder()
-            .row(1)
-            .column(2)
-            .isSpace(false)
-            .tier("VIP")
-            .build());
-        add(Seat
-            .builder()
-            .row(1)
-            .column(3)
-            .isSpace(false)
-            .tier("VIP")
-            .build());
-        add(Seat
-            .builder()
-            .row(2)
-            .column(1)
-            .isSpace(false)
-            .tier("VIP")
-            .build());
-        add(Seat
-            .builder()
-            .row(2)
-            .column(2)
-            .isSpace(false)
-            .tier("VIP")
-            .build());
-        add(Seat
-            .builder()
-            .row(2)
-            .column(3)
-            .isSpace(false)
-            .tier("VIP")
-            .build());
-      }})
-      .rows(2)
-      .columns(3)
-      .capacity(6)
-      .name("Example-layout")
+        add(Seat.builder().row(0).column(0).isSpace(false).tier("VIP").build());
+        add(Seat.builder().row(0).column(1).isSpace(false).tier("VIP").build());
+        add(Seat.builder().row(0).column(2).isSpace(false).tier("VIP").build());
+        add(Seat.builder().row(1).column(0).isSpace(false).tier("VIP").build());
+        add(Seat.builder().row(1).column(1).isSpace(false).tier("VIP").build());
+        add(Seat.builder().row(1).column(2).isSpace(false).tier("VIP").build());
+      }}).rows(2).columns(3).capacity(6).name("Example-layout")
       .screenPosition(ScreenPosition.TOP)
       .build();
 }

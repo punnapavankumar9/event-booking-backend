@@ -6,11 +6,13 @@ import static com.punna.eventcore.fixtures.TestFixtures.SAMPLE_VENUE_DTO;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import com.punna.eventcore.TestUtils;
+import com.punna.eventcore.dto.BookSeatRequestDto;
 import com.punna.eventcore.dto.EventRequestDto;
 import com.punna.eventcore.dto.EventResponseDto;
 import com.punna.eventcore.dto.SeatingLayoutDto;
 import com.punna.eventcore.dto.VenueDto;
 import com.punna.eventcore.model.SeatLocation;
+import java.math.BigDecimal;
 import java.time.Duration;
 import java.util.List;
 import org.junit.jupiter.api.BeforeAll;
@@ -78,20 +80,24 @@ public class EventSeatStateEndpointTests extends EndPointTests {
   @Test
   @Order(1)
   void givenInvalidSeatLocation_whenBook_thenReturnBadRequest() {
-    ProblemDetail responseBody = webClient
-        .post()
-        .uri(seatStateV1Url + "/book")
-        .bodyValue(List.of(SeatLocation
+    BookSeatRequestDto bookSeatRequestDto = BookSeatRequestDto.builder()
+        .amount(BigDecimal.valueOf(498))
+        .seats(List.of(SeatLocation
                 .builder()
-                .row(1)
-                .column(2)
+                .row(0)
+                .column(1)
                 .build(), // valid
             SeatLocation
                 .builder()
-                .row(1)
-                .column(5)
+                .row(0)
+                .column(4)
                 .build()// invalid
         ))
+        .build();
+    ProblemDetail responseBody = webClient
+        .post()
+        .uri(seatStateV1Url + "/book")
+        .bodyValue(bookSeatRequestDto)
         .headers(headers -> TestUtils.setAuthHeader(headers, "punna"))
         .exchange()
         .expectStatus()
@@ -110,13 +116,13 @@ public class EventSeatStateEndpointTests extends EndPointTests {
         .uri(seatStateV1Url + "/block")
         .bodyValue(List.of(SeatLocation
                 .builder()
-                .row(1)
-                .column(2)
+                .row(0)
+                .column(1)
                 .build(), // valid
             SeatLocation
                 .builder()
-                .row(1)
-                .column(5)
+                .row(0)
+                .column(4)
                 .build()// invalid
         ))
         .headers(headers -> TestUtils.setAuthHeader(headers, "punna"))
@@ -137,13 +143,13 @@ public class EventSeatStateEndpointTests extends EndPointTests {
         .uri(seatStateV1Url + "/unblock")
         .bodyValue(List.of(SeatLocation
                 .builder()
-                .row(1)
-                .column(2)
+                .row(0)
+                .column(1)
                 .build(), // valid
             SeatLocation
                 .builder()
-                .row(1)
-                .column(5)
+                .row(0)
+                .column(4)
                 .build()// invalid
         ))
         .headers(headers -> TestUtils.setAuthHeader(headers, "punna"))
@@ -165,13 +171,13 @@ public class EventSeatStateEndpointTests extends EndPointTests {
         .uri(seatStateV1Url + "/block")
         .bodyValue(List.of(SeatLocation
                 .builder()
-                .row(1)
-                .column(2)
+                .row(0)
+                .column(1)
                 .build(), // valid
             SeatLocation
                 .builder()
-                .row(2)
-                .column(3)
+                .row(1)
+                .column(2)
                 .build()// valid
         ))
         .headers(headers -> TestUtils.setAuthHeader(headers, "punna"))
@@ -185,20 +191,23 @@ public class EventSeatStateEndpointTests extends EndPointTests {
   @Test
   @Order(5)
   void givenBlockedSeatLocation_whenBook_thenReturnConflict() {
-    webClient
-        .post()
-        .uri(seatStateV1Url + "/book")
-        .bodyValue(List.of(SeatLocation
+    BookSeatRequestDto bookSeatRequestDto = BookSeatRequestDto.builder()
+        .amount(BigDecimal.valueOf(498))
+        .seats(List.of(SeatLocation
                 .builder()
-                .row(1)
-                .column(1)
+                .row(0)
+                .column(0)
                 .build(), // valid
             SeatLocation
                 .builder()
-                .row(1)
-                .column(2)
+                .row(0)
+                .column(1)
                 .build()// invalid
-        ))
+        )).build();
+    webClient
+        .post()
+        .uri(seatStateV1Url + "/book")
+        .bodyValue(bookSeatRequestDto)
         .headers(headers -> TestUtils.setAuthHeader(headers, "punna"))
         .exchange()
         .expectStatus()
@@ -214,13 +223,13 @@ public class EventSeatStateEndpointTests extends EndPointTests {
         .uri(seatStateV1Url + "/block")
         .bodyValue(List.of(SeatLocation
                 .builder()
-                .row(1)
-                .column(1)
+                .row(0)
+                .column(0)
                 .build(), // valid
             SeatLocation
                 .builder()
-                .row(1)
-                .column(2)
+                .row(0)
+                .column(1)
                 .build()// invalid
         ))
         .headers(headers -> TestUtils.setAuthHeader(headers, "punna"))
@@ -241,13 +250,13 @@ public class EventSeatStateEndpointTests extends EndPointTests {
         .uri(seatStateV1Url + "/unblock")
         .bodyValue(List.of(SeatLocation
                 .builder()
-                .row(1)
-                .column(1)
+                .row(0)
+                .column(0)
                 .build(), // valid
             SeatLocation
                 .builder()
-                .row(1)
-                .column(3)
+                .row(0)
+                .column(2)
                 .build()// open ticket will result in error
         ))
         .headers(headers -> TestUtils.setAuthHeader(headers, "punna"))
@@ -266,17 +275,17 @@ public class EventSeatStateEndpointTests extends EndPointTests {
     webClient
         .post()
         .uri(seatStateV1Url + "/book")
-        .bodyValue(List.of(SeatLocation
+        .bodyValue(new BookSeatRequestDto(BigDecimal.valueOf(498), List.of(SeatLocation
                 .builder()
-                .row(1)
-                .column(1)
+                .row(0)
+                .column(0)
                 .build(), // valid
             SeatLocation
                 .builder()
-                .row(1)
-                .column(3)
-                .build()// valid
-        ))
+                .row(0)
+                .column(2)
+                .build() // valid
+        )))
         .headers(headers -> TestUtils.setAuthHeader(headers, "punna"))
         .exchange()
         .expectStatus()
@@ -286,20 +295,24 @@ public class EventSeatStateEndpointTests extends EndPointTests {
   @Test
   @Order(9)
   void givenBookedSeatLocation_whenBook_thenReturnConflict() {
-    webClient
-        .post()
-        .uri(seatStateV1Url + "/book")
-        .bodyValue(List.of(SeatLocation
+    BookSeatRequestDto bookSeatRequestDto = BookSeatRequestDto.builder()
+        .seats(List.of(SeatLocation
                 .builder()
-                .row(1)
-                .column(1)
+                .row(0)
+                .column(0)
                 .build(), // already booked
             SeatLocation
                 .builder()
-                .row(2)
-                .column(3)
+                .row(1)
+                .column(2)
                 .build()// valid
         ))
+        .amount(BigDecimal.valueOf(498))
+        .build();
+    webClient
+        .post()
+        .uri(seatStateV1Url + "/book")
+        .bodyValue(bookSeatRequestDto)
         .headers(headers -> TestUtils.setAuthHeader(headers, "punna"))
         .exchange()
         .expectStatus()
@@ -315,13 +328,13 @@ public class EventSeatStateEndpointTests extends EndPointTests {
         .uri(seatStateV1Url + "/block")
         .bodyValue(List.of(SeatLocation
                 .builder()
-                .row(1)
-                .column(1)
+                .row(0)
+                .column(0)
                 .build(), // already booked
             SeatLocation
                 .builder()
-                .row(2)
-                .column(3)
+                .row(1)
+                .column(2)
                 .build()// valid
         ))
         .headers(headers -> TestUtils.setAuthHeader(headers, "punna"))
@@ -338,13 +351,13 @@ public class EventSeatStateEndpointTests extends EndPointTests {
         .uri(seatStateV1Url + "/block")
         .bodyValue(List.of(SeatLocation
                 .builder()
-                .row(1)
-                .column(1)
+                .row(0)
+                .column(0)
                 .build(), // already booked
             SeatLocation
                 .builder()
-                .row(2)
-                .column(3)
+                .row(1)
+                .column(2)
                 .build()// valid
         ))
         .headers(headers -> TestUtils.setAuthHeader(headers, "punna"))
