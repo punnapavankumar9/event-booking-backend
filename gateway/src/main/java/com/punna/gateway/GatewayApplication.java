@@ -26,6 +26,9 @@ public class GatewayApplication {
             .uri("lb://ORDER-SERVICE"))
         .route("event-catalog", p -> p.path("/api/v*/movies/**").filters(f -> f.filter(authFilter))
             .uri("lb://EVENT-CATALOG-SERVICE"))
+        .route("payment-service",
+            p -> p.path("/api/v1/event-orders").filters(f -> f.filter(authFilter))
+                .uri("lb://PAYMENT-SERVICE"))
         .route("event-catalog",
             p -> p.path("/assets/movie-catalog/**").uri("lb://EVENT-CATALOG-SERVICE")).build();
   }
