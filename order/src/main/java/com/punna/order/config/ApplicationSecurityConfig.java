@@ -18,14 +18,11 @@ public class ApplicationSecurityConfig {
   @Bean
   public SecurityFilterChain securityFilterChain(HttpSecurity http,
       PopulateAuthentication populateAuthentication) throws Exception {
-    return http
-        .csrf(AbstractHttpConfigurer::disable)
-        .httpBasic(AbstractHttpConfigurer::disable)
-        .formLogin(AbstractHttpConfigurer::disable)
-        .logout(AbstractHttpConfigurer::disable)
+    return http.csrf(AbstractHttpConfigurer::disable).httpBasic(AbstractHttpConfigurer::disable)
+        .formLogin(AbstractHttpConfigurer::disable).logout(AbstractHttpConfigurer::disable)
         .sessionManagement(AbstractHttpConfigurer::disable)
-        .addFilterAt(populateAuthentication, UsernamePasswordAuthenticationFilter.class)
-        .build();
+        .authorizeHttpRequests(authorizeRequests -> authorizeRequests.anyRequest().authenticated())
+        .addFilterAt(populateAuthentication, UsernamePasswordAuthenticationFilter.class).build();
   }
 
   @Bean
