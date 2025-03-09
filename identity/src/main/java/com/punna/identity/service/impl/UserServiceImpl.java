@@ -8,7 +8,6 @@ import com.punna.identity.exception.UserNameOrEmailExists;
 import com.punna.identity.mapper.UserMapper;
 import com.punna.identity.model.User;
 import com.punna.identity.repository.UserRepository;
-import com.punna.identity.security.JwtService;
 import com.punna.identity.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.punna.commons.exception.EntityNotFoundException;

@@ -1,5 +1,6 @@
 package com.punna.identity.model;
 
+import com.punna.identity.dto.OAuthProvider;
 import jakarta.persistence.CollectionTable;
 import jakarta.persistence.Column;
 import jakarta.persistence.ElementCollection;
@@ -58,4 +59,9 @@ public class User implements UserDetails {
 
   private Instant lastLoginAt;
 
+  // id from providers like google,apple oauth servers
+  private String providerId;
+
+  // provider name such as GOOGLE, APPLE
+  private OAuthProvider provider;
 }

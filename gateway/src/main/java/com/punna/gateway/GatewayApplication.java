@@ -17,7 +17,8 @@ public class GatewayApplication {
   @Bean
   public RouteLocator routes(RouteLocatorBuilder builder, AuthFilter authFilter) {
     return builder.routes()
-        .route("identity-service", p -> p.path("/api/v*/users/**").uri("lb://IDENTITY-SERVICE"))
+        .route("identity-service", p -> p.path("/api/v*/users/**", "/oauth2/authorization/**",
+            "/login/oauth2/code/**").uri("lb://IDENTITY-SERVICE"))
         .route("event-core",
             p -> p.path("/api/v*/venues/**", "/api/v*/events/**", "/api/v*/seating-layout/**",
                     "/api/v1/locations/**")

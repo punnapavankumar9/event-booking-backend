@@ -1,4 +1,4 @@
-package com.punna.identity.security;
+package com.punna.identity.service.impl;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
@@ -23,9 +23,9 @@ public class JwtService {
         SECRET_KEY = Keys.hmacShaKeyFor(key.getBytes());
     }
 
-    public String generateToken(String username) {
+    public String generateToken(String usernameOrEmail) {
         Map<String, String> claims = new HashMap<>();
-        return createToken(claims, username);
+        return createToken(claims, usernameOrEmail);
     }
 
     public String createToken(Map<String, String> claims, String username) {

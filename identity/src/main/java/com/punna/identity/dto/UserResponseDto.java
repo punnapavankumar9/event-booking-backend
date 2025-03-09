@@ -23,4 +23,8 @@ public class UserResponseDto {
   private Instant lastModifiedAt;
 
   private Instant lastLoginAt;
+
+  private String providerId;
+
+  private OAuthProvider provider;
 }
