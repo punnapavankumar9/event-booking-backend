@@ -5,6 +5,17 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: DUMMY
+            client-secret: DUMMY
+            redirect-uri: "http://localhost:8080/login/oauth2/code/google"
+            scope:
+              - profile
+              - email
 application:
   security:
     jwt-secret-key: test-secret-from-test-resource-folder

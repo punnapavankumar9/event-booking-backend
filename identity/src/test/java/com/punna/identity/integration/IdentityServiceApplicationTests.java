@@ -133,13 +133,13 @@ class IdentityServiceApplicationTests extends ContainerBase {
 
   @Test
   @Order(8)
-  void givenNoJwtToken_whenUpdateUser_thenReturnForbidden() {
+  void givenNoJwtToken_whenUpdateUser_thenReturnUnauthorized() {
     UserRequestDto userRequestDto = UserRequestDto.builder().email("invalidEmail")
         .password("shorter") // shorter password
         .build();
     ResponseEntity<String> exchange = restTemplate.exchange(URI.create(usersV1BaseUrl),
         HttpMethod.PATCH, new HttpEntity<>(userRequestDto), String.class);
-    assertThat(exchange.getStatusCode()).isEqualTo(HttpStatus.FORBIDDEN);
+    assertThat(exchange.getStatusCode()).isEqualTo(HttpStatus.UNAUTHORIZED);
   }
 
   @Test
