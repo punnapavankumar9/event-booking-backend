@@ -6,6 +6,7 @@ import com.punna.eventcatalog.service.MovieService;
 import java.io.IOException;
 import java.time.Instant;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.punna.commons.exception.EventApplicationException;
 import org.punna.commons.validation.groups.UpdateGroup;
 import org.springframework.http.HttpStatus;
@@ -25,6 +26,7 @@ import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+@Slf4j
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/movies")
@@ -42,6 +44,8 @@ public class MovieController {
         MovieDto movieDto = objectMapper.readValue(dtoString, MovieDto.class);
         return movieService.create(movieDto, fileParts, posterImageMono);
       } catch (IOException e) {
+        e.printStackTrace();
+        log.error(e.getMessage());
         return Mono.error(new EventApplicationException("Unable to parse movie dto",
             HttpStatus.BAD_REQUEST.value()));
       }

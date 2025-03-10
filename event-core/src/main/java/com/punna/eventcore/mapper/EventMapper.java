@@ -39,7 +39,7 @@ public class EventMapper {
       return null;
     }
     return EventResponseDto.builder().id(event.getId()).name(event.getName())
-        .organizerId(event.getOrganizerId()).eventId(event.getId()).venueId(event.getVenueId())
+        .organizerId(event.getOrganizerId()).eventId(event.getEventId()).venueId(event.getVenueId())
         .additionalDetails(event.getAdditionalDetails())
         .eventDurationDetails(toEventDurationDetailsDto(event.getEventDurationDetails()))
         .createdAt(event.getCreatedAt()).lastModifiedAt(event.getLastModifiedAt())

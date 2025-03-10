@@ -6,6 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="270ad57c-65bc-4f7e-86cf-537bc93322f9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/controller/MovieController.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/controller/MovieController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/controller/EventController.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/controller/EventController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/mapper/EventMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/mapper/EventMapper.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -164,7 +167,7 @@
     "Spring Boot.ConfigServerApplication.executor": "Run",
     "Spring Boot.DiscoveryApplication.executor": "Run",
     "Spring Boot.EventCatalogApplication.executor": "Run",
-    "Spring Boot.EventCoreApplication.executor": "Run",
+    "Spring Boot.EventCoreApplication.executor": "Debug",
     "Spring Boot.GatewayApplication.executor": "Run",
     "Spring Boot.IdentityServiceApplication.executor": "Run",
     "Spring Boot.OrderApplication.executor": "Run",
@@ -373,10 +376,10 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.IdentityServiceApplicationTests" />
-        <item itemvalue="Spring Boot.IdentityServiceApplication" />
         <item itemvalue="Spring Boot.EventCatalogApplication" />
+        <item itemvalue="Spring Boot.IdentityServiceApplication" />
         <item itemvalue="Spring Boot.OrderApplication" />
+        <item itemvalue="JUnit.IdentityServiceApplicationTests" />
         <item itemvalue="JUnit.EventSeatStateEndpointTests" />
       </list>
     </recent_temporary>
@@ -512,7 +515,8 @@
       <workItem from="1741507372190" duration="5323000" />
       <workItem from="1741539171665" duration="12263000" />
       <workItem from="1741552526433" duration="762000" />
-      <workItem from="1741553446948" duration="945000" />
+      <workItem from="1741553446948" duration="1371000" />
+      <workItem from="1741624792739" duration="10094000" />
     </task>
     <servers />
   </component>
@@ -535,35 +539,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/config-server/src/test/java/com/punna/event_booking/config_server/ConfigServerApplicationTests.java</url>
-          <line>66</line>
-          <option name="timeStamp" value="30" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/controller/MovieController.java</url>
-          <line>41</line>
-          <option name="timeStamp" value="32" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/controller/MovieController.java</url>
-          <line>43</line>
-          <option name="timeStamp" value="33" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/service/impl/EventServiceImpl.java</url>
-          <line>196</line>
-          <option name="timeStamp" value="34" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/event-core/src/test/java/com/punna/eventcore/integration/EventEndpointTests.java</url>
-          <line>169</line>
-          <option name="timeStamp" value="35" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo parentTag="org.springframework.http.ResponseEntity" memberName="body" />
