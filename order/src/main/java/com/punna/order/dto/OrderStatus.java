@@ -5,5 +5,6 @@ public enum OrderStatus {
   SUCCEEDED,
   FAILED,
   CANCELLED,
-  PENDING
+  PENDING,
+  TIMEOUT
 }

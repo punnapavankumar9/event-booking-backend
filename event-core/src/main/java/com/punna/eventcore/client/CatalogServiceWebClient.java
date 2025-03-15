@@ -2,8 +2,8 @@ package com.punna.eventcore.client;
 
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
-import org.punna.commons.exception.EntityNotFoundException;
-import org.punna.commons.exception.EventApplicationException;
+import com.punna.commons.exception.EntityNotFoundException;
+import com.punna.commons.exception.EventApplicationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.stereotype.Service;

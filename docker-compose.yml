@@ -66,11 +66,6 @@ services:
     ports:
       - "6650:6650"
       - "8079:8080"
-    volumes:
-      - pulsar_data:/pulsar/data
-      - pulsar_logs:/pulsar/logs
-    environment:
-      PULSAR_MEM: "-Xms512m -Xmx1g -XX:MaxDirectMemorySize=1g"
     networks:
       - event-booking-network
     restart: unless-stopped
@@ -120,8 +115,6 @@ volumes:
   event_pg:
   zookeeper_data:
   kafka_data:
-  pulsar_data:
-  pulsar_logs:
   minio:
     driver: local
     driver_opts:

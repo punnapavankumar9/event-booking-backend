@@ -10,7 +10,7 @@ import com.punna.identity.model.User;
 import com.punna.identity.repository.UserRepository;
 import com.punna.identity.service.UserService;
 import lombok.RequiredArgsConstructor;
-import org.punna.commons.exception.EntityNotFoundException;
+import com.punna.commons.exception.EntityNotFoundException;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;

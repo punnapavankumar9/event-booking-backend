@@ -3,7 +3,7 @@ package com.punna.eventbooking.payment.controller;
 import com.punna.eventbooking.payment.dto.EventOrderReqDto;
 import com.punna.eventbooking.payment.dto.EventOrderResDto;
 import com.punna.eventbooking.payment.service.EventOrderService;
-import org.punna.commons.validation.groups.CreateGroup;
+import com.punna.commons.validation.groups.CreateGroup;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

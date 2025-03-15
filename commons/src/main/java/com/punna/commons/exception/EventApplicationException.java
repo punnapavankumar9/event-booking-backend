@@ -1,4 +1,4 @@
-package org.punna.commons.exception;
+package com.punna.commons.exception;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

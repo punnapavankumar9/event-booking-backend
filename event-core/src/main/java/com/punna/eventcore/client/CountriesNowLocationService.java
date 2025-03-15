@@ -3,7 +3,7 @@ package com.punna.eventcore.client;
 import jakarta.annotation.PostConstruct;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
-import org.punna.commons.exception.EventApplicationException;
+import com.punna.commons.exception.EventApplicationException;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Flux;

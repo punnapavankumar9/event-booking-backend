@@ -1,4 +1,4 @@
-package com.punna.order.dto.kafka;
+package com.punna.commons.eventing.events.kafka;
 
 import lombok.Builder;
 

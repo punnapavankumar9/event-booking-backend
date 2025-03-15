@@ -1,19 +1,21 @@
 package com.punna.order.service.impl;
 
-import static com.punna.order.config.KafkaConfig.ORDER_CANCELLED_TOPIC;
-import static com.punna.order.config.KafkaConfig.ORDER_CREATED_TOPIC;
-import static com.punna.order.config.KafkaConfig.ORDER_SUCCESS_TOPIC;
-import static com.punna.order.config.KafkaConfig.ORDER_TIMEOUT_TOPIC;
+import static com.punna.commons.Constants.ORDER_CANCELLED_TOPIC;
+import static com.punna.commons.Constants.ORDER_CREATED_TOPIC;
+import static com.punna.commons.Constants.ORDER_FAILED_TOPIC;
+import static com.punna.commons.Constants.ORDER_SUCCESS_TOPIC;
 
-import com.punna.order.config.KafkaConfig;
-import com.punna.order.config.KafkaConfig.OrderEvents;
-import com.punna.order.dto.kafka.OrderCancelledEvent;
-import com.punna.order.dto.kafka.OrderCreatedEvent;
-import com.punna.order.dto.kafka.OrderFailedEvent;
-import com.punna.order.dto.kafka.OrderSuccessEvent;
-import com.punna.order.dto.kafka.OrderTimeoutEvent;
+import com.punna.commons.Constants;
+import com.punna.commons.Constants.OrderEvents;
+import com.punna.commons.eventing.events.kafka.OrderCancelledEvent;
+import com.punna.commons.eventing.events.kafka.OrderCreatedEvent;
+import com.punna.commons.eventing.events.kafka.OrderFailedEvent;
+import com.punna.commons.eventing.events.kafka.OrderSuccessEvent;
+import com.punna.commons.eventing.events.kafka.UnblockTicketsEvent;
 import com.punna.order.model.Order;
+import com.punna.order.model.SeatLocation;
 import com.punna.order.service.OrderEventingService;
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -52,7 +54,7 @@ public class KafkaOrderEventingService implements OrderEventingService {
         .build();
 
     CompletableFuture<SendResult<String, Object>> future = kafkaTemplate.send(
-        KafkaConfig.ORDER_FAILED_TOPIC, OrderEvents.ORDER_FAILED, orderFailedEvent);
+        ORDER_FAILED_TOPIC, OrderEvents.ORDER_FAILED, orderFailedEvent);
 
     future.thenAccept((result) -> {
       log.info("Order failed event: {}", orderFailedEvent);
@@ -63,30 +65,9 @@ public class KafkaOrderEventingService implements OrderEventingService {
   }
 
   @Override
-  public void sendOrderTimeoutEvent(String orderId) {
-    OrderTimeoutEvent orderTimeoutEvent = OrderTimeoutEvent.builder().id(orderId).build();
-
-    CompletableFuture<SendResult<String, Object>> future = kafkaTemplate.send(
-        ORDER_TIMEOUT_TOPIC, OrderEvents.ORDER_TIMEOUT, orderTimeoutEvent);
-    future.thenAccept((result) -> {
-      log.info("Order timeout event: {}", orderTimeoutEvent);
-    }).exceptionally(ex -> {
-      log.error("Order timeout event failed", ex);
-      return null;
-    });
-  }
-
-  @Override
   public void sendOrderSuccessEvent(Order order) {
     OrderSuccessEvent orderSuccessEvent = OrderSuccessEvent.builder()
         .id(order.getId())
-        .info(order.getInfo())
-        .eventId(order.getEventId())
-        .amount(order.getAmount())
-        .eventType(order.getEventType())
-        .eventOrderId(order.getEventOrderId())
-        .createdBy(order.getCreatedBy())
-        .createdDate(order.getCreatedDate())
         .build();
 
     CompletableFuture<SendResult<String, Object>> future = kafkaTemplate.send(
@@ -103,13 +84,6 @@ public class KafkaOrderEventingService implements OrderEventingService {
   public void sendOrderCanceledEvent(Order order) {
     OrderCancelledEvent orderCancelledEvent = OrderCancelledEvent.builder()
         .id(order.getId())
-        .info(order.getInfo())
-        .eventId(order.getEventId())
-        .amount(order.getAmount())
-        .eventType(order.getEventType())
-        .eventOrderId(order.getEventOrderId())
-        .createdBy(order.getCreatedBy())
-        .createdDate(order.getCreatedDate())
         .build();
     CompletableFuture<SendResult<String, Object>> future = kafkaTemplate.send(
         ORDER_CANCELLED_TOPIC, OrderEvents.ORDER_CANCELLED, orderCancelledEvent);
@@ -118,6 +92,25 @@ public class KafkaOrderEventingService implements OrderEventingService {
       log.info("Order cancel event: {}", orderCancelledEvent);
     }).exceptionally(ex -> {
       log.error("Order cancel event failed", ex);
+      return null;
+    });
+  }
+
+  @Override
+  public void sendUnblockTicketsEvent(List<SeatLocation> seatLocations) {
+    List<com.punna.commons.dto.SeatLocation> seats = seatLocations.stream().map(
+        seat -> com.punna.commons.dto.SeatLocation.builder().row(seat.row()).column(seat.column())
+            .build()).toList();
+
+    UnblockTicketsEvent unblockTicketsEvent = UnblockTicketsEvent.builder()
+        .seatLocations(seats)
+        .build();
+    CompletableFuture<SendResult<String, Object>> future = kafkaTemplate.send(
+        Constants.UNBLOCK_TICKET_TOPIC, unblockTicketsEvent);
+    future.thenAccept((result) -> {
+      log.info("Unblock tickets event: {}", unblockTicketsEvent);
+    }).exceptionally(ex -> {
+      log.error("Unblock tickets event failed", ex);
       return null;
     });
   }

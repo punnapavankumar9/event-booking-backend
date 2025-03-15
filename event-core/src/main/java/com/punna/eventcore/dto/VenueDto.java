@@ -11,8 +11,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.punna.commons.validation.groups.CreateGroup;
-import org.punna.commons.validation.groups.UpdateGroup;
+import com.punna.commons.validation.groups.CreateGroup;
+import com.punna.commons.validation.groups.UpdateGroup;
 
 @Builder
 @AllArgsConstructor

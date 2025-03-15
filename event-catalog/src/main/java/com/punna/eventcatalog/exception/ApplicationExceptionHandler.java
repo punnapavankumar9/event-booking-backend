@@ -2,9 +2,9 @@ package com.punna.eventcatalog.exception;
 
 import jakarta.validation.ConstraintViolationException;
 import lombok.extern.slf4j.Slf4j;
-import org.punna.commons.exception.EntityNotFoundException;
-import org.punna.commons.exception.EventApplicationException;
-import org.punna.commons.exception.ProblemDetail;
+import com.punna.commons.exception.EntityNotFoundException;
+import com.punna.commons.exception.EventApplicationException;
+import com.punna.commons.exception.ProblemDetail;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.AccessDeniedException;

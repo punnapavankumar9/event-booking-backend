@@ -2,6 +2,8 @@ package com.punna.order.service;
 
 
 import com.punna.order.model.Order;
+import com.punna.order.model.SeatLocation;
+import java.util.List;
 
 public interface OrderEventingService {
 
@@ -9,10 +11,10 @@ public interface OrderEventingService {
 
   void sendOrderFailedEvent(String orderId);
 
-  void sendOrderTimeoutEvent(String orderId);
-
   void sendOrderSuccessEvent(Order order);
 
   void sendOrderCanceledEvent(Order order);
+
+  void sendUnblockTicketsEvent(List<SeatLocation> seatLocations);
 }
 

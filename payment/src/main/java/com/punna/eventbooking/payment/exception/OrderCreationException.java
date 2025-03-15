@@ -1,6 +1,6 @@
 package com.punna.eventbooking.payment.exception;
 
-import org.punna.commons.exception.EventApplicationException;
+import com.punna.commons.exception.EventApplicationException;
 
 public class OrderCreationException extends EventApplicationException {
 

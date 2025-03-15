@@ -2,8 +2,8 @@ package com.punna.eventbooking.payment.exception;
 
 import java.util.Map;
 import lombok.extern.slf4j.Slf4j;
-import org.punna.commons.exception.EntityNotFoundException;
-import org.punna.commons.exception.ProblemDetail;
+import com.punna.commons.exception.EntityNotFoundException;
+import com.punna.commons.exception.ProblemDetail;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.validation.FieldError;

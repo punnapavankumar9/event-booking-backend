@@ -17,4 +17,6 @@ public interface OrderService {
   OrderResDto markOrderAsSuccess(String id, String paymentId);
 
   OrderResDto markPaymentAsFailure(String id, String paymentId);
+
+  void validatePaymentCompletion(String id);
 }

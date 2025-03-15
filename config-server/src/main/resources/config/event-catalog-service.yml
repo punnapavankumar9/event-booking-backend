@@ -10,8 +10,8 @@ application:
   storage: minio
 minio:
   endpoint: http://localhost:9000
-  accessKey: igxzPjRklf1IqP5yA2JL
-  secretKey: DfYjH4fBSrTPIlGcXbjwmf5t1kDxN8vKMO5a3VA7
+  accessKey: ${MINIO_ACCESS_KEY}
+  secretKey: ${MINIO_SECRET_KEY}
   bucket: event
 server:
   port: 8085

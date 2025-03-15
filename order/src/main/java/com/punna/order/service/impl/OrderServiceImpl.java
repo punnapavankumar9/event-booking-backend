@@ -1,5 +1,7 @@
 package com.punna.order.service.impl;
 
+import com.punna.commons.exception.EntityNotFoundException;
+import com.punna.commons.exception.EventApplicationException;
 import com.punna.order.client.EventCoreFeignClient;
 import com.punna.order.client.PaymentFeignClient;
 import com.punna.order.dto.BookSeatRequestDto;
@@ -15,8 +17,6 @@ import com.punna.order.service.OrderEventingService;
 import com.punna.order.service.OrderService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.punna.commons.exception.EntityNotFoundException;
-import org.punna.commons.exception.EventApplicationException;
 import org.springframework.stereotype.Service;
 
 @Slf4j
@@ -64,8 +64,6 @@ public class OrderServiceImpl implements OrderService {
         try {
           order.setEventOrderId(orderInPayment.getId());
           order = orderRepository.save(order);
-          // TODO independent delay service will wait 10 min and then will check order status if not marked as
-          //  successful or failed or cancelled will unblock tickets and initiates refund if any payment is made
           orderEventingService.sendOrderCreatedEvent(order.getId());
           return OrderMapper.toDto(order, orderInPayment.getRazorPayOrderId());
 
@@ -81,7 +79,7 @@ public class OrderServiceImpl implements OrderService {
         throw new EventApplicationException("Unable to create order", 500);
       }
     } catch (Exception e) {
-      // TODO (Event) unblock tickets.
+      orderEventingService.sendUnblockTicketsEvent(orderReqDto.info().getSeats());
       log.error(e.getMessage());
       throw new EventApplicationException("Unable to create order", 500);
     }
@@ -114,6 +112,7 @@ public class OrderServiceImpl implements OrderService {
     Order savedOrder = orderRepository.save(order);
     // TODO will be listened by the mail service and will send mail and payment service will initiate refund
     orderEventingService.sendOrderCanceledEvent(order);
+    orderEventingService.sendUnblockTicketsEvent(order.getInfo().getSeats());
     return OrderMapper.toDto(savedOrder);
   }
 
@@ -133,7 +132,19 @@ public class OrderServiceImpl implements OrderService {
     order.setOrderStatus(OrderStatus.FAILED);
     order = orderRepository.save(order);
     // TODO Trigger Kafka event to update in payment service
+    orderEventingService.sendUnblockTicketsEvent(order.getInfo().getSeats());
     orderEventingService.sendOrderFailedEvent(order.getId());
     return OrderMapper.toDto(order);
+  }
+
+  @Override
+  public void validatePaymentCompletion(String id) {
+    Order order = findOrderByIdInternal(id);
+    if (order.getOrderStatus() == OrderStatus.PENDING) {
+      order.setOrderStatus(OrderStatus.TIMEOUT);
+      // TODO_optional verify with payment service.
+      orderRepository.save(order);
+      orderEventingService.sendUnblockTicketsEvent(order.getInfo().getSeats());
+    }
   }
 }

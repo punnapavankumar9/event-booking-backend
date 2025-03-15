@@ -1,6 +1,6 @@
 package com.punna.identity.exception;
 
-import org.punna.commons.exception.EventApplicationException;
+import com.punna.commons.exception.EventApplicationException;
 
 public class UserNameOrEmailExists extends EventApplicationException {
     public UserNameOrEmailExists(String usernameOrEmail, boolean isUsername) {

@@ -4,7 +4,7 @@ import com.punna.eventcore.dto.SeatingLayoutDto;
 import com.punna.eventcore.dto.VenueDto;
 import com.punna.eventcore.fixtures.TestFixtures;
 import org.junit.jupiter.api.*;
-import org.punna.commons.exception.ProblemDetail;
+import com.punna.commons.exception.ProblemDetail;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
