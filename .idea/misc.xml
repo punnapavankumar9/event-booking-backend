@@ -7,6 +7,7 @@
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/order/pom.xml" />
         <option value="$PROJECT_DIR$/payment/pom.xml" />
+        <option value="$PROJECT_DIR$/event-delay-engine/pom.xml" />
       </list>
     </option>
   </component>

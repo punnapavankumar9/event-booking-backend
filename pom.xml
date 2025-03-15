@@ -1,88 +1,92 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
 
-    <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.4.1</version>
-        <relativePath/> <!-- lookup parent from repository -->
-    </parent>
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>3.4.1</version>
+    <relativePath/> <!-- lookup parent from repository -->
+  </parent>
 
-    <groupId>com.punna.eventbooking</groupId>
-    <artifactId>bom</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>event-booking</name>
-    <description>Distributed Event Booking Platform</description>
-    <packaging>pom</packaging>
+  <groupId>com.punna.eventbooking</groupId>
+  <artifactId>bom</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>event-booking</name>
+  <description>Distributed Event Booking Platform</description>
+  <packaging>pom</packaging>
 
-    <modules>
-        <module>commons</module>
-        <module>config-server</module>
-        <module>discovery</module>
-        <module>gateway</module>
-        <module>event-core</module>
-        <module>event-catalog</module>
-        <module>identity</module>
-    </modules>
+  <modules>
+    <module>commons</module>
+    <module>config-server</module>
+    <module>discovery</module>
+    <module>gateway</module>
+    <module>event-core</module>
+    <module>event-catalog</module>
+    <module>identity</module>
+    <module>order</module>
+    <module>payment</module>
+    <module>event-delay-engine</module>
+  </modules>
 
-    <developers>
-        <developer>
-            <name>Pavan Kumar Punna</name>
-            <email>pavankumar.punna@outlook.com</email>
-        </developer>
-    </developers>
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-dependencies</artifactId>
-                <version>${spring-cloud.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.springdoc</groupId>
-                <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
-                <version>2.7.0</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springdoc</groupId>
-                <artifactId>springdoc-openapi-starter-webflux-ui</artifactId>
-                <version>2.7.0</version>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
-    <properties>
-        <java.version>21</java.version>
-        <spring-cloud.version>2024.0.0</spring-cloud.version>
-    </properties>
+  <developers>
+    <developer>
+      <name>Pavan Kumar Punna</name>
+      <email>pavankumar.punna@outlook.com</email>
+    </developer>
+  </developers>
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-dependencies</artifactId>
+        <version>${spring-cloud.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.springdoc</groupId>
+        <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+        <version>2.7.0</version>
+      </dependency>
+      <dependency>
+        <groupId>org.springdoc</groupId>
+        <artifactId>springdoc-openapi-starter-webflux-ui</artifactId>
+        <version>2.7.0</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+  <properties>
+    <java.version>21</java.version>
+    <spring-cloud.version>2024.0.0</spring-cloud.version>
+  </properties>
 
-    <build>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.jacoco</groupId>
-                    <artifactId>jacoco-maven-plugin</artifactId>
-                    <version>0.8.12</version>
-                    <executions>
-                        <execution>
-                            <id>prepare-agent</id>
-                            <goals>
-                                <goal>prepare-agent</goal>
-                            </goals>
-                        </execution>
-                        <execution>
-                            <id>report</id>
-                            <phase>verify</phase>
-                            <goals>
-                                <goal>report</goal>
-                            </goals>
-                        </execution>
-                    </executions>
-                </plugin>
-            </plugins>
-        </pluginManagement>
-    </build>
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.jacoco</groupId>
+          <artifactId>jacoco-maven-plugin</artifactId>
+          <version>0.8.12</version>
+          <executions>
+            <execution>
+              <id>prepare-agent</id>
+              <goals>
+                <goal>prepare-agent</goal>
+              </goals>
+            </execution>
+            <execution>
+              <id>report</id>
+              <phase>verify</phase>
+              <goals>
+                <goal>report</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
 
 </project>

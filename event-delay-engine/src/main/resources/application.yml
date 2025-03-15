@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: event-delay-engine
+  profiles:
+    active: kafka,pulsar
+  config:
+    import: optional:configserver:http://localhost:8081

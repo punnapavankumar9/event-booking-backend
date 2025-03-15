@@ -1,0 +1,4 @@
+spring:
+  pulsar:
+    client:
+      service-url: pulsar://localhost:6650
