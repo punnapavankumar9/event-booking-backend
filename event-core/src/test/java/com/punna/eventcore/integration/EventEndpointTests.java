@@ -321,7 +321,7 @@ public class EventEndpointTests extends EndPointTests {
         .getResponseBody();
 
     assertThat(responseBody).isNotNull();
-    // should rollback the first event
+    // should roll back the first event
     assertThat(responseBody).hasSize(2);
   }
 

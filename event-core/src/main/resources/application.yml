@@ -1,5 +1,7 @@
 spring:
   application:
     name: event-core-service
+  profiles:
+    active: kafka
   config:
     import: optional:configserver:http://localhost:8081

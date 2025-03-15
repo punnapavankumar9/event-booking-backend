@@ -6,7 +6,8 @@ import lombok.Builder;
 
 @Builder
 public record UnblockTicketsEvent(
-    List<SeatLocation> seatLocations
+    List<SeatLocation> seatLocations,
+    String id
 ) {
 
 }

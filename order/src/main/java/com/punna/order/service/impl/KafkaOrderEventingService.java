@@ -97,16 +97,17 @@ public class KafkaOrderEventingService implements OrderEventingService {
   }
 
   @Override
-  public void sendUnblockTicketsEvent(List<SeatLocation> seatLocations) {
+  public void sendUnblockTicketsEvent(List<SeatLocation> seatLocations, String eventCoreId) {
     List<com.punna.commons.dto.SeatLocation> seats = seatLocations.stream().map(
         seat -> com.punna.commons.dto.SeatLocation.builder().row(seat.row()).column(seat.column())
             .build()).toList();
 
     UnblockTicketsEvent unblockTicketsEvent = UnblockTicketsEvent.builder()
         .seatLocations(seats)
+        .id(eventCoreId)
         .build();
     CompletableFuture<SendResult<String, Object>> future = kafkaTemplate.send(
-        Constants.UNBLOCK_TICKET_TOPIC, unblockTicketsEvent);
+        Constants.UNBLOCK_TICKET_TOPIC, OrderEvents.TICKETS_UNBLOCK, unblockTicketsEvent);
     future.thenAccept((result) -> {
       log.info("Unblock tickets event: {}", unblockTicketsEvent);
     }).exceptionally(ex -> {

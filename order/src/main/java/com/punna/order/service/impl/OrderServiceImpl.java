@@ -79,7 +79,8 @@ public class OrderServiceImpl implements OrderService {
         throw new EventApplicationException("Unable to create order", 500);
       }
     } catch (Exception e) {
-      orderEventingService.sendUnblockTicketsEvent(orderReqDto.info().getSeats());
+      orderEventingService.sendUnblockTicketsEvent(orderReqDto.info().getSeats(),
+          orderReqDto.eventId());
       log.error(e.getMessage());
       throw new EventApplicationException("Unable to create order", 500);
     }
@@ -112,7 +113,7 @@ public class OrderServiceImpl implements OrderService {
     Order savedOrder = orderRepository.save(order);
     // TODO will be listened by the mail service and will send mail and payment service will initiate refund
     orderEventingService.sendOrderCanceledEvent(order);
-    orderEventingService.sendUnblockTicketsEvent(order.getInfo().getSeats());
+    orderEventingService.sendUnblockTicketsEvent(order.getInfo().getSeats(), order.getEventId());
     return OrderMapper.toDto(savedOrder);
   }
 
@@ -132,7 +133,7 @@ public class OrderServiceImpl implements OrderService {
     order.setOrderStatus(OrderStatus.FAILED);
     order = orderRepository.save(order);
     // TODO Trigger Kafka event to update in payment service
-    orderEventingService.sendUnblockTicketsEvent(order.getInfo().getSeats());
+    orderEventingService.sendUnblockTicketsEvent(order.getInfo().getSeats(), order.getEventId());
     orderEventingService.sendOrderFailedEvent(order.getId());
     return OrderMapper.toDto(order);
   }
@@ -141,10 +142,10 @@ public class OrderServiceImpl implements OrderService {
   public void validatePaymentCompletion(String id) {
     Order order = findOrderByIdInternal(id);
     if (order.getOrderStatus() == OrderStatus.PENDING) {
-      order.setOrderStatus(OrderStatus.TIMEOUT);
+      order.setOrderStatus(OrderStatus.FAILED);
       // TODO_optional verify with payment service.
       orderRepository.save(order);
-      orderEventingService.sendUnblockTicketsEvent(order.getInfo().getSeats());
+      orderEventingService.sendUnblockTicketsEvent(order.getInfo().getSeats(), order.getEventId());
     }
   }
 }

@@ -8,7 +8,7 @@
     <artifactId>bom</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <artifactId>identity</artifactId>
+  <artifactId>order</artifactId>
 
   <dependencies>
     <dependency>

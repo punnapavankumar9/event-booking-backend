@@ -1,6 +1,7 @@
 package com.punna.eventcore.integration;
 
 import com.punna.eventcore.TestConfigSettings;
+import org.springframework.kafka.test.context.EmbeddedKafka;
 import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
 import org.testcontainers.containers.Container;
@@ -8,6 +9,7 @@ import org.testcontainers.containers.GenericContainer;
 import org.testcontainers.junit.jupiter.Testcontainers;
 
 @Testcontainers
+@EmbeddedKafka
 public abstract class ContainerBase {
 
   static final GenericContainer<?> mongoContainer = new GenericContainer<>("mongo:latest")
@@ -58,11 +60,5 @@ public abstract class ContainerBase {
     registry.add("spring.data.mongodb.database", () -> TestConfigSettings.dbName);
   }
 
-//    Reactive Mongo and TestContainers are not working well with @Container and having issues with stop
-//    https://github.com/testcontainers/testcontainers-java/issues/4378
-//    @AfterAll
-//    static void cleanUp() {
-//        mongoContainer.stop();
-//    }
 
 }

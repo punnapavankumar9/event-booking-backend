@@ -22,5 +22,4 @@ public class EventApplicationException extends RuntimeException {
         this(message);
         this.status = status;
     }
-
 }

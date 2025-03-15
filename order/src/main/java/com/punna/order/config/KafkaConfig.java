@@ -6,6 +6,7 @@ import static com.punna.commons.Constants.ORDER_CREATED_TOPIC;
 import static com.punna.commons.Constants.ORDER_FAILED_TOPIC;
 import static com.punna.commons.Constants.ORDER_SUCCESS_TOPIC;
 import static com.punna.commons.Constants.ORDER_TIMEOUT_TOPIC;
+import static com.punna.commons.Constants.UNBLOCK_TICKET_TOPIC;
 
 import org.apache.kafka.clients.admin.NewTopic;
 import org.springframework.context.annotation.Bean;
@@ -40,6 +41,14 @@ public class KafkaConfig {
   @Bean
   NewTopic orderTimeoutTopic() {
     return TopicBuilder.name(ORDER_TIMEOUT_TOPIC)
+        .partitions(FIXED_PARTITION_COUNT)
+        .build();
+  }
+
+  @Bean
+  public NewTopic unblockTicketsTopic() {
+    return TopicBuilder
+        .name(UNBLOCK_TICKET_TOPIC)
         .partitions(FIXED_PARTITION_COUNT)
         .build();
   }

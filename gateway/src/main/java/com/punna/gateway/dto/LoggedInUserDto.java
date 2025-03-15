@@ -3,20 +3,20 @@ package com.punna.gateway.dto;
 import java.time.Instant;
 import java.util.List;
 
-public record LoggedInUserDto(String username,
+public record LoggedInUserDto(
+    String username,
 
-                              String email,
+    String email,
 
-                              boolean enabled,
+    boolean enabled,
 
-                              List<String> authorities,
+    List<String> authorities,
 
-                              Instant createdAt,
+    Instant createdAt,
 
-                              Instant lastModifiedAt,
+    Instant lastModifiedAt,
 
-                              Instant lastLoginAt
-
+    Instant lastLoginAt
 ) {
 
 
