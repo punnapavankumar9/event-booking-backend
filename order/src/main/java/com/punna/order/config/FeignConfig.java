@@ -18,7 +18,7 @@ public class FeignConfig {
       ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
       if (attributes != null) {
         HttpServletRequest request = attributes.getRequest();
-
+ 
         String userDetailsHeader = request.getHeader(HEADER_NAME);
         if (userDetailsHeader != null) {
           requestTemplate.header(HEADER_NAME, userDetailsHeader);

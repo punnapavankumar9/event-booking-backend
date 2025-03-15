@@ -5,10 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="270ad57c-65bc-4f7e-86cf-537bc93322f9" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/config-server/src/main/resources/config/application-kafka.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/order/src/main/java/com/punna/order/config/KafkaConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/order/src/main/java/com/punna/order/dto/kafka/OrderCancelledEvent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/order/src/main/java/com/punna/order/dto/kafka/OrderCreatedEvent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/order/src/main/java/com/punna/order/dto/kafka/OrderFailedEvent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/order/src/main/java/com/punna/order/dto/kafka/OrderSuccessEvent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/order/src/main/java/com/punna/order/dto/kafka/OrderTimeoutEvent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/order/src/main/java/com/punna/order/service/OrderEventingService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/order/src/main/java/com/punna/order/service/impl/KafkaOrderEventingService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/controller/MovieController.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-catalog/src/main/java/com/punna/eventcatalog/controller/MovieController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/controller/EventController.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/controller/EventController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/mapper/EventMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/mapper/EventMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/model/SeatingLayout.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/model/SeatingLayout.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/model/Venue.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-core/src/main/java/com/punna/eventcore/model/Venue.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/order/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/order/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/order/src/main/java/com/punna/order/OrderApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/order/src/main/java/com/punna/order/OrderApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/order/src/main/java/com/punna/order/config/FeignConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/order/src/main/java/com/punna/order/config/FeignConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/order/src/main/java/com/punna/order/service/impl/OrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/order/src/main/java/com/punna/order/service/impl/OrderServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/order/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/order/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,8 +37,8 @@
         <option value="Interface" />
         <option value="JUnit5 Test Class" />
         <option value="HTTP Public Environment File" />
-        <option value="Record" />
         <option value="Enum" />
+        <option value="Record" />
         <option value="Class" />
       </list>
     </option>
@@ -98,111 +112,111 @@
     <option name="openDirectoriesWithSingleClick" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "HTTP Request.All in c.executor": "Run",
-    "HTTP Request.All in dump.executor": "Run",
-    "HTTP Request.All in event-core.executor": "Run",
-    "HTTP Request.All in identity.executor": "Run",
-    "HTTP Request.All in main.executor": "Run",
-    "HTTP Request.All in movie-catalog.executor": "Run",
-    "HTTP Request.dump | #1.executor": "Run",
-    "HTTP Request.dump | #6.executor": "Run",
-    "HTTP Request.dump | login as pavan.executor": "Run",
-    "HTTP Request.event-core | create seating-layout 1.executor": "Run",
-    "HTTP Request.event-core | create seating-layout.executor": "Run",
-    "HTTP Request.event-core | schedule movies.executor": "Run",
-    "HTTP Request.generated-requests | #1.executor": "Run",
-    "HTTP Request.generated-requests | #2.executor": "Run",
-    "HTTP Request.identity | login as pavan.executor": "Run",
-    "HTTP Request.main | #1.executor": "Run",
-    "HTTP Request.movie-catalog | create movies#1.executor": "Run",
-    "HTTP Request.movie-catalog | create movies#11.executor": "Run",
-    "HTTP Request.movie-catalog | create movies#17.executor": "Run",
-    "HTTP Request.movie-catalog | create movies.executor": "Run",
-    "HTTP Request.temp | #1.executor": "Run",
-    "JUnit.All in event-catalog (1).executor": "Run",
-    "JUnit.All in event-catalog (2).executor": "Run",
-    "JUnit.All in event-catalog.executor": "Run",
-    "JUnit.All in event-core (1).executor": "Run",
-    "JUnit.All in event-core.executor": "Run",
-    "JUnit.All in gateway.executor": "Run",
-    "JUnit.All in identity.executor": "Run",
-    "JUnit.ConfigServerApplicationTests.executor": "Debug",
-    "JUnit.EventCatalogApplicationTest.executor": "Run",
-    "JUnit.EventCatalogApplicationTest.givenInvalidEventWithId_whenUpdateEvent_thenUpdateEventAndReturn.executor": "Run",
-    "JUnit.EventCatalogApplicationTest.givenInvalidEvent_whenCreateEvent_thenReturnBadResultWithErrors.executor": "Debug",
-    "JUnit.EventCatalogApplicationTest.givenNonExistingEvent_whenUpdatingEvent_thenReturnBadRequestWithErrors.executor": "Run",
-    "JUnit.EventEndpointTests,givenValidEventsWithNonAdmin_WhenCreate_thenReturnCreated and 1 more.executor": "Debug",
-    "JUnit.EventEndpointTests.executor": "Run",
-    "JUnit.EventEndpointTests.giveNonAdminUser_whenDeleteEvent_thenReturnUnAuthorized.executor": "Run",
-    "JUnit.EventEndpointTests.givenOverlappingEvents_whenCreate_thenReturnBadRequestWithErrors.executor": "Run",
-    "JUnit.EventEndpointTests.givenValidEventsWithNonAdmin_WhenCreate_thenReturnCreated.executor": "Run",
-    "JUnit.EventSeatStateEndpointTests.executor": "Run",
-    "JUnit.EventSeatStateEndpointTests.givenInvalidSeatLocation_whenBook_thenReturnBadRequest.executor": "Debug",
-    "JUnit.IdentityServiceApplicationTests.executor": "Run",
-    "JUnit.IdentityServiceApplicationTests.givenInvalidPassword_whenLoggingUser_thenReturnNotFound.executor": "Run",
-    "JUnit.IdentityServiceApplicationTests.givenInvalidUser_whenCreatingUser_thenReturnBadRequest.executor": "Run",
-    "JUnit.IdentityServiceApplicationTests.givenValidUser_whenCreatingUser_thenCreateAndReturnUser.executor": "Debug",
-    "JUnit.SeatingArrangementEndpointTests.executor": "Run",
-    "JUnit.SeatingLayoutEndpointTests.executor": "Run",
-    "JUnit.VenueEndpointTests.executor": "Run",
-    "JUnit.VenueEndpointTests.givenInvalidVenue_whenCreatingVenue_thenShouldReturnBadRequest.executor": "Debug",
-    "Maven.bom [clean].executor": "Run",
-    "Maven.bom [install].executor": "Run",
-    "Maven.bom [package].executor": "Run",
-    "Maven.bom [test].executor": "Run",
-    "Maven.event-catalog [install].executor": "Run",
-    "Maven.event-catalog [test].executor": "Run",
-    "Maven.event-core [test].executor": "Run",
-    "Maven.identity [test].executor": "Run",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Spring Boot.ConfigServerApplication.executor": "Run",
-    "Spring Boot.DiscoveryApplication.executor": "Run",
-    "Spring Boot.EventCatalogApplication.executor": "Run",
-    "Spring Boot.EventCoreApplication.executor": "Debug",
-    "Spring Boot.GatewayApplication.executor": "Run",
-    "Spring Boot.IdentityServiceApplication.executor": "Run",
-    "Spring Boot.OrderApplication.executor": "Run",
-    "Spring Boot.PaymentApplication.executor": "Run",
-    "com.codeium.enabled": "true",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "database.data.extractors.current.export.id": "JSON-Groovy.json.groovy",
-    "database.data.extractors.current.id": "JSON-Groovy.json.groovy",
-    "deletionFromPopupRequiresConfirmation": "false",
-    "git-widget-placeholder": "master",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/pavankumarpunna/pavan/codes/github/event-booking-backend/config-server/src/main/resources/config",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "npm.start.executor": "Run",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.18901303",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "run.configurations.included.in.services": "true",
-    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable",
-    "ts.external.directory.path": "/Applications/IntelliJ IDEA.app/Contents/plugins/javascript-plugin/jsLanguageServicesImpl/external",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;HTTP Request.All in c.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.All in dump.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.All in event-core.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.All in identity.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.All in main.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.All in movie-catalog.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.dump | #1.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.dump | #6.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.dump | login as pavan.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.event-core | create seating-layout 1.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.event-core | create seating-layout.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.event-core | schedule movies.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.generated-requests | #1.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.generated-requests | #2.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.identity | login as pavan.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.main | #1.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.movie-catalog | create movies#1.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.movie-catalog | create movies#11.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.movie-catalog | create movies#17.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.movie-catalog | create movies.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.temp | #1.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.All in event-catalog (1).executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.All in event-catalog (2).executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.All in event-catalog.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.All in event-core (1).executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.All in event-core.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.All in gateway.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.All in identity.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ConfigServerApplicationTests.executor&quot;: &quot;Debug&quot;,
+    &quot;JUnit.EventCatalogApplicationTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.EventCatalogApplicationTest.givenInvalidEventWithId_whenUpdateEvent_thenUpdateEventAndReturn.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.EventCatalogApplicationTest.givenInvalidEvent_whenCreateEvent_thenReturnBadResultWithErrors.executor&quot;: &quot;Debug&quot;,
+    &quot;JUnit.EventCatalogApplicationTest.givenNonExistingEvent_whenUpdatingEvent_thenReturnBadRequestWithErrors.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.EventEndpointTests,givenValidEventsWithNonAdmin_WhenCreate_thenReturnCreated and 1 more.executor&quot;: &quot;Debug&quot;,
+    &quot;JUnit.EventEndpointTests.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.EventEndpointTests.giveNonAdminUser_whenDeleteEvent_thenReturnUnAuthorized.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.EventEndpointTests.givenOverlappingEvents_whenCreate_thenReturnBadRequestWithErrors.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.EventEndpointTests.givenValidEventsWithNonAdmin_WhenCreate_thenReturnCreated.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.EventSeatStateEndpointTests.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.EventSeatStateEndpointTests.givenInvalidSeatLocation_whenBook_thenReturnBadRequest.executor&quot;: &quot;Debug&quot;,
+    &quot;JUnit.IdentityServiceApplicationTests.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.IdentityServiceApplicationTests.givenInvalidPassword_whenLoggingUser_thenReturnNotFound.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.IdentityServiceApplicationTests.givenInvalidUser_whenCreatingUser_thenReturnBadRequest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.IdentityServiceApplicationTests.givenValidUser_whenCreatingUser_thenCreateAndReturnUser.executor&quot;: &quot;Debug&quot;,
+    &quot;JUnit.SeatingArrangementEndpointTests.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.SeatingLayoutEndpointTests.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.VenueEndpointTests.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.VenueEndpointTests.givenInvalidVenue_whenCreatingVenue_thenShouldReturnBadRequest.executor&quot;: &quot;Debug&quot;,
+    &quot;Maven.bom [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.bom [install].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.bom [package].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.bom [test].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.event-catalog [install].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.event-catalog [test].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.event-core [test].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.identity [test].executor&quot;: &quot;Run&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Spring Boot.ConfigServerApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.DiscoveryApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.EventCatalogApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.EventCoreApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.GatewayApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.IdentityServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.OrderApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.PaymentApplication.executor&quot;: &quot;Run&quot;,
+    &quot;com.codeium.enabled&quot;: &quot;true&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;database.data.extractors.current.export.id&quot;: &quot;JSON-Groovy.json.groovy&quot;,
+    &quot;database.data.extractors.current.id&quot;: &quot;JSON-Groovy.json.groovy&quot;,
+    &quot;deletionFromPopupRequiresConfirmation&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/pavankumarpunna/pavan/codes/github/event-booking-backend/config-server/src/main/resources/config&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;npm.start.executor&quot;: &quot;Run&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.18901303&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;run.configurations.included.in.services&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.github.ui.GithubSettingsConfigurable&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Applications/IntelliJ IDEA.app/Contents/plugins/javascript-plugin/jsLanguageServicesImpl/external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "postgresql",
-      "mongo"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;,
+      &quot;mongo&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="ReactorSettings">
     <option name="notificationShown" value="true" />
   </component>
@@ -235,11 +249,11 @@
       <recent name="com.punna.eventcore.dto.projections" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.punna.order.dto.kafka" />
       <recent name="com.punna.order.dto" />
       <recent name="com.punna.order.exception" />
       <recent name="com.punna.eventbooking.payment.dto" />
       <recent name="com.punna.eventbooking.payment.security" />
-      <recent name="com.punna.eventcatalog.dto" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -376,9 +390,9 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Spring Boot.EventCatalogApplication" />
-        <item itemvalue="Spring Boot.IdentityServiceApplication" />
         <item itemvalue="Spring Boot.OrderApplication" />
+        <item itemvalue="Spring Boot.IdentityServiceApplication" />
+        <item itemvalue="Spring Boot.EventCatalogApplication" />
         <item itemvalue="JUnit.IdentityServiceApplicationTests" />
         <item itemvalue="JUnit.EventSeatStateEndpointTests" />
       </list>
@@ -516,7 +530,9 @@
       <workItem from="1741539171665" duration="12263000" />
       <workItem from="1741552526433" duration="762000" />
       <workItem from="1741553446948" duration="1371000" />
-      <workItem from="1741624792739" duration="10094000" />
+      <workItem from="1741624792739" duration="10560000" />
+      <workItem from="1741711149229" duration="12042000" />
+      <workItem from="1741969863483" duration="14048000" />
     </task>
     <servers />
   </component>

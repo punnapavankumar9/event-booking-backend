@@ -11,42 +11,80 @@ import com.punna.order.dto.OrderStatus;
 import com.punna.order.mapper.OrderMapper;
 import com.punna.order.model.Order;
 import com.punna.order.repository.OrderRepository;
+import com.punna.order.service.OrderEventingService;
 import com.punna.order.service.OrderService;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.punna.commons.exception.EntityNotFoundException;
+import org.punna.commons.exception.EventApplicationException;
 import org.springframework.stereotype.Service;
 
+@Slf4j
 @Service
+@RequiredArgsConstructor
 public class OrderServiceImpl implements OrderService {
 
   private final OrderRepository orderRepository;
   private final EventCoreFeignClient eventCoreFeignClient;
   private final PaymentFeignClient paymentFeignClient;
+  private final OrderEventingService orderEventingService;
 
-  public OrderServiceImpl(OrderRepository orderRepository,
-      EventCoreFeignClient eventCoreFeignClient, PaymentFeignClient paymentFeignClient) {
-    this.orderRepository = orderRepository;
-    this.eventCoreFeignClient = eventCoreFeignClient;
-    this.paymentFeignClient = paymentFeignClient;
-  }
 
+  // SAGA:choreography for compensations
+  // SAGA:orchestration for booking
   @Override
   public OrderResDto createOrder(OrderReqDto orderReqDto) {
     BookSeatRequestDto bookSeatRequestDto = BookSeatRequestDto.builder()
         .seats(orderReqDto.info().getSeats()).amount(orderReqDto.amount()).build();
-    eventCoreFeignClient.bookTickets(orderReqDto.eventId(), bookSeatRequestDto);
+    try {
+      eventCoreFeignClient.bookTickets(orderReqDto.eventId(), bookSeatRequestDto);
+    } catch (Exception e) {
+      log.error(e.getMessage());
+      throw new EventApplicationException("Unable to book tickets", 500);
+    }
 
-    Order order = OrderMapper.toEntity(orderReqDto, null, OrderStatus.CREATED);
-    order = orderRepository.save(order);
+    try {
+      Order order = null;
+      try {
+        order = OrderMapper.toEntity(orderReqDto, null, OrderStatus.CREATED);
+        order = orderRepository.save(order);
 
-    EventOrderReqDto eventOrderReqDto = EventOrderReqDto.builder().orderId(order.getId())
-        .amount(order.getAmount()).build();
+        EventOrderReqDto eventOrderReqDto = EventOrderReqDto.builder().orderId(order.getId())
+            .amount(order.getAmount()).build();
 
-    EventOrderResDto orderInPayment = paymentFeignClient.createOrderInPayment(eventOrderReqDto);
+        order.setOrderStatus(OrderStatus.PENDING);
+        EventOrderResDto orderInPayment = null;
+        try {
+          orderInPayment = paymentFeignClient.createOrderInPayment(
+              eventOrderReqDto);
+        } catch (Exception e) {
+          log.error(e.getMessage());
+          throw new EventApplicationException("Unable to create payment", 500);
+        }
+        try {
+          order.setEventOrderId(orderInPayment.getId());
+          order = orderRepository.save(order);
+          // TODO independent delay service will wait 10 min and then will check order status if not marked as
+          //  successful or failed or cancelled will unblock tickets and initiates refund if any payment is made
+          orderEventingService.sendOrderCreatedEvent(order.getId());
+          return OrderMapper.toDto(order, orderInPayment.getRazorPayOrderId());
 
-    order.setOrderStatus(OrderStatus.PENDING);
-    order.setEventOrderId(orderInPayment.getId());
-    order = orderRepository.save(order);
-    return OrderMapper.toDto(order, orderInPayment.getRazorPayOrderId());
+        } catch (Exception e) {
+          // TODO (kafka) delete created payment, or mark it as failed/invalid.
+          throw e;
+        }
+      } catch (Exception e) {
+        if (order != null) {
+          orderRepository.deleteById(order.getId());
+        }
+        log.error(e.getMessage());
+        throw new EventApplicationException("Unable to create order", 500);
+      }
+    } catch (Exception e) {
+      // TODO (Event) unblock tickets.
+      log.error(e.getMessage());
+      throw new EventApplicationException("Unable to create order", 500);
+    }
   }
 
   public Order findOrderByIdInternal(String id) {
@@ -71,9 +109,11 @@ public class OrderServiceImpl implements OrderService {
   @Override
   public OrderResDto cancelOrder(String id) {
     Order order = findOrderByIdInternal(id);
+    // TODO check if order can be cancellable by verify if payment is made and check if event is already started or 30min only left to start
     order.setOrderStatus(OrderStatus.CANCELLED);
     Order savedOrder = orderRepository.save(order);
-    // TODO Trigger kafka event to update in payment service.
+    // TODO will be listened by the mail service and will send mail and payment service will initiate refund
+    orderEventingService.sendOrderCanceledEvent(order);
     return OrderMapper.toDto(savedOrder);
   }
 
@@ -81,15 +121,19 @@ public class OrderServiceImpl implements OrderService {
   public OrderResDto markOrderAsSuccess(String id, String paymentId) {
     Order order = findOrderByIdInternal(id);
     order.setOrderStatus(OrderStatus.SUCCEEDED);
-    // TODO Trigger Kafka event to update in payment service
-    return OrderMapper.toDto(orderRepository.save(order));
+    order = orderRepository.save(order);
+    // TODO Trigger Kafka event to update in payment service and send mail to User.
+    orderEventingService.sendOrderSuccessEvent(order);
+    return OrderMapper.toDto(order);
   }
 
   @Override
   public OrderResDto markPaymentAsFailure(String id, String paymentId) {
     Order order = findOrderByIdInternal(id);
     order.setOrderStatus(OrderStatus.FAILED);
+    order = orderRepository.save(order);
     // TODO Trigger Kafka event to update in payment service
-    return OrderMapper.toDto(orderRepository.save(order));
+    orderEventingService.sendOrderFailedEvent(order.getId());
+    return OrderMapper.toDto(order);
   }
 }

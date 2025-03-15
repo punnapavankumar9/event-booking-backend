@@ -18,6 +18,7 @@ services:
       retries: 30
     volumes:
       - "event_mongo:/data"
+    restart: unless-stopped
 
   postgres:
     container_name: event_pg
@@ -58,6 +59,58 @@ services:
     command: server /data --console-address ":9001"
     restart: unless-stopped
 
+  pulsar:
+    image: apachepulsar/pulsar:latest
+    container_name: pulsar
+    command: bin/pulsar standalone
+    ports:
+      - "6650:6650"
+      - "8079:8080"
+    volumes:
+      - pulsar_data:/pulsar/data
+      - pulsar_logs:/pulsar/logs
+    environment:
+      PULSAR_MEM: "-Xms512m -Xmx1g -XX:MaxDirectMemorySize=1g"
+    networks:
+      - event-booking-network
+    restart: unless-stopped
+
+  zookeeper:
+    image: confluentinc/cp-zookeeper:latest
+    container_name: event_zookeeper
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    ports:
+      - "2181:2181"
+    volumes:
+      - zookeeper_data:/var/lib/zookeeper  # Persistent storage for Zookeeper
+    networks:
+      - event-booking-network
+    restart: unless-stopped
+
+  kafka:
+    image: confluentinc/cp-kafka:latest
+    container_name: event_kafka
+    depends_on:
+      - zookeeper
+    ports:
+      - "9092:9092"
+      - "29092:29092"
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092,PLAINTEXT_INTERNAL://kafka:29092
+      KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:9092,PLAINTEXT_INTERNAL://0.0.0.0:29092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_INTERNAL:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT_INTERNAL
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+    volumes:
+      - kafka_data:/var/lib/kafka  # Persistent storage for Kafka
+    networks:
+      - event-booking-network
+    restart: unless-stopped
+
 networks:
   event-booking-network:
     driver: bridge
@@ -65,6 +118,10 @@ networks:
 volumes:
   event_mongo:
   event_pg:
+  zookeeper_data:
+  kafka_data:
+  pulsar_data:
+  pulsar_logs:
   minio:
     driver: local
     driver_opts:

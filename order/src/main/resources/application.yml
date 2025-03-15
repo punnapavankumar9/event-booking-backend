@@ -1,5 +1,7 @@
 spring:
   application:
     name: order-service
+  profiles:
+    active: kafka
   config:
     import: optional:configserver:http://localhost:8081

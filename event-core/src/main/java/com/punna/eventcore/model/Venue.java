@@ -1,5 +1,6 @@
 package com.punna.eventcore.model;
 
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -22,6 +23,7 @@ public class Venue {
 
     private String description;
 
+    @NotNull
     private Integer capacity;
 
     @CreatedBy

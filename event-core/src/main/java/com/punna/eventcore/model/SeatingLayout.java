@@ -32,4 +32,5 @@ public class SeatingLayout {
   private ScreenPosition screenPosition;
 
   private List<Seat> seats;
+
 }
