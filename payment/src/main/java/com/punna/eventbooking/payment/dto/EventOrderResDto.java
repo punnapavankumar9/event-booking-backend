@@ -16,6 +16,7 @@ public class EventOrderResDto extends EventOrderReqDto {
 
   private OrderStatus orderStatus;
 
-  private String razorPayOrderId;
+  private String paymentIntegratorOrderId;
+
 }
 

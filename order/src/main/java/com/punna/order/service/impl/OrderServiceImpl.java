@@ -65,7 +65,7 @@ public class OrderServiceImpl implements OrderService {
           order.setEventOrderId(orderInPayment.getId());
           order = orderRepository.save(order);
           orderEventingService.sendOrderCreatedEvent(order.getId());
-          return OrderMapper.toDto(order, orderInPayment.getRazorPayOrderId());
+          return OrderMapper.toDto(order, orderInPayment.getPaymentIntegratorOrderId());
 
         } catch (Exception e) {
           // TODO (kafka) delete created payment, or mark it as failed/invalid.
@@ -118,7 +118,16 @@ public class OrderServiceImpl implements OrderService {
   }
 
   @Override
-  public OrderResDto markOrderAsSuccess(String id, String paymentId) {
+  public void validateAndMarkOrderSuccess(String id) {
+    Order order = findOrderByIdInternal(id);
+    if (order.getOrderStatus().equals(OrderStatus.SUCCEEDED)) {
+      return;
+    }
+    orderEventingService.sendOrderSuccessValidationEvent(order.getId());
+  }
+
+  @Override
+  public OrderResDto markOrderAsSuccess(String id) {
     Order order = findOrderByIdInternal(id);
     order.setOrderStatus(OrderStatus.SUCCEEDED);
     order = orderRepository.save(order);

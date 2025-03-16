@@ -1,4 +1,4 @@
-package com.punna.commons.eventing.events.kafka;
+package com.punna.commons.eventing.events.kafka.core;
 
 import com.punna.commons.dto.SeatLocation;
 import java.util.List;

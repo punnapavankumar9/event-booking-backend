@@ -5,6 +5,7 @@ import static com.punna.commons.Constants.ORDER_CANCELLED_TOPIC;
 import static com.punna.commons.Constants.ORDER_CREATED_TOPIC;
 import static com.punna.commons.Constants.ORDER_FAILED_TOPIC;
 import static com.punna.commons.Constants.ORDER_SUCCESS_TOPIC;
+import static com.punna.commons.Constants.ORDER_SUCCESS_VALIDATION_TOPIC;
 import static com.punna.commons.Constants.ORDER_TIMEOUT_TOPIC;
 import static com.punna.commons.Constants.UNBLOCK_TICKET_TOPIC;
 
@@ -18,45 +19,37 @@ public class KafkaConfig {
 
   @Bean
   public NewTopic orderCreatedTopic() {
-    return TopicBuilder.name(ORDER_CREATED_TOPIC)
-        .partitions(FIXED_PARTITION_COUNT)
-        .build();
+    return TopicBuilder.name(ORDER_CREATED_TOPIC).partitions(FIXED_PARTITION_COUNT).build();
   }
 
   @Bean
   NewTopic orderSuccessTopic() {
-    return TopicBuilder.name(ORDER_SUCCESS_TOPIC)
-        .partitions(FIXED_PARTITION_COUNT)
-        .build();
+    return TopicBuilder.name(ORDER_SUCCESS_TOPIC).partitions(FIXED_PARTITION_COUNT).build();
   }
 
   @Bean
   NewTopic orderFailedTopic() {
-    return TopicBuilder
-        .name(ORDER_FAILED_TOPIC)
-        .partitions(FIXED_PARTITION_COUNT)
-        .build();
+    return TopicBuilder.name(ORDER_FAILED_TOPIC).partitions(FIXED_PARTITION_COUNT).build();
   }
 
   @Bean
   NewTopic orderTimeoutTopic() {
-    return TopicBuilder.name(ORDER_TIMEOUT_TOPIC)
-        .partitions(FIXED_PARTITION_COUNT)
-        .build();
+    return TopicBuilder.name(ORDER_TIMEOUT_TOPIC).partitions(FIXED_PARTITION_COUNT).build();
   }
 
   @Bean
   public NewTopic unblockTicketsTopic() {
-    return TopicBuilder
-        .name(UNBLOCK_TICKET_TOPIC)
-        .partitions(FIXED_PARTITION_COUNT)
-        .build();
+    return TopicBuilder.name(UNBLOCK_TICKET_TOPIC).partitions(FIXED_PARTITION_COUNT).build();
   }
 
   @Bean
   NewTopic orderCancelledTopic() {
-    return TopicBuilder.name(ORDER_CANCELLED_TOPIC)
-        .partitions(FIXED_PARTITION_COUNT)
+    return TopicBuilder.name(ORDER_CANCELLED_TOPIC).partitions(FIXED_PARTITION_COUNT).build();
+  }
+
+  @Bean
+  NewTopic orderSuccessValidationTopic() {
+    return TopicBuilder.name(ORDER_SUCCESS_VALIDATION_TOPIC).partitions(FIXED_PARTITION_COUNT)
         .build();
   }
 }

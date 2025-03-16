@@ -38,10 +38,9 @@ public class OrderController {
     return orderService.cancelOrder(id);
   }
 
-  @GetMapping(value = "/payment-success/{id}", params = {"paymentId"})
-  public OrderResDto markOrderAsSuccess(@PathVariable String id, OrderStatus status,
-      @RequestParam String paymentId) {
-    return orderService.markOrderAsSuccess(id, paymentId);
+  @GetMapping(value = "/payment-success/{id}")
+  public void markOrderAsSuccess(@PathVariable String id) {
+    orderService.validateAndMarkOrderSuccess(id);
   }
 
   @GetMapping(value = "/payment-failed/{id}", params = {"paymentId"})

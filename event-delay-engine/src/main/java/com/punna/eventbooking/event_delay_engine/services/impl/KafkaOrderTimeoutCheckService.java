@@ -1,7 +1,7 @@
 package com.punna.eventbooking.event_delay_engine.services.impl;
 
 import com.punna.commons.Constants;
-import com.punna.commons.eventing.events.kafka.OrderTimeoutEvent;
+import com.punna.commons.eventing.events.kafka.order.OrderTimeoutEvent;
 import com.punna.eventbooking.event_delay_engine.services.OrderTimeoutCheckService;
 import java.util.concurrent.CompletableFuture;
 import lombok.RequiredArgsConstructor;

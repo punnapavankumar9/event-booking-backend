@@ -17,9 +17,9 @@ public class EventOrderMapper {
     return EventOrderResDto.builder()
         .orderId(eventOrder.getOrderId())
         .amount(eventOrder.getAmount())
-        .razorPayOrderId(eventOrder.getRazorPayOrderId())
         .orderStatus(eventOrder.getOrderStatus())
         .id(eventOrder.getId())
+        .paymentIntegratorOrderId(eventOrder.getPaymentIntegratorOrderId())
         .build();
   }
 }

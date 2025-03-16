@@ -2,7 +2,7 @@ package com.punna.eventbooking.event_delay_engine.kafka;
 
 
 import com.punna.commons.Constants;
-import com.punna.commons.eventing.events.kafka.OrderCreatedEvent;
+import com.punna.commons.eventing.events.kafka.order.OrderCreatedEvent;
 import com.punna.eventbooking.event_delay_engine.services.OrderDelayService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

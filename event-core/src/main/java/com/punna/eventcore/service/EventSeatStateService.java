@@ -13,7 +13,6 @@ public interface EventSeatStateService {
 
   Mono<Void> unblockSeats(String eventId, List<SeatLocation> seatLocations);
 
-  // TODO only for kafka consumer to rollback eventually
   Mono<Void> unBookSeats(String eventId, List<SeatLocation> seatLocations);
 
   Mono<Boolean> areSelectedSeatsValid(String eventId, List<SeatLocation> seatLocations);

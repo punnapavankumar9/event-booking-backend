@@ -1,7 +1,7 @@
-package com.punna.order.kafka;
+package com.punna.order.kafka.consumer;
 
 import com.punna.commons.Constants;
-import com.punna.commons.eventing.events.kafka.OrderTimeoutEvent;
+import com.punna.commons.eventing.events.kafka.order.OrderTimeoutEvent;
 import com.punna.order.service.OrderService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.kafka.annotation.KafkaListener;

@@ -35,5 +35,5 @@ public class EventOrder {
   private OrderStatus orderStatus;
 
   @NotNull
-  private String razorPayOrderId;
+  private String paymentIntegratorOrderId;
 }

@@ -1,8 +1,7 @@
 package com.punna.eventcore.config;
 
 import com.punna.commons.Constants;
-import com.punna.commons.eventing.events.kafka.UnblockTicketsEvent;
-import com.punna.eventcore.kafka.consumer.UnblockTicketsConsumer;
+import com.punna.commons.eventing.events.kafka.core.UnblockTicketsEvent;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
@@ -12,7 +11,6 @@ import org.apache.kafka.common.serialization.StringDeserializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.support.serializer.JsonDeserializer;
-import org.springframework.stereotype.Service;
 import reactor.kafka.receiver.KafkaReceiver;
 import reactor.kafka.receiver.ReceiverOptions;
 

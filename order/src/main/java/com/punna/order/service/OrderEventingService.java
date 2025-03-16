@@ -16,5 +16,7 @@ public interface OrderEventingService {
   void sendOrderCanceledEvent(Order order);
 
   void sendUnblockTicketsEvent(List<SeatLocation> seatLocations, String eventCoreId);
+
+  void sendOrderSuccessValidationEvent(String eventOrderId);
 }
 

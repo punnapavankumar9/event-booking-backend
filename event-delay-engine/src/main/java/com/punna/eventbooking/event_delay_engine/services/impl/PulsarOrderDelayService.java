@@ -2,7 +2,7 @@ package com.punna.eventbooking.event_delay_engine.services.impl;
 
 import static com.punna.commons.Constants.PULSAR_10_MIN_DELAY_TOPIC;
 
-import com.punna.commons.eventing.events.kafka.OrderCreatedEvent;
+import com.punna.commons.eventing.events.kafka.order.OrderCreatedEvent;
 import com.punna.eventbooking.event_delay_engine.services.OrderDelayService;
 import java.util.concurrent.TimeUnit;
 import lombok.RequiredArgsConstructor;

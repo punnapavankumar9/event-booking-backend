@@ -20,5 +20,5 @@ public class EventOrderResDto {
 
   private OrderStatus orderStatus;
 
-  private String razorPayOrderId;
+  private String paymentIntegratorOrderId;
 }

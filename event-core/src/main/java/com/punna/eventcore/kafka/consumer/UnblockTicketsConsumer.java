@@ -1,6 +1,6 @@
 package com.punna.eventcore.kafka.consumer;
 
-import com.punna.commons.eventing.events.kafka.UnblockTicketsEvent;
+import com.punna.commons.eventing.events.kafka.core.UnblockTicketsEvent;
 import com.punna.eventcore.model.SeatLocation;
 import com.punna.eventcore.service.EventSeatStateService;
 import java.time.Duration;

@@ -7,11 +7,12 @@ import static com.punna.commons.Constants.ORDER_SUCCESS_TOPIC;
 
 import com.punna.commons.Constants;
 import com.punna.commons.Constants.OrderEvents;
-import com.punna.commons.eventing.events.kafka.OrderCancelledEvent;
-import com.punna.commons.eventing.events.kafka.OrderCreatedEvent;
-import com.punna.commons.eventing.events.kafka.OrderFailedEvent;
-import com.punna.commons.eventing.events.kafka.OrderSuccessEvent;
-import com.punna.commons.eventing.events.kafka.UnblockTicketsEvent;
+import com.punna.commons.eventing.events.kafka.order.OrderCancelledEvent;
+import com.punna.commons.eventing.events.kafka.order.OrderCreatedEvent;
+import com.punna.commons.eventing.events.kafka.order.OrderFailedEvent;
+import com.punna.commons.eventing.events.kafka.order.OrderSuccessEvent;
+import com.punna.commons.eventing.events.kafka.core.UnblockTicketsEvent;
+import com.punna.commons.eventing.events.kafka.order.OrderValidationEvent;
 import com.punna.order.model.Order;
 import com.punna.order.model.SeatLocation;
 import com.punna.order.service.OrderEventingService;
@@ -72,12 +73,11 @@ public class KafkaOrderEventingService implements OrderEventingService {
 
     CompletableFuture<SendResult<String, Object>> future = kafkaTemplate.send(
         ORDER_SUCCESS_TOPIC, OrderEvents.ORDER_SUCCESS, orderSuccessEvent);
-    future.thenAccept((result) -> {
-      log.info("Order success event: {}", orderSuccessEvent);
-    }).exceptionally(ex -> {
-      log.error("Order success event failed", ex);
-      return null;
-    });
+    future.thenAccept((result) -> log.info("Order success event: {}", orderSuccessEvent))
+        .exceptionally(ex -> {
+          log.error("Order success event failed", ex);
+          return null;
+        });
   }
 
   @Override
@@ -112,6 +112,20 @@ public class KafkaOrderEventingService implements OrderEventingService {
       log.info("Unblock tickets event: {}", unblockTicketsEvent);
     }).exceptionally(ex -> {
       log.error("Unblock tickets event failed", ex);
+      return null;
+    });
+  }
+
+  @Override
+  public void sendOrderSuccessValidationEvent(String eventOrderId) {
+    OrderValidationEvent orderValidationEvent = OrderValidationEvent.builder()
+        .orderId(eventOrderId)
+        .build();
+    CompletableFuture<SendResult<String, Object>> future = kafkaTemplate.send(Constants.ORDER_SUCCESS_VALIDATION_TOPIC, OrderEvents.ORDER_VALIDATION, orderValidationEvent);
+    future.thenAccept((result) -> {
+      log.info("order validation event: {}", orderValidationEvent);
+    }).exceptionally(ex -> {
+      log.error("order validation event failed", ex);
       return null;
     });
   }
