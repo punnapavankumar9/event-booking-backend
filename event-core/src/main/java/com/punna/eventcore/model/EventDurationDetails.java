@@ -1,6 +1,6 @@
 package com.punna.eventcore.model;
 
-import com.punna.eventcore.utils.EventDurationType;
+import com.punna.eventcore.dto.EventDurationType;
 import lombok.Builder;
 import lombok.Data;
 

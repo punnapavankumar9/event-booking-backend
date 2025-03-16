@@ -2,7 +2,6 @@ package com.punna.eventbooking.payment.kafka.producer;
 
 import com.punna.commons.Constants;
 import com.punna.commons.Constants.PaymentEvents;
-import com.punna.commons.eventing.events.kafka.order.OrderSuccessEvent;
 import com.punna.commons.eventing.events.kafka.payment.PaymentSuccessEvent;
 import java.util.concurrent.CompletableFuture;
 import lombok.RequiredArgsConstructor;

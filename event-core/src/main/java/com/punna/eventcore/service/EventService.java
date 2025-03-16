@@ -1,6 +1,7 @@
 package com.punna.eventcore.service;
 
 import com.punna.eventcore.dto.BookingPageInfo;
+import com.punna.eventcore.dto.EventInfo;
 import com.punna.eventcore.dto.EventRequestDto;
 import com.punna.eventcore.dto.EventResponseDto;
 import com.punna.eventcore.dto.EventsForVenueProjection;
@@ -45,4 +46,6 @@ public interface EventService {
   Mono<BookingPageInfo> getBookingPageDetailsFor(String id);
 
   Flux<EventNameAndIdProjection> getEventNamesForIds(List<String> eventIds);
+
+  Mono<EventInfo> getEventInfo(String eventId);
 }

@@ -9,7 +9,7 @@ public interface OrderEventingService {
 
   void sendOrderCreatedEvent(String orderId);
 
-  void sendOrderFailedEvent(String orderId);
+  void sendOrderFailedEvent(Order order);
 
   void sendOrderSuccessEvent(Order order);
 

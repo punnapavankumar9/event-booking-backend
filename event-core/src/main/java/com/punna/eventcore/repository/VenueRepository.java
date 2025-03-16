@@ -22,4 +22,6 @@ public interface VenueRepository extends ReactiveMongoRepository<Venue, String> 
 
   @Query(value = "{_id: ?0}", fields = "{_id:  1, name:  1, seatingLayoutId:  1, }")
   Mono<VenueNameWithLayoutIdProjection> findByIdVenueNameAndLayoutId(String id);
+
+  <T> Mono<T> findById(String id, Class<T> projection);
 }

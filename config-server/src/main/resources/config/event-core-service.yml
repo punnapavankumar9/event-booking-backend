@@ -4,5 +4,8 @@ spring:
       database: event-core
       host: localhost
       port: 27017
+  kafka:
+    consumer:
+      enable-auto-commit: false
 server:
   port: 8083

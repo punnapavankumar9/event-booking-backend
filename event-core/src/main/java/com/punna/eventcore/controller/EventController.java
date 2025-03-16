@@ -7,6 +7,7 @@ import com.punna.eventcore.dto.BookingPageInfo;
 import com.punna.eventcore.dto.EventRequestDto;
 import com.punna.eventcore.dto.EventResponseDto;
 import com.punna.eventcore.dto.EventsForVenueProjection;
+import com.punna.eventcore.dto.EventInfo;
 import com.punna.eventcore.dto.ShowListingDto;
 import com.punna.eventcore.dto.projections.EventNameAndIdProjection;
 import com.punna.eventcore.model.EventType;
@@ -112,5 +113,11 @@ public class EventController {
   @PostMapping("/event-names")
   public Flux<EventNameAndIdProjection> getEventNames(@RequestBody List<String> eventIds) {
     return eventService.getEventNamesForIds(eventIds);
+  }
+
+  // Give full order info along with venueName, venueLocation details.
+  @GetMapping("/event-info/{eventId}")
+  public Mono<EventInfo> getEventInfo(@PathVariable String eventId){
+    return eventService.getEventInfo(eventId);
   }
 }

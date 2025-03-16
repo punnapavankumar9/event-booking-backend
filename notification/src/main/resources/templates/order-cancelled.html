@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Booking Cancelled - [[${eventInfo.event.name}]]</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+      background-color: #f4f4f4;
+      padding: 20px;
+      color: #333;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .header {
+      background: linear-gradient(135deg, #64748b, #475569);
+      padding: 40px 20px;
+      text-align: center;
+      color: white;
+    }
+
+    .header h1 {
+      font-size: 28px;
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+
+    .header p {
+      font-size: 20px;
+      opacity: 0.9;
+    }
+
+    .content {
+      padding: 30px 20px;
+    }
+
+    .message {
+      margin-bottom: 25px;
+      font-size: 16px;
+      color: #4b5563;
+    }
+
+    .refund-notice {
+      background: #f1f5f9;
+      border-left: 4px solid #64748b;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 8px;
+    }
+
+    .refund-notice h2 {
+      color: #475569;
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .refund-notice p {
+      color: #64748b;
+      font-size: 15px;
+    }
+
+    .cancelled-details {
+      background: #f8fafc;
+      border-radius: 8px;
+      padding: 25px;
+      margin: 20px 0;
+    }
+
+    .info-row {
+      display: block;
+      margin-bottom: 15px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .info-row:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .label {
+      display: block;
+      color: #6b7280;
+      font-size: 14px;
+      margin-bottom: 5px;
+    }
+
+    .value {
+      display: block;
+      color: #1f2937;
+      font-size: 16px;
+      font-weight: 500;
+    }
+
+    .seats-container {
+      display: block;
+      margin-top: 5px;
+    }
+
+    .seat-tag {
+      display: inline-block;
+      background: #e5e7eb;
+      color: #1f2937;
+      padding: 6px 12px;
+      border-radius: 16px;
+      font-size: 14px;
+      margin: 3px;
+    }
+
+    .cancellation-info {
+      background: #f8fafc;
+      border-radius: 8px;
+      padding: 20px;
+      margin: 20px 0;
+    }
+
+    .cancellation-info h2 {
+      color: #475569;
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .cancellation-info p {
+      color: #64748b;
+      font-size: 15px;
+    }
+
+    .footer {
+      background: #f8fafc;
+      padding: 20px;
+      text-align: center;
+      font-size: 13px;
+      color: #6b7280;
+      border-top: 1px solid #e5e7eb;
+    }
+
+    @media only screen and (max-width: 480px) {
+      body {
+        padding: 10px;
+      }
+
+      .header {
+        padding: 30px 15px;
+      }
+
+      .content {
+        padding: 20px 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>Booking Cancelled</h1>
+    <p th:text="${eventInfo.event.name}">Movie Name</p>
+  </div>
+
+  <div class="content">
+    <div class="message">
+      <p>Dear Customer,</p>
+      <p>Your booking has been successfully cancelled as per your request.</p>
+    </div>
+
+    <div class="refund-notice">
+      <h2>Refund Information</h2>
+      <p>The refund for your cancelled booking has been initiated and will be processed within 5-7
+        business days. The amount will be credited to your original payment method.</p>
+    </div>
+
+    <div class="cancelled-details">
+      <div class="info-row">
+        <span class="label">Event</span>
+        <span class="value" th:text="${eventInfo.event.name}">Event Name</span>
+      </div>
+
+      <div class="info-row">
+        <span class="label">Venue</span>
+        <span class="value" th:text="${eventInfo.venue.name}">Venue Name</span>
+      </div>
+
+      <div class="info-row">
+        <span class="label">Cancelled Show</span>
+        <span class="value">
+                        <span
+                            th:text="${#temporals.format(eventInfo.event.eventDurationDetails.startTime, 'dd MMM yyyy')}">Date</span>
+                        at
+                        <span
+                            th:text="${#temporals.format(eventInfo.event.eventDurationDetails.startTime, 'hh:mm a')}">Time</span>
+                    </span>
+      </div>
+
+      <div class="info-row">
+        <span class="label">Refund Amount</span>
+        <span class="value"
+              th:text="${'₹' + #numbers.formatDecimal(order.amount, 1, 2)}">Amount</span>
+      </div>
+
+      <div class="info-row">
+        <span class="label">Booking Reference</span>
+        <span class="value" th:text="${order.id}">Order ID</span>
+      </div>
+
+      <div class="info-row">
+        <span class="label">Cancelled Seats</span>
+        <div class="seats-container">
+          <span class="seat-tag" th:each="seat : ${order.seats}" th:text="${seat}">A1</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="cancellation-info">
+      <h2>Need Assistance?</h2>
+      <p>If you have any questions about your refund or need further assistance, please contact our
+        support team with your Booking Reference number.</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>This is an automated email. Please do not reply.</p>
+    <p>Thank you for using our service. We hope to see you again soon!</p>
+  </div>
+</div>
+</body>
+</html>

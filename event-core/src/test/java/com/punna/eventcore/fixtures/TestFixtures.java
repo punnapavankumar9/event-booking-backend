@@ -1,7 +1,6 @@
 package com.punna.eventcore.fixtures;
 
 
-import com.punna.eventcore.dto.BookSeatRequestDto;
 import com.punna.eventcore.dto.EventDurationDetailsDto;
 import com.punna.eventcore.dto.EventRequestDto;
 import com.punna.eventcore.dto.ScreenPosition;
@@ -10,8 +9,7 @@ import com.punna.eventcore.dto.VenueDto;
 import com.punna.eventcore.model.EventType;
 import com.punna.eventcore.model.PricingTierMap;
 import com.punna.eventcore.model.Seat;
-import com.punna.eventcore.model.SeatLocation;
-import com.punna.eventcore.utils.EventDurationType;
+import com.punna.eventcore.dto.EventDurationType;
 import java.math.BigDecimal;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;

@@ -36,7 +36,7 @@ public class OrderServiceImpl implements OrderService {
   private final EventCoreFeignClient eventCoreFeignClient;
   private final PaymentFeignClient paymentFeignClient;
   private final OrderEventingService orderEventingService;
-  private final AuditorAware auditorAware;
+  private final AuditorAware<String> auditorAware;
 
 
   // SAGA:choreography for compensations
@@ -77,7 +77,6 @@ public class OrderServiceImpl implements OrderService {
           return OrderMapper.toDto(order, orderInPayment.getPaymentIntegratorOrderId());
 
         } catch (Exception ex) {
-          // TODO (kafka) delete created payment, or mark it as failed/invalid.
           throw ex;
         }
       } catch (Exception e) {
@@ -117,10 +116,9 @@ public class OrderServiceImpl implements OrderService {
   @Override
   public OrderResDto cancelOrder(String id) {
     Order order = findOrderByIdInternal(id);
-    // TODO check if order can be cancellable by verify if payment is made and check if event is already started or 30min only left to start
+    // TODO_optional check if order can be cancellable by verify if payment is made and check if event is already started or 30min only left to start
     order.setOrderStatus(OrderStatus.CANCELLED);
     Order savedOrder = orderRepository.save(order);
-    // TODO will be listened by the mail service and will send mail and payment service will initiate refund
     orderEventingService.sendOrderCanceledEvent(order);
     orderEventingService.sendUnblockTicketsEvent(order.getInfo().getSeats(), order.getEventId());
     return OrderMapper.toDto(savedOrder);
@@ -140,7 +138,6 @@ public class OrderServiceImpl implements OrderService {
     Order order = findOrderByIdInternal(id);
     order.setOrderStatus(OrderStatus.SUCCEEDED);
     order = orderRepository.save(order);
-    // TODO Trigger Kafka event to update in payment service and send mail to User.
     orderEventingService.sendOrderSuccessEvent(order);
     OrderMapper.toDto(order);
   }
@@ -150,9 +147,8 @@ public class OrderServiceImpl implements OrderService {
     Order order = findOrderByIdInternal(id);
     order.setOrderStatus(OrderStatus.FAILED);
     order = orderRepository.save(order);
-    // TODO Trigger Kafka event to update in payment service
     orderEventingService.sendUnblockTicketsEvent(order.getInfo().getSeats(), order.getEventId());
-    orderEventingService.sendOrderFailedEvent(order.getId());
+    orderEventingService.sendOrderFailedEvent(order);
     return OrderMapper.toDto(order);
   }
 
@@ -164,6 +160,7 @@ public class OrderServiceImpl implements OrderService {
       // TODO_optional verify with payment service.
       orderRepository.save(order);
       orderEventingService.sendUnblockTicketsEvent(order.getInfo().getSeats(), order.getEventId());
+      orderEventingService.sendOrderFailedEvent(order);
     }
   }
 
@@ -171,7 +168,7 @@ public class OrderServiceImpl implements OrderService {
   @PreAuthorize("isAuthenticated()")
   @SneakyThrows
   public List<OrderResDto> findAllOrdersForLoggedInUser(Integer page) {
-    String loggedInUser = (String) auditorAware.getCurrentAuditor()
+    String loggedInUser = auditorAware.getCurrentAuditor()
         .orElseThrow(() -> new EventApplicationException("Unable to get the logged in user name",
             HttpStatus.BAD_REQUEST.value()));
     List<Order> orders = this.orderRepository.findAllByCreatedBy(loggedInUser,

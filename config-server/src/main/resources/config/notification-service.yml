@@ -1,0 +1,18 @@
+spring:
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: punnapavankumar9@gmail.com
+    password: ${GMAIL_APP_PASSWORD}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+application:
+  async:
+    # these are only for testing and local development need to set at least 50, 100, 1k-5k for a production grade application which can send 150 mails/sec
+    core-pool-size: 5
+    max-pool-size: 10
+    queue-capacity: 25

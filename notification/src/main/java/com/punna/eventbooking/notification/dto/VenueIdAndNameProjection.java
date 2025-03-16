@@ -1,4 +1,4 @@
-package com.punna.eventcore.dto.projections;
+package com.punna.eventbooking.notification.dto;
 
 public record VenueIdAndNameProjection(
     String name,

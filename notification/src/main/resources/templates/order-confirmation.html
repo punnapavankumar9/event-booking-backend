@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title th:text="${eventInfo.event.name}">Movie Ticket Confirmation</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+      background-color: #f4f4f4;
+      padding: 20px;
+      color: #333;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .header {
+      background: linear-gradient(135deg, #22c55e, #16a34a);
+      padding: 40px 20px;
+      text-align: center;
+      color: white;
+    }
+
+    .header h1 {
+      font-size: 28px;
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+
+    .header p {
+      font-size: 20px;
+      opacity: 0.9;
+    }
+
+    .content {
+      padding: 30px 20px;
+    }
+
+    .greeting {
+      margin-bottom: 25px;
+      font-size: 16px;
+      color: #4b5563;
+    }
+
+    .ticket-info {
+      background: #f8fafc;
+      border-radius: 8px;
+      padding: 25px;
+      margin: 20px 0;
+    }
+
+    .info-row {
+      display: block;
+      margin-bottom: 15px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .info-row:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .label {
+      display: block;
+      color: #6b7280;
+      font-size: 14px;
+      margin-bottom: 5px;
+    }
+
+    .value {
+      display: block;
+      color: #1f2937;
+      font-size: 16px;
+      font-weight: 500;
+    }
+
+    .seats-container {
+      display: block;
+      margin-top: 5px;
+    }
+
+    .seat-tag {
+      display: inline-block;
+      background: #e5e7eb;
+      color: #1f2937;
+      padding: 6px 12px;
+      border-radius: 16px;
+      font-size: 14px;
+      margin: 3px;
+    }
+
+    .notice {
+      background: #fef3c7;
+      border-left: 4px solid #f59e0b;
+      padding: 15px;
+      margin: 20px 0;
+      color: #92400e;
+      font-size: 14px;
+      border-radius: 4px;
+    }
+
+    .footer {
+      background: #f8fafc;
+      padding: 20px;
+      text-align: center;
+      font-size: 13px;
+      color: #6b7280;
+      border-top: 1px solid #e5e7eb;
+    }
+
+    .footer p {
+      margin: 5px 0;
+    }
+
+    .venue-location {
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px dashed #e5e7eb;
+      color: #4b5563;
+    }
+
+    @media only screen and (max-width: 480px) {
+      body {
+        padding: 10px;
+      }
+
+      .header {
+        padding: 30px 15px;
+      }
+
+      .header h1 {
+        font-size: 24px;
+      }
+
+      .content {
+        padding: 20px 15px;
+      }
+
+      .ticket-info {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>Booking Confirmed!</h1>
+    <p th:text="${eventInfo.event.name}">Movie Name</p>
+  </div>
+
+  <div class="content">
+    <div class="greeting">
+      <p>Dear Customer,</p>
+      <p>Your booking has been confirmed. Here are your ticket details:</p>
+    </div>
+
+    <div class="ticket-info">
+      <div class="info-row">
+        <span class="label">Venue</span>
+        <span class="value" th:text="${eventInfo.venue.name}">Venue Name</span>
+      </div>
+
+      <div class="info-row">
+        <span class="label">Date</span>
+        <span class="value" th:text="${#temporals.format(eventInfo.event.eventDurationDetails.startTime, 'dd MMM yyyy')}">Date</span>
+      </div>
+
+      <div class="info-row">
+        <span class="label">Time</span>
+        <span class="value" th:text="${#temporals.format(eventInfo.event.eventDurationDetails.startTime, 'hh:mm a')}">Time</span>
+      </div>
+
+      <div class="info-row">
+        <span class="label">Amount Paid</span>
+        <span class="value" th:text="${'₹' + #numbers.formatDecimal(order.amount, 1, 2)}">Amount</span>
+      </div>
+
+      <div class="info-row">
+        <span class="label">Order ID</span>
+        <span class="value" th:text="${order.id}">Order ID</span>
+      </div>
+
+      <div class="info-row">
+        <span class="label">Selected Seats</span>
+        <div class="seats-container">
+          <span class="seat-tag" th:each="seat : ${order.seats}" th:text="${seat}">A1</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="notice">
+      Please arrive at least 15 minutes before the showtime. Entry may be restricted once the show begins.
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>This is an automated email. Please do not reply.</p>
+    <p class="venue-location" th:text="${eventInfo.venue.location}">Venue Location</p>
+  </div>
+</div>
+</body>
+</html>

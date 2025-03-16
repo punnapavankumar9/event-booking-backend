@@ -7,11 +7,11 @@ import static com.punna.commons.Constants.ORDER_SUCCESS_TOPIC;
 
 import com.punna.commons.Constants;
 import com.punna.commons.Constants.OrderEvents;
+import com.punna.commons.eventing.events.kafka.core.UnblockTicketsEvent;
 import com.punna.commons.eventing.events.kafka.order.OrderCancelledEvent;
 import com.punna.commons.eventing.events.kafka.order.OrderCreatedEvent;
 import com.punna.commons.eventing.events.kafka.order.OrderFailedEvent;
 import com.punna.commons.eventing.events.kafka.order.OrderSuccessEvent;
-import com.punna.commons.eventing.events.kafka.core.UnblockTicketsEvent;
 import com.punna.commons.eventing.events.kafka.order.OrderValidationEvent;
 import com.punna.order.model.Order;
 import com.punna.order.model.SeatLocation;
@@ -48,10 +48,15 @@ public class KafkaOrderEventingService implements OrderEventingService {
   }
 
   @Override
-  public void sendOrderFailedEvent(String orderId) {
+  public void sendOrderFailedEvent(Order order) {
     OrderFailedEvent orderFailedEvent = OrderFailedEvent
         .builder()
-        .id(orderId)
+        .id(order.getId())
+        .orderedAt(order.getCreatedDate())
+        .createdBy(order.getCreatedBy())
+        .eventId(order.getEventId())
+        .amount(order.getAmount())
+        .seats(order.getInfo().getSeatLabels())
         .build();
 
     CompletableFuture<SendResult<String, Object>> future = kafkaTemplate.send(
@@ -67,8 +72,14 @@ public class KafkaOrderEventingService implements OrderEventingService {
 
   @Override
   public void sendOrderSuccessEvent(Order order) {
+
     OrderSuccessEvent orderSuccessEvent = OrderSuccessEvent.builder()
+        .seats(order.getInfo().getSeatLabels())
         .id(order.getId())
+        .amount(order.getAmount())
+        .eventId(order.getEventId())
+        .orderedAt(order.getCreatedDate())
+        .createdBy(order.getCreatedBy())
         .build();
 
     CompletableFuture<SendResult<String, Object>> future = kafkaTemplate.send(
@@ -84,6 +95,11 @@ public class KafkaOrderEventingService implements OrderEventingService {
   public void sendOrderCanceledEvent(Order order) {
     OrderCancelledEvent orderCancelledEvent = OrderCancelledEvent.builder()
         .id(order.getId())
+        .seats(order.getInfo().getSeatLabels())
+        .orderedAt(order.getCreatedDate())
+        .createdBy(order.getCreatedBy())
+        .amount(order.getAmount())
+        .eventId(order.getEventId())
         .build();
     CompletableFuture<SendResult<String, Object>> future = kafkaTemplate.send(
         ORDER_CANCELLED_TOPIC, OrderEvents.ORDER_CANCELLED, orderCancelledEvent);
@@ -121,7 +137,9 @@ public class KafkaOrderEventingService implements OrderEventingService {
     OrderValidationEvent orderValidationEvent = OrderValidationEvent.builder()
         .orderId(eventOrderId)
         .build();
-    CompletableFuture<SendResult<String, Object>> future = kafkaTemplate.send(Constants.ORDER_SUCCESS_VALIDATION_TOPIC, OrderEvents.ORDER_VALIDATION, orderValidationEvent);
+    CompletableFuture<SendResult<String, Object>> future = kafkaTemplate.send(
+        Constants.ORDER_SUCCESS_VALIDATION_TOPIC, OrderEvents.ORDER_VALIDATION,
+        orderValidationEvent);
     future.thenAccept((result) -> {
       log.info("order validation event: {}", orderValidationEvent);
     }).exceptionally(ex -> {

@@ -10,7 +10,6 @@ import java.util.List;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.repository.Aggregation;
-import org.springframework.data.mongodb.repository.Query;
 import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
 import org.springframework.stereotype.Repository;
 import reactor.core.publisher.Flux;
@@ -23,6 +22,7 @@ public interface EventRepository extends ReactiveMongoRepository<Event, String> 
 
   Flux<Event> findAllByEventType(EventType eventType);
 
+  <T> Mono<T> findById(String id, Class<T> projection);
 
   @Aggregation(pipeline = {
       // Stage 0: Matching

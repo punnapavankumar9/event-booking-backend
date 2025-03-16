@@ -20,7 +20,7 @@ public class PulsarOrderDelayService implements OrderDelayService {
   @Override
   public void delayOrder(String orderId) {
     log.info("Delaying order: {}", orderId);
-    // TODO make it 10 minutes.
+    // TODO_optional make it 10 minutes.
     pulsarTemplate.newMessage(new OrderCreatedEvent(orderId))
         .withTopic(PULSAR_10_MIN_DELAY_TOPIC)
         .withMessageCustomizer(mc -> mc.deliverAfter(60, TimeUnit.SECONDS))

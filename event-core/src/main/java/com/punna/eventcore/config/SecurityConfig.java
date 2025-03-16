@@ -29,7 +29,8 @@ public class SecurityConfig {
                     "/api/v1/locations/**")
                 .permitAll()
                 // for web browsers
-                .pathMatchers(HttpMethod.OPTIONS, "/**").permitAll().anyExchange()
+                .pathMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+                .anyExchange()
                 .authenticated())
         .addFilterAt(populateAuthentication, SecurityWebFiltersOrder.HTTP_BASIC).build();
   }

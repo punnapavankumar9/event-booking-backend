@@ -4,10 +4,12 @@ import com.punna.commons.exception.EntityNotFoundException;
 import com.punna.commons.exception.EventApplicationException;
 import com.punna.eventcore.client.CatalogServiceWebClient;
 import com.punna.eventcore.dto.BookingPageInfo;
+import com.punna.eventcore.dto.EventInfo;
 import com.punna.eventcore.dto.EventRequestDto;
 import com.punna.eventcore.dto.EventResponseDto;
 import com.punna.eventcore.dto.EventsForVenueProjection;
 import com.punna.eventcore.dto.ShowListingDto;
+import com.punna.eventcore.dto.projections.EventBasicProjection;
 import com.punna.eventcore.dto.projections.EventNameAndIdProjection;
 import com.punna.eventcore.dto.projections.VenueIdAndNameProjection;
 import com.punna.eventcore.mapper.EventMapper;
@@ -227,6 +229,13 @@ public class EventServiceImpl implements EventService {
   @Override
   public Flux<EventNameAndIdProjection> getEventNamesForIds(List<String> eventIds) {
     return eventRepository.findByIdIn(eventIds);
+  }
+
+  @Override
+  public Mono<EventInfo> getEventInfo(String eventId) {
+    return eventRepository.findById(eventId, EventBasicProjection.class).flatMap(
+        event -> venueRepository.findById(event.getVenueId(), VenueIdAndNameProjection.class)
+            .map(venue -> EventInfo.builder().event(event).venue(venue).build()));
   }
 
   public Mono<Boolean> checkForOverlaps(EventRequestDto eventRequestDto) {
