@@ -28,6 +28,7 @@
     <module>order</module>
     <module>payment</module>
     <module>event-delay-engine</module>
+    <module>notification</module>
   </modules>
 
   <developers>
