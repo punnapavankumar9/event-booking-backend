@@ -49,7 +49,7 @@ public class RazorPayEventOrderService implements PaymentIntegratorService {
     JSONObject refundObject = new JSONObject();
     refundObject.put("amount", eventOrder.getAmount().multiply(BigDecimal.valueOf(100)));
     refundObject.put("speed", "normal");
-    Refund refund = razorPayClient.payments.refund(getPaymentId(eventOrder.getOrderId()),
+    Refund refund = razorPayClient.payments.refund(getPaymentId(eventOrder.getPaymentIntegratorOrderId()),
         refundObject);
     log.info("refund Initiated {}", refund.toString());
     return refund.get("id");
@@ -59,6 +59,7 @@ public class RazorPayEventOrderService implements PaymentIntegratorService {
   @Override
   public Boolean isPaymentCompleted(String orderId) {
     Order order = razorPayClient.orders.fetch(orderId);
+    log.info("Order Fetched {}", order.toString());
     Integer amount_due = order.get("amount_due");
     return amount_due.equals(0);
   }
@@ -66,6 +67,7 @@ public class RazorPayEventOrderService implements PaymentIntegratorService {
   @SneakyThrows
   public String tryGetPaymentId(String orderId) {
     List<Payment> payments = razorPayClient.orders.fetchPayments(orderId);
+    log.info("fetched payments {}", payments.toString());
     for (Payment payment : payments) {
       if (payment.get("status").equals("captured")) {
         return payment.get("id");

@@ -1,6 +1,7 @@
 package com.punna.eventcore.repository;
 
 import com.punna.eventcore.dto.EventsForVenueProjection;
+import com.punna.eventcore.dto.projections.EventNameAndIdProjection;
 import com.punna.eventcore.dto.projections.EventShowListingProjection;
 import com.punna.eventcore.model.Event;
 import com.punna.eventcore.model.EventType;
@@ -60,4 +61,7 @@ public interface EventRepository extends ReactiveMongoRepository<Event, String> 
 
   Flux<EventsForVenueProjection> findAllByEventIdAndVenueId(String eventId, String venueId,
       Sort sort);
+
+  Flux<EventNameAndIdProjection> findByIdIn(List<String> eventIds);
+
 }

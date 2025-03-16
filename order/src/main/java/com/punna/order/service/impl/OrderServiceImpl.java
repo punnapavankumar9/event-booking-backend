@@ -15,8 +15,16 @@ import com.punna.order.model.Order;
 import com.punna.order.repository.OrderRepository;
 import com.punna.order.service.OrderEventingService;
 import com.punna.order.service.OrderService;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
+import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.AuditorAware;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
+import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
 @Slf4j
@@ -28,6 +36,7 @@ public class OrderServiceImpl implements OrderService {
   private final EventCoreFeignClient eventCoreFeignClient;
   private final PaymentFeignClient paymentFeignClient;
   private final OrderEventingService orderEventingService;
+  private final AuditorAware auditorAware;
 
 
   // SAGA:choreography for compensations
@@ -67,9 +76,9 @@ public class OrderServiceImpl implements OrderService {
           orderEventingService.sendOrderCreatedEvent(order.getId());
           return OrderMapper.toDto(order, orderInPayment.getPaymentIntegratorOrderId());
 
-        } catch (Exception e) {
+        } catch (Exception ex) {
           // TODO (kafka) delete created payment, or mark it as failed/invalid.
-          throw e;
+          throw ex;
         }
       } catch (Exception e) {
         if (order != null) {
@@ -127,13 +136,13 @@ public class OrderServiceImpl implements OrderService {
   }
 
   @Override
-  public OrderResDto markOrderAsSuccess(String id) {
+  public void markOrderAsSuccess(String id) {
     Order order = findOrderByIdInternal(id);
     order.setOrderStatus(OrderStatus.SUCCEEDED);
     order = orderRepository.save(order);
     // TODO Trigger Kafka event to update in payment service and send mail to User.
     orderEventingService.sendOrderSuccessEvent(order);
-    return OrderMapper.toDto(order);
+    OrderMapper.toDto(order);
   }
 
   @Override
@@ -156,5 +165,18 @@ public class OrderServiceImpl implements OrderService {
       orderRepository.save(order);
       orderEventingService.sendUnblockTicketsEvent(order.getInfo().getSeats(), order.getEventId());
     }
+  }
+
+  @Override
+  @PreAuthorize("isAuthenticated()")
+  @SneakyThrows
+  public List<OrderResDto> findAllOrdersForLoggedInUser(Integer page) {
+    String loggedInUser = (String) auditorAware.getCurrentAuditor()
+        .orElseThrow(() -> new EventApplicationException("Unable to get the logged in user name",
+            HttpStatus.BAD_REQUEST.value()));
+    List<Order> orders = this.orderRepository.findAllByCreatedBy(loggedInUser,
+        PageRequest.of(page, 10).withSort(
+            Sort.by(Direction.DESC, "createdDate")));
+    return orders.stream().map(OrderMapper::toDto).toList();
   }
 }

@@ -1,11 +1,14 @@
 package com.punna.eventcore.service.impl;
 
+import com.punna.commons.exception.EntityNotFoundException;
+import com.punna.commons.exception.EventApplicationException;
 import com.punna.eventcore.client.CatalogServiceWebClient;
 import com.punna.eventcore.dto.BookingPageInfo;
 import com.punna.eventcore.dto.EventRequestDto;
 import com.punna.eventcore.dto.EventResponseDto;
 import com.punna.eventcore.dto.EventsForVenueProjection;
 import com.punna.eventcore.dto.ShowListingDto;
+import com.punna.eventcore.dto.projections.EventNameAndIdProjection;
 import com.punna.eventcore.dto.projections.VenueIdAndNameProjection;
 import com.punna.eventcore.mapper.EventMapper;
 import com.punna.eventcore.model.Event;
@@ -24,8 +27,6 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import com.punna.commons.exception.EntityNotFoundException;
-import com.punna.commons.exception.EventApplicationException;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -221,6 +222,11 @@ public class EventServiceImpl implements EventService {
             seatingLayoutService.getSeatingLayoutById(event.getSeatingLayoutId())).map(
             result -> EventMapper.mapToBookingPageInfo(event, result.getT1().name(),
                 result.getT2())));
+  }
+
+  @Override
+  public Flux<EventNameAndIdProjection> getEventNamesForIds(List<String> eventIds) {
+    return eventRepository.findByIdIn(eventIds);
   }
 
   public Mono<Boolean> checkForOverlaps(EventRequestDto eventRequestDto) {

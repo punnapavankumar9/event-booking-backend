@@ -3,6 +3,7 @@ package com.punna.order.model;
 import com.punna.order.dto.OrderStatus;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EntityListeners;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -18,6 +19,7 @@ import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 @Entity()
 @Table(name = "orders")
@@ -25,6 +27,7 @@ import org.springframework.data.annotation.CreatedDate;
 @NoArgsConstructor
 @Builder
 @Data
+@EntityListeners(AuditingEntityListener.class)
 public class Order {
 
   @NotNull

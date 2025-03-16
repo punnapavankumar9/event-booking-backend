@@ -4,6 +4,7 @@ import com.punna.order.dto.OrderReqDto;
 import com.punna.order.dto.OrderResDto;
 import com.punna.order.dto.OrderStatus;
 import com.punna.order.service.OrderService;
+import java.util.List;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -46,5 +47,10 @@ public class OrderController {
   @GetMapping(value = "/payment-failed/{id}", params = {"paymentId"})
   public OrderResDto markOrderAsFailed(@PathVariable String id, @RequestParam String paymentId) {
     return orderService.markPaymentAsFailure(id, paymentId);
+  }
+
+  @GetMapping()
+  public List<OrderResDto> findAllOrders(@RequestParam(required = false ,defaultValue = "0") Integer page) {
+    return orderService.findAllOrdersForLoggedInUser(page);
   }
 }

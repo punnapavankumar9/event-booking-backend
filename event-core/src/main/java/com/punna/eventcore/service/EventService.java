@@ -5,6 +5,7 @@ import com.punna.eventcore.dto.EventRequestDto;
 import com.punna.eventcore.dto.EventResponseDto;
 import com.punna.eventcore.dto.EventsForVenueProjection;
 import com.punna.eventcore.dto.ShowListingDto;
+import com.punna.eventcore.dto.projections.EventNameAndIdProjection;
 import com.punna.eventcore.model.Event;
 import com.punna.eventcore.model.EventType;
 import java.time.Instant;
@@ -42,4 +43,6 @@ public interface EventService {
       String city);
 
   Mono<BookingPageInfo> getBookingPageDetailsFor(String id);
+
+  Flux<EventNameAndIdProjection> getEventNamesForIds(List<String> eventIds);
 }

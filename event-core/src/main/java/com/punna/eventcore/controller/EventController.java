@@ -1,19 +1,20 @@
 package com.punna.eventcore.controller;
 
+import com.punna.commons.exception.EventApplicationException;
+import com.punna.commons.validation.groups.CreateGroup;
+import com.punna.commons.validation.groups.UpdateGroup;
 import com.punna.eventcore.dto.BookingPageInfo;
 import com.punna.eventcore.dto.EventRequestDto;
 import com.punna.eventcore.dto.EventResponseDto;
 import com.punna.eventcore.dto.EventsForVenueProjection;
 import com.punna.eventcore.dto.ShowListingDto;
+import com.punna.eventcore.dto.projections.EventNameAndIdProjection;
 import com.punna.eventcore.model.EventType;
 import com.punna.eventcore.service.EventService;
 import java.time.Instant;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import com.punna.commons.exception.EventApplicationException;
-import com.punna.commons.validation.groups.CreateGroup;
-import com.punna.commons.validation.groups.UpdateGroup;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -107,4 +108,9 @@ public class EventController {
     return eventService.getEventsByEventId(eventId, venueId);
   }
 
+
+  @PostMapping("/event-names")
+  public Flux<EventNameAndIdProjection> getEventNames(@RequestBody List<String> eventIds) {
+    return eventService.getEventNamesForIds(eventIds);
+  }
 }
