@@ -1,10 +1,12 @@
 package com.punna.identity.dto;
 
 import java.time.Instant;
+import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 @Data
 @SuperBuilder
@@ -27,4 +29,6 @@ public class UserResponseDto {
   private String providerId;
 
   private OAuthProvider provider;
+
+  private List<String> authorities;
 }
