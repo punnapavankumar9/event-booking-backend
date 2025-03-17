@@ -36,7 +36,7 @@ public class EventCatalogApplication {
   }
 
   @Bean
-  @ConditionalOnProperty(value = "storage",prefix = "application", havingValue = "memory")
+  @ConditionalOnProperty(value = "storage", prefix = "application", havingValue = "memory")
   public RouterFunction<?> serveAssets() {
     System.out.println(assetsPath);
     String path = Paths.get(assetsPath).toAbsolutePath().toString();

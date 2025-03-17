@@ -1,0 +1,23 @@
+resilience4j:
+  circuitbreaker:
+    instances:
+      info: {}
+      critical: {}
+    configs:
+      default:
+        failure-rate-threshold: 50
+        wait-duration-in-open-state: 10s
+        minimum-number-of-calls: 5
+        sliding-window-type: count_based
+        permitted-number-of-calls-in-half-open-state: 3
+        sliding-window-size: 10
+        register-health-indicator: true
+
+  retry:
+    instances:
+      info: {}
+      critical: {}
+    configs:
+      default:
+        max-attempts: 2
+        wait-duration: 5s

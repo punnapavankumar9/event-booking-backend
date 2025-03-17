@@ -1,5 +1,7 @@
 package com.punna.eventcore.client;
 
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
+import io.github.resilience4j.retry.annotation.Retry;
 import jakarta.annotation.PostConstruct;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
@@ -51,6 +53,8 @@ public class CountriesNowLocationService implements LocationService {
   }
 
   @Override
+  @CircuitBreaker(name = "countriesNow")
+  @Retry(name = "countriesNow", fallbackMethod = "fallback")
   public Flux<String> getCountries() {
     return webClient.get().uri(countriesUrl).retrieve()
         .onStatus(status -> status.is4xxClientError() || status.is5xxServerError(),
@@ -65,6 +69,8 @@ public class CountriesNowLocationService implements LocationService {
   }
 
   @Override
+  @CircuitBreaker(name = "countriesNow")
+  @Retry(name = "countriesNow", fallbackMethod = "fallback")
   public Flux<String> getStates(String country) {
     return webClient.get().uri(statesUrl + "/q?country=" + country).retrieve()
         .onStatus(status -> status.is4xxClientError() || status.is5xxServerError(),
@@ -78,6 +84,8 @@ public class CountriesNowLocationService implements LocationService {
   }
 
   @Override
+  @CircuitBreaker(name = "countriesNow")
+  @Retry(name = "countriesNow", fallbackMethod = "fallback")
   public Flux<String> getCities(String country, String state) {
     return webClient.get().uri(citiesUrl + String.format("/q?country=%s&state=%s", country, state))
         .retrieve().onStatus(status -> status.is4xxClientError() || status.is5xxServerError(),
@@ -107,5 +115,9 @@ public class CountriesNowLocationService implements LocationService {
     return this.getCities(country, state)
         .filter(existingCity -> existingCity.equalsIgnoreCase(city)).hasElements()
         .onErrorReturn(false);
+  }
+
+  public Flux<String> fallback(){
+    return Flux.just();
   }
 }

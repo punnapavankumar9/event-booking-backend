@@ -16,3 +16,10 @@ eureka:
       defaultZone: http://${eureka.instance.hostname}:${application.config.eureka.port}/eureka
   instance:
     hostname: localhost
+
+# let it be for all. will ignore if not using openfeign
+spring:
+  cloud:
+    loadbalancer:
+      retry:
+        enabled: false

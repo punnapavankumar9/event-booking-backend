@@ -1,0 +1,6 @@
+spring:
+  cloud:
+    circuitbreaker:
+      resilience4j:
+        blocking:
+          enabled: true

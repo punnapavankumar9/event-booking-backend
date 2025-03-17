@@ -233,7 +233,7 @@ public class EventServiceImpl implements EventService {
 
   @Override
   public Mono<EventInfo> getEventInfo(String eventId) {
-    return eventRepository.findById(eventId, EventBasicProjection.class).flatMap(
+    return eventRepository.findById(eventId, EventBasicProjection.class).switchIfEmpty(Mono.error(new EntityNotFoundException(Event.class.getSimpleName(), eventId))).flatMap(
         event -> venueRepository.findById(event.getVenueId(), VenueIdAndNameProjection.class)
             .map(venue -> EventInfo.builder().event(event).venue(venue).build()));
   }

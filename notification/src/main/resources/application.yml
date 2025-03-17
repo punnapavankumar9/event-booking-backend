@@ -2,7 +2,7 @@ spring:
   application:
     name: notification-service
   profiles:
-    active: kafka
+    active: kafka,resilience,blocking
   config:
     import: optional:configserver:http://localhost:8081
   mail:

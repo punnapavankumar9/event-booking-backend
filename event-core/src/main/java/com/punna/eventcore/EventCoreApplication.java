@@ -13,15 +13,15 @@ import org.springframework.security.core.context.SecurityContext;
 @EnableReactiveMongoAuditing
 public class EventCoreApplication {
 
-    public static void main(String[] args) {
-        SpringApplication.run(EventCoreApplication.class, args);
-    }
+  public static void main(String[] args) {
+    SpringApplication.run(EventCoreApplication.class, args);
+  }
 
-    @Bean
-    public ReactiveAuditorAware<String> auditorProvider() {
-        return () -> ReactiveSecurityContextHolder
-                .getContext()
-                .map(SecurityContext::getAuthentication)
-                .map(auth -> ((UserDto) auth.getPrincipal()).getUsername());
-    }
+  @Bean
+  public ReactiveAuditorAware<String> auditorProvider() {
+    return () -> ReactiveSecurityContextHolder
+        .getContext()
+        .map(SecurityContext::getAuthentication)
+        .map(auth -> ((UserDto) auth.getPrincipal()).getUsername());
+  }
 }
