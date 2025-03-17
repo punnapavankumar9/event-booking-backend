@@ -6,8 +6,8 @@ designed to demonstrate modern architectural practices for building scalable, re
 
 ## Key Features
 
-- **Event-Driven Architecture**: Leveraging Apache Kafka for asynchronous communication between microservices.
-- **API Gateway**: Utilizing Spring Cloud Gateway for centralized API management and routing.
+- **Event-Driven Architecture**: Leveraging Apache Kafka, Apache pulsar for asynchronous communication between microservices.
+- **API Gateway**: Utilizing Spring Cloud Gateway(Reactive) for centralized API management and routing.
 - **Resilience Patterns**: Implementing Circuit Breaker to handle service failures gracefully.
 - **Transaction Management**: Adopting the SAGA pattern to ensure data consistency across distributed services.
 - **Stream Processing**: Using Spring Cloud Stream for building event-driven microservices.

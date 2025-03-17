@@ -117,7 +117,7 @@ public class CountriesNowLocationService implements LocationService {
         .onErrorReturn(false);
   }
 
-  public Flux<String> fallback(){
+  public Flux<String> fallback(Object[] ...args) {
     return Flux.just();
   }
 }

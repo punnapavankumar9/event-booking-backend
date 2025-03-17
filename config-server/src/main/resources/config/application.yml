@@ -1,4 +1,5 @@
 application:
+  mode: dev
   server:
     # gateway server port
     port: 8080

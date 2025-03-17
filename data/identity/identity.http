@@ -5,25 +5,7 @@ Content-Type: application/json
 {
   "username": "pavan",
   "password": "password",
-  "authorities": [
-    "ROLE_ADMIN",
-    "ROLE_OWNER"
-  ],
   "email": "pavan@gmail.com"
-}
-
-### Create Users
-POST {{url}}{{identity}}
-Content-Type: application/json
-
-{
-  "username": "punna",
-  "password": "password",
-  "authorities": [
-    "ROLE_ADMIN",
-    "ROLE_OWNER"
-  ],
-  "email": "punna@gmail.com"
 }
 
 ### Create Users
@@ -33,10 +15,6 @@ Content-Type: application/json
 {
   "username": "rajesh",
   "password": "password",
-  "authorities": [
-    "ROLE_ADMIN",
-    "ROLE_OWNER"
-  ],
   "email": "rajesh@gmail.com"
 }
 
@@ -47,9 +25,6 @@ Content-Type: application/json
 {
   "username": "ramesh",
   "password": "password",
-  "authorities": [
-    "ROLE_USER"
-  ],
   "email": "ramesh@gmail.com"
 }
 
@@ -60,9 +35,6 @@ Content-Type: application/json
 {
   "username": "mahesh",
   "password": "password",
-  "authorities": [
-    "ROLE_USER"
-  ],
   "email": "mahesh@gmail.com"
 }
 
