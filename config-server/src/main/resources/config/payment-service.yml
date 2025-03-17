@@ -15,5 +15,5 @@ server:
   port: 8087
 razorpay:
   key:
-    id: rzp_test_NKD77owZ3pZ3DR
+    id: ${RAZOR_PAY_ID}
     secret: ${RAZOR_PAY_SECRET}
