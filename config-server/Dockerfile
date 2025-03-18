@@ -1,3 +1,6 @@
+ARG GRAALVM_VERSION
+ARG SERVICE_NAME
+
 FROM ghcr.io/graalvm/${GRAALVM_VERSION} AS builder
 
 WORKDIR /build
