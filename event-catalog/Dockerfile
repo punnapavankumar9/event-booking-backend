@@ -5,6 +5,8 @@ FROM ghcr.io/graalvm/${GRAALVM_VERSION} AS builder
 
 WORKDIR /build
 
+ENV SERVICE_NAME=${SERVICE_NAME}
+
 COPY . .
 
 RUN chmod +x ./mvnw
