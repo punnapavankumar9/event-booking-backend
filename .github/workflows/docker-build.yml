@@ -1,0 +1,63 @@
+name: Docker Build and Publish
+
+on:
+  workflow_run:
+    workflows: ["Maven CI"]
+    types:
+      - completed
+    branches:
+      - master
+
+jobs:
+  build-and-push:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    strategy:
+      matrix:
+        service: [
+          "config-server",
+          "discovery",
+          "gateway",
+          "event-core",
+          "event-catalog",
+          "identity",
+          "order",
+          "payment",
+          "event-delay-engine",
+          "notification"
+        ]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Set up GraalVM
+        uses: graalvm/setup-graalvm@v1
+        with:
+          version: '22.3.3'
+          java-version: '21'
+          components: 'native-image'
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ppk4
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: ./${{ matrix.service }}/Dockerfile
+          push: true
+          tags: |
+            ppk4/event-booking-${{ matrix.service }}:latest
+            ppk4/event-booking-${{ matrix.service }}:${{ github.sha }}
+          build-args: |
+            SERVICE_NAME=${{ matrix.service }}
+            GRAALVM_VERSION=22.3.3
+          cache-from: type=gha
+          cache-to: type=gha,mode=max 
