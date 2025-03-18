@@ -1,14 +1,13 @@
-ARG GRAALVM_VERSION
-ARG SERVICE_NAME
-
+ARG GRAALVM_VERSION=native-image-community:21
+ARG SERVICE_NAME=event-delay-engine
 
 FROM ghcr.io/graalvm/${GRAALVM_VERSION} AS builder
-
-
 
 WORKDIR /build
 
 COPY . .
+
+RUN chmod +x ./mvnw
 
 RUN ./mvnw -Pnative clean package -DskipTests -pl ${SERVICE_NAME} -am
 
