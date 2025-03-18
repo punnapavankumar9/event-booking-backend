@@ -10,7 +10,7 @@ WORKDIR /build
 
 COPY . .
 
-RUN mvn -Pnative clean package -DskipTests -pl ${SERVICE_NAME} -am
+RUN ./mvnw -Pnative clean package -DskipTests -pl ${SERVICE_NAME} -am
 
 FROM gcr.io/distroless/base-debian12
 

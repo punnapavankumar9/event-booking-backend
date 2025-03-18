@@ -61,7 +61,7 @@ jobs:
             ppk4/event-booking-${{ matrix.service }}:latest
             ppk4/event-booking-${{ matrix.service }}:${{ github.sha }}
           build-args: |
-            SERVICE_NAME=${{ matrix.service }}
             GRAALVM_VERSION=native-image-community:21
+            SERVICE_NAME=${{ matrix.service }}
           cache-from: type=gha
           cache-to: type=gha,mode=max 
