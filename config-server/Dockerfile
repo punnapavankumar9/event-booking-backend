@@ -1,4 +1,4 @@
-FROM ghcr.io/graalvm/graalvm-jdk:22.3.3 AS builder
+FROM ghcr.io/graalvm/graalvm-jdk:23.0.1 AS builder
 
 RUN gu install native-image
 

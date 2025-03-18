@@ -33,7 +33,6 @@ jobs:
       - name: Set up GraalVM
         uses: graalvm/setup-graalvm@v1
         with:
-          version: '22.3.3'
           java-version: '21'
           components: 'native-image'
           github-token: ${{ secrets.GITHUB_TOKEN }}
@@ -58,6 +57,6 @@ jobs:
             ppk4/event-booking-${{ matrix.service }}:${{ github.sha }}
           build-args: |
             SERVICE_NAME=${{ matrix.service }}
-            GRAALVM_VERSION=22.3.3
+            GRAALVM_VERSION=23.0.1
           cache-from: type=gha
           cache-to: type=gha,mode=max 
