@@ -1,6 +1,6 @@
 spring:
   pulsar:
     client:
-      service-url: pulsar://localhost:6650
+      service-url: pulsar://${PULSAR_K8S_HOSTNAME:localhost}:6650
     admin:
-      service-url: http://localhost:8079
+      service-url: http://${PULSAR_K8S_HOSTNAME:localhost}:8079

@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: event-catalog-deployment
+  labels:
+    app: event-catalog-deployment
+spec:
+  selector:
+    matchLabels:
+      app: event-catalog
+  template:
+    metadata:
+      labels:
+        app: event-catalog
+    spec:
+      containers:
+        - name: event-catalog-container
+          image: localhost:5000/event-catalog
+          ports:
+            - containerPort: 8085
+          envFrom:
+            - configMapRef:
+                name: master-map
+            - secretRef:
+                name: minio-secrets

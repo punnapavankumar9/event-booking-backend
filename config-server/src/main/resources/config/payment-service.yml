@@ -7,9 +7,9 @@ spring:
         format_sql: true
         show_sql: true
   datasource:
-    url: jdbc:postgresql://localhost:5432/payments
-    username: event
-    password: event
+    url: jdbc:postgresql://${POSTGRES_K8S_HOSTNAME:localhost}:5432/payments
+    username: ${POSTGRES_USER:event}
+    password: ${POSTGRES_PASSWORD:event}
 
 server:
   port: 8087

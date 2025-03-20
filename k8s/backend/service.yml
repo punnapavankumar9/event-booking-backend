@@ -1,0 +1,147 @@
+# for whole backend infra. entrypoint to the backend.
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend-service
+spec:
+  selector:
+    app: gateway
+  ports:
+    - port: 8080
+      targetPort: 8080
+      protocol: TCP
+  type: ClusterIP
+---
+# config-server service
+apiVersion: v1
+kind: Service
+metadata:
+  name: config-server-service
+spec:
+  selector:
+    app: config-server
+  ports:
+    - port: 8081
+      targetPort: 8081
+      protocol: TCP
+  type: ClusterIP
+---
+# discovery service
+apiVersion: v1
+kind: Service
+metadata:
+  name: discovery-service
+spec:
+  selector:
+    app: discovery
+  ports:
+    - port: 8082
+      targetPort: 8082
+      protocol: TCP
+  type: ClusterIP
+
+---
+
+# pulsar service
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: pulsar-service
+  labels:
+    app: pulsar-service
+spec:
+  selector:
+    app: pulsar
+  ports:
+    - port: 6650
+      targetPort: 6650
+      name: pulsar
+    - port: 8079
+      targetPort: 8080
+      name: admin
+
+---
+
+# kafka service
+apiVersion: v1
+kind: Service
+metadata:
+  name: kafka-service
+spec:
+  selector:
+    app: kafka
+  ports:
+    - port: 9092
+      name: external
+      targetPort: 9092
+    - port: 29092
+      name: internal
+      targetPort: 29092
+  type: ClusterIP
+
+---
+
+# zookeeper service
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: zookeeper-service
+  labels:
+    app: zookeeper-service
+spec:
+  selector:
+    app: zookeeper
+  ports:
+    - port: 2181
+      targetPort: 2181
+
+---
+# minio (supports s3 api)
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: minio-service
+spec:
+  selector:
+    app: minio
+  ports:
+    - port: 9000
+      name: api
+      targetPort: 9000
+    - port: 9001
+      name: console
+      targetPort: 9001
+  type: ClusterIP
+---
+# mongo
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongo-service
+spec:
+  selector:
+    app: mongo
+  ports:
+    - port: 27017
+      targetPort: 27017
+      name: mongo
+  type: ClusterIP
+
+
+---
+# postgres
+apiVersion: v1
+kind: Service
+metadata:
+  name: pg-service
+spec:
+  selector:
+    app: pg
+  ports:
+    - port: 5432
+      targetPort: 5432
+      name: pg
+  type: ClusterIP

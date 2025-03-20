@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pg-deployment
+  labels:
+    app: pg-deployment
+spec:
+  selector:
+    matchLabels:
+      app: pg
+  template:
+    metadata:
+      labels:
+        app: pg
+    spec:
+      containers:
+        - name: pg-container
+          image: postgres:17.4
+          command:
+            - bash
+            - -c
+            - |
+              docker-entrypoint.sh postgres &
+              sleep 5 &&
+              DB_EXIST_IDENTITY=$$(psql -U $$POSTGRES_USER -tAc "SELECT 1 FROM pg_database WHERE datname='identity'") &&
+              DB_EXIST_ORDERS=$$(psql -U $$POSTGRES_USER -tAc "SELECT 1 FROM pg_database WHERE datname='orders'") &&
+              DB_EXIST_PAYMENTS=$$(psql -U $$POSTGRES_USER -tAc "SELECT 1 FROM pg_database WHERE datname='payments'") &&
+              if [ -z "$$DB_EXIST_IDENTITY" ]; then psql -U $$POSTGRES_USER -d $$POSTGRES_DB -c 'CREATE DATABASE identity;'; fi &&
+              if [ -z "$$DB_EXIST_ORDERS" ]; then psql -U $$POSTGRES_USER -d $$POSTGRES_DB -c 'CREATE DATABASE orders;'; fi &&
+              if [ -z "$$DB_EXIST_PAYMENTS" ]; then psql -U $$POSTGRES_USER -d $$POSTGRES_DB -c 'CREATE DATABASE payments;'; fi &&
+              wait
+          env:
+            - name: POSTGRES_DB
+              value: "event"
+          envFrom:
+            - secretRef:
+                name: pg-secrets
+          ports:
+            - containerPort: 5432
+          volumeMounts:
+            - mountPath: /var/lib/postgresql/data
+              name: pg-data
+      volumes:
+        - name: pg-data
+          persistentVolumeClaim:
+            claimName: pg-pvc

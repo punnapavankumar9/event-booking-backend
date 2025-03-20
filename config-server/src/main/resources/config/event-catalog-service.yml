@@ -1,13 +1,14 @@
 spring:
   data:
     mongodb:
-      host: localhost
+      host: ${MONGO_K8S_HOSTNAME:localhost}
       port: 27017
       database: event-catalog
 application:
   config:
     assets: "assets/movie-catalog/"
   storage: minio
+
 minio:
   endpoint: http://localhost:9000
   accessKey: ${MINIO_ACCESS_KEY}

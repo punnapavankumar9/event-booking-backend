@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: zookeeper-deployment
+  labels:
+    app: zookeeper-deployment
+spec:
+  selector:
+    matchLabels:
+      app: zookeeper
+  template:
+    metadata:
+      labels:
+        app: zookeeper
+    spec:
+      containers:
+        - name: zookeeper-container
+          image: confluentinc/cp-zookeeper:7.9.0
+          env:
+            - name: ZOOKEEPER_CLIENT_PORT
+              valueFrom:
+                configMapKeyRef:
+                  key: ZOOKEEPER_CLIENT_PORT
+                  name: master-map
+            - name: ZOOKEEPER_TICK_TIME
+              valueFrom:
+                configMapKeyRef:
+                  key: ZOOKEEPER_TICK_TIME
+                  name: master-map
+            - name: KAFKA_OPTS
+              value: -Dzookeeper.4lw.commands.whitelist=ruok
+          ports:
+            - containerPort: 2181
+          volumeMounts:
+            - mountPath: /var/lib/zookeeper
+              name: zookeeper-data
+          readinessProbe:
+            exec:
+              command:
+                - sh
+                - -c
+                - "echo ruok | nc localhost 2181 || exit 1"
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            exec:
+              command:
+                - sh
+                - -c
+                - "echo ruok | nc localhost 2181 || exit 1"
+            initialDelaySeconds: 5
+            periodSeconds: 10
+
+      volumes:
+        - name: zookeeper-data
+          persistentVolumeClaim:
+            claimName: zk-pvc

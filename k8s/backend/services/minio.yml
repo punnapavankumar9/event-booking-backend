@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: minio-deployment
+  labels:
+    app: minio-deployment
+spec:
+  selector:
+    matchLabels:
+      app: minio
+  template:
+    metadata:
+      labels:
+        app: minio
+    spec:
+      containers:
+        - name: minio-container
+          image: quay.io/minio/minio:RELEASE.2025-03-12T18-04-18Z
+          envFrom:
+            - secretRef:
+                name: minio-secrets
+
+          args:
+            - server
+            - /data
+            - --console-address
+            - ":9001"
+          ports:
+            - containerPort: 9000
+              name: api
+            - containerPort: 9001
+              name: console
+          volumeMounts:
+            - mountPath: /data
+              name: minio-data
+          readinessProbe:
+            httpGet:
+              port: api
+              path: /minio/health/ready
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              port: api
+              path: /minio/health/ready
+            initialDelaySeconds: 5
+            periodSeconds: 10
+      volumes:
+        - name: minio-data
+          persistentVolumeClaim:
+            claimName: minio-pvc

@@ -4,7 +4,7 @@ spring:
   profiles:
     active: kafka,resilience,blocking
   config:
-    import: optional:configserver:http://localhost:8081
+    import: optional:configserver:${CONFIG_SERVER_URL:http://localhost:8081}
   mail:
     host: smtp.gmail.com
 #    Only for Intellij Idea, if it is not mentioned ide is giving mailSender bean not found error. will be overridden by config server properties.

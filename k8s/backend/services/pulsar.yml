@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pulsar
+  labels:
+    app: pulsar-deployment
+spec:
+  selector:
+    matchLabels:
+      app: pulsar
+  template:
+    metadata:
+      labels:
+        app: pulsar
+    spec:
+      containers:
+        - name: pulsar-container
+          image: apachepulsar/pulsar:4.0.3
+          command: [ "bin/pulsar", "standalone" ]
+          ports:
+            - containerPort: 6650
+              name: pulsar
+            - containerPort: 8080
+              name: admin
+          readinessProbe:
+            tcpSocket:
+              port: 6650
+            initialDelaySeconds: 15
+            periodSeconds: 10
+          livenessProbe:
+            tcpSocket:
+              port: 6650
+            initialDelaySeconds: 30
+            periodSeconds: 10
+          resources:
+            limits:
+              memory: 5Gi
+            requests:
+              memory: 5Gi

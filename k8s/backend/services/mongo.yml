@@ -1,0 +1,66 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongo-deployment
+  labels:
+    app: mongo-deployment
+spec:
+  selector:
+    matchLabels:
+      app: mongo
+  template:
+    metadata:
+      labels:
+        app: mongo
+    spec:
+      containers:
+        - name: mongo-container
+          image: mongo:8.0.5
+          args:
+            - "--replSet"
+            - "rs0"
+            - "--bind_ip_all"
+            - "--port"
+            - "27017"
+          lifecycle:
+            postStart:
+              exec:
+                command:
+                  - /bin/bash
+                  - -c
+                  - |
+                    sleep 10
+                    until mongosh --host localhost --port 27017 --eval "db.adminCommand('ping')"; do
+                      echo "Waiting for MongoDB to start..."
+                      sleep 2
+                    done
+                    mongosh --host localhost --port 27017 --eval "try { rs.status() } catch (err) { rs.initiate({_id:'rs0',members:[{_id:0,host:'localhost:27017'}]}) }"
+
+          ports:
+            - containerPort: 27017
+              name: mongo
+          volumeMounts:
+            - mountPath: /data/db
+              name: mongo-data
+          readinessProbe:
+            exec:
+              command:
+                - mongosh
+                - --eval
+                - "rs.status().ok"
+            initialDelaySeconds: 5
+            timeoutSeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            exec:
+              command:
+                - mongosh
+                - --eval
+                - "rs.status().ok"
+            initialDelaySeconds: 5
+            timeoutSeconds: 5
+            periodSeconds: 10
+      volumes:
+        - name: mongo-data
+          persistentVolumeClaim:
+            claimName: mongo-pvc

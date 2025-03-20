@@ -7,16 +7,20 @@ application:
     eureka:
       port: 8082
 
-# jwt secret key for token generation
-#  security:
-#    jwt-secret-key: adfasd
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  security:
+    enabled: false
 
 eureka:
   client:
     serviceUrl:
       defaultZone: http://${eureka.instance.hostname}:${application.config.eureka.port}/eureka
   instance:
-    hostname: localhost
+    hostname: ${EUREKA_HOSTNAME:localhost}
 
 # let it be for all. will ignore if not using openfeign
 spring:

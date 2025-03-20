@@ -2,10 +2,11 @@ spring:
   data:
     mongodb:
       database: event-core
-      host: localhost
+      host: ${MONGO_K8S_HOSTNAME:localhost}
       port: 27017
   kafka:
     consumer:
       enable-auto-commit: false
+
 server:
   port: 8083

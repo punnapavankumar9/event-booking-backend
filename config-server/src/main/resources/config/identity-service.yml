@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/identity
-    username: event
-    password: event
+    url: jdbc:postgresql://${POSTGRES_K8S_HOSTNAME:localhost}:5432/identity
+    username: ${POSTGRES_USER:event}
+    password: ${POSTGRES_PASSWORD:event}
   jpa:
     hibernate:
       ddl-auto: update
@@ -35,6 +35,6 @@ spring:
             user-name-attribute: id
 application:
   security:
-    jwt-secret-key: hello-mr-secret-key-will-not-be-used-in-production
+    jwt-secret-key: {JWT_SECRET_KEY:hello-mr-secret-key-will-not-be-used-in-production}
 server:
   port: 8084

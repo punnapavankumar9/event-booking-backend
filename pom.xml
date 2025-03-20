@@ -64,52 +64,18 @@
     <spring-cloud.version>2024.0.0</spring-cloud.version>
   </properties>
 
-  <profiles>
-    <profile>
-      <id>native</id>
-      <properties>
-        <repackage.skip>false</repackage.skip>
-        <image.build>true</image.build>
-        <image.name>${project.artifactId}</image.name>
-      </properties>
-      <dependencies>
-        <dependency>
-          <groupId>org.graalvm.buildtools</groupId>
-          <artifactId>native-maven-plugin</artifactId>
-          <version>0.9.28</version>
-        </dependency>
-      </dependencies>
-      <build>
-        <plugins>
-          <plugin>
-            <groupId>org.graalvm.buildtools</groupId>
-            <artifactId>native-maven-plugin</artifactId>
-            <version>0.9.28</version>
-            <configuration>
-              <classesDirectory>${project.build.outputDirectory}</classesDirectory>
-              <metadataRepository>
-                <enabled>true</enabled>
-              </metadataRepository>
-            </configuration>
-            <extensions>true</extensions>
-            <executions>
-              <execution>
-                <id>build-native</id>
-                <goals>
-                  <goal>build</goal>
-                </goals>
-                <phase>package</phase>
-              </execution>
-            </executions>
-          </plugin>
-        </plugins>
-      </build>
-    </profile>
-  </profiles>
-
   <build>
     <pluginManagement>
       <plugins>
+        <plugin>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-maven-plugin</artifactId>
+          <configuration>
+            <image>
+              <builder>paketobuildpacks/builder-jammy-base:latest</builder>
+            </image>
+          </configuration>
+        </plugin>
         <plugin>
           <groupId>org.jacoco</groupId>
           <artifactId>jacoco-maven-plugin</artifactId>
