@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: gateway-container
-          image: localhost:5000/gateway
+          image: ppk4/event-booking-gateway
           ports:
             - containerPort: 8080
           envFrom:

@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: order-container
-          image: localhost:5000/order
+          image: ppk4/event-booking-order
           ports:
             - containerPort: 8086
           envFrom:

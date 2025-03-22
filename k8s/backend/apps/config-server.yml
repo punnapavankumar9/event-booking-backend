@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: config-server
-          image: localhost:5000/config-server
+          image: ppk4/event-booking-config-server
           ports:
             - containerPort: 8081
               name: api

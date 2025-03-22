@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: identity-container
-          image: localhost:5000/identity
+          image: ppk4/event-booking-identity
           env:
             - name: EUREKA_INSTANCE_HOSTNAME
               value: identity-service

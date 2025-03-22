@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: event-core-container
-          image: localhost:5000/event-core
+          image: ppk4/event-booking-event-core
           ports:
             - containerPort: 8083
               name: event-core

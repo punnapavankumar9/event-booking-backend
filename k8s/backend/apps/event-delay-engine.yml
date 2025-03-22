@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: event-delay-engine-container
-          image: localhost:5000/event-delay-engine
+          image: ppk4/event-booking-event-delay-engine
           envFrom:
             - configMapRef:
                 name: master-map

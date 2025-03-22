@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: notification-container
-          image: localhost:5000/notification
+          image: ppk4/event-booking-notification
           envFrom:
             - configMapRef:
                 name: master-map
