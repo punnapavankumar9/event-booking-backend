@@ -30,8 +30,7 @@ public class GatewayApplication {
         .route("payment-service",
             p -> p.path("/api/v1/event-orders").filters(f -> f.filter(authFilter))
                 .uri("lb://PAYMENT-SERVICE"))
-// TODO add filter to event-catalog
         .route("event-catalog",
-            p -> p.path("/assets/movie-catalog/**").uri("lb://EVENT-CATALOG-SERVICE")).build();
+            p -> p.path("/assets/movie-catalog/**").filters(f -> f.filter(authFilter)).uri("lb://EVENT-CATALOG-SERVICE")).build();
   }
 }
