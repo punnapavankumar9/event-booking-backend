@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: identity-deployment
+  labels:
+    app: identity-deployment
+spec:
+  selector:
+    matchLabels:
+      app: identity
+  template:
+    metadata:
+      labels:
+        app: identity
+    spec:
+      containers:
+        - name: identity-container
+          image: localhost:5000/identity
+          env:
+            - name: EUREKA_INSTANCE_HOSTNAME
+              value: identity-service
+            - name: FRONTEND_ANGULAR_URL
+              # nginx port will have to change when using port forwarding or minikube service or k8s service
+              value: http://127.0.0.1:49448/
+          envFrom:
+            - configMapRef:
+                name: master-map
+            - secretRef:
+                name: pg-secrets
+            - secretRef:
+                name: identity-secrets
+          ports:
+            - containerPort: 8084

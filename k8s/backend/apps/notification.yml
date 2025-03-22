@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: notification-deployment
+  labels:
+    app: notification-deployment
+spec:
+  selector:
+    matchLabels:
+      app: notification
+  template:
+    metadata:
+      labels:
+        app: notification
+    spec:
+      containers:
+        - name: notification-container
+          image: localhost:5000/notification
+          envFrom:
+            - configMapRef:
+                name: master-map
+            - secretRef:
+                name: mail-secrets
+
+# No ports need to be exposed as it only takes events from kafka uses gmail.

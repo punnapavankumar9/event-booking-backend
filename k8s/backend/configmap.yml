@@ -5,19 +5,21 @@ metadata:
 data:
   CONFIG_SERVER_URL: "http://config-server-service:8081"
   KAFKA_K8S_CONFIG_URL: "kafka-service:9092"
-  EUREKA_HOSTNAME: "discovery-service"
+  EUREKA_SERVER_HOSTNAME: "discovery-service"
   PULSAR_K8S_HOSTNAME: "pulsar-service"
   MONGO_K8S_HOSTNAME: "mongo-service"
   POSTGRES_K8S_HOSTNAME: "pg-service"
+  MINIO_K8S_HOSTNAME: "minio-service"
+  GATEWAY_K8S_HOSTNAME: "backend-service"
 
   # postgres
   POSTGRES_DB: "event"
 
-  #  zookeeper
+  # zookeeper
   ZOOKEEPER_CLIENT_PORT: "2181"
   ZOOKEEPER_TICK_TIME: "2000"
 ---
-#  kafka
+# kafka
 apiVersion: v1
 kind: ConfigMap
 metadata:

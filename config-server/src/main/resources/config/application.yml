@@ -17,14 +17,21 @@ management:
 
 eureka:
   client:
+    enabled: true
     serviceUrl:
-      defaultZone: http://${eureka.instance.hostname}:${application.config.eureka.port}/eureka
+      defaultZone: http://${EUREKA_SERVER_HOSTNAME:localhost}:${application.config.eureka.port}/eureka
   instance:
-    hostname: ${EUREKA_HOSTNAME:localhost}
+    hostname: localhost
+
 
 # let it be for all. will ignore if not using openfeign
 spring:
   cloud:
     loadbalancer:
       retry:
+        enabled: false
+    kubernetes:
+      discovery:
+        enabled: false
+      config:
         enabled: false

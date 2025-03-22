@@ -41,10 +41,10 @@ public class SecurityConfig {
         .authorizeHttpRequests(
             authorizationManagerRequestMatcherRegistry -> authorizationManagerRequestMatcherRegistry.requestMatchers(
                     HttpMethod.GET, "/api/v1/users/getUsersDetailsByToken").authenticated()
+                .requestMatchers(HttpMethod.GET, "/api/v1/users/**", "/actuator/health").permitAll()
                 .requestMatchers(antMatcher(HttpMethod.POST, "/api/v1/users"),
                     antMatcher(HttpMethod.POST, "/api/v1/users/login"),
                     antMatcher(HttpMethod.OPTIONS, "/**"),
-                    antMatcher(HttpMethod.GET, "/api/v1/users/**"),
                     antMatcher("/v3/api-docs/**"), antMatcher("/swagger-ui/**")).permitAll()
                 .anyRequest().authenticated())
         .addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class).build();

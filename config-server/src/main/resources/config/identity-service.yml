@@ -14,14 +14,14 @@ spring:
           google:
             client-id: ${GOOGLE_OAUTH2_CLIENT_ID}
             client-secret: ${GOOGLE_OAUTH2_CLIENT_SECRET}
-            redirect-uri: "http://localhost:8080/login/oauth2/code/google"
+            redirect-uri: "http://${GATEWAY_K8S_HOSTNAME:localhost}:8080/login/oauth2/code/google"
             scope:
               - profile
               - email
           github:
             client-id: ${GITHUB_OAUTH2_CLIENT_ID}
             client-secret: ${GITHUB_OAUTH2_CLIENT_SECRET}
-            redirect-uri: "http://localhost:8080/login/oauth2/code/{registrationId}"
+            redirect-uri: "http://${GATEWAY_K8S_HOSTNAME:localhost}:8080/login/oauth2/code/{registrationId}"
             authorization-grant-type: authorization_code
             scope: read:user, user:email
 
@@ -35,6 +35,6 @@ spring:
             user-name-attribute: id
 application:
   security:
-    jwt-secret-key: {JWT_SECRET_KEY:hello-mr-secret-key-will-not-be-used-in-production}
+    jwt-secret-key: ${JWT_SECRET_KEY:hello-mr-secret-key-will-not-be-used-in-production}
 server:
   port: 8084

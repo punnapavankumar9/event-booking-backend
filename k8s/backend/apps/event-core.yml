@@ -1,38 +1,40 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: gateway-service-deployment
+  name: event-core-deployment
   labels:
-    app: gateway-service-deployment
+    app: event-core-deployment
 spec:
   selector:
     matchLabels:
-      app: gateway
+      app: event-core
   template:
     metadata:
       labels:
-        app: gateway
+        app: event-core
+
     spec:
       containers:
-        - name: gateway-container
-          image: localhost:5000/gateway
+        - name: event-core-container
+          image: localhost:5000/event-core
           ports:
-            - containerPort: 8080
+            - containerPort: 8083
+              name: event-core
+          env:
+            - name: EUREKA_INSTANCE_HOSTNAME
+              value: event-core-service
           envFrom:
             - configMapRef:
                 name: master-map
-          env:
-            - name: EUREKA_INSTANCE_HOSTNAME
-              value: backend-service
-          livenessProbe:
+          readinessProbe:
             httpGet:
-              port: 8080
+              port: 8083
               path: /actuator/health
             initialDelaySeconds: 10
             periodSeconds: 10
-          readinessProbe:
+          livenessProbe:
             httpGet:
-              port: 8080
+              port: 8083
               path: /actuator/health
             initialDelaySeconds: 10
             periodSeconds: 10

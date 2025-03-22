@@ -18,9 +18,16 @@ spec:
           image: localhost:5000/config-server
           ports:
             - containerPort: 8081
+              name: api
           readinessProbe:
             httpGet:
-              port: 8081
+              port: api
               path: /actuator/health/readiness
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              port: api
+              path: /actuator/health/liveness
             initialDelaySeconds: 5
             periodSeconds: 10

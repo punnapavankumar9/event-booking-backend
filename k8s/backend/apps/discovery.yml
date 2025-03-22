@@ -17,15 +17,20 @@ spec:
         - name: discovery-container
           image: localhost:5000/discovery
           ports:
-            - containerPort: 8080
-          env:
-            - name: CONFIG_SERVER_URL
-              valueFrom:
-                configMapKeyRef:
-                  key: CONFIG_SERVER_URL
-                  name: master-map
-            - name: EUREKA_HOSTNAME
-              valueFrom:
-                configMapKeyRef:
-                  key: EUREKA_HOSTNAME
-                  name: master-map
+            - containerPort: 8082
+              name: api
+          envFrom:
+            - configMapRef:
+                name: master-map
+          livenessProbe:
+            httpGet:
+              port: api
+              path: /actuator/health
+            initialDelaySeconds: 10
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              port: api
+              path: /actuator/health
+            initialDelaySeconds: 10
+            periodSeconds: 10

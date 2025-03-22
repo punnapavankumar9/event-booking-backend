@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: payment-deployment
+  labels:
+    app: payment-deployment
+spec:
+  selector:
+    matchLabels:
+      app: payment
+  template:
+    metadata:
+      labels:
+        app: payment
+    spec:
+      containers:
+        - name: payment-container
+          image: localhost:5000/payment
+          env:
+            - name: EUREKA_INSTANCE_HOSTNAME
+              value: order-service
+          envFrom:
+            - configMapRef:
+                name: master-map
+            - secretRef:
+                name: pg-secrets
+          ports:
+            - containerPort: 8087
+              name: api

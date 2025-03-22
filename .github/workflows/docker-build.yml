@@ -45,15 +45,14 @@ jobs:
       - name: Build first to get the common dependencies
         run: |
           mvn clean install \
-          -pl ${{ matrix.service }} \
-          -am \ 
-          -DskipTests
+          -pl ${{ matrix.service }}  \
+          -am  -DskipTests  --no-transfer-progress
 
       - name: Build and push Docker image
         run: |
           mvn spring-boot:build-image \
             -pl ${{ matrix.service }} \
-            -am \
+            -am -DskipTests \
             -Dspring-boot.build-image.publish=true \
             -Dspring-boot.build-image.imageName=ppk4/event-booking-${{ matrix.service }}:latest \
             -Dspring-boot.build-image.additionalTags=${{ github.sha }}

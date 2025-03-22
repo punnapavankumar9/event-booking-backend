@@ -23,7 +23,7 @@ public class SecurityConfig {
     return http.httpBasic(ServerHttpSecurity.HttpBasicSpec::disable)
         .formLogin(ServerHttpSecurity.FormLoginSpec::disable)
         .csrf(ServerHttpSecurity.CsrfSpec::disable).authorizeExchange(
-            p -> p.pathMatchers(HttpMethod.GET, "/api/v1/events/**", "/api/v1/venues/**",
+            p -> p.pathMatchers(HttpMethod.GET, "/actuator/health", "/api/v1/events/**", "/api/v1/venues/**",
                     "/api/v1/seating-layout/**").permitAll()
                 .pathMatchers("/swagger-ui.html", "/swagger-ui/**", "/v3/api-docs/**",
                     "/api/v1/locations/**")

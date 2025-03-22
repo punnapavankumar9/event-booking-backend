@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: order-deployment
+  labels:
+    app: order-deployment
+spec:
+  selector:
+    matchLabels:
+      app: order
+  template:
+    metadata:
+      labels:
+        app: order
+    spec:
+      containers:
+        - name: order-container
+          image: localhost:5000/order
+          ports:
+            - containerPort: 8086
+          envFrom:
+            - secretRef:
+                name: pg-secrets
+            - configMapRef:
+                name: master-map
+          env:
+            - name: EUREKA_INSTANCE_HOSTNAME
+              value: order-service

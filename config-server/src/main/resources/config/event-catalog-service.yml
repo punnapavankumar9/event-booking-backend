@@ -10,7 +10,7 @@ application:
   storage: minio
 
 minio:
-  endpoint: http://localhost:9000
+  endpoint: http://${MINIO_K8S_HOSTNAME:localhost}:9000
   accessKey: ${MINIO_ACCESS_KEY}
   secretKey: ${MINIO_SECRET_KEY}
   bucket: event

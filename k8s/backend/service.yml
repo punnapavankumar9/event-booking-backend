@@ -145,3 +145,76 @@ spec:
       targetPort: 5432
       name: pg
   type: ClusterIP
+
+---
+# identity service
+apiVersion: v1
+kind: Service
+metadata:
+  name: identity-service
+spec:
+  selector:
+    app: identity
+  ports:
+    - port: 8084
+      targetPort: 8084
+      name: identity
+  type: ClusterIP
+---
+
+# event-catalog service
+apiVersion: v1
+kind: Service
+metadata:
+  name: event-catalog-service
+spec:
+  selector:
+    app: event-catalog
+  ports:
+    - port: 8085
+      targetPort: 8085
+      name: event-catalog
+  type: ClusterIP
+---
+# event-core service
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: event-core-service
+spec:
+  selector:
+    app: event-core
+  ports:
+    - port: 8083
+      name: event-core
+      targetPort: 8083
+  type: ClusterIP
+---
+# order service
+apiVersion: v1
+kind: Service
+metadata:
+  name: order-service
+spec:
+  selector:
+    app: order
+  ports:
+    - port: 8086
+      name: order
+      targetPort: 8086
+  type: ClusterIP
+---
+# payment service
+apiVersion: v1
+kind: Service
+metadata:
+  name: payment-service
+spec:
+  selector:
+    app: payment
+  ports:
+    - port: 8087
+      name: payment
+      targetPort: 8087
+  type: ClusterIP

@@ -23,3 +23,18 @@ spec:
                 name: master-map
             - secretRef:
                 name: minio-secrets
+          env:
+            - name: EUREKA_INSTANCE_HOSTNAME
+              value: event-catalog-service
+          livenessProbe:
+            httpGet:
+              port: 8085
+              path: /actuator/health
+            initialDelaySeconds: 10
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              port: 8085
+              path: /actuator/health
+            initialDelaySeconds: 10
+            periodSeconds: 10

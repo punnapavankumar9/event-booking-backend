@@ -16,24 +16,25 @@ import reactor.core.publisher.Mono;
 @EnableReactiveMethodSecurity
 public class SecurityConfig {
 
-    @Bean
-    public SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity http,
-        PopulateAuthenticationFilter populateAuthenticationFilter) {
-        return http.httpBasic(ServerHttpSecurity.HttpBasicSpec::disable)
-            .formLogin(ServerHttpSecurity.FormLoginSpec::disable)
-            .csrf(ServerHttpSecurity.CsrfSpec::disable).authorizeExchange(
-                p -> p.pathMatchers(HttpMethod.OPTIONS, "/**").permitAll()
-                    .pathMatchers(HttpMethod.GET, "/assets/**").permitAll()
-                    .pathMatchers(HttpMethod.GET, "/api/v1/movies/**").permitAll().anyExchange()
-                    .authenticated())
-            .addFilterAt(populateAuthenticationFilter, SecurityWebFiltersOrder.HTTP_BASIC).build();
-    }
+  @Bean
+  public SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity http,
+      PopulateAuthenticationFilter populateAuthenticationFilter) {
+    return http.httpBasic(ServerHttpSecurity.HttpBasicSpec::disable)
+        .formLogin(ServerHttpSecurity.FormLoginSpec::disable)
+        .csrf(ServerHttpSecurity.CsrfSpec::disable).authorizeExchange(
+            p -> p.pathMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+                .pathMatchers(HttpMethod.GET, "/actuator/health").permitAll()
+                .pathMatchers(HttpMethod.GET, "/assets/**").permitAll()
+                .pathMatchers(HttpMethod.GET, "/api/v1/movies/**").permitAll().anyExchange()
+                .authenticated())
+        .addFilterAt(populateAuthenticationFilter, SecurityWebFiltersOrder.HTTP_BASIC).build();
+  }
 
-    @Bean
-    public ReactiveAuthenticationManager authenticationManager() {
-        return (authentication) -> Mono.error(new UnsupportedOperationException(
-            "Authentication is not supported here at downstream service."));
-    }
+  @Bean
+  public ReactiveAuthenticationManager authenticationManager() {
+    return (authentication) -> Mono.error(new UnsupportedOperationException(
+        "Authentication is not supported here at downstream service."));
+  }
 
 
 }

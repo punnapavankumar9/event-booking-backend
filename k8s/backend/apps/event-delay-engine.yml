@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: event-delay-engine-deployment
+  labels:
+    app: event-delay-engine-deployment
+spec:
+  selector:
+    matchLabels:
+      app: event-delay-engine
+  template:
+    metadata:
+      labels:
+        app: event-delay-engine
+    spec:
+      containers:
+        - name: event-delay-engine-container
+          image: localhost:5000/event-delay-engine
+          envFrom:
+            - configMapRef:
+                name: master-map
+
+# No ports need to be exposed it used kafka and pulsar
