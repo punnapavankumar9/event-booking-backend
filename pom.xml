@@ -72,8 +72,14 @@
           <artifactId>spring-boot-maven-plugin</artifactId>
           <configuration>
             <image>
+              <tags>
+                <!-- For GitHub ci to push latest commit as tag -->
+                <!--suppress UnresolvedMavenProperty -->
+                <tag>${github.sha.tagName}</tag>
+              </tags>
               <builder>paketobuildpacks/builder-jammy-base:latest</builder>
             </image>
+            <publish>true</publish>
           </configuration>
         </plugin>
         <plugin>

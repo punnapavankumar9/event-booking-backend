@@ -48,19 +48,21 @@ jobs:
           -pl ${{ matrix.service }}  \
           -am  -DskipTests --no-transfer-progress
 
-      # some access issues while publishing via the build-image goal
-      # -Dspring-boot.build-image.publish=true
       - name: Build and push Docker image
         run: |
           mvn spring-boot:build-image \
             -pl ${{ matrix.service }} \
             -am -DskipTests --no-transfer-progress \
-            -Dspring-boot.build-image.imageName=ppk4/event-booking-${{ matrix.service }}:latest
-      - name: Publish to Docker registry(latest tag)
-        run: |
-          docker push ppk4/event-booking-${{ matrix.service }}:latest
+            -Dspring-boot.build-image.publish=true \
+            -Dspring-boot.build-image.imageName=ppk4/event-booking-${{ matrix.service }}:latest \
+            -Dgithub.sha.tagName=ppk4/event-booking-${{ matrix.service }}:${{ github.sha }}
 
-      - name: Public to Docker registry(sha)
-        run: |
-          docker tag ppk4/event-booking-${{ matrix.service }}:latest ppk4/event-booking-${{ matrix.service }}:${{github.sha}}
-          docker push ppk4/event-booking-${{ matrix.service }}:${{github.sha}}
+
+#      - name: Publish to Docker registry(latest tag)
+#        run: |
+#          docker push ppk4/event-booking-${{ matrix.service }}:latest
+#
+#      - name: Public to Docker registry(sha)
+#        run: |
+#          docker tag ppk4/event-booking-${{ matrix.service }}:latest ppk4/event-booking-${{ matrix.service }}:${{github.sha}}
+#          docker push ppk4/event-booking-${{ matrix.service }}:${{github.sha}}
