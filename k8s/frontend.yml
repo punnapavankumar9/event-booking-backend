@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: frontend-container
-          image: localhost:5000/event-frontend
+          image: ppk4/event-booking-frontend:latest
           ports:
             - containerPort: 80
 ---

@@ -32,6 +32,9 @@ spec:
           env:
             - name: POSTGRES_DB
               value: "event"
+#              when using hostPath base pv's(PWK or killercoda)
+            - name: POSTGRES_INITDB_ARGS
+              value: "--set huge_pages=off"
           envFrom:
             - secretRef:
                 name: pg-secrets

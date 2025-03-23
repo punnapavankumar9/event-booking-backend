@@ -2,6 +2,10 @@
 
 This repository contains the implementation of a **distributed microservice event booking platform**. The platform is designed to demonstrate modern architectural practices for building scalable, resilient, and event-driven systems using **Spring Boot** and associated technologies.
 
+# Video Demonstration
+Watch the application in action: \
+[![Event booking platform](https://img.youtube.com/vi/A0HVE_zMF5g/0.jpg)](https://www.youtube.com/watch?v=A0HVE_zMF5g "Event booking application using spring boot and angular - Click to Watch!")
+
 ## Key Features
 
 - **Event-Driven Architecture**: Leveraging Apache Kafka and Apache Pulsar for asynchronous communication between microservices.
@@ -26,7 +30,7 @@ This repository contains the implementation of a **distributed microservice even
 - **Resilience**: Make the system fault-tolerant and recover gracefully from failures.
 - **Consistency**: Maintain data integrity in distributed transactions.
 
-## Architectural Diagrams (WIP)
+## Architectural Diagrams
 
 - High-level component design: [Event Booking Architecture](https://whimsical.com/event-booking-5LEHt3SuH1Gr9Q6srVBS8F)
 
@@ -76,3 +80,24 @@ $ docker compose up -d
   ng serve
   ```
   The server will be available at `http://localhost:4200`
+
+
+## Kubernetes Deployment
+Kubernetes deployment configurations are available in the [k8s](./k8s) directory
+
+### Deployment Steps
+- Apply services, config maps, persistent volumes (PV), and persistent volume claims (PVC) before deploying the application components.
+- Deploy dependent services such as MongoDB, PostgreSQL, and MinIO from the [services](./k8s/backend/services) folder.
+- Deploy the frontend (frontend.yml).
+- Deploy the backend services in the following order:
+  - config-server
+  - discovery-server
+  - Remaining services
+  - gateway (last step)
+
+## Data Initialization
+To populate the database with sample events and movies, use IntelliJ's ijhttp tool:
+```shell
+ijhttp data/main.http -e dev -v data/http-client.env.json
+```
+This ensures the application starts with preloaded data for immediate testing and usage.
